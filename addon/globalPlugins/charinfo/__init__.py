@@ -10,15 +10,26 @@ from __future__ import unicode_literals
 import globalPluginHandler
 import scriptHandler
 import ui
-from globalCommands import SCRCAT_TEXTREVIEW, commands
+from globalCommands import SCRCAT_TEXTREVIEW, commands, GlobalCommands
 import api
 import speech
+import languageHandler
 import textInfos
+import inputCore
+from logHandler import log
 
-import unicodedata
 import os
 import re
 from codecs import open
+
+#import unicodedata
+
+#Use unicodedata2 (Unicodedata backport for python 2/3 updated to the latest unicode version)
+addonPath = os.path.dirname(__file__).decode("mbcs")
+import sys
+sys.path.append(os.path.join(addonPath, "unicodedata2"))
+import unicodedata2 as unicodedata
+del sys.path[-1]
 
 import addonHandler
 
@@ -26,16 +37,26 @@ addonHandler.initTranslation()
 
 pageTitle = _("Detailed character information'")
 PLUGIN_DIR = os.path.dirname(__file__).decode('mbcs')
-DATA_DIR = os.path.join(PLUGIN_DIR, "data")
+DATA_DIR = os.path.join(PLUGIN_DIR, "locale")
 BLOCK_FILE = "Blocks.txt"
+UNICODEDATA_FILE = "UnicodeData.txt"
 PROP_VAL_ALIAS_FILE = "PropertyValueAliases.txt"
 
+STR_NO_CHAR_ERROR = '?'
+#STR_NO_CHAR_ERROR = 'N/A No char'
+STR_NO_FILE_ERROR = '?'
+#STR_NO_FILE_ERROR = 'N/A No file'
+
 def mkhi(itemType, content, attribDic={}):
-	"""Creates an HTML element."""
+	"""Creates an HTML item."""
 	sAttribs = ''.join(' ' + n + '=' + v for n,v in attribDic.items())
 	return '<' + itemType + sAttribs + '>' + content + '</' + itemType + '>'
 	
 def createHtmlInfoTable(infoList):
+	"""Create the HTML string corresponding to the table displaying names and values of various character attributes.
+	Parameters:
+	infoList: a 2-tuple list in which each (attribute, value) tuple correspond to a line in the table.
+	"""
 	tdAttr = {}
 	items = (mkhi('td', l, tdAttr) + mkhi('td', v, tdAttr) for l,v in infoList)
 	titleLabel = _("Attribute")
@@ -56,6 +77,7 @@ border-collapse: collapse;
 }
 """.replace('{','{{').replace('}','}}')
 
+#The HTML message page code
 gHtmlMessage = '<!doctype html>' + \
 	mkhi('html',
 	mkhi('head', '<meta charset= "utf-8"/>' + mkhi('style', css)) + 
@@ -64,105 +86,192 @@ gHtmlMessage = '<!doctype html>' + \
 	+ '{infoTable}'))
 	
 
-
-def getCharValue(c,t):
-	return t
-def getNameValue(c,t):
-	try:
-		return unicodedata.name(unichr(c))
-	except ValueError:
-		return None
-def getDecValue(c,t):
-	return str(c)
-def getHexValue(c,t):
-	return hex(c)
-def getCategoryValue(c,t):
-	cat = unicodedata.category(unichr(c))
-	return cat + ' - ' + unicodeInfo.generalCategories[cat]
-
-def getBlockValue(c, t):
-	for inf,sup,name in unicodeInfo.blocks:
-			if inf <= c <= sup:
-				return name
-	return None
-	
-
-def makeSafe(f):
-	def safeFun(*a, **kw):
-		try:
-			return f(*a, **kw)
-		except:
-			return 'N/A'
-	return safeFun
-		
-
-infoList = [
-	(_("Character"), makeSafe(getCharValue)),
-	(_("Name"), lambda c,t: unicode(getNameValue(c,t))),
-	(_("Decimal value"), getDecValue),
-	(_("Hex value"), getHexValue),
-	(_("Category"), makeSafe(getCategoryValue)),
-	(_("Block"), getBlockValue),
+requiredInfoList = [
+	(_("Character"), 'getCharStr'),
+	(_("Name"), 'getNameStr'),
+	(_("Decimal value"), 'getDecStr'),
+	(_("Hex value"), 'getHexStr'),
+	(_("Category"), 'getCategoryStr'),
+	(_("Block"), 'getBlockStr'),
 	]
 
 class UnicodeInfo(object):
 
-	blocks = None
-	
 	def __init__(self):
 		super(UnicodeInfo, self).__init__()
-		self.blocks = self._getBlockInfo()
-		self.generalCategories = self._getGeneralCategoryInfo()
+		self.blocks = {}
+		self.generalCategories = {}
+		self.unicodeData = {}
+		self.langs = []
+		
+	def initLanguage(self, lang):
+		self.langs.append(lang)
+		
+		self.blocks[lang] = self.getBlockInfo(lang)
+		self.generalCategories[lang] = self.getGeneralCategoryInfo(lang)
+		if lang != 'en':
+		#For english we use directly unicodedata lib -> no init.
+			self.unicodeData[lang] = self.getUnicodeDataInfo(lang)
+		
+	@staticmethod
+	def getUnicodeDataInfo(lang):
+		filePath = os.path.join(DATA_DIR, lang, UNICODEDATA_FILE)
+		rc = re.compile(r"^([0-9A-F]+);([-\w<> ,']+);(\w+);.*$", re.U)
+		dicChar = {}
+		try:
+			with open(filePath, 'r', encoding='UTF-8') as f:
+				for l in (ll.strip() for ll in f):
+					if (l.startswith('#')
+					or len(l) == 0):
+						continue
+					m = rc.match(l)
+					if not m: raise ValueError(l)
+					dicChar[int(m.group(1), 16)] = m.group(2), m.group(3)
+			return dicChar
+		except IOError:
+			return None
+			
+		
 	
 	@staticmethod
-	def _getBlockInfo():
-		filePath = os.path.join(DATA_DIR, BLOCK_FILE)
-		rc = re.compile(r'^([0-9A-F]+)\.\.([0-9A-F]+); ([- \w]+)$')
+	def getBlockInfo(lang):
+		filePath = os.path.join(DATA_DIR, lang, BLOCK_FILE)
+		rc = re.compile(r"^([0-9A-F]+)\.\.([0-9A-F]+); ([-' \w]+)$", re.U)
 		lBlocks = []
-		with open(filePath, 'r', encoding='UTF-8') as f:
-			for l in (ll.strip() for ll in f):
-				if (l.startswith('#')
-				or len(l) == 0):
-					continue
-				m = rc.match(l)
-				if not m: raise ValueError(l)
-				inf = int(m.group(1), 16)
-				sup = int(m.group(2), 16)
-				name = m.group(3)
-				lBlocks.append( (inf, sup, name) )
-		return lBlocks
+		try:
+			with open(filePath, 'r', encoding='UTF-8') as f:
+				for l in (ll.strip() for ll in f):
+					if (l.startswith('#')
+					or len(l) == 0):
+						continue
+					m = rc.match(l)
+					if not m: raise ValueError(l)
+					inf = int(m.group(1), 16)
+					sup = int(m.group(2), 16)
+					name = m.group(3)
+					lBlocks.append( (inf, sup, name) )
+			return lBlocks
+		except IOError:
+			return None
 		
 	@staticmethod
-	def _getGeneralCategoryInfo():
-		filePath = os.path.join(DATA_DIR, PROP_VAL_ALIAS_FILE)
-		#rc = re.compile(r'^(\w+) *; *(\w+) *; *([-\w]+) *(?:#.*)$')
-		rc = re.compile(r'^(gc) *; *(\w+) *; *([- \w]+) *(?:#.*)?$')
+	def getGeneralCategoryInfo(lang):
+		filePath = os.path.join(DATA_DIR, lang, PROP_VAL_ALIAS_FILE)
+		rc = re.compile(r'^(gc) *; *(\w+) *; *([- \w]+) *(?:[#;].*)?$', re.U)
 		
 		dicData = {}
-		with open(filePath, 'r', encoding='UTF-8') as f:
-			for l in (ll.strip() for ll in f):
-				if (l.startswith('#')
-				or len(l) == 0):
-					continue
-				m = rc.match(l)
-				#if not m: raise ValueError(l)
-				if not m: continue
-				dicName = m.group(1)
-				abbr = m.group(2)
-				fullname = m.group(3)
-				dic = dicData.get(dicName, {})
-				if abbr in dic:
-					raise ValueError('Duplicate value in same dic: ' + abbr)
-				dic[abbr] = fullname
-				dicData[dicName] = dic
-		return dicData['gc']
+		try:
+			with open(filePath, 'r', encoding='UTF-8') as f:
+				for l in (ll.strip() for ll in f):
+					if (l.startswith('#')
+					or len(l) == 0):
+						continue
+					m = rc.match(l)
+					#if not m: raise ValueError(l)
+					if not m: continue
+					dicName = m.group(1)
+					abbr = m.group(2)
+					fullname = m.group(3)
+					dic = dicData.get(dicName, {})
+					if abbr in dic:
+						raise ValueError('Duplicate value in same dic: ' + abbr)
+					dic[abbr] = fullname
+					dicData[dicName] = dic
+			return dicData['gc']
+		except IOError:
+			return None
 
+#Create UnicodeInfo instance
 unicodeInfo = UnicodeInfo()
+
+class Character(object):
+
+	def __init__(self, cNum, cText):
+		super(Character, self).__init__()
+		self.num = cNum
+		self.text = cText
 		
+	def getCharStr(self):
+		return self.text
+	def getNameStr(self):
+		names = [self.getNameValue(l) for l in unicodeInfo.langs]
+		return ' / '.join(names)
+		
+	def getNameValue(self, lang):
+		if lang == 'en':
+			try:
+				return unicodedata.name(self.text)
+			except ValueError:
+				return STR_NO_CHAR_ERROR
+		if not unicodeInfo.unicodeData[lang]:
+			return STR_NO_FILE_ERROR
+		try:
+			return unicodeInfo.unicodeData[lang][self.num][0]
+		except KeyError:
+			return STR_NO_CHAR_ERROR
+		
+	def getDecStr(self):
+		return str(self.num)
+		
+	def getHexStr(self):
+		return hex(self.num)
+		
+	def getCategoryStr(self):
+		cat = unicodedata.category(self.text)
+		if cat == 'Cn':
+			try:
+				cat = unicodeInfo.unicodeData['en'][self.num][1]
+			except KeyError:
+				pass
+		catNames = [self.getCategoryValue(cat, l) for l in unicodeInfo.langs]
+		return cat + ' - ' + ' / '.join(catNames)
+		
+	def getCategoryValue(self, cat, lang):
+		if not unicodeInfo.generalCategories[lang]:
+			return STR_NO_FILE_ERROR
+		return unicodeInfo.generalCategories[lang][cat]
+		
+	def getBlockStr(self):
+		blockNames = [self.getBlockValue(l) for l in unicodeInfo.langs]
+		return ' / '.join(blockNames)
+		
+	def getBlockValue(self, lang):
+		if unicodeInfo.blocks[lang] is None:
+			return STR_NO_FILE_ERROR
+		for inf,sup,name in unicodeInfo.blocks[lang]:
+			if inf <= self.num <= sup:
+				return name
+		return STR_NO_CHAR_ERROR
+
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def __init__(self, *args, **kwargs):
 		super(GlobalPlugin, self).__init__(*args, **kwargs)
+		log.debug('Unicode version: ' + unicodedata.unidata_version)
+		self.initUnicodeInfo()
+		biScript = GlobalCommands.script_review_currentCharacter
+		self.biScriptDoc = biScript.__doc__
+		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
+		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
+		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
+		commands.script_review_currentCharacter.im_func.__doc__ = ""
+		#Delete all associated gestures to original script
+		self.bindGestures(biScriptGestureMap)
+		
+	def initUnicodeInfo(self):
+		langUI = languageHandler.getLanguage().split('_')[0]
+		if langUI == 'en':
+			langs = ['en']
+		else:
+			langs = ['en', langUI]
+		for lang in langs:
+			unicodeInfo.initLanguage(lang)
+	
+	def terminate (self):
+		#Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
+		commands.script_review_currentCharacter.im_func.__doc__ = self.biScriptDoc
+		#Clear charInfo plugin gestures
+		self.clearGestureBindings()
 		
 	def script_review_currentCharacter(self,gesture):
 		scriptCount=scriptHandler.getLastScriptRepeatCount()
@@ -171,6 +280,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
+		
+		### Code copied from NVDA script_review_currentCharacter in file globalCommands.py
 		info=api.getReviewPosition().copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		try:
@@ -188,22 +299,18 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 					c = sum(ord(cp)<<i*8 for i, cp in enumerate(encoded))
 				else:
 					c = None
+		### End code copy
+		
 		if c is not None:
-			computedInfoList = [(t,f(c, info.text)) for t,f in infoList]
+			char = Character(c, info.text)
+			computedInfoList = [(t, getattr(char, f)()) for t,f in requiredInfoList]
 		else:
-			computedInfoList = [(t,'N/A') for t,f in infoList]
+			computedInfoList = [(t,'N/A') for t,f in requiredInfoList]
 		infoTable = createHtmlInfoTable(computedInfoList )
 		htmlMessage = gHtmlMessage.format(infoTable=infoTable)
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
 	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed characteristics of this character.")
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 	
-	__gestures = {k:v for k,v in commands._GlobalCommands__gestures.items() if v == 'review_currentCharacter'}
-	#import inputCore
-	#self.gestures = inputCore.manager.getAllGestureMappings(obj=gui.mainFrame.prevFocus, ancestors=gui.mainFrame.prevFocusAncestors)
-	#ou
-	#a=inputCore.manager.getAllGestureMappings()
-	#ll=a.values()
-	#o=[e for e in ll[1].values() if e.scriptName=='review_currentCharacter' ]
-	
-	
+
+

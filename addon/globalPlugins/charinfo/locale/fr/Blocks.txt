@@ -1,0 +1,133 @@
+# Blocks-4.0.0.txt
+# Correlé avec Unicode 4.0 et l'ISO/CEI 10646 (F)
+# Remarque: la casse des noms de bloc n'est pas normative.
+#       "Latin de base" et "LATIN DE BASE" sont donc équivalents.
+#
+# Les numéros de caractère qui ne sont pas repris explicitement dans cette liste ont comme valeur No_Block.
+#
+# Première position..Dernière position; Nom de bloc
+0000..007F; Latin de base
+0080..00FF; Supplément Latin-1
+0100..017F; Latin étendu A
+0180..024F; Latin étendu B
+0250..02AF; Alphabet phonétique international
+02B0..02FF; Lettres modificatives avec chasse
+0300..036F; Diacritiques
+0370..03FF; Grec et copte
+0400..04FF; Cyrillique
+0500..052F; Supplément cyrillique
+0530..058F; Arménien
+0590..05FF; Hébreu
+0600..06FF; Arabe
+0700..074F; Syriaque
+0780..07BF; Thâna
+0900..097F; Dévanâgarî
+0980..09FF; Bengali
+0A00..0A7F; Gourmoukhî
+0A80..0AFF; Goudjarati
+0B00..0B7F; Oriya
+0B80..0BFF; Tamoul
+0C00..0C7F; Télougou
+0C80..0CFF; Kannara
+0D00..0D7F; Malayalam
+0D80..0DFF; Singhalais
+0E00..0E7F; Thaï
+0E80..0EFF; Lao
+0F00..0FFF; Tibétain
+1000..109F; Birman
+10A0..10FF; Géorgien
+1100..11FF; Jamos hangûl
+1200..137F; Éthiopien
+13A0..13FF; Chérokî
+1400..167F; Syllabaires autochtones canadiens
+1680..169F; Ogam
+16A0..16FF; Runes
+1700..171F; Tagal
+1720..173F; Hanounóo
+1740..175F; Bouhid
+1760..177F; Tagbanoua
+1780..17FF; Khmer
+1800..18AF; Mongol
+1900..194F; Limbu
+1950..197F; Taï-le
+19E0..19FF; Symboles khmers
+1D00..1D7F; Supplément phonétique
+1E00..1EFF; Latin étendu additionnel
+1F00..1FFF; Grec étendu
+2000..206F; Ponctuation générale
+2070..209F; Exposants et indices
+20A0..20CF; Symboles monétaires
+20D0..20FF; Signes combinatoires pour symboles
+2100..214F; Symboles de type lettre
+2150..218F; Formes numérales
+2190..21FF; Flèches
+2200..22FF; Opérateurs mathématiques
+2300..23FF; Signes techniques divers
+2400..243F; Pictogrammes de commande
+2440..245F; Reconnaissance optique de caractères
+2460..24FF; Alphanumériques cerclés
+2500..257F; Filets
+2580..259F; Pavés
+25A0..25FF; Formes géométriques
+2600..26FF; Symboles divers
+2700..27BF; Casseau
+27C0..27EF; Divers symboles mathématiques - A
+27F0..27FF; Supplément A de flèches
+2800..28FF; Combinaisons Braille
+2900..297F; Supplément B de flèches
+2980..29FF; Divers symboles mathématiques - B
+2A00..2AFF; Opérateurs mathématiques supplémentaires
+2B00..2BFF; Divers symboles et flèches
+2E80..2EFF; Formes supplémentaires des clés CJC
+2F00..2FDF; Clés chinoises K'ang-hsi
+2FF0..2FFF; Description idéographique
+3000..303F; Symboles et ponctuation CJC
+3040..309F; Hiragana
+30A0..30FF; Katakana
+3100..312F; Bopomofo
+3130..318F; Jamos de compatibilité hangûl
+3190..319F; Kanboun
+31A0..31BF; Bopomofo étendu
+31F0..31FF; Supplément phonétique katakana
+3200..32FF; Lettres et mois CJC cerclés
+3300..33FF; Compatibilité CJC
+3400..4DBF; Supplément A aux idéogrammes unifiés CJC
+4DC0..4DFF; Hexagrammes du Classique des mutations ou Yi-king
+4E00..9FFF; Idéogrammes unifiés CJC
+A000..A48F; Syllabaire yi des Monts frais
+A490..A4CF; Clés yi
+AC00..D7AF; Hangûl
+D800..DB7F; Demi-zone haute
+DB80..DBFF; Partie à usage privé de la demi-zone haute
+DC00..DFFF; Demi-zone basse
+E000..F8FF; Zone à usage privé
+F900..FAFF; Idéogrammes de compatibilité CJC
+FB00..FB4F; Formes de présentation alphabétiques
+FB50..FDFF; Formes A de présentation arabes
+FE00..FE0F; Sélecteurs de variante
+FE20..FE2F; Demi-signes combinatoires
+FE30..FE4F; Formes de compatibilité CJC
+FE50..FE6F; Petites variantes de forme
+FE70..FEFF; Formes B de présentation arabes
+FF00..FFEF; Formes de demi et pleine chasse
+FFF0..FFFF; Caractères spéciaux
+10000..1007F; Syllabaire linéaire B
+10080..100FF; Idéogrammes du linéaire B
+10100..1013F; Nombres égéens
+10300..1032F; Alphabet italique
+10330..1034F; Gotique
+10380..1039F; Ougaritique
+10400..1044F; Déséret
+10450..1047F; Shavien
+10480..104AF; Osmanya
+10800..1083F; Syllabaire chypriote
+1D000..1D0FF; Symboles musicaux byzantins
+1D100..1D1FF; Symboles musicaux occidentaux
+1D300..1D35F; Symboles du Classique du mystère suprême
+1D400..1D7FF; Symboles mathématiques alphanumériques
+20000..2A6DF; Supplément B aux idéogrammes unifiés CJC
+2F800..2FA1F; Supplément aux idéogrammes de compatibilité CJC
+E0000..E007F; Étiquettes
+E0100..E01EF; Supplément de sélecteurs de variante
+F0000..FFFFF; Zone supplémentaire A à usage privé
+100000..10FFFF; Zone supplémentaire B à usage privé
