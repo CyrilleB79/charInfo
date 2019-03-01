@@ -1,4 +1,4 @@
-﻿0000;<commande>;Cc;0;BN;;;;;N;nul;;;;
+0000;<commande>;Cc;0;BN;;;;;N;nul;;;;
 0001;<commande>;Cc;0;BN;;;;;N;début d'en-tête;;;;
 0002;<commande>;Cc;0;BN;;;;;N;début de texte;;;;
 0003;<commande>;Cc;0;BN;;;;;N;fin de texte;;;;
