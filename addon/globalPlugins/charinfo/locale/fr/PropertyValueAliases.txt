@@ -1,0 +1,33 @@
+#File generated manually from information from following page:
+#http://hapax.qc.ca/UCD-4.0.0.fr.html
+
+gc;Lu;Lettre majuscule
+gc;Ll;Lettre minuscule
+gc;Lt;Lettre casse de titre
+gc;Lm;Lettre modificateur
+gc;Lo;Lettre autre
+gc;Mn;Marque à chasse nulle
+gc;Mc;Marque combinatoire avec chasse
+gc;Me;Marque englobante
+gc;Nd;Nombre chiffre décimal
+gc;Nl;Nombre lettre
+gc;No;Nombre autre
+gc;Pc;Ponctuation connecteur
+gc;Pd;Ponctuation tiret
+gc;Ps;Ponctuation début
+gc;Pe;Ponctuation fin
+gc;Pi;Ponctuation guillemet initial
+gc;Pf;Ponctuation guillemet final
+gc;Po;Ponctuation autre
+gc;Sm;Symbole mathématique
+gc;Sc;Symbole devise monétaire
+gc;Sk;Symbole modificateur
+gc;So;Symbole autre
+gc;Zs;Séparateur espace
+gc;Zl;Séparateur lignes
+gc;Zp;Séparateur paragraphes
+gc;Cc;Commande
+gc;Cf;Formatage
+gc;Cs;Seizet d'indirection
+gc;Co;Usage privé
+gc;Cn;Non affecté

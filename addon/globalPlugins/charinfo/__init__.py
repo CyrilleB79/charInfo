@@ -157,7 +157,7 @@ class UnicodeInfo(object):
 	@staticmethod
 	def getGeneralCategoryInfo(lang):
 		filePath = os.path.join(DATA_DIR, lang, PROP_VAL_ALIAS_FILE)
-		rc = re.compile(r'^(gc) *; *(\w+) *; *([- \w]+) *(?:[#;].*)?$', re.U)
+		rc = re.compile(r"^(gc) *; *(\w+) *; *([-' \w]+) *(?:[#;].*)?$", re.U)
 		
 		dicData = {}
 		try:
@@ -167,7 +167,6 @@ class UnicodeInfo(object):
 					or len(l) == 0):
 						continue
 					m = rc.match(l)
-					#if not m: raise ValueError(l)
 					if not m: continue
 					dicName = m.group(1)
 					abbr = m.group(2)
