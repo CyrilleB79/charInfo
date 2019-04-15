@@ -17,6 +17,7 @@ import languageHandler
 import textInfos
 import inputCore
 from logHandler import log
+from characterProcessing import SpeechSymbols
 
 import os
 import re
@@ -89,6 +90,7 @@ gHtmlMessage = '<!doctype html>' + \
 requiredInfoList = [
 	(_("Character"), 'getCharStr'),
 	(_("Name"), 'getNameStr'),
+	(_("CLDR name"), 'getCldrNameStr'),
 	(_("Decimal value"), 'getDecStr'),
 	(_("Hex value"), 'getHexStr'),
 	(_("Category"), 'getCategoryStr'),
@@ -102,6 +104,7 @@ class UnicodeInfo(object):
 		self.blocks = {}
 		self.generalCategories = {}
 		self.unicodeData = {}
+		self.cldr = {}
 		self.langs = []
 		
 	def initLanguage(self, lang):
@@ -112,6 +115,7 @@ class UnicodeInfo(object):
 		if lang != 'en':
 		#For english we use directly unicodedata lib -> no init.
 			self.unicodeData[lang] = self.getUnicodeDataInfo(lang)
+		self.cldr[lang] = self.getCldrInfo(lang)
 		
 	@staticmethod
 	def getUnicodeDataInfo(lang):
@@ -133,6 +137,15 @@ class UnicodeInfo(object):
 			
 		
 	
+	@staticmethod
+	def getCldrInfo(lang):
+		cldrInfo = SpeechSymbols()
+		try:
+			cldrInfo.load(os.path.join("locale", lang, "cldr.dic"), allowComplexSymbols=False)
+			return cldrInfo
+		except IOError:
+			return None
+		
 	@staticmethod
 	def getBlockInfo(lang):
 		filePath = os.path.join(DATA_DIR, lang, BLOCK_FILE)
@@ -189,6 +202,10 @@ class Character(object):
 		super(Character, self).__init__()
 		self.num = cNum
 		self.text = cText
+		if self.num >= 0x10000:
+		#For NVDA < 2019.1 that does not support 32-bit char
+			s = "\\U%08x" % self.num
+			self.text = s.decode('unicode-escape')
 		
 	def getCharStr(self):
 		return self.text
@@ -208,7 +225,19 @@ class Character(object):
 			return unicodeInfo.unicodeData[lang][self.num][0]
 		except KeyError:
 			return STR_NO_CHAR_ERROR
+	
+	def getCldrNameStr(self):
+		names = [self.getCldrNameValue(l) for l in unicodeInfo.langs]
+		return ' / '.join(names)
 		
+	def getCldrNameValue(self, lang):
+		if not unicodeInfo.cldr[lang]:
+			return STR_NO_FILE_ERROR
+		try:
+			return unicodeInfo.cldr[lang].symbols[self.text].replacement
+		except KeyError:
+			return STR_NO_CHAR_ERROR
+			
 	def getDecStr(self):
 		return str(self.num)
 		
@@ -308,7 +337,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		infoTable = createHtmlInfoTable(computedInfoList )
 		htmlMessage = gHtmlMessage.format(infoTable=infoTable)
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
-	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed characteristics of this character.")
+	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 	
 

@@ -7,57 +7,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'charInfo' '1.0dev'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@freelists.org'\n"
-"POT-Creation-Date: 2019-01-12 22:34+0100\n"
-"PO-Revision-Date: 2019-01-12 22:42+0100\n"
+"POT-Creation-Date: 2019-04-15 16:15+0200\n"
+"PO-Revision-Date: 2019-04-15 16:16+0200\n"
+"Last-Translator: Cyrille Boutot <cyrille.bougot2@laposte.net>\n"
 "Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
-"Last-Translator: Cyrille Bougot <cyrille.bougot2@laposte.net>\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: fr\n"
 
-#: addon\globalPlugins\charinfo\__init__.py:27
+#: addon\globalPlugins\charinfo\__init__.py:39
 msgid "Detailed character information'"
 msgstr "Information détaillée sur un caractère"
 
-#: addon\globalPlugins\charinfo\__init__.py:41
+#: addon\globalPlugins\charinfo\__init__.py:63
 msgid "Attribute"
 msgstr "Attribut"
 
-#: addon\globalPlugins\charinfo\__init__.py:42
+#: addon\globalPlugins\charinfo\__init__.py:64
 msgid "Value"
 msgstr "Valeur"
 
-#: addon\globalPlugins\charinfo\__init__.py:100
+#: addon\globalPlugins\charinfo\__init__.py:91
 msgid "Character"
 msgstr "Caractère"
 
-#: addon\globalPlugins\charinfo\__init__.py:101
+#: addon\globalPlugins\charinfo\__init__.py:92
 msgid "Name"
 msgstr "Nom"
 
-#: addon\globalPlugins\charinfo\__init__.py:102
+#: addon\globalPlugins\charinfo\__init__.py:93
+msgid "CLDR name"
+msgstr "Nom CLDR"
+
+#: addon\globalPlugins\charinfo\__init__.py:94
 msgid "Decimal value"
 msgstr "Valeur décimale"
 
-#: addon\globalPlugins\charinfo\__init__.py:103
+#: addon\globalPlugins\charinfo\__init__.py:95
 msgid "Hex value"
 msgstr "Valeur hexa"
 
-#: addon\globalPlugins\charinfo\__init__.py:104
+#: addon\globalPlugins\charinfo\__init__.py:96
 msgid "Category"
 msgstr "Catégorie"
 
-#: addon\globalPlugins\charinfo\__init__.py:105
+#: addon\globalPlugins\charinfo\__init__.py:97
 msgid "Block"
 msgstr "Bloc"
 
-#: addon\globalPlugins\charinfo\__init__.py:198
+#: addon\globalPlugins\charinfo\__init__.py:336
 msgid ""
-". Pressing four times presents a message with detailed characteristics of "
-"this character."
+". Pressing four times presents a message with detailed information on this "
+"character."
 msgstr ""
 ". Quatre appuis: affiche un message avec des informations détaillées sur ce "
 "caractère."
@@ -75,6 +79,6 @@ msgid ""
 "This addon provides detailed character information when pressing four times "
 "the report current character gesture.\n"
 msgstr ""
-"Ce module complémentaire fournit des informations détaillées sur un "
-"caractère lors d'un quadruple appui du geste de commande pour annoncer le "
-"caractère courant.\n"
+"Cette extension fournit des informations détaillées sur un caractère lors "
+"d'un quadruple appui du geste de commande pour annoncer le caractère "
+"courant.\n"
