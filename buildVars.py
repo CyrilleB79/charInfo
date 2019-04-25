@@ -17,10 +17,10 @@ addon_info = {
 	"addon_summary" : _("Character information"),
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-	"addon_description" : _("""This addon provides detailed character information when pressing four times the report current character gesture.
+	"addon_description" : _("""This addon allow to present in a message character information such as unicode name, number, category, etc.
 """),
 	# version
-	"addon_version" : "1.0dev-20190415",
+	"addon_version" : "1.0dev-20190425",
 	# Author(s)
 	"addon_author" : u"Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support

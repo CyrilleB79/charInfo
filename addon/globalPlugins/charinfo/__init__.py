@@ -15,6 +15,7 @@ import api
 import speech
 import languageHandler
 import textInfos
+import controlTypes
 import inputCore
 from logHandler import log
 from characterProcessing import SpeechSymbols
@@ -36,6 +37,8 @@ import addonHandler
 
 addonHandler.initTranslation()
 
+
+# Translators: Title on the char info displayed message
 pageTitle = _("Detailed character information'")
 PLUGIN_DIR = os.path.dirname(__file__).decode('mbcs')
 DATA_DIR = os.path.join(PLUGIN_DIR, "locale")
@@ -60,7 +63,9 @@ def createHtmlInfoTable(infoList):
 	"""
 	tdAttr = {}
 	items = (mkhi('td', l, tdAttr) + mkhi('td', v, tdAttr) for l,v in infoList)
+	# Translators: A column title on the char info displayed message
 	titleLabel = _("Attribute")
+	# Translators: A column title on the char info displayed message
 	titleVal = _("Value")
 	return mkhi(
 		'table',
@@ -88,12 +93,19 @@ gHtmlMessage = '<!doctype html>' + \
 	
 
 requiredInfoList = [
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Character"), 'getCharStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Name"), 'getNameStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("CLDR name"), 'getCldrNameStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Decimal value"), 'getDecStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Hex value"), 'getHexStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Category"), 'getCategoryStr'),
+	# Translators: A character atrribute type in the table on the char info displayed message
 	(_("Block"), 'getBlockStr'),
 	]
 
@@ -308,10 +320,24 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
+		self.displayCurrentCharInfoMessage()
+	# Translators: A part of the message presented in input help mode.
+	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
+	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
+	
+	def script_currentCharInfo(self, gesture):
+		self.displayCurrentCharInfoMessage()
+	# Translators: A part of the message presented in input help mode.
+	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
+	script_currentCharInfo.category = commands.script_review_currentCharacter.category
 		
-		### Code copied from NVDA script_review_currentCharacter in file globalCommands.py
+	def displayCurrentCharInfoMessage(self):
+		### Code inspired from NVDA script_review_currentCharacter in file globalCommands.py
 		info=api.getReviewPosition().copy()
 		info.expand(textInfos.UNIT_CHARACTER)
+		if info.text == '':
+			speech.speakTextInfo(info,unit=textInfos.UNIT_CHARACTER,reason=controlTypes.REASON_CARET)
+			return
 		try:
 			c = ord(info.text)
 		except TypeError:
@@ -337,8 +363,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		infoTable = createHtmlInfoTable(computedInfoList )
 		htmlMessage = gHtmlMessage.format(infoTable=infoTable)
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
-	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
-	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 	
 
 

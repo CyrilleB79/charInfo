@@ -4,7 +4,8 @@
 * Compatibilité NVDA : 2017.3 à 2019.2
 * Télécharger [version de développement][2]
 
-Cette extension fournit des informations détaillées sur un caractère lorsqu'on execute 4 fois le geste de commande de revue du caractère courant.
+Cette extension permet d'afficher dans un message des informations sur un caractère telles que nom Unicode, numéro, catégorie, etc.
+
 
 ## Commandes
 
@@ -12,8 +13,9 @@ Cette extension fournit des informations détaillées sur un caractère lorsqu'o
 
 ## Notes
 
+* Cette extension fournit également un script pour afficher directement les informations sur le caractère du curseur de revue. Ce script n'a pas de geste par défaut associé. Si vous n'êtes pas à l'aise avec le geste de commande à 4 appuis, vous pouvez lui assigner un geste de commande dans la boîte de dialogue de geste de commande de NVDA (catégorie "Revue de texte").
 * Les informations fournies sont en anglais car elles font partie de la norme unicode. Si une traduction locale existe pour cette extension les informations sont également fournies parallèlement à l'anglais.
-* Le nom CLDR (référentiel de données local commun Unicode) est uniquement pris en charge sur NVDA 2019.1 et versions ultérieures:
+* Le nom CLDR (référentiel de données local commun Unicode) est uniquement pris en charge sur NVDA 2019.1 et versions ultérieures.
 
 
 ## Journal des changements
@@ -22,4 +24,4 @@ Cette extension fournit des informations détaillées sur un caractère lorsqu'o
 
 * Version initiale
 
-[2]: https://github.com/CyrilleB79/charInfo/releases/download/V1.0dev/charInfo-1.0dev-20190415.nvda-addon
+[2]: https://github.com/CyrilleB79/charInfo/releases/download/V1.0dev/charInfo-1.0dev-20190425.nvda-addon
