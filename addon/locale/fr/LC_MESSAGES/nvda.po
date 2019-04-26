@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'charInfo' '1.0dev'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@freelists.org'\n"
-"POT-Creation-Date: 2019-04-25 09:40+0200\n"
-"PO-Revision-Date: 2019-04-25 09:48+0200\n"
+"POT-Creation-Date: 2019-04-26 13:33+0200\n"
+"PO-Revision-Date: 2019-04-26 13:39+0200\n"
 "Last-Translator: Cyrille Boutot <cyrille.bougot2@laposte.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -33,37 +33,37 @@ msgstr "Attribut"
 msgid "Value"
 msgstr "Valeur"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:97
 msgid "Character"
 msgstr "Caractère"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:99
 msgid "Name"
 msgstr "Nom"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:101
 msgid "CLDR name"
 msgstr "Nom CLDR"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:103
 msgid "Decimal value"
 msgstr "Valeur décimale"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:105
 msgid "Hex value"
 msgstr "Valeur hexa"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:107
 msgid "Category"
 msgstr "Catégorie"
 
-#. Translators: A character atrribute type in the table on the char info displayed message
+#. Translators: A character attribute type in the table on the char info displayed message
 #: addon\globalPlugins\charinfo\__init__.py:109
 msgid "Block"
 msgstr "Bloc"
@@ -77,7 +77,7 @@ msgstr ""
 ". Quatre appuis: affiche un message avec des informations détaillées sur ce "
 "caractère."
 
-#. Translators: A part of the message presented in input help mode.
+#. Translators: The message presented in input help mode.
 #: addon\globalPlugins\charinfo\__init__.py:331
 msgid ""
 "Presents a message with detailed information on the character of the current "
@@ -96,7 +96,7 @@ msgstr "Information caractère"
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 #: buildVars.py:20
 msgid ""
-"This addon allow to present in a message character information such as "
+"This addon allows to present in a message character information such as "
 "unicode name, number, category, etc.\n"
 msgstr ""
 "Cette extension permet d'afficher dans un message des informations sur un "

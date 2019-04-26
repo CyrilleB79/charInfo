@@ -24,4 +24,4 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 * Version initiale
 
-[2]: https://github.com/CyrilleB79/charInfo/releases/download/V1.0dev/charInfo-1.0dev-20190425.nvda-addon
+[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev

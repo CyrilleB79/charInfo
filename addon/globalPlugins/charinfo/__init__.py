@@ -93,19 +93,19 @@ gHtmlMessage = '<!doctype html>' + \
 	
 
 requiredInfoList = [
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Character"), 'getCharStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Name"), 'getNameStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("CLDR name"), 'getCldrNameStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Decimal value"), 'getDecStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Hex value"), 'getHexStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Category"), 'getCategoryStr'),
-	# Translators: A character atrribute type in the table on the char info displayed message
+	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Block"), 'getBlockStr'),
 	]
 
@@ -327,7 +327,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def script_currentCharInfo(self, gesture):
 		self.displayCurrentCharInfoMessage()
-	# Translators: A part of the message presented in input help mode.
+	# Translators: The message presented in input help mode.
 	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
 	script_currentCharInfo.category = commands.script_review_currentCharacter.category
 		
