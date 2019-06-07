@@ -2,6 +2,7 @@
 
 * Authors: Cyrille Bougot
 * NVDA compatibility: 2017.3 to 2019.2
+* Download [stable version][1]
 * Download [development version][2]
 
 This addon allows to present in a message character information such as unicode name, number, category, etc.
@@ -24,5 +25,7 @@ This addon allows to present in a message character information such as unicode 
 ### Version 1.0
 
 * Initial release.
+
+[1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev

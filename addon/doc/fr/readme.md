@@ -2,6 +2,7 @@
 
 * Auteurs: Cyrille Bougot
 * Compatibilité NVDA : 2017.3 à 2019.2
+* Télécharger [version stable][1]
 * Télécharger [version de développement][2]
 
 Cette extension permet d'afficher dans un message des informations sur un caractère telles que nom Unicode, numéro, catégorie, etc.
@@ -23,5 +24,7 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 ### Version 1.0
 
 * Version initiale
+
+[1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
