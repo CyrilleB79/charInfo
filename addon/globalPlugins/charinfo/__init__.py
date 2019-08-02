@@ -22,26 +22,27 @@ from characterProcessing import SpeechSymbols
 
 import os
 import re
+import sys
 from codecs import open
 
-#import unicodedata
-
 #Use unicodedata2 (Unicodedata backport for python 2/3 updated to the latest unicode version)
-addonPath = os.path.dirname(__file__).decode("mbcs")
-import sys
-sys.path.append(os.path.join(addonPath, "unicodedata2"))
+if sys.version_info.major == 2: #Python2
+	addonPath = os.path.dirname(__file__).decode("mbcs")
+	sys.path.append(os.path.join(addonPath, "libPy2"))
+else: #Python3
+	addonPath = os.path.dirname(__file__)
+	sys.path.append(os.path.join(addonPath, "libPy3"))
 import unicodedata2 as unicodedata
 del sys.path[-1]
 
+	
 import addonHandler
 
 addonHandler.initTranslation()
 
-
 # Translators: Title on the char info displayed message
 pageTitle = _("Detailed character information'")
-PLUGIN_DIR = os.path.dirname(__file__).decode('mbcs')
-DATA_DIR = os.path.join(PLUGIN_DIR, "locale")
+DATA_DIR = os.path.join(addonPath, "locale")
 BLOCK_FILE = "Blocks.txt"
 UNICODEDATA_FILE = "UnicodeData.txt"
 PROP_VAL_ALIAS_FILE = "PropertyValueAliases.txt"
@@ -217,7 +218,10 @@ class Character(object):
 		if self.num >= 0x10000:
 		#For NVDA < 2019.1 that does not support 32-bit char
 			s = "\\U%08x" % self.num
-			self.text = s.decode('unicode-escape')
+			try: #Python2
+				self.text = s.decode('unicode-escape')
+			except AttributeError: #Python3 #Python3
+				pass #NVDA python 3 so NVDA > 2019.1, so 32-bit characters are handled correctly
 		
 	def getCharStr(self):
 		return self.text
@@ -294,7 +298,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
 		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
 		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
-		commands.script_review_currentCharacter.im_func.__doc__ = ""
+		commands.script_review_currentCharacter.__dict__['__doc__'] = ""
 		#Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
 		
@@ -309,9 +313,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def terminate (self):
 		#Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
-		commands.script_review_currentCharacter.im_func.__doc__ = self.biScriptDoc
+		commands.script_review_currentCharacter.__dict__['__doc__'] = self.biScriptDoc
 		#Clear charInfo plugin gestures
 		self.clearGestureBindings()
+		super(GlobalPlugin, self).terminate ()
 		
 	def script_review_currentCharacter(self,gesture):
 		scriptCount=scriptHandler.getLastScriptRepeatCount()
