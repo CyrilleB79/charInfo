@@ -40,9 +40,17 @@ import addonHandler
 
 addonHandler.initTranslation()
 
+UC_PRIVATE_USE_OFFSET = 0xf000
+lstMsCharsets = ['Symbol', 
+	'Webdings',
+	'Wingdings',
+	'Wingdings 2',
+	'Wingdings 3']
+
 # Translators: Title on the char info displayed message
 pageTitle = _("Detailed character information'")
 DATA_DIR = os.path.join(addonPath, "locale")
+MSCHAR_DIR = os.path.join(addonPath, "mscharsets")
 BLOCK_FILE = "Blocks.txt"
 UNICODEDATA_FILE = "UnicodeData.txt"
 PROP_VAL_ALIAS_FILE = "PropertyValueAliases.txt"
@@ -109,7 +117,31 @@ requiredInfoList = [
 	# Translators: A character attribute type in the table on the char info displayed message
 	(_("Block"), 'getBlockStr'),
 	]
+	
+msCharInfoList = [
+	# Translators: A character attribute type in the table on the char info displayed message
+	(_("MS name"), 'getMsNameStr'),
+	# Translators: A character attribute type in the table on the char info displayed message
+	(_("MS Font"), 'getMsFontStr'),
+	# Translators: A character attribute type in the table on the char info displayed message
+	(_("Equivalent Unicode character name"), 'getUCEqNameStr'),
+	# Translators: A character attribute type in the table on the char info displayed message
+	(_("Equivalent Unicode character hex value"), 'getUCEqHexValStr'),
+	# Translators: A character attribute type in the table on the char info displayed message
+	(_("Equivalent Unicode character decimal value"), 'getUCEqDecValStr'),
+	]
 
+if sys.version_info.major >= 3: #Python3
+	unichr = chr
+
+def unichr32(v):
+	try:
+		return unichr(v)
+	except ValueError:
+		s = "\\U%08x" % v
+		text = s.decode('unicode-escape')
+		return text
+		
 class UnicodeInfo(object):
 
 	def __init__(self):
@@ -209,9 +241,37 @@ class UnicodeInfo(object):
 #Create UnicodeInfo instance
 unicodeInfo = UnicodeInfo()
 
+class MsCharsetsInfo(dict):
+	def __init__(self, *args, **kw):
+		super(MsCharsetsInfo, self).__init__(*args, **kw)
+		for cs in lstMsCharsets:
+			try:
+				self[cs] = self.getCharsetInfo(cs)
+			except IOError:
+				pass
+		
+	def getCharsetInfo(self,cs):
+		cs = cs.lower()
+		cs = cs.replace(' ', '-')
+		csPath = os.path.join(MSCHAR_DIR, cs + '.txt')
+		csInfo = {}
+		with open(csPath, 'r', encoding='utf-8') as f:
+			for line in f:
+				msNum,msName,ucNum = line.strip().split('\t')
+				if ucNum == 'None':
+					ucNum = None
+				else:
+					ucNum = int(ucNum)
+				csInfo[int(msNum)] = (msName, ucNum)
+		return csInfo
+		
+		
+#Initialize MsCharsetsInfoInstance
+msCharsetsInfo = MsCharsetsInfo()
+
 class Character(object):
 
-	def __init__(self, cNum, cText):
+	def __init__(self, cNum, cText, cFont=None):
 		super(Character, self).__init__()
 		self.num = cNum
 		self.text = cText
@@ -222,6 +282,14 @@ class Character(object):
 				self.text = s.decode('unicode-escape')
 			except AttributeError: #Python3 #Python3
 				pass #NVDA python 3 so NVDA > 2019.1, so 32-bit characters are handled correctly
+		self.font = cFont
+		if self.isMsFont():
+			self.msCharInfo = msCharsetsInfo[self.font][self.num - UC_PRIVATE_USE_OFFSET]
+			msText = self.msCharInfo[1]
+			if msText is None:
+				self.UCEqChar = None
+			else:
+				self.UCEqChar = Character(msText, unichr32(msText))
 		
 	def getCharStr(self):
 		return self.text
@@ -286,6 +354,35 @@ class Character(object):
 			if inf <= self.num <= sup:
 				return name
 		return STR_NO_CHAR_ERROR
+	
+	def getMsNameStr(self):
+		return self.msCharInfo[0]
+		
+	def getMsFontStr(self):
+		return self.font
+		
+	def getUCEqNameStr(self):
+		if self.UCEqChar is None:
+			return STR_NO_CHAR_ERROR
+		names = [self.UCEqChar.getNameValue(l) for l in unicodeInfo.langs]
+		return ' / '.join(names)
+		
+	def getUCEqHexValStr(self):
+		if self.UCEqChar is None:
+			return STR_NO_CHAR_ERROR
+		return hex(self.UCEqChar.num)
+		
+	def getUCEqDecValStr(self):
+		if self.UCEqChar is None:
+			return STR_NO_CHAR_ERROR
+		return str(self.UCEqChar.num)
+		
+	def isMsFont(self):
+		if self.font in lstMsCharsets and (
+		self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256):
+			return True
+		else:
+			return False
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
@@ -343,6 +440,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		if info.text == '':
 			speech.speakTextInfo(info,unit=textInfos.UNIT_CHARACTER,reason=controlTypes.REASON_CARET)
 			return
+		font = self.getCurrCharFontName(info)
 		try:
 			c = ord(info.text)
 		except TypeError:
@@ -361,13 +459,34 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		### End code copy
 		
 		if c is not None:
-			char = Character(c, info.text)
+			char = Character(c, info.text, font)
 			computedInfoList = [(t, getattr(char, f)()) for t,f in requiredInfoList]
+			if char.isMsFont():
+				computedInfoList.extend([(t, getattr(char, f)()) for t,f in msCharInfoList])
 		else:
 			computedInfoList = [(t,'N/A') for t,f in requiredInfoList]
 		infoTable = createHtmlInfoTable(computedInfoList )
 		htmlMessage = gHtmlMessage.format(infoTable=infoTable)
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
 	
-
-
+	def getCurrCharFontName(self, info):
+		formatConfig={
+			"detectFormatAfterCursor":False,
+			"reportFontName":True,
+			"reportFontSize":False,"reportFontAttributes":False,"reportColor":False,"reportRevisions":False,"reportEmphasis":False,
+			"reportStyle":False,"reportAlignment":False,"reportSpellingErrors":False,
+			"reportPage":False,"reportLineNumber":False,"reportLineIndentation":False,"reportLineIndentationWithTones":False,"reportParagraphIndentation":False,"reportLineSpacing":False,"reportTables":False,
+			"reportLinks":False,"reportHeadings":False,"reportLists":False,
+			"reportBlockQuotes":False,"reportComments":False,
+			"reportBorderStyle":False,"reportBorderColor":False,
+			}
+		info=info.copy()
+		info.expand(textInfos.UNIT_CHARACTER)
+		formatField=textInfos.FormatField()
+		for field in info.getTextWithFields(formatConfig):
+			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
+				try:
+					return field.field["font-name"]
+				except KeyError:
+					return None
+		return None
