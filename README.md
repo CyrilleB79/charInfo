@@ -1,7 +1,7 @@
 # Character information
 
 * Authors: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2019.2
+* NVDA compatibility: 2017.3 to 2019.3
 * Download [stable version][1]
 * Download [development version][2]
 
@@ -21,6 +21,12 @@ This addon allows to present in a message character information such as unicode 
 
 
 ## Change log
+
+### Version 1.1
+
+* Updates to support newer versions of NVDA (Python 2 and 3 compatible)
+* Releases performed now with appveyor
+
 
 ### Version 1.0
 

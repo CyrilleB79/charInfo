@@ -1,7 +1,7 @@
 # Information caractère
 
 * Auteurs: Cyrille Bougot
-* Compatibilité NVDA : 2017.3 à 2019.2
+* Compatibilité NVDA : 2017.3 à 2019.3
 * Télécharger [version stable][1]
 * Télécharger [version de développement][2]
 
@@ -12,6 +12,7 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 * PavNum2 (toutes les dispositions de clavier) ou NVDA+, (disposition ordinateur portable): un quadruple appui, affiche des informations sur le caractère de l'objet navigateur courant à la position du curseur de revue.
 
+
 ## Notes
 
 * Cette extension fournit également un script pour afficher directement les informations sur le caractère du curseur de revue. Ce script n'a pas de geste par défaut associé. Si vous n'êtes pas à l'aise avec le geste de commande à 4 appuis, vous pouvez lui assigner un geste de commande dans la boîte de dialogue de geste de commande de NVDA (catégorie "Revue de texte").
@@ -20,6 +21,12 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 
 ## Journal des changements
+
+### Version 1.1
+
+* Mise à jour pour le support des nouvelles versions de NVDA (compatible Python 2 et 3)
+* Release effectuée désormais avec appveyor
+
 
 ### Version 1.0
 
