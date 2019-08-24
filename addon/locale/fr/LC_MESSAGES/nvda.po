@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 'charInfo' '1.0dev'\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@freelists.org'\n"
-"POT-Creation-Date: 2019-08-23 10:44+0200\n"
-"PO-Revision-Date: 2019-08-23 10:48+0200\n"
+"POT-Creation-Date: 2019-08-24 23:06+0200\n"
+"PO-Revision-Date: 2019-08-24 23:08+0200\n"
 "Last-Translator: Cyrille Bougot <cyrille.bougot2@laposte.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Translators: Title on the char info displayed message
@@ -94,7 +94,7 @@ msgid "Equivalent Unicode character decimal value"
 msgstr "Valeur décimale du caractère Unicode équivalent"
 
 #. Translators: A part of the message presented in input help mode.
-#: addon\globalPlugins\charinfo\__init__.py:424
+#: addon\globalPlugins\charinfo\__init__.py:427
 msgid ""
 ". Pressing four times presents a message with detailed information on this "
 "character."
@@ -103,7 +103,7 @@ msgstr ""
 "caractère."
 
 #. Translators: The message presented in input help mode.
-#: addon\globalPlugins\charinfo\__init__.py:430
+#: addon\globalPlugins\charinfo\__init__.py:433
 msgid ""
 "Presents a message with detailed information on the character of the current "
 "navigator object where the review cursor is situated."
@@ -121,11 +121,18 @@ msgstr "Information caractère"
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 #: buildVars.py:20
 msgid ""
-"This addon allows to present in a message character information such as "
+"This add-on allows to present in a message character information such as "
 "unicode name, number, category, etc.\n"
 msgstr ""
-"Cette extension permet d'afficher dans un message des informations sur un "
+"Cette extension permet d'afficher dans un message des informations sur un  "
 "caractère telles que nom Unicode, numéro, catégorie, etc.\n"
+
+#~ msgid ""
+#~ "This addon allows to present in a message character information such as "
+#~ "unicode name, number, category, etc.\n"
+#~ msgstr ""
+#~ "Cette extension permet d'afficher dans un message des informations sur un "
+#~ "caractère telles que nom Unicode, numéro, catégorie, etc.\n"
 
 #~ msgid ""
 #~ "This addon provides detailed character information when pressing four "
