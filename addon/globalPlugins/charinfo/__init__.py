@@ -19,6 +19,7 @@ import controlTypes
 import inputCore
 from logHandler import log
 from characterProcessing import SpeechSymbols
+import config
 
 import os
 import re
@@ -470,19 +471,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
 	
 	def getCurrCharFontName(self, info):
-		formatConfig={
-			"detectFormatAfterCursor":False,
-			"reportFontName":True,
-			"reportFontSize":False,"reportFontAttributes":False,"reportColor":False,"reportRevisions":False,"reportEmphasis":False,
-			"reportStyle":False,"reportAlignment":False,"reportSpellingErrors":False,
-			"reportPage":False,"reportLineNumber":False,"reportLineIndentation":False,"reportLineIndentationWithTones":False,"reportParagraphIndentation":False,"reportLineSpacing":False,"reportTables":False,
-			"reportLinks":False,"reportHeadings":False,"reportLists":False,
-			"reportBlockQuotes":False,"reportComments":False,
-			"reportBorderStyle":False,"reportBorderColor":False,
-			}
+		formatConfig = {k:False for k,v in config.conf['documentFormatting'].iteritems()}
+		formatConfig['reportFontName'] = True
 		info=info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
-		formatField=textInfos.FormatField()
 		for field in info.getTextWithFields(formatConfig):
 			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
 				try:
