@@ -396,7 +396,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
 		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
 		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
-		commands.script_review_currentCharacter.__dict__['__doc__'] = ""
+		commands.script_review_currentCharacter.__func__.__doc__ = ""
 		#Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
 		
@@ -411,7 +411,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def terminate (self):
 		#Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
-		commands.script_review_currentCharacter.__dict__['__doc__'] = self.biScriptDoc
+		commands.script_review_currentCharacter.__func__.__doc__ = self.biScriptDoc
 		#Clear charInfo plugin gestures
 		self.clearGestureBindings()
 		super(GlobalPlugin, self).terminate ()
