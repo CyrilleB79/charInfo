@@ -471,7 +471,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
 	
 	def getCurrCharFontName(self, info):
-		formatConfig = {k:False for k,v in config.conf['documentFormatting'].iteritems()}
+		try:
+			# Python 3
+			configDocFormatting = config.conf['documentFormatting'].items()
+		except AttributeError:
+			# Python 2 fallback
+			configDocFormatting = config.conf['documentFormatting'].iteritems()
+		formatConfig = {k:False for k,v in configDocFormatting}
 		formatConfig['reportFontName'] = True
 		info=info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
