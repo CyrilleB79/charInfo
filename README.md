@@ -15,9 +15,9 @@ This add-on allows to present in a message character information such as unicode
 
 ## Notes
 
-* This add-on provides also tow gestures that are unassigned by default:
-* A script to display directly the review cursor character information. If you feel unconfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
-* A script to display character information for the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
+* This add-on provides also two gestures that are unassigned by default:
+    * A script to display directly the review cursor character information. If you feel unconfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
+    * A script to display character information for the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
 * The provided information is in english since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with english.
 * The CLDR name (Unicode Common Locale Data Repository) is only supported with NVDA 2019.1 and above.
 * For the characters written with Microsoft proprietary fonts Symbol, Wingding (1, 2,, 3) and Webding, some additional information is provided: character name, font name and information of the corresponding unicode character.
