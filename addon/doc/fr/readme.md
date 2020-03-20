@@ -15,7 +15,9 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 ## Notes
 
-* Cette extension fournit également un script pour afficher directement les informations sur le caractère du curseur de revue. Ce script n'a pas de geste par défaut associé. Si vous n'êtes pas à l'aise avec le geste de commande à 4 appuis, vous pouvez lui assigner un geste de commande dans la boîte de dialogue de geste de commande de NVDA (catégorie "Revue de texte").
+* Cette extension fournit également deux gestes de commande non attribués par défaut:
+    * Un script pour afficher directement les informations sur le caractère du curseur de revue. Si vous n'êtes pas à l'aise avec le geste de commande à 4 appuis, vous pouvez lui assigner un geste de commande dans la boîte de dialogue de geste de commande de NVDA (catégorie "Revue de texte").
+    * Un script pour afficher des informations sur le caractère à la position du curseur (ne fonctionne que dans les endroits où il y a un curseur). Il se trouve dans la catégorie "Curseur système" de la boîte de dialogue des gestes de commands NVDA.
 * Les informations fournies sont en anglais car elles font partie de la norme unicode. Si une traduction locale existe pour cette extension les informations sont également fournies parallèlement à l'anglais.
 * Le nom CLDR (référentiel de données local commun Unicode) est uniquement pris en charge sur NVDA 2019.1 et versions ultérieures.
 * Pour les caractères écrits avec les polices propriétaires Microsoft Symbol, Wingding (1, 2, 3) et Webding, des informations supplémentaires sont fournies: nom du caractère, nom de la police et informations du caractère unicode correspondant.
