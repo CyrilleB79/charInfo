@@ -9,8 +9,9 @@ from __future__ import unicode_literals
 
 import globalPluginHandler
 import scriptHandler
+import treeInterceptorHandler
 import ui
-from globalCommands import SCRCAT_TEXTREVIEW, commands, GlobalCommands
+from globalCommands import SCRCAT_TEXTREVIEW, SCRCAT_SYSTEMCARET, commands, GlobalCommands
 import api
 import speech
 import languageHandler
@@ -423,20 +424,35 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
-		self.displayCurrentCharInfoMessage()
+		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
 	# Translators: A part of the message presented in input help mode.
 	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
-	
+
 	def script_currentCharInfo(self, gesture):
-		self.displayCurrentCharInfoMessage()
+		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
 	# Translators: The message presented in input help mode.
 	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
 	script_currentCharInfo.category = commands.script_review_currentCharacter.category
-		
-	def displayCurrentCharInfoMessage(self):
+
+	def script_currentCharAtCaretInfo(self, gesture):
+		obj = api.getFocusObject()
+		treeInterceptor = obj.treeInterceptor
+		if isinstance(treeInterceptor, treeInterceptorHandler.DocumentTreeInterceptor) and not treeInterceptor.passThrough:
+			obj = treeInterceptor
+		try:
+			info = obj.makeTextInfo(textInfos.POSITION_CARET)
+		except (NotImplementedError, RuntimeError):
+			# Translators: Reported when there is no caret
+			ui.message(_("No caret"))
+			return
+		self.displayCurrentCharInfoMessage(info)
+	# Translators: The message presented in input help mode.
+	script_currentCharAtCaretInfo.__doc__ = _("Presents a message with detailed information on the character at the position of the caret.")
+	script_currentCharAtCaretInfo.category = SCRCAT_SYSTEMCARET
+
+	def displayCurrentCharInfoMessage(self, info):
 		### Code inspired from NVDA script_review_currentCharacter in file globalCommands.py
-		info=api.getReviewPosition().copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		if info.text == '':
 			speech.speakTextInfo(info,unit=textInfos.UNIT_CHARACTER,reason=controlTypes.REASON_CARET)
