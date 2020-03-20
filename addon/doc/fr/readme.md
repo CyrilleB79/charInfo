@@ -25,6 +25,11 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 ## Journal des changements
 
+### Version 1.4
+
+* Ajout d'un script pour obtenir des informations sur le caractère à la position du curseur système (contribution Łukasz Golonka).
+* Mise à jour vers Unicode 13.0.
+
 ### Version 1.3
 
 * Corrige un bug avec NVDA 2019.3.

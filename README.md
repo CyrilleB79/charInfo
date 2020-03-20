@@ -25,6 +25,11 @@ This add-on allows to present in a message character information such as unicode
 
 ## Change log
 
+### Version 1.4
+
+* Added a script to get information for the character at the caret position (contribution Łukasz Golonka).
+* Update to Unicode 13.0.
+
 ### Version 1.3
 
 * Fixes a bug with NVDA 2019.3.
