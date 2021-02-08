@@ -455,7 +455,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		### Code inspired from NVDA script_review_currentCharacter in file globalCommands.py
 		info.expand(textInfos.UNIT_CHARACTER)
 		if info.text == '':
-			reasonCaret = getattr(controlTypes, "REASON_CARET", None) or controlTypes.OutputReason.CARET
+			try:
+				reasonCaret = controlTypes.OutputReason.CARET  # NVDA 2021.1 and later
+			except AttributeError:
+				reasonCaret = controlTypes.REASON_CARET  # NVDA 2020.4 and older
 			speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=reasonCaret)
 			return
 		font = self.getCurrCharFontName(info)
