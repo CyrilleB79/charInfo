@@ -455,7 +455,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		### Code inspired from NVDA script_review_currentCharacter in file globalCommands.py
 		info.expand(textInfos.UNIT_CHARACTER)
 		if info.text == '':
-			speech.speakTextInfo(info,unit=textInfos.UNIT_CHARACTER,reason=controlTypes.REASON_CARET)
+			reasonCaret = getattr(controlTypes, "REASON_CARET", None) or controlTypes.OutputReason.CARET
+			speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=reasonCaret)
 			return
 		font = self.getCurrCharFontName(info)
 		try:
