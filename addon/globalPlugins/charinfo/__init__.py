@@ -22,25 +22,45 @@ from logHandler import log
 from characterProcessing import SpeechSymbols
 import config
 
+import sys
 import os
 import re
-import sys
 from codecs import open
-
-#Use unicodedata2 (Unicodedata backport for python 2/3 updated to the latest unicode version)
-if sys.version_info.major == 2: #Python2
-	addonPath = os.path.dirname(__file__).decode("mbcs")
-	sys.path.append(os.path.join(addonPath, "libPy2"))
-else: #Python3
-	addonPath = os.path.dirname(__file__)
-	sys.path.append(os.path.join(addonPath, "libPy3"))
-import unicodedata2 as unicodedata
-del sys.path[-1]
-
-	
 import addonHandler
 
+
+addonPath = os.path.dirname(__file__)
+try:
+	addonPath = addonPath.decode("mbcs")  # Python 2
+except AttributeError:
+	pass  # We're running under Python 3 nothing to do.
+
+
+def getUniDatData():
+	"""Import unicodedata2 (Unicodedata backport for python 2/3 updated to the latest unicode version)
+	Note that if version of UnicodeData2 for the current version of Python cannot be founnd
+	an exception is raised."""
+	MAJORPYTHONVER = sys.version_info.major
+	MINORPYTHONVER = sys.version_info.minor
+	uniDataPath = os.path.join(
+		addonPath,
+		"UnicodeDataPKG",
+		"py{0}{1}".format(MAJORPYTHONVER, MINORPYTHONVER)
+	)
+	if os.path.isdir(uniDataPath):
+		sys.path.append(uniDataPath)
+		import unicodedata2
+		del sys.path[-1]
+		return unicodedata2
+	else:
+		raise RuntimeError("No unicode data for Python version {0}.{1}".format(MAJORPYTHONVER, MINORPYTHONVER))
+
+
+unicodedata = getUniDatData()
+
+
 addonHandler.initTranslation()
+
 
 UC_PRIVATE_USE_OFFSET = 0xf000
 lstMsCharsets = ['Symbol', 
