@@ -1,7 +1,7 @@
 # Character information
 
 * Authors: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2019.3
+* NVDA compatibility: 2017.3 to 2020.4
 * Download [stable version][1]
 * Download [development version][2]
 
@@ -24,6 +24,11 @@ This add-on allows to present in a message character information such as unicode
 
 
 ## Change log
+
+### Version 1.5
+
+* Compatibility with NVDA 2021.1 (contribution Łukasz Golonka).
+* Update along with last modifications on add-on template.
 
 ### Version 1.4
 

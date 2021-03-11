@@ -20,7 +20,7 @@ addon_info = {
 	"addon_description": _("""This add-on allows to present in a message character information such as unicode name, number, category, etc.
 """),
 	# version
-	"addon_version": "1.4",
+	"addon_version": "1.5",
 	# Author(s)
 	"addon_author": u"Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support
@@ -30,7 +30,7 @@ addon_info = {
 	# Minimum NVDA version supported (e.g. "2018.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": 2017.3,
 	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
-	"addon_lastTestedNVDAVersion": 2019.3,
+	"addon_lastTestedNVDAVersion": 2020.4,
 	# Add-on update channel (default is None, denoting stable releases, and for development releases, use "dev"; do not change unless you know what you are doing)
 	"addon_updateChannel": None,
 }
