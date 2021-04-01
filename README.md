@@ -27,7 +27,7 @@ This add-on allows to present in a message character information such as unicode
 
 ### Version 1.5
 
-* Compatibility with NVDA 2021.1 (contribution Łukasz Golonka).
+* Prepare compatibility with NVDA 2021.1 (contribution Łukasz Golonka).
 * Update along with last modifications on add-on template.
 
 ### Version 1.4
