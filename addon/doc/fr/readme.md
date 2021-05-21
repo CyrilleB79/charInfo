@@ -1,7 +1,7 @@
 # Information caractère
 
-* Auteurs: Cyrille Bougot
-* Compatibilité NVDA : 2017.3 à 2020.4
+* Auteur: Cyrille Bougot
+* Compatibilité NVDA : 2017.3 à 2021.1
 * Télécharger [version stable][1]
 * Télécharger [version de développement][2]
 
@@ -24,6 +24,10 @@ Cette extension permet d'afficher dans un message des informations sur un caract
 
 
 ## Journal des changements
+
+### Version 1.6
+
+* Compatibilité NVDA 2021.1.
 
 ### Version 1.5
 
