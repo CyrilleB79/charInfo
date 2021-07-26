@@ -6,7 +6,7 @@
 * Baixe a [versão em desenvolvimento][2]
 
 Este complemento possibilita apresentar numa mensagem informações do
-caractere, tais como nome unicode, número, categoria etc.
+caractere, tais como nome unicode, número, categoria, etc.
 
 
 ## Comandos
@@ -61,7 +61,7 @@ caractere, tais como nome unicode, número, categoria etc.
 
 ### Versão 1.3
 
-* Corrigido um bug com NVDA 2019.3.
+* Corrigido uma falha com NVDA 2019.3.
 
 
 ### Versão 1.2
