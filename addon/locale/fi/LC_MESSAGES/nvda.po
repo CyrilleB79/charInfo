@@ -5,107 +5,109 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: charInfo 1.6\n"
+"Project-Id-Version: charInfo\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2021-07-28 17:27+0200\n"
-"Language: hr\n"
+"PO-Revision-Date: 2021-07-30 10:24+0200\n"
+"Last-Translator: Jani Kinnunen <jani.kinnunen@wippies.fi>\n"
+"Language-Team: fi_FI <janikinnunen340@gmail.com>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: \n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 1.6.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information'"
-msgstr "Detaljni podaci o znaku"
+msgstr "Yksityiskohtaiset merkin tiedot"
 
 #. Translators: A column title on the char info displayed message
 msgid "Attribute"
-msgstr "Atribut"
+msgstr "Attribuutti"
 
 #. Translators: A column title on the char info displayed message
 msgid "Value"
-msgstr "Vrijednost"
+msgstr "Arvo"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Character"
-msgstr "Znak"
+msgstr "Merkki"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nimi"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "CLDR name"
-msgstr "CLDR naziv"
+msgstr "CLDR-nimi"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Decimal value"
-msgstr "Decimalna vrijednost"
+msgstr "Desimaaliarvo"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Hex value"
-msgstr "Heksadecimalna vrijednost"
+msgstr "Heksa-arvo"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Category"
-msgstr "Kategorija"
+msgstr "Kategoria"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Block"
-msgstr "Blok"
+msgstr "Lohko"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "MS name"
-msgstr "Microsoftov naziv"
+msgstr "Microsoft-nimi"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "MS Font"
-msgstr "Microsoftov font"
+msgstr "Microsoft-fontti"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character name"
-msgstr "Istovrijedni naziv Unicode znaka"
+msgstr "Vastaavan Unicode-merkin nimi"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character hex value"
-msgstr "Istovrijedna heksadecimalna vrijednost unicode znaka"
+msgstr "Vastaavan Unicode-merkin heksa-arvo"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character decimal value"
-msgstr "Istovrijedna decimalna vrijednost unicode znaka"
+msgstr "Vastaavan Unicode-merkin desimaaliarvo"
 
 #. Translators: A part of the message presented in input help mode.
 msgid ""
 ". Pressing four times presents a message with detailed information on this "
 "character."
 msgstr ""
-". Kad se pritisne četiri puta prikazuje detaljne podatake o ovom znaku."
+". Näyttää kolmesti painettaessa yksityiskohtaisia tietoja tästä merkistä."
 
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character of the current "
 "navigator object where the review cursor is situated."
 msgstr ""
-"Prikazuje podatke o znaku pod objektom navigatora gdje se nalazi pregledni "
-"kursor."
+"Näyttää yksityiskohtaisia tietoja tarkastelukohdistimen kohdalla olevasta "
+"merkistä nykyisessä navigointiobjektissa."
 
 #. Translators: Reported when there is no caret
 msgid "No caret"
-msgstr "Nema kursora"
+msgstr "Ei kohdistinta"
 
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
 "position of the caret."
-msgstr "Prikazuje poruku s detaljnim podacima o znaku pod kursorom."
+msgstr ""
+"Näyttää yksityiskohtaisia tietoja kohdistimen kohdalla olevasta merkistä."
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on to be shown on installation and add-on information.
 msgid "Character information"
-msgstr "Podaci o znaku"
+msgstr "Merkin tiedot"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
@@ -113,5 +115,5 @@ msgid ""
 "This add-on allows to present in a message character information such as "
 "unicode name, number, category, etc.\n"
 msgstr ""
-"Ovaj dodatak omogućuje prikaz poruke s podacima o znaku poput unicode "
-"naziva, broja, kategorije itd.\n"
+"Tämä lisäosa näyttää merkin tiedot, kuten Unicode-nimen, numeron, kategorian "
+"jne.\n"
