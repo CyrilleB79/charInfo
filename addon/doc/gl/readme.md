@@ -5,15 +5,15 @@
 * Descargar [versión estable][1]
 * Descargar [versión de desenvolvemento][2]
 
-Este complemento permite presentar nunha mensaxe información de carácter
-como nome, número, categoría, etc. unicode.
+Este complemento permite presentar nunha mensaxe información unicode de
+carácter como nome, número, categoría, etc.
 
 
 ## Ordes
 
 * 2 do teclado numérico (todas as distribucións de teclado) ou
   NVDA+. (distribución de portátil): cando se preme catro veces, amosa
-  información sobre o carácter do navegador de obxectos actuais onde estea
+  información sobre o carácter do navegador de obxectos actual onde estea
   situado o cursor de revisión.
 
 
@@ -46,7 +46,7 @@ como nome, número, categoría, etc. unicode.
 
 ### Versión 1.6
 
-* Compatibilidade NVDA 2021.1
+* Compatibilidade NVDA 2021.1.
 
 ### Versión 1.5
 
