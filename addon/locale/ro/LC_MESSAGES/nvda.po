@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the charInfo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: charInfo 1.6\n"
+"Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
+"POT-Creation-Date: 2021-07-21 10:22+0000\n"
+"PO-Revision-Date: 2021-08-10 10:48+0300\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 3.0\n"
+
+#. Translators: Title on the char info displayed message
+msgid "Detailed character information'"
+msgstr "Informații detaliate despre caracter'"
+
+#. Translators: A column title on the char info displayed message
+msgid "Attribute"
+msgstr "Atribut"
+
+#. Translators: A column title on the char info displayed message
+msgid "Value"
+msgstr "Valoare"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Character"
+msgstr "Caracter"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Name"
+msgstr "Nume"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "CLDR name"
+msgstr "Nume CLDR"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Decimal value"
+msgstr "Valoare zecimală"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Hex value"
+msgstr "Valoare hexagonală"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Category"
+msgstr "Categorie"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Block"
+msgstr "Bloc"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "MS name"
+msgstr "Nume MS"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "MS Font"
+msgstr "Font MS"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Equivalent Unicode character name"
+msgstr "Nume de caracter Unicode echivalent"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Equivalent Unicode character hex value"
+msgstr "Valoare hexagonală de caracter Unicode echivalentă"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Equivalent Unicode character decimal value"
+msgstr "Valoare zecimală de caracter Unicode echivalentă"
+
+#. Translators: A part of the message presented in input help mode.
+msgid ""
+". Pressing four times presents a message with detailed information on this "
+"character."
+msgstr ""
+". Apăsarea de patru ori duce la afișarea unui mesaj cu informații detaliate "
+"despre acest caracter."
+
+#. Translators: The message presented in input help mode.
+msgid ""
+"Presents a message with detailed information on the character of the current "
+"navigator object where the review cursor is situated."
+msgstr ""
+"Prezintă un mesaj cu informații detaliate despre caracterul obiectului "
+"navigator curent pe care este situat cursorul de examinare."
+
+#. Translators: Reported when there is no caret
+msgid "No caret"
+msgstr "Niciun cursor de scriere al sistemului"
+
+#. Translators: The message presented in input help mode.
+msgid ""
+"Presents a message with detailed information on the character at the "
+"position of the caret."
+msgstr ""
+"Prezintă un mesaj cu informații detaliate despre caracterul de la poziția "
+"cursorului de scriere al sistemului."
+
+#. Add-on summary, usually the user visible name of the addon.
+#. Translators: Summary for this add-on to be shown on installation and add-on information.
+msgid "Character information"
+msgstr "Informații despre caracter"
+
+#. Add-on description
+#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+msgid ""
+"This add-on allows to present in a message character information such as "
+"unicode name, number, category, etc.\n"
+msgstr ""
+"Acest supliment permite prezentarea într-un mesaj informații despre un "
+"caracter precum numele unicode, numărul, categoria, etc.\n"
