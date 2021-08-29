@@ -27,6 +27,10 @@ This add-on allows to present in a message character information such as unicode
 
 ## Change log
 
+### Version 1.7
+
+* Added localizations.
+
 ### Version 1.6
 
 * Compatibility NVDA 2021.1.

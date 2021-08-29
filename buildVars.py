@@ -20,7 +20,7 @@ addon_info = {
 	"addon_description": _("""This add-on allows to present in a message character information such as unicode name, number, category, etc.
 """),
 	# version
-	"addon_version": "1.6",
+	"addon_version": "1.7",
 	# Author(s)
 	"addon_author": u"Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support
