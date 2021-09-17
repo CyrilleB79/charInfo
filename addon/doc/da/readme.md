@@ -1,4 +1,4 @@
-# Character Information (tilføjelse ikke oversat) #
+# Tegnoplysninger #
 
 * Forfatter: Cyrille Bougot
 * NVDA -kompatibilitet: 2017.3 til 2021.1
@@ -33,8 +33,8 @@ som unicode navn, nummer, kategori osv i en dialog.
 * Den angivne information er på engelsk, da den er en del af
   Unicode-norm. Hvis der findes en lokal oversættelse til denne tilføjelse,
   findes oplysningerne også sammen med informationerne på engelsk.
-* CLDR (Unicode Common Locale Data Repository) understøttes kun med NVDA
-  2019.1 og derover.
+* CLDR-navnet (Unicode Common Locale Data Repository) understøttes kun med
+  NVDA 2019.1 og derover.
 * For de tegn, der er skrevet med Microsoft-proprietære skrifttyper Symbol,
   Wingding (1, 2 ,, 3) og Webding, angives yderligere oplysninger: Tegnets
   navn, skrifttype og information om det tilsvarende unicode-tegn.
