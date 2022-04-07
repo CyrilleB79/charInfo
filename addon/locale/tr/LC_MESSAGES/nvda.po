@@ -5,112 +5,108 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: charInfo 1.6\n"
+"Project-Id-Version: charInfo 1.7\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
-"POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2021-10-29 22:00+0100\n"
-"Language: pt_PT\n"
+"POT-Creation-Date: 2021-09-03 03:20+0000\n"
+"PO-Revision-Date: 2022-03-03 15:15+0300\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
-"Language-Team: Equipa Portuguesa do NVDA: Ângelo Abrantes e Rui Fontes\n"
-"X-Generator: Poedit 3.0\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: Burak Yüksek <burakyuksek94@gmail.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information'"
-msgstr "Informação detalhada do caracter"
+msgstr "Detaylı karakter bilgisi"
 
 #. Translators: A column title on the char info displayed message
 msgid "Attribute"
-msgstr "Atributo"
+msgstr "Özellik"
 
 #. Translators: A column title on the char info displayed message
 msgid "Value"
-msgstr "Valor"
+msgstr "Değer"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Character"
-msgstr "Caracter"
+msgstr "Karakter"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Name"
-msgstr "Nome"
+msgstr "Ad"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "CLDR name"
-msgstr "Nome CLDR"
+msgstr "CLDR adı"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Decimal value"
-msgstr "Valor decimal"
+msgstr "Decimal değeri"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Hex value"
-msgstr "Valor exadecimal"
+msgstr "Hex değeri"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Category"
-msgstr "Categoria"
+msgstr "Kategori"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Block"
-msgstr "Bloco"
+msgstr "Blok"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "MS name"
-msgstr "Nome MS"
+msgstr "MS adı"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "MS Font"
-msgstr "Fonte MS"
+msgstr "MS yazı tipi"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character name"
-msgstr "Nome equivalente do caractere Unicode"
+msgstr "Denk gelen Unicode karakter adı"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character hex value"
-msgstr "Valor hexadecimal equivalente a um caractere Unicode"
+msgstr "Denk gelen Unicode karakter hex değeri"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Equivalent Unicode character decimal value"
-msgstr "Valor decimal equivalente a um caractere Unicode"
+msgstr "Denk gelen Unicode karakter decimal değeri"
 
 #. Translators: A part of the message presented in input help mode.
 msgid ""
 ". Pressing four times presents a message with detailed information on this "
 "character."
-msgstr ""
-". Pressionando quatro vezes apresenta uma mensagem com informações "
-"detalhadas sobre este caracter."
+msgstr ". Dört kez basıldığında karakter hakkında detaylı bilgi gösterir."
 
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character of the current "
 "navigator object where the review cursor is situated."
 msgstr ""
-"Apresenta uma mensagem com informações detalhadas sobre o carater onde se "
-"encontra o cursor de revisão."
+"İnceleme imlecinin bulunduğu konumdaki nesne sunucusu karakteri hakkında "
+"ayrıntılı bilgi gösterir."
 
 #. Translators: Reported when there is no caret
 msgid "No caret"
-msgstr "Sem cursor"
+msgstr "Düzenleme imleci yok"
 
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
 "position of the caret."
 msgstr ""
-"Apresenta uma mensagem com informações detalhadas sobre o caracter na "
-"posição do cursor."
+"Düzenleme imlecinin konumunda bulunan karakter hakkında ayrıntılı bilgi "
+"gösterir."
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on to be shown on installation and add-on information.
 msgid "Character information"
-msgstr "Informação do caracter"
+msgstr "Karakter bilgisi"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
@@ -118,5 +114,5 @@ msgid ""
 "This add-on allows to present in a message character information such as "
 "unicode name, number, category, etc.\n"
 msgstr ""
-"Este extra permite apresentar, numa mensagem, informações de caracteres como "
-"nome unicode, número, categoria, etc.\n"
+"Bu eklenti, NVDA'nın bir karakterin unikod adı, sayısı, kategorisi gibi "
+"bilgileri mesaj şeklinde sunmasını sağlar.\n"
