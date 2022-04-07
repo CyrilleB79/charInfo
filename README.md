@@ -1,7 +1,7 @@
 # Character information
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Download [stable version][1]
 * Download [development version][2]
 
@@ -21,11 +21,17 @@ This add-on allows to present in a message character information such as unicode
     * A script to display character information for the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
 
 * The provided information is in english since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with english.
-* The CLDR name (Unicode Common Locale Data Repository) is only supported with NVDA 2019.1 and above.
 * For the characters written with Microsoft proprietary fonts Symbol, Wingding (1, 2,, 3) and Webding, some additional information is provided: character name, font name and information of the corresponding unicode character.
 
 
 ## Change log
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* Update localizations.
 
 ### Version 1.7
 
