@@ -1,11 +1,7 @@
-# -*- coding: UTF-8 -*-
-#globalPlugins/charinfo/__init__.py
-#NVDA add-on: Character information
-#Copyright (C) 2019 Cyrille Bougot
-#This file is covered by the GNU General Public License.
-#See the file COPYING.txt for more details.
-
-from __future__ import unicode_literals
+# NVDA add-on: Character information
+# Copyright (C) 2019-2022 Cyrille Bougot
+# This file is covered by the GNU General Public License.
+# See the file COPYING.txt for more details.
 
 import globalPluginHandler
 import scriptHandler
@@ -30,10 +26,6 @@ import addonHandler
 
 
 addonPath = os.path.dirname(__file__)
-try:
-	addonPath = addonPath.decode("mbcs")  # Python 2
-except AttributeError:
-	pass  # We're running under Python 3 nothing to do.
 
 
 def getUniDatData():
@@ -153,17 +145,7 @@ msCharInfoList = [
 	(_("Equivalent Unicode character decimal value"), 'getUCEqDecValStr'),
 	]
 
-if sys.version_info.major >= 3: #Python3
-	unichr = chr
 
-def unichr32(v):
-	try:
-		return unichr(v)
-	except ValueError:
-		s = "\\U%08x" % v
-		text = s.decode('unicode-escape')
-		return text
-		
 class UnicodeInfo(object):
 
 	def __init__(self):
@@ -297,13 +279,6 @@ class Character(object):
 		super(Character, self).__init__()
 		self.num = cNum
 		self.text = cText
-		if self.num >= 0x10000:
-		#For NVDA < 2019.1 that does not support 32-bit char
-			s = "\\U%08x" % self.num
-			try: #Python2
-				self.text = s.decode('unicode-escape')
-			except AttributeError: #Python3 #Python3
-				pass #NVDA python 3 so NVDA > 2019.1, so 32-bit characters are handled correctly
 		self.font = cFont
 		if self.isMsFont():
 			self.msCharInfo = msCharsetsInfo[self.font][self.num - UC_PRIVATE_USE_OFFSET]
@@ -311,7 +286,7 @@ class Character(object):
 			if msText is None:
 				self.UCEqChar = None
 			else:
-				self.UCEqChar = Character(msText, unichr32(msText))
+				self.UCEqChar = Character(msText, chr(msText))
 		
 	def getCharStr(self):
 		return self.text
@@ -485,18 +460,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		try:
 			c = ord(info.text)
 		except TypeError:
-			# This might be a character taking multiple code points.
-			# If it is a 32 bit character, encode it to UTF-32 and calculate the ord manually.
-			# In Python 3, this is no longer necessary.
-			try:
-				encoded = info.text.encode("utf_32_le")
-			except UnicodeEncodeError:
-				c = None
-			else:
-				if len(encoded)==4:
-					c = sum(ord(cp)<<i*8 for i, cp in enumerate(encoded))
-				else:
-					c = None
+			c = None
 		### End code copy
 		
 		if c is not None:
@@ -511,12 +475,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
 	
 	def getCurrCharFontName(self, info):
-		try:
-			# Python 3
-			configDocFormatting = config.conf['documentFormatting'].items()
-		except AttributeError:
-			# Python 2 fallback
-			configDocFormatting = config.conf['documentFormatting'].iteritems()
+		configDocFormatting = config.conf['documentFormatting'].items()
 		formatConfig = {k:False for k,v in configDocFormatting}
 		formatConfig['reportFontName'] = True
 		info=info.copy()
