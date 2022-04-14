@@ -1,0 +1,49 @@
+name: Upload on new tags
+
+on:
+  push:
+    tags:
+      '*'
+env:
+    IS_DEV: ${{ contains(github.ref, '-dev-') }}
+
+jobs:
+  buildAndUpload:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip install scons markdown
+        sudo apt update
+        sudo apt install gettext
+    - name: Extract change log
+      run: |
+        import re
+        version = re.search(r'\s*refs/tags/[Vv](\d+.\d+.*?)(?:-dev-.*)?$', '${{ github.ref }}').group(1)
+        print('===${{ github.ref }}===')
+        pattern = rf'## Change log.*### Version {version}\s*(.*?)\s*(\n(### Version)|(\[\d+\]:)|$)'
+        fileContent = open('README.md', 'r', encoding='utf8').read()
+        changeLog = re.search(pattern, fileContent, re.DOTALL).group(1)
+        with open('changelog.md', 'w', encoding='utf-8') as f:
+          f.write(changeLog)
+      shell: python 
+    
+    - name: Build add-on
+      run: scons dev=${{ env.IS_DEV }}
+    - name: Calculate sha256
+      run: sha256sum *.nvda-addon >> changelog.md
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        files: |
+          *.nvda-addon
+        body_path: changelog.md
+        prerelease: ${{ env.IS_DEV }}

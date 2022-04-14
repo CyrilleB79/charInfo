@@ -31,6 +31,7 @@ This add-on allows to present in a message character information such as unicode
 * Update to Unicode 14.0.
 * Compatibility with NVDA 2022.1.
 * Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of appVeyor.
 * Update localizations.
 
 ### Version 1.7
