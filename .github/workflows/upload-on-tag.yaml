@@ -5,7 +5,7 @@ on:
     tags:
       '*'
 env:
-    IS_DEV: ${{ contains(github.ref, '-dev-') }}
+    IS_DEV: ${{ contains(github.ref_name, '-dev-') }}
 
 jobs:
   buildAndUpload:
@@ -31,8 +31,8 @@ jobs:
     - name: Extract change log
       run: |
         import re
-        pattern = r'\s*refs/tags/[Vv](\d+.\d+.*?)(?:-dev-.*)?$'
-        refTag = '${{ github.ref }}'
+        pattern = r'[Vv](\d+.\d+.*?)(?:-dev-.*)?$'
+        refTag = '${{ github.ref_name }}'
         print(f'===> Ref tag:{refTag}')
         version = re.search(pattern, refTag).group(1)
         print(f'===> Version:{version}')
@@ -54,5 +54,6 @@ jobs:
       with:
         files: |
           *.nvda-addon
+        name: Release ${{ github.ref_name }}
         body_path: changelog.md
         prerelease: ${{ env.IS_DEV }}
