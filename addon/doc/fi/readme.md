@@ -1,7 +1,7 @@
 # Merkin tiedot #
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Lataa [vakaa versio][1]
 * Lataa [kehitysversio][2]
 
@@ -32,14 +32,25 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 * Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
   Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
   kielellä, myös sitä käytetään tietojen näyttämiseen.
-* CLDR-tietokantaa (Unicode Common Locale Data Repository) tuetaan vain NVDA
-  2019.1:ssä ja sitä uudemmissa versioissa.
 * Merkeistä, jotka on kirjoitettu Microsoftin omilla Symbol-, Wingding (1,
   2, 3)- tai Webding-fonteilla, näytetään merkin ja fontin nimi sekä
   vastaavan Unicode-merkin tiedot.
 
 
 ## Muutosloki
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Version 1.6
 

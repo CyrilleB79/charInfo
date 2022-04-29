@@ -1,7 +1,7 @@
 # Karakter bilgisi #
 
 * Yazar: Cyrille Bougot
-* NVDA uyumluluğu: 2017.3-2021.1
+* NVDA compatibility: 2019.3 and beyond
 * [Kararlı sürümü][1] indir
 * [geliştirici sürümünü][2] indir
 
@@ -33,13 +33,24 @@ bilgileri mesaj şeklinde sunmasını sağlar.
 * Karakter hakkında bilgi, unicode düzeninde olduğu için İngilizce
   verilir. Eklenti başka bir dile çevrildiyse bilgi İngilizceyle birlikte
   verilir.
-* Karakterin CLDR (Unicode Common Locale Data Repository) adı NVDA 2019.1 ve
-  üzeri sürümlerde gösterilebilmektedir.
 * Microsoft proprietary yazı tipi sembolüyle yazılan karakterler için,
   Wingding (1, 2,, 3) ve Webding, bazı ek bilgiler sunulur:
 
 
 ## Değişiklikler
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Sürüm 1.6
 

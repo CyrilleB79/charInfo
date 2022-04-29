@@ -1,7 +1,7 @@
 # Informacije o znakovima (Character Information) #
 
 * Autor: Cyrille Bougot
-* NVDA kompatibilnost: 2017.3 do 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Preuzmi [stabilnu verziju][1]
 * Preuzmi [razvojnu verziju][2]
 
@@ -30,14 +30,25 @@ unikoda, brojevi, kategorije itd.
 
 * Informacije su na engleskom, jer su dio Unicode norme. Ako postoji lokalni
   prijevod za ovaj dodatak, informacije se prikazuju uz engleski jezik.
-* CLDR ime (Unicode Common Locale Data Repository) podržano je samo u NVDA
-  verziji 2019.1 i novijoj.
 * Za znakove koji su napisani s Microsoftovim fontovima Symbol, Wingding (1,
   2, 3) i Webding, pružaju se neke dodatne informacije: ime znaka, ime fonta
   i podaci odgovarajućeg unicode znaka.
 
 
 ## Dnevnik promjena
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Verzija 1.6
 

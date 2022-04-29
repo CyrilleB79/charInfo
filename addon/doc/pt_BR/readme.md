@@ -1,7 +1,7 @@
 # Informações de Caractere (Character Information) #
 
 * Autor: Cyrille Bougot
-* Compatibilidade com NVDA: 2017.3 até 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Baixe a [versão estável][1]
 * Baixe a [versão em desenvolvimento][2]
 
@@ -34,8 +34,6 @@ caractere, tais como nome unicode, número, categoria, etc.
 * A informação fornecida está em inglês, uma vez que ela é parte da norma
   Unicode. Caso exista uma tradução local para este complemento, as
   informações também são fornecidas juntamente em inglês.
-* O nome CLDR (Unicode Common Locale Data Repository — Repositório de Dados
-  de Localidade Comum Unicode) só é suportado em NVDA 2019.1 e superior.
 * Para os caracteres escritos com fontes proprietárias da Microsoft Symbol,
   Wingding (1, 2, 3) e Webding, algumas informações adicionais são
   fornecidas: Nome do caractere, nome da fonte e informações do caractere
@@ -43,6 +41,19 @@ caractere, tais como nome unicode, número, categoria, etc.
 
 
 ## Histórico de mudanças
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Versão 1.6
 

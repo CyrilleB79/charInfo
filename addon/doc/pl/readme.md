@@ -1,7 +1,7 @@
 # Character Information #
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Pobierz [wersja stabilna][1]
 * Pobierz [Wersja rozwojowa][2]
 
@@ -32,8 +32,6 @@ takich jak nazwa Unicode, liczba, kategoria, itd.
 * Informacja dostarczana jest po angielsku, gdyś jes ta informacja częścią
   normy unicode. Jeżeli istnieje lokalne tłumaczenie dla tego dodatku,
   informacja jest podawana raz z angielską jej wersją.
-* CLDR name (współdzielone repozytorium znaków unicode) jest wspierane tylko
-  od wersji NVDA 2019.1 i wyższych.
 * Dla zkaków napisanych symbolem Microsoftowych fontów proprietarnych,
   Wingding (1, 2,, 3) i Webding, Niektóre dodatkowe informacje są
   dostarczane: nazwa znaku, nazwa fontu i informacja o aktualnym znaku
@@ -41,6 +39,19 @@ takich jak nazwa Unicode, liczba, kategoria, itd.
 
 
 ## Lista zmian
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Version 1.6
 

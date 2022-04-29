@@ -1,7 +1,7 @@
 # Information caractère #
 
 * Auteur : Cyrille Bougot
-* Compatibilité NVDA : 2017.3 à 2021.1
+* Compatibilité NVDA : 2019.3 et ultérieure
 * Télécharger [version stable][1]
 * Télécharger [version de développement][2]
 
@@ -34,8 +34,6 @@ caractère telles que nom Unicode, numéro, catégorie, etc.
 * Les informations fournies sont en anglais car elles font partie de la
   norme unicode. Si une traduction locale existe pour cette extension les
   informations sont également fournies parallèlement à l'anglais.
-* Le nom CLDR (référentiel de données local commun Unicode) est uniquement
-  pris en charge sur NVDA 2019.1 et versions ultérieures.
 * Pour les caractères écrits avec les polices propriétaires Microsoft
   Symbol, Wingding (1, 2, 3) et Webding, des informations supplémentaires
   sont fournies: nom du caractère, nom de la police et informations du
@@ -43,6 +41,19 @@ caractère telles que nom Unicode, numéro, catégorie, etc.
 
 
 ## Journal des changements
+
+### Version 1.8
+
+* Mise à jour vers Unicode 14.0.
+* Compatibilité avec NVDA 2022.1.
+* Abandon de la compatibilité avec NVDA en dessous de 2019.3.
+* La publication est maintenant effectuée grâce à une action GitHub plutôt
+  qu'avec appVeyor.
+* Mise à jour des localisations.
+
+### Version 1.7
+
+* Ajout des Localisations.
 
 ### Version 1.6
 
@@ -80,7 +91,7 @@ caractère telles que nom Unicode, numéro, catégorie, etc.
 
 ### Version 1.0
 
-* Version initiale
+* Version initiale.
 
 [[!tag dev stable]]
 

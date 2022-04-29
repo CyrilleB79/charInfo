@@ -1,7 +1,7 @@
 # Zeichen-Informationen #
 
 * Autor: Cyrille Bougot
-* NVDA-Kompatibilität: 2017.3 bis 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * [Stabile Version herunterladen][1]
 * [Entwicklerversion herunterladen][2]
 
@@ -35,8 +35,6 @@ wie Unicode-Name, Nummer, Kategorie, etc. zu präsentieren.
 * Die bereitgestellten Informationen sind auf Englisch, da sie Teil der
   Unicode-Norm sind. Wenn für diese Erweiterung eine lokale Übersetzung
   vorliegt, wird diese sowie das englische original ausgegeben.
-* Der CLDR-Name (Unicode Common Locale Data Repository) wird nur mit NVDA
-  2019.1 und höher unterstützt.
 * Für Zeichen, die mittels Microsofts proprietären Symbol-Schriftarten
   (Wingding (1, 2, 3) und Webding, geschrieben wurden, werden zusätzliche
   Informationen wie Name des Zeichens, Name der Schriftart sowie
@@ -44,6 +42,19 @@ wie Unicode-Name, Nummer, Kategorie, etc. zu präsentieren.
 
 
 ## Änderungsprotokoll
+
+### Version 1.8
+
+* Update to Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* The release is now performed thanks to a GitHub action instead of
+  appVeyor.
+* Update localizations.
+
+### Version 1.7
+
+* Added localizations.
 
 ### Version 1.6
 
