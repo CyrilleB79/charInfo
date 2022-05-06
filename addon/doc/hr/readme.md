@@ -1,7 +1,7 @@
 # Informacije o znakovima (Character Information) #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* NVDA kompatibilnost: 2019.3 i novije verzije
 * Preuzmi [stabilnu verziju][1]
 * Preuzmi [razvojnu verziju][2]
 
@@ -37,43 +37,41 @@ unikoda, brojevi, kategorije itd.
 
 ## Dnevnik promjena
 
-### Version 1.8
+### Verzija 1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
-  appVeyor.
-* Update localizations.
+* Aktualiziranje na Unicode 14.0.
+* NVDA kompatibilnost: 2022.1.
+* Nepodržavanje NVDA kompatibilnosti za verziju  2019.3.
+* Izdanje se sad izvodi zahvaljujući GitHub radnji umjesto appVeyor.
+* Aktualizirane lokalizacije.
 
-### Version 1.7
+### Verzija 1.7
 
-* Added localizations.
+* Dodane su lokalizacije.
 
 ### Verzija 1.6
 
-* NVDA kompatibilnost: 2021.1
+* NVDA kompatibilnost: 2021.1.
 
 ### Verzija 1.5
 
-* Prepare compatibility with NVDA 2021.1 (contribution Lukasz Golonka).
-* Update along with last modifications on add-on template.
+* Pripremanje kompatibilnosti s NVDA 2021.1 (doprinos: Lukasz Golonka).
+* Nova verzija zajedno sa zadnjim izmjenama u predlošku dodataka.
 
 ### Verzija 1.4
 
-* Added a script to get information for the character at the caret position
-  (contribution Lukasz Golonka).
-* Update to Unicode 13.0.
+* Dodana je skripta za dobivanje informacija za znak na poziciji kursora
+  (doprinos: Lukasz Golonka).
+* Aktualiziranje na Unicode 13.0.
 
 ### Verzija 1.3
 
-* Fixes a bug with NVDA 2019.3.
+* Ispravlja grešku za NVDA 2019.3.
 
 
 ### Verzija 1.2
 
-* Provides additional information on characters written with Microsoft
-  fonts.
+* Pruža dodatne informacije o znakovima napisanim Microsoftovim fontovima.
 
 
 ### Verzija 1.1
