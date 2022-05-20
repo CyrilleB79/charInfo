@@ -1,7 +1,7 @@
 # Merkin tiedot #
 
-* Author: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* Tekijä: Cyrille Bougot
+* Yhteensopivuus: NVDA 2019.3 ja uudemmat
 * Lataa [vakaa versio][1]
 * Lataa [kehitysversio][2]
 
@@ -18,16 +18,17 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 
 ## Huomautuksia
 
-* This add-on provides also two gestures that are unassigned by default:
+* Tämä lisäosa tarjoaa myös kaksi syötekomentoa, joita ei ole
+  oletusarvoisesti määritetty:
 
-    * A script to display directly the review cursor character
-      information. If you feel unconfortable with the four press gesture,
-      you may assign to it a gesture in NVDA's input gesture dialog ("Text
-      review" category).
-    * A script to display character information for the character at the
-      position of the caret (works only in places where there is a
-      caret). It can be found in the "system caret" category of NVDA input
-      gestures dialog.
+    * Komento suoraan tarkastelukohdistimen kohdalla olevan merkin tietojen
+      näyttämiseen. Komennolle ei ole määritetty oletusarvoista
+      näppäinkomentoa. Mikäli neljän painalluksen näppäinkomento tuntuu
+      epämukavalta, voit määrittää sille mieleisesi näppäinkomennon NVDA:n
+      Syötekomennot-valintaikkunan "Tekstin tarkastelu" -kategoriasta.
+    * Skripti, joka näyttää kohdalla olevan merkin tiedot (toimii vain
+      paikoissa, joissa on kohdistin). Komento löytyy NVDA:n syötekomentojen
+      valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
 
 * Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
   Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
@@ -39,33 +40,32 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 
 ## Muutosloki
 
-### Version 1.8
+### Versio 1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
-  appVeyor.
-* Update localizations.
+* Päivitys Unicode 14.0:aan.
+* Yhteensopivuus NVDA 2022.1:n kanssa.
+* NVDA 2019.3:a vanhempia versioita ei enää tueta.
+* Julkaisu suoritetaan nyt appVeyorin sijasta GitHub-toiminnolla.
+* Lokalisointeja päivitetty.
 
-### Version 1.7
+### Versio 1.7
 
-* Added localizations.
+* Lokalisointeja lisätty.
 
-### Version 1.6
+### Versio 1.6
 
-* Compatibility NVDA 2021.1.
+* Yhteensopiva NVDA 2021.1:n kanssa.
 
-### Version 1.5
+### Versio 1.5
 
-* Prepare compatibility with NVDA 2021.1 (contribution Lukasz Golonka).
-* Update along with last modifications on add-on template.
+* Yhteensopivuus NVDA 2021.1:n kanssa (avustanut Lukasz Golonka).
+* Päivitys viimeisimmillä lisäosamallin muutoksilla.
 
-### Version 1.4
+### Versio 1.4
 
-* Added a script to get information for the character at the caret position
-  (contribution Lukasz Golonka).
-* Update to Unicode 13.0.
+* Lisätty skripti kohdistimen kohdalla olevan merkin tietojen saamiseen
+  (avustanut Lukasz Golonka).
+* Päivitys Unicode 13.0:aan.
 
 ### Versio 1.3
 
