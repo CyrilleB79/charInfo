@@ -1,7 +1,7 @@
 # 字符信息 #
 
 * 作者： Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* NVDA 兼容性：2019.3 及更高版本
 * 下载 [稳定版][1]
 * 下载[开发板][2]
 
@@ -26,18 +26,17 @@
 
 ## 更新日志
 
-### Version 1.8
+### 版本1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
-  appVeyor.
-* Update localizations.
+* 更新到 Unicode 14.0。
+* 兼容 NVDA 2022.1。
+* 将与 NVDA 的兼容性降低到 2019.3 以下。
+* 现在通过 GitHub 操作而不是 appVeyor 来执行发布。
+* 更新本地化。
 
-### Version 1.7
+### 版本1.7
 
-* Added localizations.
+* 添加了本地化。
 
 ### 版本1.6
 
