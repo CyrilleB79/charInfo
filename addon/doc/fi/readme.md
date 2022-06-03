@@ -18,17 +18,17 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 
 ## Huomautuksia
 
-* Tämä lisäosa tarjoaa myös kaksi syötekomentoa, joita ei ole
+* Tämä lisäosa tarjoaa myös kaksi näppäinkomentoa, joita ei ole
   oletusarvoisesti määritetty:
 
     * Komento suoraan tarkastelukohdistimen kohdalla olevan merkin tietojen
       näyttämiseen. Komennolle ei ole määritetty oletusarvoista
       näppäinkomentoa. Mikäli neljän painalluksen näppäinkomento tuntuu
       epämukavalta, voit määrittää sille mieleisesi näppäinkomennon NVDA:n
-      Syötekomennot-valintaikkunan "Tekstin tarkastelu" -kategoriasta.
+      Näppäinkomennot-valintaikkunan "Tekstin tarkastelu" -kategoriasta.
     * Skripti, joka näyttää kohdalla olevan merkin tiedot (toimii vain
-      paikoissa, joissa on kohdistin). Komento löytyy NVDA:n syötekomentojen
-      valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
+      paikoissa, joissa on kohdistin). Komento löytyy NVDA:n
+      Näppäinkomennot-valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
 
 * Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
   Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
