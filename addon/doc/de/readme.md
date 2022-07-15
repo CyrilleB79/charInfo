@@ -1,7 +1,7 @@
 # Zeichen-Informationen #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* NVDA-Kompatibilität: 2019.3 und neuer
 * [Stabile Version herunterladen][1]
 * [Entwicklerversion herunterladen][2]
 
@@ -45,16 +45,16 @@ wie Unicode-Name, Nummer, Kategorie, etc. zu präsentieren.
 
 ### Version 1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
+* Update auf Unicode 14.0.
+* Kompatibel mit NVDA 2022.1.
+* NVDA-Versionen vor 2019.3 werden nicht mehr unterstützt.
+* Die Versionsveröffentlichung erfolgt nun durch eine GitHub-Aktion anstatt
   appVeyor.
-* Update localizations.
+* Lokalisierungen aktualisiert.
 
 ### Version 1.7
 
-* Added localizations.
+* Lokalisierungen wurden hinzugefügt.
 
 ### Version 1.6
 
