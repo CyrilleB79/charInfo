@@ -1,7 +1,7 @@
 # Character information
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* NVDA compatibility: 2022.2.2 and beyond
 * Download [stable version][1]
 * Download [development version][2]
 
@@ -26,11 +26,16 @@ This add-on allows to present in a message character information such as Unicode
 
 ## Change log
 
+### Version 1.9
+
+* On Windows lock screen, the script to review the current character can now operate normally (single, double or triple press).
+* Drops compatibility with NVDA below 2022.2.2. The last version compatible with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+
 ### Version 1.8
 
 * Update to Unicode 14.0.
 * Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
+* Drops compatibility with NVDA below 2019.3. The last version compatible with NVDA 2017.3 is the [1.7][downloadVersion1.7].
 * The release is now performed thanks to a GitHub action instead of appVeyor.
 * Update localizations.
 
@@ -75,3 +80,7 @@ This add-on allows to present in a message character information such as Unicode
 [1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+
+[downloadVersion1.7]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+
+[downloadVersion1.8]: https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon

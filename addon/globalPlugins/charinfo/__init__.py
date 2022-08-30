@@ -17,6 +17,8 @@ import inputCore
 from logHandler import log
 from characterProcessing import SpeechSymbols
 import config
+from utils import security
+from winAPI.sessionTracking import isWindowsLocked
 
 import sys
 import os
@@ -381,6 +383,15 @@ class Character(object):
 		else:
 			return False
 
+originalGetSafeScripts = security.getSafeScripts
+def patchedGetSafeScripts():
+	# Current running charInfo global plugin
+	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charinfo')
+	safeScripts = originalGetSafeScripts()
+	safeScripts.add(ci.script_review_currentCharacter)
+	return safeScripts
+	
+
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def __init__(self, *args, **kwargs):
@@ -395,6 +406,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		commands.script_review_currentCharacter.__func__.__doc__ = ""
 		#Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
+		security.getSafeScripts = patchedGetSafeScripts
 		
 	def initUnicodeInfo(self):
 		langUI = languageHandler.getLanguage().split('_')[0]
@@ -410,6 +422,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		commands.script_review_currentCharacter.__func__.__doc__ = self.biScriptDoc
 		#Clear charInfo plugin gestures
 		self.clearGestureBindings()
+		# Restore original getSafeScripts function
+		security.getSafeScripts = originalGetSafeScripts
 		super(GlobalPlugin, self).terminate ()
 		
 	def script_review_currentCharacter(self,gesture):
@@ -418,6 +432,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			return
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
+			return
+		if isWindowsLocked():
+			# In lock screen do not display character info. The character information window would appear only
+			# once the session is reopened, which is quite useless and confusing.
 			return
 		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
 	# Translators: A part of the message presented in input help mode.
