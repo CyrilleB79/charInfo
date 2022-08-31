@@ -5,23 +5,28 @@
 * Download [stable version][1]
 * Download [development version][2]
 
-This add-on allows to present in a message character information such as Unicode name, number, category, etc.
+This add-on allows to present in a message various information about a character.
+
+## Presented information
+
+The presented information include the following sections:
+
+* Unicode: information from Unicode norm, i.e. name, CLDR name, value, block, etc.
+* MS font, only for characters written with proprietary Microsoft fonts (Symbol, Wingding 1, 2, 3 and Webding): name and information about the equivalent Unicode character.
+* NVDA symbol description: information allowing to understand how NVDA reports the symbol description. NVDA uses the information in the top most rows containing available information to provide the description of a symbol.
+* NVDA character description: information allowing to understand how NVDA reports the character description (e.g. "alpha" for "A"). NVDA uses the information in the top most rows containing available information to provide the description of a character.
 
 
 ## Commands
 
 * Numpad2 (all keyboard layouts) or NVDA+. (laptop layout): when pressed 4 times, displays information about the character of the current navigator object where the review cursor is situated.
-
+* Unassigned: Presents a message with detailed information on the character of the current navigator object where the review cursor is situated. If you feel uncomfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
+* Unassigned: Presents a message with detailed information on the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
 
 ## Notes
 
-* This add-on provides also two gestures that are unassigned by default:
-
-    * A script to display directly the review cursor character information. If you feel uncomfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
-    * A script to display character information for the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
-
-* The provided information is in English since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with English.
-* For the characters written with Microsoft proprietary fonts Symbol, Wingding (1, 2,, 3) and Webding, some additional information is provided: character name, font name and information of the corresponding Unicode character.
+* Two commands are unassigned by default. They need to be assigned in the Input gestures dialog to be used.
+* The provided information in the Unicode section is in English since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with English.
 
 
 ## Change log

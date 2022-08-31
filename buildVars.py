@@ -17,7 +17,7 @@ addon_info = {
 	"addon_summary": _("Character information"),
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-	"addon_description": _("""This add-on allows to present in a message character information such as unicode name, number, category, etc.
+	"addon_description": _("""This add-on allows to present in a message various information about a character.
 """),
 	# version
 	"addon_version": "1.9",
