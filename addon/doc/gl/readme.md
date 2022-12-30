@@ -1,7 +1,7 @@
 # Character Information #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* Compatibilidade con NVDA: 2019.3 en diante
 * Descargar [versión estable][1]
 * Descargar [versión de desenvolvemento][2]
 
@@ -42,18 +42,18 @@ carácter como nome, número, categoría, etc.
 
 ## Rexistro de trocos
 
-### Version 1.8
+### Versión 1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
+* Actualización a Unicode 14.0.
+* Compatibilidade con NVDA 2022.1.
+* Elimina a compatibilidade por baixo de NVDA 2019.3.
+* A publicación agora faise grazas a unha acción de GitHub no canto de
   appVeyor.
-* Update localizations.
+* Actualizar traduccións.
 
-### Version 1.7
+### Versión 1.7
 
-* Added localizations.
+* Engadidas traducións.
 
 ### Versión 1.6
 
