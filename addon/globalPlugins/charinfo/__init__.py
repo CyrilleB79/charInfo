@@ -29,7 +29,10 @@ from characterProcessing import (
 import globalVars
 import config
 from utils import security
-from winAPI.sessionTracking import isWindowsLocked
+
+# Temporarily import private function as advised by Sean Budd from NVAccess.
+# A public API can be requested by add-on developers 2-3 month after 2022.3.3 release if no issue is found.
+from winAPI.sessionTracking import _isLockScreenModeActive
 
 import sys
 import os
@@ -394,7 +397,6 @@ class LocaleData:
 			self.fetch(lang)
 			return self.langMapping[lang]
 
-
 class SymbolData(LocaleData):
 	def __init__(self, filename):
 		super().__init__()
@@ -408,6 +410,16 @@ class SymbolData(LocaleData):
 			return data
 		except IOError:
 			return None		
+		
+	class SymbolData(LocaleData):
+			@lru_cache(maxsize=32)
+			def getDataFromFile(self, lang):
+				data = SpeechSymbols()
+				try:
+					data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
+					return data
+				except IOError:
+					return None		
 
 
 class CharacterData(LocaleData):
@@ -418,12 +430,15 @@ class CharacterData(LocaleData):
 			return data
 		except LookupError:
 			return None		
+		
+		
+	
+
 
 
 symbolData = SymbolData("symbols.dic")
 cldrData = SymbolData("cldr.dic")
 characterData = CharacterData()
-
 
 class MsCharsetsInfo(dict):
 	def __init__(self, *args, **kw):
@@ -735,12 +750,7 @@ class Characters(object):
 				pass
 		for key, (attr, getter) in mapping.items():
 			if key == NVDASymbolAttribute.USER:
-				try:
-					ss = _localeSpeechSymbolProcessors.fetchLocaleData(self.lang)
-				except LookupError:
-					ss = _localeSpeechSymbolProcessors.fetchLocaleData('en')
-				lang = ss.locale
-				attr = attr.format(lang=lang)
+				attr = attr.format(lang=self.lang)
 			elif key == NVDASymbolAttribute.LOCALE:
 				lang = symbolData.getDataLangForLang(self.lang)
 				if lang:
@@ -938,7 +948,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
-		if isWindowsLocked():
+		if _isLockScreenModeActive():
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
