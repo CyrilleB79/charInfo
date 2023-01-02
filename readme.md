@@ -1,7 +1,7 @@
 # Character information
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2022.2.2 and beyond
+* NVDA compatibility: 2022.3.3 and beyond
 * Download [stable version][1]
 * Download [development version][2]
 
@@ -34,7 +34,7 @@ The presented information include the following sections:
 ### Version 1.9
 
 * On Windows lock screen, the script to review the current character can now operate normally (single, double or triple press).
-* Drops compatibility with NVDA below 2022.2.2. The last version compatible with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Drops compatibility with NVDA below 2022.3.3. The last version compatible with NVDA 2019.3 is the [1.8][downloadVersion1.8].
 
 ### Version 1.8
 
