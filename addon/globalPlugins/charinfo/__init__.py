@@ -1,5 +1,5 @@
 # NVDA add-on: Character information
-# Copyright (C) 2019-2022 Cyrille Bougot
+# Copyright (C) 2019-2023 Cyrille Bougot
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
@@ -287,7 +287,7 @@ class UnicodeInfo(object):
 		rc = re.compile(r"^([0-9A-F]+);([-\w<> ,']+);(\w+);.*$", re.U)
 		dicChar = {}
 		try:
-			with open(filePath, 'r', encoding='UTF-8') as f:
+			with open(filePath, 'r', encoding='UTF-8-sig') as f:
 				for l in (ll.strip() for ll in f):
 					if (l.startswith('#')
 					or len(l) == 0):
@@ -307,7 +307,7 @@ class UnicodeInfo(object):
 	
 	def getBlockInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, BLOCK_FILE)
-		rc = re.compile(r"^([0-9A-F]+)\.\.([0-9A-F]+); ([-' \w]+)$", re.U)
+		rc = re.compile(r"^([0-9A-F]+)\.\.([0-9A-F]+); ([-'’ \w]+)$", re.U)
 		lBlocks = []
 		try:
 			with open(filePath, 'r', encoding='UTF-8') as f:

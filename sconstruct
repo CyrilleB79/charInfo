@@ -13,6 +13,8 @@ sys.dont_write_bytecode = True
 
 import buildVars
 
+import scripts
+
 def md2html(source, dest):
 	import markdown
 	lang = os.path.basename(os.path.dirname(source)).replace('_', '-')
@@ -50,6 +52,7 @@ def mdTool(env):
 		src_suffix='.md',
 	)
 	env['BUILDERS']['markdown']=mdBuilder
+
 
 vars = Variables()
 vars.Add("version", "The version of this build", buildVars.addon_info["addon_version"])
@@ -92,9 +95,16 @@ def translatedManifestGenerator(target, source, env, for_signature):
 	lambda target, source, env : "Generating translated manifest %s" % target[0])
 	return action
 
+def frenchBlocksFileGenerator(target, source, env, for_signature):
+	action = env.Action(lambda target, source, env : generateFrenchDataFile(source[0].abspath, target[0].abspath, source[1].abspath) and None,
+	lambda target, source, env : "Generating French data file %s" % target[0])
+	return action
+
+
 env['BUILDERS']['NVDAAddon'] = Builder(generator=addonGenerator)
 env['BUILDERS']['NVDAManifest'] = Builder(generator=manifestGenerator)
 env['BUILDERS']['NVDATranslatedManifest'] = Builder(generator=translatedManifestGenerator)
+env['BUILDERS']['FrenchBlocksFile'] = Builder(generator=frenchBlocksFileGenerator)
 
 def createAddonHelp(dir):
 	docsDir = os.path.join(dir, "doc")
@@ -142,6 +152,10 @@ def generateTranslatedManifest(source, language, out):
 	result = manifest_template.format(**vars)
 	with codecs.open(out, "w", "utf-8") as f:
 		f.write(result)
+
+def generateFrenchDataFile(source, dest, transFile):
+	from scripts.generateDataFr import generateBlockFile
+	generateBlockFile(src=source, dst=dest, transFile=transFile)
 
 def expandGlobs(files):
 	return [f for pattern in files for f in env.Glob(pattern)]
@@ -191,5 +205,51 @@ manifest = env.NVDAManifest(os.path.join("addon", "manifest.ini"), os.path.join(
 env.Depends(manifest, "buildVars.py")
 
 env.Depends(addon, manifest)
+
+# Paths for locale files
+localeDataPath = os.path.join('addon', 'globalPlugins', 'charinfo', 'locale')
+enDataPath = os.path.join(localeDataPath, 'en')
+frDataPath = os.path.join(localeDataPath, 'fr')
+
+# English source files which are included without processing in the add-on
+englishSourceFiles = (os.path.join(enDataPath, f) for f in [
+	'Blocks.txt',
+	'PropertyValueAliases.txt',
+])
+for file in englishSourceFiles:
+	env.Depends(addon, file)
+
+
+def getblockNameTransFile():
+	lst = []
+	for f in os.listdir(frDataPath):
+		if f.startswith('noms_blocs_v'):
+			lst.append(os.path.join(frDataPath, f))
+	if len(lst) != 1:
+		raise LookupError('No unique source block file found for fr.')
+	return lst[0]
+
+# Generate French data files
+pattern  = os.path.join(frDataPath, "noms_blocs_v*.txt")
+try:
+	frBlockNameTransFile, = env.Glob(pattern)
+except ValueError as e:
+	raise LookupError(f'No unique source block file found for fr:\npattern={pattern}\nerror="{e}"')
+frBlocksSourceFiles = [
+	env.File(os.path.join(enDataPath, 'Blocks.txt')),
+	frBlockNameTransFile,
+]
+frBlocksFile = env.FrenchBlocksFile(os.path.join(frDataPath, "Blocks.txt"), frBlocksSourceFiles)
+# Ensure French blocks file is rebuilt if source updated
+#env.Depends(frBlocksFile, frBlocksSourceFiles)
+
+# Other French source files which are included without processing in the add-on
+otherFrenchSourceFiles = (os.path.join(frDataPath, f) for f in [
+	'PropertyValueAliases.txt',
+	'UnicodeData.txt',
+])
+for file in otherFrenchSourceFiles:
+	env.Depends(addon, file)
+
 env.Default(addon)
 env.Clean (addon, ['.sconsign.dblite', 'addon/doc/en/'])

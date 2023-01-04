@@ -1,0 +1,341 @@
+﻿0000-007F     ; C0 Controls and Basic Latin (Basic Latin)               ; Commandes C0 et latin de base (Latin de base)
+0080-00FF     ; C1 Controls and Latin-1 Supplement (Latin-1 Supplement) ; Commandes C1 et supplément Latin-1 (Supplément Latin-1)
+0100-017F     ; Latin Extended-A                                        ; Latin étendu A
+0180-024F     ; Latin Extended-B                                        ; Latin étendu B
+0250-02AF     ; IPA Extensions                                          ; Supplément pour l’API
+02B0-02FF     ; Spacing Modifier Letters                                ; Lettres modificatives à chasse
+0300-036F     ; Combining Diacritical Marks                             ; Diacritiques
+0370-03FF     ; Greek and Coptic                                        ; Grec et copte
+0400-04FF     ; Cyrillic                                                ; Cyrillique
+0500-052F     ; Cyrillic Supplement                                     ; Supplément cyrillique
+0530-058F     ; Armenian                                                ; Arménien
+0590-05FF     ; Hebrew                                                  ; Hébreu
+0600-06FF     ; Arabic                                                  ; Arabe
+0700-074F     ; Syriac                                                  ; Syriaque
+0750-077F     ; Arabic Supplement                                       ; Supplément arabe
+0780-07BF     ; Thaana                                                  ; Thâna
+07C0-07FF     ; NKo                                                     ; N’ko
+0800-083F     ; Samaritan                                               ; Samaritain
+0840-085F     ; Mandaic                                                 ; Mandéen
+0860-086F     ; Syriac Supplement                                       ; Supplément syriaque
+0870-089F     ; Arabic Extended-B                                       ; Arabe étendu B
+08A0-08FF     ; Arabic Extended-A                                       ; Arabe étendu A
+0900-097F     ; Devanagari                                              ; Dévanâgarî
+0980-09FF     ; Bengali                                                 ; Bengali
+0A00-0A7F     ; Gurmukhi                                                ; Gourmoukhî
+0A80-0AFF     ; Gujarati                                                ; Goudjarati
+0B00-0B7F     ; Oriya                                                   ; Oriya
+0B80-0BFF     ; Tamil                                                   ; Tamoul
+0C00-0C7F     ; Telugu                                                  ; Télougou
+0C80-0CFF     ; Kannada                                                 ; Kannara
+0D00-0D7F     ; Malayalam                                               ; Malayalam
+0D80-0DFF     ; Sinhala                                                 ; Singhalais
+0E00-0E7F     ; Thai                                                    ; Thaï
+0E80-0EFF     ; Lao                                                     ; Lao
+0F00-0FFF     ; Tibetan                                                 ; Tibétain
+1000-109F     ; Myanmar                                                 ; Birman
+10A0-10FF     ; Georgian                                                ; Géorgien
+1100-11FF     ; Hangul Jamo                                             ; Jamos hangûl
+1200-137F     ; Ethiopic                                                ; Éthiopien
+1380-139F     ; Ethiopic Supplement                                     ; Supplément éthiopien
+13A0-13FF     ; Cherokee                                                ; Chérokie
+1400-167F     ; Unified Canadian Aboriginal Syllabics                   ; Syllabaires autochtones canadiens
+1680-169F     ; Ogham                                                   ; Ogam
+16A0-16FF     ; Runic                                                   ; Runes
+1700-171F     ; Tagalog                                                 ; Tagalog
+1720-173F     ; Hanunoo                                                 ; Hanounóo
+1740-175F     ; Buhid                                                   ; Bouhid
+1760-177F     ; Tagbanwa                                                ; Tagbanoua
+1780-17FF     ; Khmer                                                   ; Khmer
+1800-18AF     ; Mongolian                                               ; Mongol
+18B0-18FF     ; Unified Canadian Aboriginal Syllabics Extended          ; Syllabaires autochtones canadiens étendus
+1900-194F     ; Limbu                                                   ; Limbu
+1950-197F     ; Tai Le                                                  ; Taï-le
+1980-19DF     ; New Tai Lue                                             ; Nouveau taï lü
+19E0-19FF     ; Khmer Symbols                                           ; Symboles khmers
+1A00-1A1F     ; Buginese                                                ; Bougui
+1A20-1AAF     ; Tai Tham                                                ; Taï-tham
+1AB0-1AFF     ; Combining Diacritical Marks Extended                    ; Diacritiques complémentaires
+1B00-1B7F     ; Balinese                                                ; Balinais
+1B80-1BBF     ; Sundanese                                               ; Soundanais
+1BC0-1BFF     ; Batak                                                   ; Batak
+1C00-1C4F     ; Lepcha                                                  ; Leptcha
+1C50-1C7F     ; Ol Chiki                                                ; Ol tchiki
+1C80-1C8F     ; Cyrillic Extended-C                                     ; Cyrillique étendu C
+1C90-1CBF     ; Georgian Extended                                       ; Géorgien étendu
+1CC0-1CCF     ; Sundanese Supplement                                    ; Supplément soundanais
+1CD0-1CFF     ; Vedic Extensions                                        ; Supplément védique
+1D00-1D7F     ; Phonetic Extensions                                     ; Supplément phonétique
+1D80-1DBF     ; Phonetic Extensions Supplement                          ; Supplément phonétique étendu
+1DC0-1DFF     ; Combining Diacritical Marks Supplement                  ; Supplément de diacritiques
+1E00-1EFF     ; Latin Extended Additional                               ; Latin étendu additionnel
+1F00-1FFF     ; Greek Extended                                          ; Grec étendu
+2000-206F     ; General Punctuation                                     ; Ponctuation générale
+2070-209F     ; Superscripts and Subscripts                             ; Exposants et indices
+20A0-20CF     ; Currency Symbols                                        ; Symboles monétaires
+20D0-20FF     ; Combining Diacritical Marks for Symbols                 ; Signes combinatoires pour des symboles
+2100-214F     ; Letterlike Symbols                                      ; Symboles de type lettre
+2150-218F     ; Number Forms                                            ; Formes numérales
+2190-21FF     ; Arrows                                                  ; Flèches
+2200-22FF     ; Mathematical Operators                                  ; Opérateurs mathématiques
+2300-23FF     ; Miscellaneous Technical                                 ; Signes techniques divers
+2400-243F     ; Control Pictures                                        ; Pictogrammes de commande
+2440-245F     ; Optical Character Recognition                           ; Reconnaissance optique de caractères
+2460-24FF     ; Enclosed Alphanumerics                                  ; Symboles alphanumériques délimités
+2500-257F     ; Box Drawing                                             ; Filets
+2580-259F     ; Block Elements                                          ; Pavés
+25A0-25FF     ; Geometric Shapes                                        ; Formes géométriques
+2600-26FF     ; Miscellaneous Symbols                                   ; Symboles divers
+2700-27BF     ; Dingbats                                                ; Casseau
+27C0-27EF     ; Miscellaneous Mathematical Symbols-A                    ; Divers symboles mathématiques - A
+27F0-27FF     ; Supplemental Arrows-A                                   ; Supplément A de flèches
+2800-28FF     ; Braille Patterns                                        ; Combinaisons braille
+2900-297F     ; Supplemental Arrows-B                                   ; Supplément B de flèches
+2980-29FF     ; Miscellaneous Mathematical Symbols-B                    ; Divers symboles mathématiques - B
+2A00-2AFF     ; Supplemental Mathematical Operators                     ; Opérateurs mathématiques supplémentaires
+2B00-2BFF     ; Miscellaneous Symbols and Arrows                        ; Divers symboles et flèches
+2C00-2C5F     ; Glagolitic                                              ; Glagolitique
+2C60-2C7F     ; Latin Extended-C                                        ; Latin étendu C
+2C80-2CFF     ; Coptic                                                  ; Copte
+2D00-2D2F     ; Georgian Supplement                                     ; Supplément géorgien
+2D30-2D7F     ; Tifinagh                                                ; Tifinaghe
+2D80-2DDF     ; Ethiopic Extended                                       ; Éthiopien étendu
+2DE0-2DFF     ; Cyrillic Extended-A                                     ; Cyrillique étendu A
+2E00-2E7F     ; Supplemental Punctuation                                ; Ponctuation complémentaire
+2E80-2EFF     ; CJK Radicals Supplement                                 ; Formes supplémentaires des clés CJC
+2F00-2FDF     ; Kangxi Radicals                                         ; Clés du Kangxi
+2FF0-2FFF     ; Ideographic Description Characters                      ; Caractères de description idéographique
+3000-303F     ; CJK Symbols and Punctuation                             ; Symboles et ponctuation CJC
+3040-309F     ; Hiragana                                                ; Hiragana
+30A0-30FF     ; Katakana                                                ; Katakana
+3100-312F     ; Bopomofo                                                ; Bopomofo
+3130-318F     ; Hangul Compatibility Jamo                               ; Jamos hangûl de compatibilité
+3190-319F     ; Kanbun                                                  ; Kanboun
+31A0-31BF     ; Bopomofo Extended                                       ; Bopomofo étendu
+31C0-31EF     ; CJK Strokes                                             ; Traits CJC
+31F0-31FF     ; Katakana Phonetic Extensions                            ; Supplément phonétique katakana
+3200-32FF     ; Enclosed CJK Letters and Months                         ; Lettres et mois CJC délimités
+3300-33FF     ; CJK Compatibility                                       ; Compatibilité CJC
+3400-4DBF     ; CJK Unified Ideographs Extension A                      ; Supplément A aux idéogrammes unifiés CJC
+4DC0-4DFF     ; Yijing Hexagram Symbols                                 ; Hexagrammes du Classique des mutations ou Yi-king
+4E00-9FFF     ; CJK Unified Ideographs                                  ; Idéogrammes unifiés CJC
+A000-A48F     ; Yi Syllables                                            ; Syllabaire yi des Monts frais
+A490-A4CF     ; Yi Radicals                                             ; Clés yi
+A4D0-A4FF     ; Lisu                                                    ; Lissou
+A500-A63F     ; Vai                                                     ; Vaï
+A640-A69F     ; Cyrillic Extended-B                                     ; Cyrillique étendu B
+A6A0-A6FF     ; Bamum                                                   ; Bamoum
+A700-A71F     ; Modifier Tone Letters                                   ; Lettres modificatives de ton
+A720-A7FF     ; Latin Extended-D                                        ; Latin étendu D
+A800-A82F     ; Syloti Nagri                                            ; Sylotî nâgrî
+A830-A83F     ; Common Indic Number Forms                               ; Formes numériques communes indiennes
+A840-A87F     ; Phags-pa                                                ; Phags-pa
+A880-A8DF     ; Saurashtra                                              ; Saurachtra
+A8E0-A8FF     ; Devanagari Extended                                     ; Dévanâgarî étendue
+A900-A92F     ; Kayah Li                                                ; Kayah li
+A930-A95F     ; Rejang                                                  ; Rejang
+A960-A97F     ; Hangul Jamo Extended-A                                  ; Jamos hangûl complémentaires A
+A980-A9DF     ; Javanese                                                ; Javanais
+A9E0-A9FF     ; Myanmar Extended-B                                      ; Birman étendu B
+AA00-AA5F     ; Cham                                                    ; Tcham
+AA60-AA7F     ; Myanmar Extended-A                                      ; Birman étendu A
+AA80-AADF     ; Tai Viet                                                ; Taï-viet
+AAE0-AAFF     ; Meetei Mayek Extensions                                 ; Supplément meitei mayek
+AB00-AB2F     ; Ethiopic Extended-A                                     ; Éthiopien étendu A
+AB30-AB6F     ; Latin Extended-E                                        ; Latin étendu E
+AB70-ABBF     ; Cherokee Supplement                                     ; Supplément chérokie
+ABC0-ABFF     ; Meetei Mayek                                            ; Meitei mayek
+AC00-D7A3     ; Hangul Syllables                                        ; Syllabes hangûl
+D7B0-D7FF     ; Hangul Jamo Extended-B                                  ; Jamos hangûl complémentaires B
+D800-DB7F     ; High Surrogates                                         ; Demi-zone haute
+DB80-DBFF     ; High Private Use Surrogates                             ; Partie à usage privé de la demi-zone haute
+DC00-DFFF     ; Low Surrogates                                          ; Demi-zone basse
+E000-F8FF     ; Private Use Area                                        ; Zone à usage privé
+F900-FAFF     ; CJK Compatibility Ideographs                            ; Idéogrammes de compatibilité CJC
+FB00-FB4F     ; Alphabetic Presentation Forms                           ; Formes de présentation alphabétiques
+FB50-FDFF     ; Arabic Presentation Forms-A                             ; Formes A de présentation arabes
+FE00-FE0F     ; Variation Selectors                                     ; Sélecteurs de variante
+FE10-FE1F     ; Vertical Forms                                          ; Formes verticales
+FE20-FE2F     ; Combining Half Marks                                    ; Demi-signes combinatoires
+FE30-FE4F     ; CJK Compatibility Forms                                 ; Formes de compatibilité CJC
+FE50-FE6F     ; Small Form Variants                                     ; Petites variantes de forme
+FE70-FEFF     ; Arabic Presentation Forms-B                             ; Formes B de présentation arabes
+FF00-FFEF     ; Halfwidth and Fullwidth Forms                           ; Formes de demi-chasse et de pleine chasse
+FFF0-FFFF     ; Specials                                                ; Caractères spéciaux
+10000-1007F   ; Linear B Syllabary                                      ; Syllabaire linéaire B
+10080-100FF   ; Linear B Ideograms                                      ; Idéogrammes du linéaire B
+10100-1013F   ; Aegean Numbers                                          ; Nombres égéens
+10140-1018F   ; Ancient Greek Numbers                                   ; Nombres grecs anciens
+10190-101CF   ; Ancient Symbols                                         ; Symboles de l’Antiquité
+101D0-101FF   ; Phaistos Disc                                           ; Disque de Phaïstos
+10280-1029F   ; Lycian                                                  ; Lycien
+102A0-102DF   ; Carian                                                  ; Carien
+102E0-102FF   ; Coptic Epact Numbers                                    ; Nombres épactes coptes
+10300-1032F   ; Old Italic                                              ; Vieil italique
+10330-1034F   ; Gothic                                                  ; Gotique
+10350-1037F   ; Old Permic                                              ; Permien
+10380-1039F   ; Ugaritic                                                ; Ougaritique
+103A0-103DF   ; Old Persian                                             ; Vieux perse
+10400-1044F   ; Deseret                                                 ; Déséret
+10450-1047F   ; Shavian                                                 ; Shavien
+10480-104AF   ; Osmanya                                                 ; Osmanya
+104B0-104FF   ; Osage                                                   ; Osage
+10500-1052F   ; Elbasan                                                 ; Elbasan
+10530-1056F   ; Caucasian Albanian                                      ; Albanien
+10570-105BF   ; Vithkuqi                                                ; Vithkuqi
+10600-1077F   ; Linear A                                                ; Linéaire A
+10780-107BF   ; Latin Extended-F                                        ; Latin étendu F
+10800-1083F   ; Cypriot Syllabary                                       ; Syllabaire chypriote
+10840-1085F   ; Imperial Aramaic                                        ; Araméen impérial
+10860-1087F   ; Palmyrene                                               ; Palmyréen
+10880-108AF   ; Nabataean                                               ; Nabatéen
+108E0-108FF   ; Hatran                                                  ; Hatréen
+10900-1091F   ; Phoenician                                              ; Phénicien
+10920-1093F   ; Lydian                                                  ; Lydien
+10980-1099F   ; Meroitic Hieroglyphs                                    ; Hiéroglyphes méroïtiques
+109A0-109FF   ; Meroitic Cursive                                        ; Cursif méroïtique
+10A00-10A5F   ; Kharoshthi                                              ; Kharochthî
+10A60-10A7F   ; Old South Arabian                                       ; Sud-arabique
+10A80-10A9F   ; Old North Arabian                                       ; Vieil arabe du Nord
+10AC0-10AFF   ; Manichaean                                              ; Manichéen
+10B00-10B3F   ; Avestan                                                 ; Avestique
+10B40-10B5F   ; Inscriptional Parthian                                  ; Parthe des inscriptions
+10B60-10B7F   ; Inscriptional Pahlavi                                   ; Pehlvi des inscriptions
+10B80-10BAF   ; Psalter Pahlavi                                         ; Pehlvi des psautiers
+10C00-10C4F   ; Old Turkic                                              ; Vieux-turc
+10C80-10CFF   ; Old Hungarian                                           ; Runes hongroises
+10D00-10D3F   ; Hanifi Rohingya                                         ; Rohingya hanifi
+10E60-10E7F   ; Rumi Numeral Symbols                                    ; Symboles numéraux rûmî
+10E80-10EBF   ; Yezidi                                                  ; Yézidi
+10EC0-10EFF   ; Arabic Extended-C                                       ; Arabe étendu C
+10F00-10F2F   ; Old Sogdian                                             ; Vieux-sogdien
+10F30-10F6F   ; Sogdian                                                 ; Sogdien
+10F70-10FAF   ; Old Uyghur                                              ; Vieil-ouïgour
+10FB0-10FDF   ; Chorasmian                                              ; Chorasmien
+10FE0-10FFF   ; Elymaic                                                 ; Élyméen
+11000-1107F   ; Brahmi                                                  ; Brahmi
+11080-110CF   ; Kaithi                                                  ; Kayathi
+110D0-110FF   ; Sora Sompeng                                            ; Sora sompeng
+11100-1114F   ; Chakma                                                  ; Chakma
+11150-1117F   ; Mahajani                                                ; Mahajani
+11180-111DF   ; Sharada                                                 ; Charada
+111E0-111FF   ; Sinhala Archaic Numbers                                 ; Nombres archaïques singhalais
+11200-1124F   ; Khojki                                                  ; Khojki
+11280-112AF   ; Multani                                                 ; Multanais
+112B0-112FF   ; Khudawadi                                               ; Khudawadi
+11300-1137F   ; Grantha                                                 ; Grantha
+11400-1147F   ; Newa                                                    ; Néwar
+11480-114DF   ; Tirhuta                                                 ; Tirhuta
+11580-115FF   ; Siddham                                                 ; Siddham
+11600-1165F   ; Modi                                                    ; Modi
+11660-1167F   ; Mongolian Supplement                                    ; Supplément mongol
+11680-116CF   ; Takri                                                   ; Takri
+11700-1174F   ; Ahom                                                    ; Âhom
+11800-1184F   ; Dogra                                                   ; Dogra
+118A0-118FF   ; Warang Citi                                             ; Varang kchiti
+11900-1195F   ; Dives Akuru                                             ; Dives akuru
+119A0-119FF   ; Nandinagari                                             ; Nandinâgarî
+11A00-11A4F   ; Zanabazar Square                                        ; Zanabazar carré
+11A50-11AAF   ; Soyombo                                                 ; Soyombo
+11AB0-11ABF   ; Unified Canadian Aboriginal Syllabics Extended-A        ; Syllabaires autochtones canadiens étendus A
+11AC0-11AFF   ; Pau Cin Hau                                             ; Pau cin hau
+11B00-11B5F   ; Devanagari Extended-A                                   ; Dévanâgarî étendue A
+11C00-11C6F   ; Bhaiksuki                                               ; Bhaiksuki
+11C70-11CBF   ; Marchen                                                 ; Marchen
+11D00-11D5F   ; Masaram Gondi                                           ; Gondi de Masaram
+11D60-11DAF   ; Gunjala Gondi                                           ; Gondi de Gunjala
+11EE0-11EFF   ; Makasar                                                 ; Macassar
+11F00-11F5F   ; Kawi                                                    ; Kawi
+11FB0-11FBF   ; Lisu Supplement                                         ; Supplément lissou
+11FC0-11FFF   ; Tamil Supplement                                        ; Supplément tamoul
+12000-123FF   ; Cuneiform                                               ; Cunéiforme
+12400-1247F   ; Cuneiform Numbers and Punctuation                       ; Ponctuation et nombres cunéiformes
+12480-1254F   ; Early Dynastic Cuneiform                                ; Cunéiforme proto-dynastique
+12F90-12FFF   ; Cypro-Minoan                                            ; Chypro-minoen
+13000-1342F   ; Egyptian Hieroglyphs                                    ; Hiéroglyphes égyptiens
+13430-1345F   ; Egyptian Hieroglyph Format Controls                     ; Caractères de formatage des hiéroglyphes égyptiens
+14400-1467F   ; Anatolian Hieroglyphs                                   ; Hiéroglyphes anatoliens
+16800-16A3F   ; Bamum Supplement                                        ; Supplément bamoum
+16A40-16A6F   ; Mro                                                     ; Mro
+16A70-16ACF   ; Tangsa                                                  ; Tangsa
+16AD0-16AFF   ; Bassa Vah                                               ; Vah bassa
+16B00-16B8F   ; Pahawh Hmong                                            ; Pahawh hmong
+16E40-16E9F   ; Medefaidrin                                             ; Médéfaïdrine
+16F00-16F9F   ; Miao                                                    ; Miao
+16FE0-16FFF   ; Ideographic Symbols and Punctuation                     ; Symboles et ponctuation idéographiques
+17000-187F7   ; Tangut                                                  ; Tangoute
+18800-18AFF   ; Tangut Components                                       ; Composants tangoutes
+18B00-18CFF   ; Khitan Small Script                                     ; Petite écriture khitane
+18D00-18D08   ; Tangut Supplement                                       ; Supplément tangoute
+1AFF0-1AFFF   ; Kana Extended-B                                         ; Kana complémentaires B
+1B000-1B0FF   ; Kana Supplement                                         ; Supplément de kana
+1B100-1B12F   ; Kana Extended-A                                         ; Kana complémentaires A
+1B130-1B16F   ; Small Kana Extension                                    ; Supplément de petits kana
+1B170-1B2FF   ; Nushu                                                   ; Nüshu
+1BC00-1BC9F   ; Duployan                                                ; Sténographie Duployé
+1BCA0-1BCAF   ; Shorthand Format Controls                               ; Formatage de sténographie
+1CF00-1CFCF   ; Znamenny Musical Notation                               ; Notation musicale znamenny
+1D000-1D0FF   ; Byzantine Musical Symbols                               ; Symboles musicaux byzantins
+1D100-1D1FF   ; Musical Symbols                                         ; Symboles musicaux
+1D200-1D24F   ; Ancient Greek Musical Notation                          ; Notation musicale grecque ancienne
+1D2C0-1D2DF   ; Kaktovik Numerals                                       ; Chiffres de Kaktovik
+1D2E0-1D2FF   ; Mayan Numerals                                          ; Chiffres mayas
+1D300-1D35F   ; Tai Xuan Jing Symbols                                   ; Symboles du Classique du mystère suprême
+1D360-1D37F   ; Counting Rod Numerals                                   ; Barres numérales
+1D400-1D7FF   ; Mathematical Alphanumeric Symbols                       ; Symboles mathématiques alphanumériques
+1D800-1DAAF   ; Sutton SignWriting                                      ; SignWriting de Sutton
+1DF00-1DFFF   ; Latin Extended-G                                        ; Latin étendu G
+1E000-1E02F   ; Glagolitic Supplement                                   ; Supplément glagolitique
+1E030-1E08F   ; Cyrillic Extended-D                                     ; Cyrillique étendu D
+1E100-1E14F   ; Nyiakeng Puachue Hmong                                  ; Nyiakeng puachue hmong
+1E290-1E2BF   ; Toto                                                    ; Toto
+1E2C0-1E2FF   ; Wancho                                                  ; Wantcho
+1E4D0-1E4FF   ; Nag Mundari                                             ; Nag mundari
+1E7E0-1E7FF   ; Ethiopic Extended-B                                     ; Éthiopien étendu B
+1E800-1E8DF   ; Mende Kikakui                                           ; Mendé kikakui
+1E900-1E95F   ; Adlam                                                   ; Adlam
+1EC70-1ECBF   ; Indic Siyaq Numbers                                     ; Nombres siyaq indiens
+1ED00-1ED4F   ; Ottoman Siyaq Numbers                                   ; Nombres siyaq ottomans
+1EE00-1EEFF   ; Arabic Mathematical Alphabetic Symbols                  ; Symboles mathématiques alphabétiques arabes
+1F000-1F02F   ; Mahjong Tiles                                           ; Tuiles de majong
+1F030-1F09F   ; Domino Tiles                                            ; Dominos
+1F0A0-1F0FF   ; Playing Cards                                           ; Cartes à jouer
+1F100-1F1FF   ; Enclosed Alphanumeric Supplement                        ; Supplément de symboles alphanumériques délimités
+1F200-1F2FF   ; Enclosed Ideographic Supplement                         ; Supplément d’idéogrammes délimités
+1F300-1F5FF   ; Miscellaneous Symbols and Pictographs                   ; Divers symboles et pictogrammes
+1F600-1F64F   ; Emoticons                                               ; Émoticônes
+1F650-1F67F   ; Ornamental Dingbats                                     ; Casseau ornemental
+1F680-1F6FF   ; Transport and Map Symbols                               ; Symboles cartographiques ou liés au transport
+1F700-1F77F   ; Alchemical Symbols                                      ; Symboles alchimiques
+1F780-1F7FF   ; Geometric Shapes Extended                               ; Supplément de formes géométriques
+1F800-1F8FF   ; Supplemental Arrows-C                                   ; Supplément C de flèches
+1F900-1F9FF   ; Supplemental Symbols and Pictographs                    ; Supplément de symboles et de pictogrammes
+1FA00-1FA6F   ; Chess Symbols                                           ; Symboles des échecs
+1FA70-1FAFF   ; Symbols and Pictographs Extended-A                      ; Symboles et pictogrammes complémentaires A
+1FB00-1FBFF   ; Symbols for Legacy Computing                            ; Symboles informatiques patrimoniaux
+1FF80-1FFFF   ; Unassigned                                              ; Points de code non attribués
+20000-2A6DF   ; CJK Unified Ideographs Extension B                      ; Supplément B aux idéogrammes unifiés CJC
+2A700-2B739   ; CJK Unified Ideographs Extension C                      ; Supplément C aux idéogrammes unifiés CJC
+2B740-2B81D   ; CJK Unified Ideographs Extension D                      ; Supplément D aux idéogrammes unifiés CJC
+2B820-2CEA1   ; CJK Unified Ideographs Extension E                      ; Supplément E aux idéogrammes unifiés CJC
+2CEB0-2EBE0   ; CJK Unified Ideographs Extension F                      ; Supplément F aux idéogrammes unifiés CJC
+2F800-2FA1F   ; CJK Compatibility Ideographs Supplement                 ; Supplément aux idéogrammes de compatibilité CJC
+2FF80-2FFFF   ; Unassigned                                              ; Points de code non attribués
+30000-3134A   ; CJK Unified Ideographs Extension G                      ; Supplément G aux idéogrammes unifiés CJC
+31350-323AF   ; CJK Unified Ideographs Extension H                      ; Supplément H aux idéogrammes unifiés CJC
+3FF80-3FFFF   ; Unassigned                                              ; Points de code non attribués
+4FF80-4FFFF   ; Unassigned                                              ; Points de code non attribués
+5FF80-5FFFF   ; Unassigned                                              ; Points de code non attribués
+6FF80-6FFFF   ; Unassigned                                              ; Points de code non attribués
+7FF80-7FFFF   ; Unassigned                                              ; Points de code non attribués
+8FF80-8FFFF   ; Unassigned                                              ; Points de code non attribués
+9FF80-9FFFF   ; Unassigned                                              ; Points de code non attribués
+AFF80-AFFFF   ; Unassigned                                              ; Points de code non attribués
+BFF80-BFFFF   ; Unassigned                                              ; Points de code non attribués
+CFF80-CFFFF   ; Unassigned                                              ; Points de code non attribués
+DFF80-DFFFF   ; Unassigned                                              ; Points de code non attribués
+E0000-E007F   ; Tags                                                    ; Étiquettes
+E0100-E01EF   ; Variation Selectors Supplement                          ; Supplément de sélecteurs de variante
+EFF80-EFFFF   ; Unassigned                                              ; Points de code non attribués
+FFF80-FFFFF   ; Supplementary Private Use Area-A                        ; Zone supplémentaire A à usage privé
+10FF80-10FFFF ; Supplementary Private Use Area-B                        ; Zone supplémentaire B à usage privé
