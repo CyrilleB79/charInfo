@@ -13,7 +13,7 @@ sys.dont_write_bytecode = True
 
 import buildVars
 
-import scripts
+from scripts.generateDataFr import generateBlockFile
 
 def md2html(source, dest):
 	import markdown
@@ -154,7 +154,6 @@ def generateTranslatedManifest(source, language, out):
 		f.write(result)
 
 def generateFrenchDataFile(source, dest, transFile):
-	from scripts.generateDataFr import generateBlockFile
 	generateBlockFile(src=source, dst=dest, transFile=transFile)
 
 def expandGlobs(files):
