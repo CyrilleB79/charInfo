@@ -100,13 +100,9 @@ class NoFileError(InfoNotFoundError): pass
 class NoValueError(InfoNotFoundError): pass
 
 STR_NO_CHAR_ERROR = '?'
-STR_NO_FILE_ERROR = '?'
-STR_NO_FILE_ERROR2 = _('No file')
-STR_NO_DESCRIPTION_ERROR = _('No description')
-
-# Translators: Reported in the symbol description table when no value is defined for a property of the character.
+# Translators: Reported in the tables when no value is defined for a property of a specific character.
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
-# Translators: Reported in the symbol description table when no file corresponding to the row exists.
+# Translators: Reported in the symbol and character description tables when no file corresponding to the row exists.
 STR_NO_EXISTING_FILE = _('[No file]')
 
 def removeAccelerator(s):
@@ -490,7 +486,7 @@ class Character(object):
 		return self.text
 	def getNameStr(self):
 		names = [self.getNameValue(l) for l in unicodeInfo.langs]
-		return ' / '.join(names)
+		return ' / '.join(n for n in names if n is not None)
 		
 	def getNameValue(self, lang):
 		if lang == 'en':
@@ -499,7 +495,7 @@ class Character(object):
 			except ValueError:
 				return STR_NO_CHAR_ERROR
 		if not unicodeInfo.unicodeData[lang]:
-			return STR_NO_FILE_ERROR
+			return None
 		try:
 			return unicodeInfo.unicodeData[lang][self.num][0]
 		except KeyError:
@@ -507,25 +503,17 @@ class Character(object):
 	
 	def getCldrNameStr(self):
 		names = [self.getCldrNameValue(l) for l in unicodeInfo.langs]
-		return ' / '.join(names)
+		return ' / '.join(n for n in names if n is not None)
 		
 	def getCldrNameValue(self, lang):
 		data = cldrData.fetch(lang)
 		if not data:
-			return STR_NO_FILE_ERROR
+			return None
 		try:
 			return data.symbols[self.text].replacement
 		except KeyError:
 			return STR_NO_CHAR_ERROR
 	
-	def zzz_getCldrNameValue(self, lang):
-		if not unicodeInfo.cldr[lang]:
-			return STR_NO_FILE_ERROR
-		try:
-			return unicodeInfo.cldr[lang].symbols[self.text].replacement
-		except KeyError:
-			return STR_NO_CHAR_ERROR
-			
 	def getDecStr(self):
 		return str(self.num)
 		
@@ -540,24 +528,28 @@ class Character(object):
 			except KeyError:
 				pass
 		catNames = [self.getCategoryValue(cat, l) for l in unicodeInfo.langs]
-		return cat + ' - ' + ' / '.join(catNames)
+		return cat + ' - ' + ' / '.join(c for c in catNames if c is not None)
 		
 	def getCategoryValue(self, cat, lang):
 		if not unicodeInfo.generalCategories[lang]:
-			return STR_NO_FILE_ERROR
+			return None
 		return unicodeInfo.generalCategories[lang][cat]
 		
 	def getBlockStr(self):
 		blockNames = [self.getBlockValue(l) for l in unicodeInfo.langs]
-		return ' / '.join(blockNames)
+		return ' / '.join(b for b in blockNames if b is not None)
 		
 	def getBlockValue(self, lang):
 		if unicodeInfo.blocks[lang] is None:
-			return STR_NO_FILE_ERROR
+			return None
 		for inf,sup,name in unicodeInfo.blocks[lang]:
 			if inf <= self.num <= sup:
 				return name
-		return STR_NO_CHAR_ERROR
+		if lang == "en":
+			# Translators: Reported in the Unicode information table when the character does not belong to any block.
+			return _("No Block")
+		else:
+			return None
 	
 	def getMsNameStr(self):
 		return self.msCharInfo[0]
@@ -569,7 +561,7 @@ class Character(object):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		names = [self.UCEqChar.getNameValue(l) for l in unicodeInfo.langs]
-		return ' / '.join(names)
+		return ' / '.join(n for n in names if n is not None)
 		
 	def getUCEqHexValStr(self):
 		if self.UCEqChar is None:
@@ -603,7 +595,7 @@ class Character(object):
 			gv.dbg = self.CHAR_DESC_LOCALE_DATA_MAP #zzz
 			l = self.CHAR_DESC_LOCALE_DATA_MAP.fetchLocaleData(lang)
 		except LookupError:
-			return STR_NO_FILE_ERROR2
+			return STR_NO_EXISTING_FILE
 		desc = l.getCharacterDescription(self.text.lower())
 		if not desc:
 			return STR_VALUE_NOT_DEFINED
@@ -641,9 +633,9 @@ class Character(object):
 				SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 				SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 			)
-		except NoValueError as e:
+		except NoValueError:
 			return (STR_VALUE_NOT_DEFINED,) * 3
-		except NoFileError as e:
+		except NoFileError:
 			return STR_NO_EXISTING_FILE
 	
 	def getSymbolLocaleStr(self, locale=None, cldr=False):
@@ -679,11 +671,11 @@ class Character(object):
 		try:
 			symbols.load(filepath, allowComplexSymbols=allowComplexSymbols)
 		except IOError:
-			raise NoFileError(STR_NO_DESCRIPTION_ERROR)
+			raise NoFileError(filepath)
 		try:
 			return symbols.symbols[self.text]
 		except KeyError:
-			raise NoValueError(STR_NO_DESCRIPTION_ERROR)
+			raise NoValueError(self.text)
 
 
 class Characters(object):
@@ -734,7 +726,11 @@ class Characters(object):
 		"""
 		
 		content = []
-		content.append(self.createHtmlInfoHeader(section))
+		if section == Section.NVDA_SYMBOL_DESC:
+			header = self.createHtmlInfoHeaderForSymbolDesc()
+		else:
+			header = self.createHtmlInfoHeader()
+		content.append(header)
 		name, mapping = sectionMapping[section]
 		# Locally copy the mapping to modify it
 		mapping = dict(mapping)
@@ -784,11 +780,8 @@ class Characters(object):
 			{'border':'1'}
 		)
 	
-	def createHtmlInfoHeader(self, section):
-		isSymbolDesc = section == Section.NVDA_SYMBOL_DESC
+	def createHtmlInfoHeader(self):	
 		nChars = len(self.charList)
-		# Translators: A column title on the char info displayed message
-		headerLabel = _("Attribute")
 		if nChars == 1:
 			# Translators: A column header on the char info displayed message
 			headerVal = _("Value")
@@ -796,39 +789,49 @@ class Characters(object):
 			# Translators: A column title on the char info displayed message
 			headerVal = _("Character {numChar}")
 		
-		rows = []
-		
-		# First row
 		htmlHeaderLabel = mkhi(
 			'th',
-			headerLabel,
-			attribDic={'rowspan': 2 if isSymbolDesc else 1},
+			# Translators: A column title on the char info displayed message
+			_("Attribute"),
+			attribDic={'scope': 'row'},
 		)
-		htmlHeaderValuesRow1 = ''.join(
+		htmlHeaderValues = ''.join(
 			mkhi(
 				'th',
-				headerVal.format(numChar=n),
-				attribDic={'colspan': 3 if isSymbolDesc else 1},
+				headerVal.format(numChar=n + 1),
+				attribDic={'scope': 'col'},
 			) for n in range(nChars)
 		)
-		row = mkhi(
+		return mkhi(
 			'tr',
-			htmlHeaderLabel + htmlHeaderValuesRow1,
+			htmlHeaderLabel + htmlHeaderValues,
 		)
-		rows.append(row)
-		if isSymbolDesc:
-			htmlHeaderValuesRow2Char = (
-				mkhi('th', nvdaTranslations("Replacement"))
-				+ mkhi('th', nvdaTranslations("Level"))
-				+ mkhi('th', nvdaTranslations("Preserve"))
-			)
-			htmlHeaderValuesRow2 = ''.join(htmlHeaderValuesRow2Char for n in range(nChars))
-			row = mkhi(
-					'tr',
-					htmlHeaderValuesRow2,
-			)
-			rows.append(row)
-		return ''.join(rows)	
+	
+	def createHtmlInfoHeaderForSymbolDesc(self):
+		nChars = len(self.charList)
+		htmlHeaderLabel = mkhi(
+			'th',
+			# Translators: A column title on the char info displayed message
+			_("Attribute"),
+			attribDic={'scope': 'row'},
+		)
+		htmlHeaderValues = []
+		for n in range(nChars):
+			if nChars > 1:
+				charIndicator = f' ({n + 1})'
+			else:
+				charIndicator = ''
+			val = nvdaTranslations("Replacement") + charIndicator
+			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+			val = nvdaTranslations("Level") + charIndicator
+			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+			val = nvdaTranslations("Preserve") + charIndicator
+			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+		htmlHeaderRow = htmlHeaderLabel + ''.join(htmlHeaderValues)
+		return mkhi(
+				'tr',
+				htmlHeaderRow,
+		)
 	
 	def createHtmlInfoRow(self, attr, valueList, session):
 		content = []
