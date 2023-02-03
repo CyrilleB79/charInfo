@@ -18,7 +18,8 @@ informazioni sui caratteri come nome unicode, numero, categoria, ecc.
 
 ## Note
 
-* This add-on provides also two gestures that are unassigned by default:
+* Questo componente aggiuntivo fornisce anche due gesti non assegnati per
+  impostazione predefinita:
 
     * A script to display directly the review cursor character
       information. If you feel unconfortable with the four press gesture,
@@ -42,12 +43,11 @@ informazioni sui caratteri come nome unicode, numero, categoria, ecc.
 
 ### Version 1.8
 
-* Update to Unicode 14.0.
+* Aggiornamento a Unicode 14.0.
 * Compatibility with NVDA 2022.1.
 * Drops compatibility with NVDA below 2019.3.
-* The release is now performed thanks to a GitHub action instead of
-  appVeyor.
-* Update localizations.
+* Il rilascio viene ora eseguito grazie a un'azione GitHub anziché appVeyor.
+* Aggiornate le traduzioni
 
 ### Version 1.7
 
