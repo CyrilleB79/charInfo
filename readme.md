@@ -31,10 +31,18 @@ The presented information include the following sections:
 
 ## Change log
 
-### Version 1.9
+### Version 2.0
 
+
+* Enhanced the character information report with information on NVDA symbol and NVDA character description.
+* Added the support of compound character, e.g. letters with diacritic consisting in two or more Unicode characters.
+* Update to Unicode 15.0
+* Updated French block data.
+* Viewing character information is not allowed on lock screen and secure screens.
 * On Windows lock screen, the script to review the current character can now operate normally (single, double or triple press).
+* Compatibility with NVDA 2023.1.
 * Drops compatibility with NVDA below 2022.3.3. The last version compatible with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Update localizations.
 
 ### Version 1.8
 
