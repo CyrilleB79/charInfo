@@ -1,7 +1,7 @@
 # Character Information #
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2017.3 to 2021.1
+* NVDA compatibility: 2019.3 and beyond
 * Scarica [versione stabile][1]
 * Scarica [versione in sviluppo][2]
 
@@ -18,7 +18,8 @@ informazioni sui caratteri come nome unicode, numero, categoria, ecc.
 
 ## Note
 
-* This add-on provides also two gestures that are unassigned by default:
+* Questo componente aggiuntivo fornisce anche due gesti non assegnati per
+  impostazione predefinita:
 
     * A script to display directly the review cursor character
       information. If you feel unconfortable with the four press gesture,
@@ -32,8 +33,6 @@ informazioni sui caratteri come nome unicode, numero, categoria, ecc.
 * L'informazione fornita è in inglese, perché così è realizzato lo standard
   unicode. Se esiste una localizzazione per questo componente,
   l'informazione viene fornita anche nella lingua locale.
-* Il nome CLDR (Unicode Common Local Data Repository) è supportato solo con
-  NVDA 2019.1 e versioni successive.
 * Per i caratteri scritti con font proprietari di Microsoft, Wingding (1,
   2,, 3) e Webding, viene fornita qualche informazione in più: nome del
   carattere, nome del font e informazioni sul corrispondente carattere
@@ -41,6 +40,18 @@ informazioni sui caratteri come nome unicode, numero, categoria, ecc.
 
 
 ## Novità
+
+### Version 1.8
+
+* Aggiornamento a Unicode 14.0.
+* Compatibility with NVDA 2022.1.
+* Drops compatibility with NVDA below 2019.3.
+* Il rilascio viene ora eseguito grazie a un'azione GitHub anziché appVeyor.
+* Aggiornate le traduzioni
+
+### Version 1.7
+
+* Added localizations.
 
 ### Version 1.6
 
