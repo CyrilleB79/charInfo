@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # NVDA add-on: Character information
 # Copyright (C) 2019-2023 Cyrille Bougot
 # This file is covered by the GNU General Public License.
