@@ -82,7 +82,7 @@ lstMsCharsets = ['Symbol',
 	'Wingdings 3']
 
 # Translators: Title on the char info displayed message
-pageTitle = _("Detailed character information'")
+pageTitle = _("Detailed character information")
 DATA_DIR = os.path.join(addonPath, "locale")
 MSCHAR_DIR = os.path.join(addonPath, "mscharsets")
 BLOCK_FILE = "Blocks.txt"
