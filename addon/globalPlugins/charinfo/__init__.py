@@ -739,7 +739,7 @@ class Characters(object):
 		if self.lang.split('_')[0] == "en":
 			toRemove.update({NVDASymbolAttribute.LOCALE, NVDASymbolAttribute.LOCALE_CLDR, NVDACharacterDescriptionAttribute.LOCALE})
 		if not config.conf["speech"]["includeCLDR"]:
-			toRemove.extend({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
+			toRemove.update({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
 		for attr in toRemove:
 			try:
 				del mapping[attr]
