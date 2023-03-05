@@ -679,6 +679,16 @@ class Character(object):
 			raise NoValueError(self.text)
 
 
+def convertToOnOff(val: bool) -> str:
+	if val is True:
+		# Translators: The value of an option reported in symbol description section of the character info repot.
+		return _("On")
+	if val is False:
+		# Translators: The value of an option reported in symbol description section of the character info repot.
+		return _("Off")
+	raise ValueError(f'Unexpected value: {val}')
+
+
 class Characters(object):
 	def __init__(self, text, lang, font):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
@@ -859,7 +869,7 @@ class Characters(object):
 				txt=removeAccelerator(
 					nvdaTranslations("Include Unicode Consortium data (including emoji) when processing characters and symbols"),
 				),
-				val=config.conf["speech"]["includeCLDR"],
+				val=convertToOnOff(config.conf["speech"]["includeCLDR"]),
 			)
 		)
 		optionList.append(
@@ -867,7 +877,7 @@ class Characters(object):
 				txt=removeAccelerator(
 					nvdaTranslations("Trust voice's language when processing characters and symbols"),
 				),
-				val=config.conf["speech"]["trustVoiceLanguage"],
+				val=convertToOnOff(config.conf["speech"]["trustVoiceLanguage"]),
 			)
 		)
 		useVoiceLanguage = config.conf["speech"]["trustVoiceLanguage"]
