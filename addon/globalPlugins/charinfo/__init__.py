@@ -1003,10 +1003,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=reasonCaret)
 			return
 		font = self.getCurrCharFontName(info)
+		lang = None
 		if config.conf['speech']['autoLanguageSwitching']:
 			# Get language from text tagging if any
 			lang = self.getCurrentLanguage(info)
-		else:
+		if not lang:
 			# Get language from synth or UI depending on if trust voice language is activated
 			# and if it is possible to know the language of the current synth.
 			lang = speech.getCurrentLanguage()
