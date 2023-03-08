@@ -3,6 +3,8 @@
 # Build customizations
 # Change this file instead of sconstruct or manifest files, whenever possible.
 
+import os.path
+
 
 # Since some strings in `addon_info` are translatable,
 # we need to include them in the .po files.
@@ -57,7 +59,6 @@ addon_info = {
 # pythonSources = ["addon/globalPlugins/*.py"]
 # For more information on SCons Glob expressions please take a look at:
 # https://scons.org/doc/production/HTML/scons-user/apd.html
-import os.path
 pythonSources = [os.path.join('addon', 'globalPlugins', 'charinfo', '*.py')]
 
 # Files that contain strings for translation. Usually your python sources

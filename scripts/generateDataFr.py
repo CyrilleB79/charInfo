@@ -17,15 +17,15 @@ enDataPath = os.path.join(localeDataPath, 'en')
 blockFile = os.path.join(frDataPath, 'Blocks.txt')
 
 BLOCKS_FR_FILE_HEADER = \
-"""# Introduction note
-# 
-# This file is a French translation of https://unicode.org/Public/UNIDATA/Blocks.txt
-# It has been generated automatically thanks to the translations available in
-# http://hapax.qc.ca/{nomsBlocksFrFileName}
-#
-# End of introduction note
+	"""# Introduction note
+	#
+	# This file is a French translation of https://unicode.org/Public/UNIDATA/Blocks.txt
+	# It has been generated automatically thanks to the translations available in
+	# http://hapax.qc.ca/{nomsBlocksFrFileName}
+	#
+	# End of introduction note
 
-"""
+	"""
 
 
 def getBlockTranslation(transFile):
@@ -37,10 +37,16 @@ def getBlockTranslation(transFile):
 				raise LookupError(f'Unexpected line format: {line}')
 			name = m['name']
 			locName = m['locName']
-			if name == 'C0 Controls and Basic Latin (Basic Latin)' and locName == 'Commandes C0 et latin de base (Latin de base)':
+			if (
+				name == 'C0 Controls and Basic Latin (Basic Latin)'
+				and locName == 'Commandes C0 et latin de base (Latin de base)'
+			):
 				name = 'Basic Latin'
 				locName = 'Latin de base'
-			elif name == 'C1 Controls and Latin-1 Supplement (Latin-1 Supplement)' and locName == 'Commandes C1 et supplément Latin-1 (Supplément Latin-1)':
+			elif (
+				name == 'C1 Controls and Latin-1 Supplement (Latin-1 Supplement)'
+				and locName == 'Commandes C1 et supplément Latin-1 (Supplément Latin-1)'
+			):
 				name = 'Latin-1 Supplement'
 				locName = 'Supplément Latin-1'
 			try:
@@ -54,17 +60,17 @@ def getBlockTranslation(transFile):
 				if locNameInDic != locName:
 					raise ValueError(f'locNameInDic != locName - {locNameInDic} != {locName}')
 	return dic
-	
-	
+
+
 def generateBlockFile(src, dst, transFile):
 	"""Generate a localized version of the file Blocks.txt on the same format as the English block file but with
 	localized block names.
-	
+
 	@param src: the path of the English file Blocks.txt.
-	 @param dst: the path of the translated file Blocks.txt to be generated.
-	 @param transFile: the file containing the translation of the block names.
+	@param dst: the path of the translated file Blocks.txt to be generated.
+	@param transFile: the file containing the translation of the block names.
 	"""
-	
+
 	p, transBlockFileName = os.path.split(transFile)
 	trans = getBlockTranslation(transFile)
 	with open(src, 'r', encoding='utf8') as fSrc:
