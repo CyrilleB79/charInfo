@@ -132,7 +132,7 @@ def removeAccelerator(s):
 
 def mkhi(itemType, content, attribDic={}):
 	"""Creates an HTML item."""
-	sAttribs = ''.join(f' {n}={v}' for n,v in attribDic.items())
+	sAttribs = ''.join(f' {n}={v}' for n, v in attribDic.items())
 	return f'<{itemType}{sAttribs}>{content}</{itemType}>'
 
 
@@ -144,7 +144,7 @@ padding: 10px 15px;
 table{
 border-collapse: collapse;
 }
-""".replace('{','{{').replace('}','}}')
+""".replace('{', '{{').replace('}', '}}')
 
 
 class UnicodeAttribute(Enum):
@@ -453,14 +453,14 @@ class MsCharsetsInfo(dict):
 			except IOError:
 				pass
 	
-	def getCharsetInfo(self,cs):
+	def getCharsetInfo(self, cs):
 		cs = cs.lower()
 		cs = cs.replace(' ', '-')
 		csPath = os.path.join(MSCHAR_DIR, cs + '.txt')
 		csInfo = {}
 		with open(csPath, 'r', encoding='utf-8') as f:
 			for line in f:
-				msNum,msName,ucNum = line.strip().split('\t')
+				msNum, msName, ucNum = line.strip().split('\t')
 				if ucNum == 'None':
 					ucNum = None
 				else:
@@ -552,7 +552,7 @@ class Character(object):
 	def getBlockValue(self, lang):
 		if unicodeInfo.blocks[lang] is None:
 			return None
-		for inf,sup,name in unicodeInfo.blocks[lang]:
+		for inf, sup, name in unicodeInfo.blocks[lang]:
 			if inf <= self.num <= sup:
 				return name
 		if lang == "en":
@@ -625,7 +625,7 @@ class Character(object):
 		try:
 			info = ss.computedSymbols[self.text]
 		except KeyError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		return (
 			info.replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
@@ -642,7 +642,7 @@ class Character(object):
 				SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 			)
 		except NoValueError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		except NoFileError:
 			return STR_NO_EXISTING_FILE
 	
@@ -658,7 +658,7 @@ class Character(object):
 		try:
 			symb = data.symbols[self.text]
 		except KeyError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		return (
 			symb.replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(symb.level, STR_VALUE_NOT_DEFINED),
@@ -960,7 +960,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		security.getSafeScripts = originalGetSafeScripts
 		super(GlobalPlugin, self).terminate ()
 	
-	def script_review_currentCharacter(self,gesture):
+	def script_review_currentCharacter(self, gesture):
 		scriptCount=scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
 			return
@@ -1022,12 +1022,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def getCurrCharFontName(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k,v in configDocFormatting}
+		formatConfig = {k:False for k, v in configDocFormatting}
 		formatConfig['reportFontName'] = True
 		info=info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
+			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 				try:
 					return field.field["font-name"]
 				except KeyError:
@@ -1036,11 +1036,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def getCurrentLanguage(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k,v in configDocFormatting}
+		formatConfig = {k:False for k, v in configDocFormatting}
 		info=info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
+			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 				try:
 					return field.field["language"]
 				except KeyError:
