@@ -427,18 +427,6 @@ class SymbolData(LocaleData):
 			return None		
 	
 	
-	class SymbolData(LocaleData):
-	
-		@lru_cache(maxsize=32)
-		def getDataFromFile(self, lang):
-			data = SpeechSymbols()
-			try:
-				data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
-				return data
-			except IOError:
-				return None		
-
-
 class CharacterData(LocaleData):
 
 	@lru_cache(maxsize=32)

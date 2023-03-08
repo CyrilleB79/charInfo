@@ -20,6 +20,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.bindGestures(biScriptGestureMap)
 		#Temp
 		self.generateCharList()
+	
 	def generateCharList(self):
 		def getNom(i):
 			try:
