@@ -31,6 +31,3 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		g = (unichr(i)+'\t'+getNom(i)+'\tnone\tnever' for i in range(1000, 2000))
 		with open(r'h:\charlist.txt', 'w', encoding='utf8') as f:
 			f.write('\r\n'.join(g))
-			
-		
-	

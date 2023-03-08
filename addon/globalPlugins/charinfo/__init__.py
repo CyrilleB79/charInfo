@@ -41,7 +41,6 @@ from enum import Enum
 from functools import lru_cache
 
 
-
 addonPath = os.path.dirname(__file__)
 
 
@@ -88,13 +87,16 @@ BLOCK_FILE = "Blocks.txt"
 UNICODEDATA_FILE = "UnicodeData.txt"
 PROP_VAL_ALIAS_FILE = "PropertyValueAliases.txt"
 
+
 class InfoNotFoundError(LookupError):
+
 	def __init__(self, message):
 		self._message = message
 		
 	@property
 	def message(self):
 		return self._message
+
 
 class NoFileError(InfoNotFoundError): pass
 class NoValueError(InfoNotFoundError): pass
@@ -104,6 +106,7 @@ STR_NO_CHAR_ERROR = '?'
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
 # Translators: Reported in the symbol and character description tables when no file corresponding to the row exists.
 STR_NO_EXISTING_FILE = _('[No file]')
+
 
 def removeAccelerator(s):
 	"""Remove the '&' in a GUI string.
@@ -122,6 +125,7 @@ def removeAccelerator(s):
 	if previousAmp:
 		out += c
 	return out
+
 
 def mkhi(itemType, content, attribDic={}):
 	"""Creates an HTML item."""
@@ -149,6 +153,7 @@ class UnicodeAttribute(Enum):
 	CATEGORY = 'Category'
 	BLOCK = 'Block'
 
+
 # Mapping between UnicodeAttribute and a 2-tuple containing the attribute's translatable name and a function to retrieve the value.
 unicodeAttributeMapping = {
 	# Translators: A character attribute type in the Unicode table of the char info displayed message
@@ -174,6 +179,7 @@ class MsFontAttribute(Enum):
 	EQ_UNICODE_HEX_VALUE = "EquivalentUnicodeCharacterHexValue"
 	EQ_UNICODE_DECIMAL_VALUE = "EquivalentUnicodeCharacterDecimalValue"	
 	
+
 msFontAttributeMapping = {
 	# Translators: A character attribute type in the MS font table of the char info displayed message
 	MsFontAttribute.NAME: (_("MS name"), 'getMsNameStr'),
@@ -187,6 +193,7 @@ msFontAttributeMapping = {
 	MsFontAttribute.EQ_UNICODE_DECIMAL_VALUE: (_("Equivalent Unicode character decimal value"), 'getUCEqDecValStr'),
 }
 
+
 class NVDASymbolAttribute(Enum):
 	REPORTED = "Reported"
 	USER = "User"
@@ -194,6 +201,7 @@ class NVDASymbolAttribute(Enum):
 	LOCALE_CLDR = "LocaleCLDR"
 	ENGLISH = "English"
 	ENGLISH_CLDR = "EnglishCLDR"
+
 
 nvdaSymbolAttributeMapping = {
 	NVDASymbolAttribute.REPORTED: (
@@ -227,10 +235,12 @@ nvdaSymbolAttributeMapping = {
 	),
 }
 
+
 class NVDACharacterDescriptionAttribute(Enum):
 	REPORTED = "Reported"
 	LOCALE = "Locale"
 	ENGLISH = "English"
+
 
 nvdaCharacterDescriptionAttributeMapping = {
 	# Translators: A character attribute type in the table on the char info displayed message
@@ -241,11 +251,13 @@ nvdaCharacterDescriptionAttributeMapping = {
 	NVDACharacterDescriptionAttribute.ENGLISH: (_("Character description (English file)"), 'getCharacterDescriptionEnglishStr'),
 }
 
+
 class Section(Enum):
 	UNICODE = 'Unicode'
 	MS_FONT = 'MSFont'
 	NVDA_SYMBOL_DESC = 'NVDASymbolDescription'
 	NVDA_CHAR_DESC = 'NVDACharacterDescription'
+
 
 # A mapping between sections and a 2-tuple containing the section translatable name and its attributes.
 sectionMapping = {
@@ -259,6 +271,7 @@ sectionMapping = {
 	Section.NVDA_CHAR_DESC: (_('Character description in NVDA'), nvdaCharacterDescriptionAttributeMapping),
 }
 
+
 class UnicodeInfo(object):
 
 	def __init__(self):
@@ -268,7 +281,7 @@ class UnicodeInfo(object):
 		self.unicodeData = {}
 		self.cldr = {}
 		self.langs = []
-		
+	
 	def initLanguage(self, lang):
 		self.langs.append(lang)
 		
@@ -277,7 +290,7 @@ class UnicodeInfo(object):
 		if lang != 'en':
 		#For english we use directly unicodedata lib -> no init.
 			self.unicodeData[lang] = self.getUnicodeDataInfo(lang)
-		
+	
 	def getUnicodeDataInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, UNICODEDATA_FILE)
 		rc = re.compile(r"^([0-9A-F]+);([-\w<> ,']+);(\w+);.*$", re.U)
@@ -326,7 +339,7 @@ class UnicodeInfo(object):
 			else:
 				log.debug(f'No block data file for {lang}.')
 				return None
-		
+	
 	def getGeneralCategoryInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, PROP_VAL_ALIAS_FILE)
 		rc = re.compile(r"^(gc) *; *(\w+) *; *([-' \w]+) *(?:[#;].*)?$", re.U)
@@ -393,7 +406,9 @@ class LocaleData:
 			self.fetch(lang)
 			return self.langMapping[lang]
 
+
 class SymbolData(LocaleData):
+
 	def __init__(self, filename):
 		super().__init__()
 		self.filename = filename
@@ -406,19 +421,22 @@ class SymbolData(LocaleData):
 			return data
 		except IOError:
 			return None		
-		
+	
+	
 	class SymbolData(LocaleData):
-			@lru_cache(maxsize=32)
-			def getDataFromFile(self, lang):
-				data = SpeechSymbols()
-				try:
-					data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
-					return data
-				except IOError:
-					return None		
+	
+		@lru_cache(maxsize=32)
+		def getDataFromFile(self, lang):
+			data = SpeechSymbols()
+			try:
+				data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
+				return data
+			except IOError:
+				return None		
 
 
 class CharacterData(LocaleData):
+
 	@lru_cache(maxsize=32)
 	def getDataFromFile(self, lang):
 		try:
@@ -426,17 +444,15 @@ class CharacterData(LocaleData):
 			return data
 		except LookupError:
 			return None		
-		
-		
-	
-
 
 
 symbolData = SymbolData("symbols.dic")
 cldrData = SymbolData("cldr.dic")
 characterData = CharacterData()
 
+
 class MsCharsetsInfo(dict):
+
 	def __init__(self, *args, **kw):
 		super(MsCharsetsInfo, self).__init__(*args, **kw)
 		for cs in lstMsCharsets:
@@ -444,7 +460,7 @@ class MsCharsetsInfo(dict):
 				self[cs] = self.getCharsetInfo(cs)
 			except IOError:
 				pass
-		
+	
 	def getCharsetInfo(self,cs):
 		cs = cs.lower()
 		cs = cs.replace(' ', '-')
@@ -459,10 +475,11 @@ class MsCharsetsInfo(dict):
 					ucNum = int(ucNum)
 				csInfo[int(msNum)] = (msName, ucNum)
 		return csInfo
-		
-		
+
+
 #Initialize MsCharsetsInfoInstance
 msCharsetsInfo = MsCharsetsInfo()
+
 
 class Character(object):
 
@@ -481,13 +498,14 @@ class Character(object):
 				self.UCEqChar = None
 			else:
 				self.UCEqChar = Character(eqUCNum, chr(eqUCNum), self.lang)
-		
+	
 	def getCharStr(self):
 		return self.text
+	
 	def getNameStr(self):
 		names = [self.getNameValue(l) for l in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+	
 	def getNameValue(self, lang):
 		if lang == 'en':
 			try:
@@ -504,7 +522,7 @@ class Character(object):
 	def getCldrNameStr(self):
 		names = [self.getCldrNameValue(l) for l in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+	
 	def getCldrNameValue(self, lang):
 		data = cldrData.fetch(lang)
 		if not data:
@@ -516,10 +534,10 @@ class Character(object):
 	
 	def getDecStr(self):
 		return str(self.num)
-		
+	
 	def getHexStr(self):
 		return hex(self.num)
-		
+	
 	def getCategoryStr(self):
 		cat = unicodedata.category(self.text)
 		if cat == 'Cn':
@@ -529,16 +547,16 @@ class Character(object):
 				pass
 		catNames = [self.getCategoryValue(cat, l) for l in unicodeInfo.langs]
 		return cat + ' - ' + ' / '.join(c for c in catNames if c is not None)
-		
+	
 	def getCategoryValue(self, cat, lang):
 		if not unicodeInfo.generalCategories[lang]:
 			return None
 		return unicodeInfo.generalCategories[lang][cat]
-		
+	
 	def getBlockStr(self):
 		blockNames = [self.getBlockValue(l) for l in unicodeInfo.langs]
 		return ' / '.join(b for b in blockNames if b is not None)
-		
+	
 	def getBlockValue(self, lang):
 		if unicodeInfo.blocks[lang] is None:
 			return None
@@ -553,26 +571,26 @@ class Character(object):
 	
 	def getMsNameStr(self):
 		return self.msCharInfo[0]
-		
+	
 	def getMsFontStr(self):
 		return self.font
-		
+	
 	def getUCEqNameStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		names = [self.UCEqChar.getNameValue(l) for l in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+	
 	def getUCEqHexValStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		return hex(self.UCEqChar.num)
-		
+	
 	def getUCEqDecValStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		return str(self.UCEqChar.num)
-		
+	
 	def isMsFont(self):
 		if self.font in lstMsCharsets and (
 		self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256):
@@ -586,7 +604,7 @@ class Character(object):
 			return STR_VALUE_NOT_DEFINED
 		IDEOGRAPHIC_COMMA = "\u3001"
 		return IDEOGRAPHIC_COMMA.join(desc)
-		
+	
 	def getCharacterDescriptionLocaleStr(self, lang=None):
 		if not lang:
 			lang = self.lang
@@ -599,7 +617,7 @@ class Character(object):
 			return STR_VALUE_NOT_DEFINED
 		IDEOGRAPHIC_COMMA = "\u3001"
 		return IDEOGRAPHIC_COMMA.join(desc)
-		
+	
 	def getCharacterDescriptionEnglishStr(self):
 		return self.getCharacterDescriptionLocaleStr(lang="en")	
 	
@@ -621,7 +639,7 @@ class Character(object):
 			SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 		)	
-		
+	
 	def getSymbolUserStr(self):
 		locale = self.lang.split('_')[0]
 		try:
@@ -687,11 +705,12 @@ def convertToOnOff(val: bool) -> str:
 
 
 class Characters(object):
+
 	def __init__(self, text, lang, font):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
 		self.lang = lang
 		self.font = font		
-
+	
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
 		head = mkhi('head', '<meta charset= "utf-8"/>' + mkhi('style', css))
@@ -713,9 +732,6 @@ class Characters(object):
 			'html',
 			doctype + head + body,
 		)
-	
-		
-	
 	
 	def createHtmlInfoSection(self, section):
 			content = []
@@ -905,9 +921,7 @@ class Characters(object):
 			''.join(mkhi('li', item) for item in optionList),
 		))
 		return ''.join(content)		
-	
-	
-	
+
 
 originalGetSafeScripts = security.getSafeScripts
 def patchedGetSafeScripts():
@@ -916,7 +930,7 @@ def patchedGetSafeScripts():
 	safeScripts = originalGetSafeScripts()
 	safeScripts.add(ci.script_review_currentCharacter)
 	return safeScripts
-	
+
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
@@ -951,7 +965,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		# Restore original getSafeScripts function
 		security.getSafeScripts = originalGetSafeScripts
 		super(GlobalPlugin, self).terminate ()
-		
+	
 	def script_review_currentCharacter(self,gesture):
 		scriptCount=scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
@@ -967,13 +981,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	# Translators: A part of the message presented in input help mode.
 	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
-
+	
 	def script_currentCharInfo(self, gesture):
 		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
 	# Translators: The message presented in input help mode.
 	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
 	script_currentCharInfo.category = commands.script_review_currentCharacter.category
-
+	
 	def script_currentCharAtCaretInfo(self, gesture):
 		obj = api.getFocusObject()
 		treeInterceptor = obj.treeInterceptor
@@ -989,7 +1003,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	# Translators: The message presented in input help mode.
 	script_currentCharAtCaretInfo.__doc__ = _("Presents a message with detailed information on the character at the position of the caret.")
 	script_currentCharAtCaretInfo.category = SCRCAT_SYSTEMCARET
-
+	
 	def displayCurrentCharInfoMessage(self, info):
 		info.expand(textInfos.UNIT_CHARACTER)
 		if info.text == '':
