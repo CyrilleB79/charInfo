@@ -20,18 +20,20 @@ charsetList = [
 	'wingdings-3',
 	'webdings',
 	'symbol',
-	]
+
 
 def getPageTree(url):
 	response = urlopen(url)
 	s = response.read()
 	return etree.HTML(s)
 
+
 def getTable(html, nTable):
 	tableNodes = html.xpath('//table')
 	trNodes = tableNodes[nTable].xpath('.//tr')
 	content = [[e.text for e in tr.xpath('*[self::td or self::th]')] for tr in trNodes]
 	return content
+
 
 def getTable2(html, nTable):
 	tableNodes = html.xpath('//table')
@@ -42,6 +44,7 @@ def getTable2(html, nTable):
 		contentTR = [getTdText(td) for td in tr.xpath('td')]
 		content.append(contentTR)
 	return content
+
 
 def getTableDings(url):
 	html = getPageTree(url)
@@ -57,7 +60,8 @@ def getTableDings(url):
 		charInfo = [str(numMS), nameMS, str(numUnicode)]
 		allCharInfo.append(charInfo)
 	return allCharInfo
-	
+
+
 def getAllTableSymbol(url):
 	fullTable = []
 	for nTable in range(1,40):
@@ -67,7 +71,8 @@ def getAllTableSymbol(url):
 			break
 	fullTable.sort(key=lambda x:int(x[0]))	
 	return fullTable
-	
+
+		
 def getTableSymbol(url, nTable):
 	html = getPageTree(url)
 	t = getTable2(html, nTable)
@@ -87,7 +92,8 @@ def getTableSymbol(url, nTable):
 		charInfo = [str(numMS), nameMS, str(numUnicode)]
 		allCharInfo.append(charInfo)
 	return allCharInfo
-	
+
+
 def generateTableChar(charset):
 	url = urlBase + charset + '.html'
 	if charset == 'symbol':
@@ -98,6 +104,7 @@ def generateTableChar(charset):
 		for charInfo in allCharInfo:
 			s = '\t'.join(charInfo) + '\n'
 			f.write(s)
+
 
 for cs in charsetList:
 	generateTableChar(cs)

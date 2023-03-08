@@ -73,7 +73,7 @@ addonHandler.initTranslation()
 
 
 UC_PRIVATE_USE_OFFSET = 0xf000
-lstMsCharsets = ['Symbol', 
+lstMsCharsets = ['Symbol',
 	'Webdings',
 	'Wingdings',
 	'Wingdings 2',
@@ -92,14 +92,17 @@ class InfoNotFoundError(LookupError):
 
 	def __init__(self, message):
 		self._message = message
-		
+	
 	@property
 	def message(self):
 		return self._message
 
 
 class NoFileError(InfoNotFoundError): pass
+
+
 class NoValueError(InfoNotFoundError): pass
+
 
 STR_NO_CHAR_ERROR = '?'
 # Translators: Reported in the tables when no value is defined for a property of a specific character.
@@ -172,12 +175,13 @@ unicodeAttributeMapping = {
 	UnicodeAttribute.BLOCK: (_("Block"), 'getBlockStr'),
 }
 
+
 class MsFontAttribute(Enum):
 	NAME = "MsName"
 	FONT = "MsFont"
 	EQ_UNICODE_NAME = "EquivalentUnicodeCharacterName"
 	EQ_UNICODE_HEX_VALUE = "EquivalentUnicodeCharacterHexValue"
-	EQ_UNICODE_DECIMAL_VALUE = "EquivalentUnicodeCharacterDecimalValue"	
+	EQ_UNICODE_DECIMAL_VALUE = "EquivalentUnicodeCharacterDecimalValue"
 	
 
 msFontAttributeMapping = {
@@ -924,6 +928,8 @@ class Characters(object):
 
 
 originalGetSafeScripts = security.getSafeScripts
+
+
 def patchedGetSafeScripts():
 	# Current running charInfo global plugin
 	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charinfo')

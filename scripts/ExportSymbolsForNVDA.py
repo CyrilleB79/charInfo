@@ -3,6 +3,7 @@
 #Snippet to modify char info __init__.py in order to export symbol dic.
 #To be edited and integrated in __init__.py
 
+
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def __init__(self, *args, **kwargs):
