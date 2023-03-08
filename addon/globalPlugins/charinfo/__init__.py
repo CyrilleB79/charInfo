@@ -9,7 +9,7 @@ import addonHandler
 import scriptHandler
 import treeInterceptorHandler
 import ui
-from globalCommands import SCRCAT_TEXTREVIEW, SCRCAT_SYSTEMCARET, commands, GlobalCommands
+from globalCommands import SCRCAT_SYSTEMCARET, commands, GlobalCommands
 import api
 import speech
 import languageHandler
@@ -21,7 +21,6 @@ from characterProcessing import (
 	LocaleDataMap,
 	CharacterDescriptions,
 	SpeechSymbols,
-	processSpeechSymbol,
 	getCharacterDescription,
 	SPEECH_SYMBOL_LEVEL_LABELS,
 	SPEECH_SYMBOL_PRESERVE_LABELS,
@@ -592,12 +591,10 @@ class Character(object):
 		if not lang:
 			lang = self.lang
 		try:
-			import globalVars as gv
-			gv.dbg = self.CHAR_DESC_LOCALE_DATA_MAP #zzz
-			l = self.CHAR_DESC_LOCALE_DATA_MAP.fetchLocaleData(lang)
+			localData = self.CHAR_DESC_LOCALE_DATA_MAP.fetchLocaleData(lang)
 		except LookupError:
 			return STR_NO_EXISTING_FILE
-		desc = l.getCharacterDescription(self.text.lower())
+		desc = localData.getCharacterDescription(self.text.lower())
 		if not desc:
 			return STR_VALUE_NOT_DEFINED
 		IDEOGRAPHIC_COMMA = "\u3001"
