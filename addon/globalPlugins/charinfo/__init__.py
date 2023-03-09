@@ -9,7 +9,7 @@ import addonHandler
 import scriptHandler
 import treeInterceptorHandler
 import ui
-from globalCommands import SCRCAT_TEXTREVIEW, SCRCAT_SYSTEMCARET, commands, GlobalCommands
+from globalCommands import SCRCAT_SYSTEMCARET, commands, GlobalCommands
 import api
 import speech
 import languageHandler
@@ -21,7 +21,6 @@ from characterProcessing import (
 	LocaleDataMap,
 	CharacterDescriptions,
 	SpeechSymbols,
-	processSpeechSymbol,
 	getCharacterDescription,
 	SPEECH_SYMBOL_LEVEL_LABELS,
 	SPEECH_SYMBOL_PRESERVE_LABELS,
@@ -40,7 +39,6 @@ import os
 import re
 from enum import Enum
 from functools import lru_cache
-
 
 
 addonPath = os.path.dirname(__file__)
@@ -75,36 +73,48 @@ addonHandler.initTranslation()
 
 
 UC_PRIVATE_USE_OFFSET = 0xf000
-lstMsCharsets = ['Symbol', 
+lstMsCharsets = [
+	'Symbol',
 	'Webdings',
 	'Wingdings',
 	'Wingdings 2',
-	'Wingdings 3']
+	'Wingdings 3',
+]
 
 # Translators: Title on the char info displayed message
-pageTitle = _("Detailed character information'")
+pageTitle = _("Detailed character information")
 DATA_DIR = os.path.join(addonPath, "locale")
 MSCHAR_DIR = os.path.join(addonPath, "mscharsets")
 BLOCK_FILE = "Blocks.txt"
 UNICODEDATA_FILE = "UnicodeData.txt"
 PROP_VAL_ALIAS_FILE = "PropertyValueAliases.txt"
 
+
 class InfoNotFoundError(LookupError):
+
 	def __init__(self, message):
 		self._message = message
-		
+
 	@property
 	def message(self):
 		return self._message
 
-class NoFileError(InfoNotFoundError): pass
-class NoValueError(InfoNotFoundError): pass
+
+class NoFileError(InfoNotFoundError):
+	pass
+
+
+class NoValueError(InfoNotFoundError):
+	pass
+
 
 STR_NO_CHAR_ERROR = '?'
 # Translators: Reported in the tables when no value is defined for a property of a specific character.
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
-# Translators: Reported in the symbol and character description tables when no file corresponding to the row exists.
+# Translators: Reported in the symbol and character description tables when no file corresponding to the row
+# exists.
 STR_NO_EXISTING_FILE = _('[No file]')
+
 
 def removeAccelerator(s):
 	"""Remove the '&' in a GUI string.
@@ -124,9 +134,10 @@ def removeAccelerator(s):
 		out += c
 	return out
 
+
 def mkhi(itemType, content, attribDic={}):
 	"""Creates an HTML item."""
-	sAttribs = ''.join(f' {n}={v}' for n,v in attribDic.items())
+	sAttribs = ''.join(f' {n}={v}' for n, v in attribDic.items())
 	return f'<{itemType}{sAttribs}>{content}</{itemType}>'
 
 
@@ -138,7 +149,7 @@ padding: 10px 15px;
 table{
 border-collapse: collapse;
 }
-""".replace('{','{{').replace('}','}}')
+""".replace('{', '{{').replace('}', '}}')
 
 
 class UnicodeAttribute(Enum):
@@ -150,7 +161,9 @@ class UnicodeAttribute(Enum):
 	CATEGORY = 'Category'
 	BLOCK = 'Block'
 
-# Mapping between UnicodeAttribute and a 2-tuple containing the attribute's translatable name and a function to retrieve the value.
+
+# Mapping between UnicodeAttribute and a 2-tuple containing the attribute's translatable name and a function
+# to retrieve the value.
 unicodeAttributeMapping = {
 	# Translators: A character attribute type in the Unicode table of the char info displayed message
 	UnicodeAttribute.CHARACTER: (_("Character"), 'getCharStr'),
@@ -168,13 +181,15 @@ unicodeAttributeMapping = {
 	UnicodeAttribute.BLOCK: (_("Block"), 'getBlockStr'),
 }
 
+
 class MsFontAttribute(Enum):
 	NAME = "MsName"
 	FONT = "MsFont"
 	EQ_UNICODE_NAME = "EquivalentUnicodeCharacterName"
 	EQ_UNICODE_HEX_VALUE = "EquivalentUnicodeCharacterHexValue"
-	EQ_UNICODE_DECIMAL_VALUE = "EquivalentUnicodeCharacterDecimalValue"	
-	
+	EQ_UNICODE_DECIMAL_VALUE = "EquivalentUnicodeCharacterDecimalValue"
+
+
 msFontAttributeMapping = {
 	# Translators: A character attribute type in the MS font table of the char info displayed message
 	MsFontAttribute.NAME: (_("MS name"), 'getMsNameStr'),
@@ -184,9 +199,13 @@ msFontAttributeMapping = {
 	MsFontAttribute.EQ_UNICODE_NAME: (_("Equivalent Unicode character name"), 'getUCEqNameStr'),
 	# Translators: A character attribute type in the MS font table of the char info displayed message
 	MsFontAttribute.EQ_UNICODE_HEX_VALUE: (_("Equivalent Unicode character hex value"), 'getUCEqHexValStr'),
-	# Translators: A character attribute type in the MS font table of the char info displayed message
-	MsFontAttribute.EQ_UNICODE_DECIMAL_VALUE: (_("Equivalent Unicode character decimal value"), 'getUCEqDecValStr'),
+	MsFontAttribute.EQ_UNICODE_DECIMAL_VALUE: (
+		# Translators: A character attribute type in the MS font table of the char info displayed message
+		_("Equivalent Unicode character decimal value"),
+		'getUCEqDecValStr',
+	),
 }
+
 
 class NVDASymbolAttribute(Enum):
 	REPORTED = "Reported"
@@ -196,57 +215,69 @@ class NVDASymbolAttribute(Enum):
 	ENGLISH = "English"
 	ENGLISH_CLDR = "EnglishCLDR"
 
+
 nvdaSymbolAttributeMapping = {
 	NVDASymbolAttribute.REPORTED: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description"),
 		'getSymbolStr',
 	),
 	NVDASymbolAttribute.USER: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in user file ({lang})"),
 		'getSymbolUserStr',
 	),
 	NVDASymbolAttribute.LOCALE: (
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in locale file{langInfo}"),
 		'getSymbolLocaleStr'
 	),
 	NVDASymbolAttribute.LOCALE_CLDR: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in locale CLDR file{langInfo}"),
 		'getSymbolLocaleCLDRStr',
 	),
 	NVDASymbolAttribute.ENGLISH: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in English file"),
 		'getSymbolEnglishStr'
 	),
 	NVDASymbolAttribute.ENGLISH_CLDR: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in English CLDR file"),
 		'getSymbolEnglishCLDRStr',
 	),
 }
+
 
 class NVDACharacterDescriptionAttribute(Enum):
 	REPORTED = "Reported"
 	LOCALE = "Locale"
 	ENGLISH = "English"
 
+
 nvdaCharacterDescriptionAttributeMapping = {
 	# Translators: A character attribute type in the table on the char info displayed message
 	NVDACharacterDescriptionAttribute.REPORTED: (_("Character description"), 'getCharacterDescriptionStr'),
-	# Translators: A character attribute type in the table on the char info displayed message
-	NVDACharacterDescriptionAttribute.LOCALE: (_("Character description{langInfo}"), 'getCharacterDescriptionLocaleStr'),
-	# Translators: A character attribute type in the table on the char info displayed message
-	NVDACharacterDescriptionAttribute.ENGLISH: (_("Character description (English file)"), 'getCharacterDescriptionEnglishStr'),
+	NVDACharacterDescriptionAttribute.LOCALE: (
+		# Translators: A character attribute type in the table on the char info displayed message
+		_("Character description{langInfo}"),
+		'getCharacterDescriptionLocaleStr',
+	),
+	NVDACharacterDescriptionAttribute.ENGLISH: (
+		# Translators: A character attribute type in the table on the char info displayed message
+		_("Character description (English file)"),
+		'getCharacterDescriptionEnglishStr',
+	),
 }
+
 
 class Section(Enum):
 	UNICODE = 'Unicode'
 	MS_FONT = 'MSFont'
 	NVDA_SYMBOL_DESC = 'NVDASymbolDescription'
 	NVDA_CHAR_DESC = 'NVDACharacterDescription'
+
 
 # A mapping between sections and a 2-tuple containing the section translatable name and its attributes.
 sectionMapping = {
@@ -260,6 +291,7 @@ sectionMapping = {
 	Section.NVDA_CHAR_DESC: (_('Character description in NVDA'), nvdaCharacterDescriptionAttributeMapping),
 }
 
+
 class UnicodeInfo(object):
 
 	def __init__(self):
@@ -269,28 +301,29 @@ class UnicodeInfo(object):
 		self.unicodeData = {}
 		self.cldr = {}
 		self.langs = []
-		
+
 	def initLanguage(self, lang):
 		self.langs.append(lang)
-		
+
 		self.blocks[lang] = self.getBlockInfo(lang)
 		self.generalCategories[lang] = self.getGeneralCategoryInfo(lang)
+		# For english we use directly unicodedata lib -> no init.
 		if lang != 'en':
-		#For english we use directly unicodedata lib -> no init.
 			self.unicodeData[lang] = self.getUnicodeDataInfo(lang)
-		
+
 	def getUnicodeDataInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, UNICODEDATA_FILE)
 		rc = re.compile(r"^([0-9A-F]+);([-\w<> ,']+);(\w+);.*$", re.U)
 		dicChar = {}
 		try:
 			with open(filePath, 'r', encoding='UTF-8-sig') as f:
-				for l in (ll.strip() for ll in f):
-					if (l.startswith('#')
-					or len(l) == 0):
+				for line in f:
+					line = line.strip()
+					if (line.startswith('#') or len(line) == 0):
 						continue
-					m = rc.match(l)
-					if not m: raise ValueError(l)
+					m = rc.match(line)
+					if not m:
+						raise ValueError(line)
 					dicChar[int(m.group(1), 16)] = m.group(2), m.group(3)
 			return dicChar
 		except IOError:
@@ -301,23 +334,24 @@ class UnicodeInfo(object):
 			else:
 				log.debug(f'No Unicode data file for {lang}.')
 				return None
-	
+
 	def getBlockInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, BLOCK_FILE)
 		rc = re.compile(r"^([0-9A-F]+)\.\.([0-9A-F]+); ([-'’ \w]+)$", re.U)
 		lBlocks = []
 		try:
 			with open(filePath, 'r', encoding='UTF-8') as f:
-				for l in (ll.strip() for ll in f):
-					if (l.startswith('#')
-					or len(l) == 0):
+				for line in f:
+					line = line.strip()
+					if (line.startswith('#') or len(line) == 0):
 						continue
-					m = rc.match(l)
-					if not m: raise ValueError(l)
+					m = rc.match(line)
+					if not m:
+						raise ValueError(line)
 					inf = int(m.group(1), 16)
 					sup = int(m.group(2), 16)
 					name = m.group(3)
-					lBlocks.append( (inf, sup, name) )
+					lBlocks.append((inf, sup, name))
 			return lBlocks
 		except IOError:
 			if '_' in lang:
@@ -327,20 +361,21 @@ class UnicodeInfo(object):
 			else:
 				log.debug(f'No block data file for {lang}.')
 				return None
-		
+
 	def getGeneralCategoryInfo(self, lang):
 		filePath = os.path.join(DATA_DIR, lang, PROP_VAL_ALIAS_FILE)
 		rc = re.compile(r"^(gc) *; *(\w+) *; *([-' \w]+) *(?:[#;].*)?$", re.U)
-		
+
 		dicData = {}
 		try:
 			with open(filePath, 'r', encoding='UTF-8') as f:
-				for l in (ll.strip() for ll in f):
-					if (l.startswith('#')
-					or len(l) == 0):
+				for line in f:
+					line = line.strip()
+					if (line.startswith('#') or len(line) == 0):
 						continue
-					m = rc.match(l)
-					if not m: continue
+					m = rc.match(line)
+					if not m:
+						continue
 					dicName = m.group(1)
 					abbr = m.group(2)
 					fullname = m.group(3)
@@ -360,17 +395,17 @@ class UnicodeInfo(object):
 				return None
 
 
-#Create UnicodeInfo instance
+# Create UnicodeInfo instance
 unicodeInfo = UnicodeInfo()
 
 
 class LocaleData:
 	""" A class to fetch and store locale data (symbols or characters) from .dic files for all locales.
 	"""
-	
+
 	def __init__(self):
 		self.langMapping = {}
-	
+
 	def fetch(self, lang):
 		data = self.getDataFromFile(lang)
 		if data:
@@ -386,7 +421,7 @@ class LocaleData:
 			return data
 		self.langMapping[lang] = None
 		return None
-	
+
 	def getDataLangForLang(self, lang):
 		try:
 			return self.langMapping[lang]
@@ -394,11 +429,13 @@ class LocaleData:
 			self.fetch(lang)
 			return self.langMapping[lang]
 
+
 class SymbolData(LocaleData):
+
 	def __init__(self, filename):
 		super().__init__()
 		self.filename = filename
-	
+
 	@lru_cache(maxsize=32)
 	def getDataFromFile(self, lang):
 		data = SpeechSymbols()
@@ -406,38 +443,27 @@ class SymbolData(LocaleData):
 			data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
 			return data
 		except IOError:
-			return None		
-		
-	class SymbolData(LocaleData):
-			@lru_cache(maxsize=32)
-			def getDataFromFile(self, lang):
-				data = SpeechSymbols()
-				try:
-					data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
-					return data
-				except IOError:
-					return None		
+			return None
 
 
 class CharacterData(LocaleData):
+
 	@lru_cache(maxsize=32)
 	def getDataFromFile(self, lang):
 		try:
 			data = CharacterDescriptions(lang)
 			return data
 		except LookupError:
-			return None		
-		
-		
-	
-
+			return None
 
 
 symbolData = SymbolData("symbols.dic")
 cldrData = SymbolData("cldr.dic")
 characterData = CharacterData()
 
+
 class MsCharsetsInfo(dict):
+
 	def __init__(self, *args, **kw):
 		super(MsCharsetsInfo, self).__init__(*args, **kw)
 		for cs in lstMsCharsets:
@@ -445,25 +471,26 @@ class MsCharsetsInfo(dict):
 				self[cs] = self.getCharsetInfo(cs)
 			except IOError:
 				pass
-		
-	def getCharsetInfo(self,cs):
+
+	def getCharsetInfo(self, cs):
 		cs = cs.lower()
 		cs = cs.replace(' ', '-')
 		csPath = os.path.join(MSCHAR_DIR, cs + '.txt')
 		csInfo = {}
 		with open(csPath, 'r', encoding='utf-8') as f:
 			for line in f:
-				msNum,msName,ucNum = line.strip().split('\t')
+				msNum, msName, ucNum = line.strip().split('\t')
 				if ucNum == 'None':
 					ucNum = None
 				else:
 					ucNum = int(ucNum)
 				csInfo[int(msNum)] = (msName, ucNum)
 		return csInfo
-		
-		
-#Initialize MsCharsetsInfoInstance
+
+
+# Initialize MsCharsetsInfoInstance
 msCharsetsInfo = MsCharsetsInfo()
+
 
 class Character(object):
 
@@ -482,13 +509,14 @@ class Character(object):
 				self.UCEqChar = None
 			else:
 				self.UCEqChar = Character(eqUCNum, chr(eqUCNum), self.lang)
-		
+
 	def getCharStr(self):
 		return self.text
+
 	def getNameStr(self):
-		names = [self.getNameValue(l) for l in unicodeInfo.langs]
+		names = [self.getNameValue(ln) for ln in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+
 	def getNameValue(self, lang):
 		if lang == 'en':
 			try:
@@ -501,11 +529,11 @@ class Character(object):
 			return unicodeInfo.unicodeData[lang][self.num][0]
 		except KeyError:
 			return STR_NO_CHAR_ERROR
-	
+
 	def getCldrNameStr(self):
-		names = [self.getCldrNameValue(l) for l in unicodeInfo.langs]
+		names = [self.getCldrNameValue(ln) for ln in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+
 	def getCldrNameValue(self, lang):
 		data = cldrData.fetch(lang)
 		if not data:
@@ -514,13 +542,13 @@ class Character(object):
 			return data.symbols[self.text].replacement
 		except KeyError:
 			return STR_NO_CHAR_ERROR
-	
+
 	def getDecStr(self):
 		return str(self.num)
-		
+
 	def getHexStr(self):
 		return hex(self.num)
-		
+
 	def getCategoryStr(self):
 		cat = unicodedata.category(self.text)
 		if cat == 'Cn':
@@ -528,22 +556,22 @@ class Character(object):
 				cat = unicodeInfo.unicodeData['en'][self.num][1]
 			except KeyError:
 				pass
-		catNames = [self.getCategoryValue(cat, l) for l in unicodeInfo.langs]
+		catNames = [self.getCategoryValue(cat, ln) for ln in unicodeInfo.langs]
 		return cat + ' - ' + ' / '.join(c for c in catNames if c is not None)
-		
+
 	def getCategoryValue(self, cat, lang):
 		if not unicodeInfo.generalCategories[lang]:
 			return None
 		return unicodeInfo.generalCategories[lang][cat]
-		
+
 	def getBlockStr(self):
-		blockNames = [self.getBlockValue(l) for l in unicodeInfo.langs]
+		blockNames = [self.getBlockValue(ln) for ln in unicodeInfo.langs]
 		return ' / '.join(b for b in blockNames if b is not None)
-		
+
 	def getBlockValue(self, lang):
 		if unicodeInfo.blocks[lang] is None:
 			return None
-		for inf,sup,name in unicodeInfo.blocks[lang]:
+		for inf, sup, name in unicodeInfo.blocks[lang]:
 			if inf <= self.num <= sup:
 				return name
 		if lang == "en":
@@ -551,61 +579,60 @@ class Character(object):
 			return _("No Block")
 		else:
 			return None
-	
+
 	def getMsNameStr(self):
 		return self.msCharInfo[0]
-		
+
 	def getMsFontStr(self):
 		return self.font
-		
+
 	def getUCEqNameStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
-		names = [self.UCEqChar.getNameValue(l) for l in unicodeInfo.langs]
+		names = [self.UCEqChar.getNameValue(ln) for ln in unicodeInfo.langs]
 		return ' / '.join(n for n in names if n is not None)
-		
+
 	def getUCEqHexValStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		return hex(self.UCEqChar.num)
-		
+
 	def getUCEqDecValStr(self):
 		if self.UCEqChar is None:
 			return STR_NO_CHAR_ERROR
 		return str(self.UCEqChar.num)
-		
+
 	def isMsFont(self):
 		if self.font in lstMsCharsets and (
-		self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256):
+			self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256
+		):
 			return True
 		else:
 			return False
-	
+
 	def getCharacterDescriptionStr(self):
 		desc = getCharacterDescription(self.lang, self.text.lower())
 		if desc is None:
 			return STR_VALUE_NOT_DEFINED
 		IDEOGRAPHIC_COMMA = "\u3001"
 		return IDEOGRAPHIC_COMMA.join(desc)
-		
+
 	def getCharacterDescriptionLocaleStr(self, lang=None):
 		if not lang:
 			lang = self.lang
 		try:
-			import globalVars as gv
-			gv.dbg = self.CHAR_DESC_LOCALE_DATA_MAP #zzz
-			l = self.CHAR_DESC_LOCALE_DATA_MAP.fetchLocaleData(lang)
+			localData = self.CHAR_DESC_LOCALE_DATA_MAP.fetchLocaleData(lang)
 		except LookupError:
 			return STR_NO_EXISTING_FILE
-		desc = l.getCharacterDescription(self.text.lower())
+		desc = localData.getCharacterDescription(self.text.lower())
 		if not desc:
 			return STR_VALUE_NOT_DEFINED
 		IDEOGRAPHIC_COMMA = "\u3001"
 		return IDEOGRAPHIC_COMMA.join(desc)
-		
+
 	def getCharacterDescriptionEnglishStr(self):
-		return self.getCharacterDescriptionLocaleStr(lang="en")	
-	
+		return self.getCharacterDescriptionLocaleStr(lang="en")
+
 	def getSymbolStr(self, locale=None):
 		if not locale:
 			locale = self.lang
@@ -618,27 +645,30 @@ class Character(object):
 		try:
 			info = ss.computedSymbols[self.text]
 		except KeyError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		return (
 			info.replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
-		)	
-		
+		)
+
 	def getSymbolUserStr(self):
 		locale = self.lang.split('_')[0]
 		try:
-			info = self.getSymbolInfo(os.path.join(globalVars.appArgs.configPath, f"symbols-{locale}.dic"), allowComplexSymbols=False)
+			info = self.getSymbolInfo(
+				os.path.join(globalVars.appArgs.configPath, f"symbols-{locale}.dic"),
+				allowComplexSymbols=False,
+			)
 			return (
 				info.replacement,
 				SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 				SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 			)
 		except NoValueError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		except NoFileError:
 			return STR_NO_EXISTING_FILE
-	
+
 	def getSymbolLocaleStr(self, locale=None, cldr=False):
 		if not locale:
 			locale = self.lang
@@ -651,22 +681,22 @@ class Character(object):
 		try:
 			symb = data.symbols[self.text]
 		except KeyError:
-			return (STR_VALUE_NOT_DEFINED,) * 3
+			return (STR_VALUE_NOT_DEFINED, ) * 3
 		return (
 			symb.replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(symb.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(symb.preserve, STR_VALUE_NOT_DEFINED),
 		)
-	
+
 	def getSymbolLocaleCLDRStr(self, locale=None):
 		return self.getSymbolLocaleStr(locale, cldr=True)
-	
-	def getSymbolEnglishStr(self, cldr=False):\
+
+	def getSymbolEnglishStr(self, cldr=False):
 		return self.getSymbolLocaleStr(locale='en', cldr=cldr)
-	
+
 	def getSymbolEnglishCLDRStr(self):
 		return self.getSymbolEnglishStr(cldr=True)
-	
+
 	def getSymbolInfo(self, filepath, allowComplexSymbols=True):
 		symbols = SpeechSymbols()
 		try:
@@ -679,11 +709,22 @@ class Character(object):
 			raise NoValueError(self.text)
 
 
+def convertToOnOff(val: bool) -> str:
+	if val is True:
+		# Translators: The value of an option reported in symbol description section of the character info report.
+		return _("On")
+	if val is False:
+		# Translators: The value of an option reported in symbol description section of the character info report.
+		return _("Off")
+	raise ValueError(f'Unexpected value: {val}')
+
+
 class Characters(object):
+
 	def __init__(self, text, lang, font):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
 		self.lang = lang
-		self.font = font		
+		self.font = font
 
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
@@ -706,26 +747,24 @@ class Characters(object):
 			'html',
 			doctype + head + body,
 		)
-	
-		
-	
-	
+
 	def createHtmlInfoSection(self, section):
-			content = []
-			name, mapping = sectionMapping[section]
-			title = mkhi('h2', name)
-			content.append(title)
-			table = self.createHtmlInfoTable(section)
-			content.append(table)
-			if section == Section.NVDA_SYMBOL_DESC:
-				footNotes = self.createHtmlSymbolInfoFootNote()
-				content.append(footNotes)
-			return ''.join(content)
-	
+		content = []
+		name, mapping = sectionMapping[section]
+		title = mkhi('h2', name)
+		content.append(title)
+		table = self.createHtmlInfoTable(section)
+		content.append(table)
+		if section == Section.NVDA_SYMBOL_DESC:
+			footNotes = self.createHtmlSymbolInfoFootNote()
+			content.append(footNotes)
+		return ''.join(content)
+
 	def createHtmlInfoTable(self, section):
-		"""Create the HTML string corresponding to the table displaying names and values of various character attributes.
+		"""Create the HTML string corresponding to the table displaying names and values of various character
+		attributes.
 		"""
-		
+
 		content = []
 		if section == Section.NVDA_SYMBOL_DESC:
 			header = self.createHtmlInfoHeaderForSymbolDesc()
@@ -737,9 +776,13 @@ class Characters(object):
 		mapping = dict(mapping)
 		toRemove = set()
 		if self.lang.split('_')[0] == "en":
-			toRemove.update({NVDASymbolAttribute.LOCALE, NVDASymbolAttribute.LOCALE_CLDR, NVDACharacterDescriptionAttribute.LOCALE})
+			toRemove.update({
+				NVDASymbolAttribute.LOCALE,
+				NVDASymbolAttribute.LOCALE_CLDR,
+				NVDACharacterDescriptionAttribute.LOCALE,
+			})
 		if not config.conf["speech"]["includeCLDR"]:
-			toRemove.extend({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
+			toRemove.update({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
 		for attr in toRemove:
 			try:
 				del mapping[attr]
@@ -774,14 +817,14 @@ class Characters(object):
 				[getattr(c, getter)() for c in self.charList],
 				section,
 			)
-			content.append(row)	
+			content.append(row)
 		return mkhi(
 			'table',
 			''.join(content),
-			{'border':'1'}
+			{'border': '1'},
 		)
-	
-	def createHtmlInfoHeader(self):	
+
+	def createHtmlInfoHeader(self):
 		nChars = len(self.charList)
 		if nChars == 1:
 			# Translators: A column header on the char info displayed message
@@ -789,7 +832,7 @@ class Characters(object):
 		else:
 			# Translators: A column title on the char info displayed message
 			headerVal = _("Character {numChar}")
-		
+
 		htmlHeaderLabel = mkhi(
 			'th',
 			# Translators: A column title on the char info displayed message
@@ -807,7 +850,7 @@ class Characters(object):
 			'tr',
 			htmlHeaderLabel + htmlHeaderValues,
 		)
-	
+
 	def createHtmlInfoHeaderForSymbolDesc(self):
 		nChars = len(self.charList)
 		htmlHeaderLabel = mkhi(
@@ -830,10 +873,10 @@ class Characters(object):
 			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
 		htmlHeaderRow = htmlHeaderLabel + ''.join(htmlHeaderValues)
 		return mkhi(
-				'tr',
-				htmlHeaderRow,
+			'tr',
+			htmlHeaderRow,
 		)
-	
+
 	def createHtmlInfoRow(self, attr, valueList, session):
 		content = []
 		htmlAttribute = mkhi('th', attr)
@@ -848,18 +891,21 @@ class Characters(object):
 				htmlCells = mkhi('td', value)
 			content.append(htmlCells)
 		return mkhi('tr', ''.join(content))
-	
+
 	def createHtmlSymbolInfoFootNote(self):
 		content = []
+		# Translators: A piece of text in the symbol description section of the character info report.
 		introStr = _("Options used to compute the symbol:")
 		content.append(mkhi('p', introStr))
 		optionList = []
 		optionList.append(
 			'{txt}: {val}'.format(
 				txt=removeAccelerator(
-					nvdaTranslations("Include Unicode Consortium data (including emoji) when processing characters and symbols"),
+					nvdaTranslations(
+						"Include Unicode Consortium data (including emoji) when processing characters and symbols",
+					),
 				),
-				val=config.conf["speech"]["includeCLDR"],
+				val=convertToOnOff(config.conf["speech"]["includeCLDR"]),
 			)
 		)
 		optionList.append(
@@ -867,7 +913,7 @@ class Characters(object):
 				txt=removeAccelerator(
 					nvdaTranslations("Trust voice's language when processing characters and symbols"),
 				),
-				val=config.conf["speech"]["trustVoiceLanguage"],
+				val=convertToOnOff(config.conf["speech"]["trustVoiceLanguage"]),
 			)
 		)
 		useVoiceLanguage = config.conf["speech"]["trustVoiceLanguage"]
@@ -882,6 +928,7 @@ class Characters(object):
 		if useVoiceLanguage:
 			optionList.append(
 				'{txt}: {val}'.format(
+					# Translators: An option text in the symbol description section of the character info report.
 					txt=_("Voice language"),
 					val=self.lang,
 				)
@@ -889,6 +936,7 @@ class Characters(object):
 		if useNVDAInterfaceLanguage:
 			optionList.append(
 				'{txt}: {val}'.format(
+					# Translators: An option text in the symbol description section of the character info report.
 					txt=_("NVDA interface language"),
 					val=languageHandler.getLanguage(),
 				)
@@ -897,19 +945,19 @@ class Characters(object):
 			'ul',
 			''.join(mkhi('li', item) for item in optionList),
 		))
-		return ''.join(content)		
-	
-	
-	
+		return ''.join(content)
+
 
 originalGetSafeScripts = security.getSafeScripts
+
+
 def patchedGetSafeScripts():
 	# Current running charInfo global plugin
 	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charinfo')
 	safeScripts = originalGetSafeScripts()
 	safeScripts.add(ci.script_review_currentCharacter)
 	return safeScripts
-	
+
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
@@ -920,13 +968,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		biScript = GlobalCommands.script_review_currentCharacter
 		self.biScriptDoc = biScript.__doc__
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
-		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
-		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
+		biScriptGestureMap = {g: biScriptInfo.scriptName for g in biScriptInfo.gestures}
+		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
 		commands.script_review_currentCharacter.__func__.__doc__ = ""
-		#Delete all associated gestures to original script
+		# Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
 		security.getSafeScripts = patchedGetSafeScripts
-	
+
 	def initUnicodeInfo(self):
 		langUI = languageHandler.getLanguage()
 		if langUI == 'en':
@@ -935,18 +983,18 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			langs = ['en', langUI]
 		for lang in langs:
 			unicodeInfo.initLanguage(lang)
-	
-	def terminate (self):
-		#Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
+
+	def terminate(self):
+		# Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
 		commands.script_review_currentCharacter.__func__.__doc__ = self.biScriptDoc
-		#Clear charInfo plugin gestures
+		# Clear charInfo plugin gestures
 		self.clearGestureBindings()
 		# Restore original getSafeScripts function
 		security.getSafeScripts = originalGetSafeScripts
-		super(GlobalPlugin, self).terminate ()
-		
-	def script_review_currentCharacter(self,gesture):
-		scriptCount=scriptHandler.getLastScriptRepeatCount()
+		super(GlobalPlugin, self).terminate()
+
+	def script_review_currentCharacter(self, gesture):
+		scriptCount = scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
 			return
 		elif scriptCount <= 2:
@@ -956,21 +1004,30 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
-		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
-	# Translators: A part of the message presented in input help mode.
-	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
+		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
+	script_review_currentCharacter.__doc__ = (
+		commands.script_review_currentCharacter.__doc__
+		# Translators: A part of the message presented in input help mode.
+		+ _(". Pressing four times presents a message with detailed information on this character.")
+	)
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 
 	def script_currentCharInfo(self, gesture):
-		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
-	# Translators: The message presented in input help mode.
-	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
+		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
+	script_currentCharInfo.__doc__ = _(
+		# Translators: The message presented in input help mode.
+		"Presents a message with detailed information on the character of the current navigator object"
+		" where the review cursor is situated."
+	)
 	script_currentCharInfo.category = commands.script_review_currentCharacter.category
 
 	def script_currentCharAtCaretInfo(self, gesture):
 		obj = api.getFocusObject()
 		treeInterceptor = obj.treeInterceptor
-		if isinstance(treeInterceptor, treeInterceptorHandler.DocumentTreeInterceptor) and not treeInterceptor.passThrough:
+		if (
+			isinstance(treeInterceptor, treeInterceptorHandler.DocumentTreeInterceptor)
+			and not treeInterceptor.passThrough
+		):
 			obj = treeInterceptor
 		try:
 			info = obj.makeTextInfo(textInfos.POSITION_CARET)
@@ -979,8 +1036,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No caret"))
 			return
 		self.displayCurrentCharInfoMessage(info)
-	# Translators: The message presented in input help mode.
-	script_currentCharAtCaretInfo.__doc__ = _("Presents a message with detailed information on the character at the position of the caret.")
+	script_currentCharAtCaretInfo.__doc__ = _(
+		# Translators: The message presented in input help mode.
+		"Presents a message with detailed information on the character at the position of the caret."
+	)
 	script_currentCharAtCaretInfo.category = SCRCAT_SYSTEMCARET
 
 	def displayCurrentCharInfoMessage(self, info):
@@ -993,38 +1052,39 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=reasonCaret)
 			return
 		font = self.getCurrCharFontName(info)
+		lang = None
 		if config.conf['speech']['autoLanguageSwitching']:
 			# Get language from text tagging if any
 			lang = self.getCurrentLanguage(info)
-		else:
+		if not lang:
 			# Get language from synth or UI depending on if trust voice language is activated
 			# and if it is possible to know the language of the current synth.
 			lang = speech.getCurrentLanguage()
 		allChars = Characters(info.text, lang=lang, font=font)
 		htmlMessage = allChars.createHtmlInfoMessage(info.text)
-		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
-	
+		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
+
 	def getCurrCharFontName(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k,v in configDocFormatting}
+		formatConfig = {k: False for k, v in configDocFormatting}
 		formatConfig['reportFontName'] = True
-		info=info.copy()
+		info = info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
+			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 				try:
 					return field.field["font-name"]
 				except KeyError:
 					return None
 		return None
-	
+
 	def getCurrentLanguage(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k,v in configDocFormatting}
-		info=info.copy()
+		formatConfig = {k: False for k, v in configDocFormatting}
+		info = info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field,textInfos.FieldCommand) and isinstance(field.field,textInfos.FormatField):
+			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 				try:
 					return field.field["language"]
 				except KeyError:

@@ -20,7 +20,7 @@ The presented information include the following sections:
 ## Commands
 
 * Numpad2 (all keyboard layouts) or NVDA+. (laptop layout): when pressed 4 times, displays information about the character of the current navigator object where the review cursor is situated.
-* Unassigned: Presents a message with detailed information on the character of the current navigator object where the review cursor is situated. If you feel uncomfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
+* Unassigned: Presents a message with detailed information on the character where the review cursor is situated. If you feel uncomfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
 * Unassigned: Presents a message with detailed information on the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
 
 ## Notes
