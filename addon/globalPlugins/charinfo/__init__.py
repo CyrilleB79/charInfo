@@ -218,31 +218,32 @@ class NVDASymbolAttribute(Enum):
 
 nvdaSymbolAttributeMapping = {
 	NVDASymbolAttribute.REPORTED: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description"),
 		'getSymbolStr',
 	),
 	NVDASymbolAttribute.USER: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in user file ({lang})"),
 		'getSymbolUserStr',
 	),
 	NVDASymbolAttribute.LOCALE: (
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in locale file{langInfo}"),
 		'getSymbolLocaleStr'
 	),
 	NVDASymbolAttribute.LOCALE_CLDR: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in locale CLDR file{langInfo}"),
 		'getSymbolLocaleCLDRStr',
 	),
 	NVDASymbolAttribute.ENGLISH: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in English file"),
 		'getSymbolEnglishStr'
 	),
 	NVDASymbolAttribute.ENGLISH_CLDR: (
-		# Translators: A character attribute type in the table on the char info displayed message
+		# Translators: A symbol attribute type in the table on the char info displayed message
 		_("Symbol description in English CLDR file"),
 		'getSymbolEnglishCLDRStr',
 	),
@@ -710,10 +711,10 @@ class Character(object):
 
 def convertToOnOff(val: bool) -> str:
 	if val is True:
-		# Translators: The value of an option reported in symbol description section of the character info repot.
+		# Translators: The value of an option reported in symbol description section of the character info report.
 		return _("On")
 	if val is False:
-		# Translators: The value of an option reported in symbol description section of the character info repot.
+		# Translators: The value of an option reported in symbol description section of the character info report.
 		return _("Off")
 	raise ValueError(f'Unexpected value: {val}')
 
@@ -893,6 +894,7 @@ class Characters(object):
 
 	def createHtmlSymbolInfoFootNote(self):
 		content = []
+		# Translators: A piece of text in the symbol description section of the character info report.
 		introStr = _("Options used to compute the symbol:")
 		content.append(mkhi('p', introStr))
 		optionList = []
@@ -926,6 +928,7 @@ class Characters(object):
 		if useVoiceLanguage:
 			optionList.append(
 				'{txt}: {val}'.format(
+					# Translators: An option text in the symbol description section of the character info report.
 					txt=_("Voice language"),
 					val=self.lang,
 				)
@@ -933,6 +936,7 @@ class Characters(object):
 		if useNVDAInterfaceLanguage:
 			optionList.append(
 				'{txt}: {val}'.format(
+					# Translators: An option text in the symbol description section of the character info report.
 					txt=_("NVDA interface language"),
 					val=languageHandler.getLanguage(),
 				)
