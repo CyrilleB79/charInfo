@@ -18,7 +18,7 @@ blockFile = os.path.join(frDataPath, 'Blocks.txt')
 
 BLOCKS_FR_FILE_HEADER = \
 	"""# Introduction note
-	# 
+	#
 	# This file is a French translation of https://unicode.org/Public/UNIDATA/Blocks.txt
 	# It has been generated automatically thanks to the translations available in
 	# http://hapax.qc.ca/{nomsBlocksFrFileName}
@@ -37,10 +37,16 @@ def getBlockTranslation(transFile):
 				raise LookupError(f'Unexpected line format: {line}')
 			name = m['name']
 			locName = m['locName']
-			if name == 'C0 Controls and Basic Latin (Basic Latin)' and locName == 'Commandes C0 et latin de base (Latin de base)':
+			if (
+				name == 'C0 Controls and Basic Latin (Basic Latin)'
+				and locName == 'Commandes C0 et latin de base (Latin de base)'
+			):
 				name = 'Basic Latin'
 				locName = 'Latin de base'
-			elif name == 'C1 Controls and Latin-1 Supplement (Latin-1 Supplement)' and locName == 'Commandes C1 et supplément Latin-1 (Supplément Latin-1)':
+			elif (
+				name == 'C1 Controls and Latin-1 Supplement (Latin-1 Supplement)'
+				and locName == 'Commandes C1 et supplément Latin-1 (Supplément Latin-1)'
+			):
 				name = 'Latin-1 Supplement'
 				locName = 'Supplément Latin-1'
 			try:

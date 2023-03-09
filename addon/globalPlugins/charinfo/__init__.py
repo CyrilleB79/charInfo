@@ -98,10 +98,12 @@ class InfoNotFoundError(LookupError):
 		return self._message
 
 
-class NoFileError(InfoNotFoundError): pass
+class NoFileError(InfoNotFoundError):
+	pass
 
 
-class NoValueError(InfoNotFoundError): pass
+class NoValueError(InfoNotFoundError):
+	pass
 
 
 STR_NO_CHAR_ERROR = '?'
@@ -317,7 +319,8 @@ class UnicodeInfo(object):
 					or len(l) == 0):
 						continue
 					m = rc.match(l)
-					if not m: raise ValueError(l)
+					if not m:
+						raise ValueError(l)
 					dicChar[int(m.group(1), 16)] = m.group(2), m.group(3)
 			return dicChar
 		except IOError:
@@ -340,7 +343,8 @@ class UnicodeInfo(object):
 					or len(l) == 0):
 						continue
 					m = rc.match(l)
-					if not m: raise ValueError(l)
+					if not m:
+						raise ValueError(l)
 					inf = int(m.group(1), 16)
 					sup = int(m.group(2), 16)
 					name = m.group(3)
@@ -367,7 +371,8 @@ class UnicodeInfo(object):
 					or len(l) == 0):
 						continue
 					m = rc.match(l)
-					if not m: continue
+					if not m:
+						continue
 					dicName = m.group(1)
 					abbr = m.group(2)
 					fullname = m.group(3)
@@ -435,7 +440,7 @@ class SymbolData(LocaleData):
 			data.load(os.path.join("locale", lang, self.filename), allowComplexSymbols=False)
 			return data
 		except IOError:
-			return None		
+			return None
 	
 	
 class CharacterData(LocaleData):
@@ -446,7 +451,7 @@ class CharacterData(LocaleData):
 			data = CharacterDescriptions(lang)
 			return data
 		except LookupError:
-			return None		
+			return None
 
 
 symbolData = SymbolData("symbols.dic")
@@ -623,7 +628,7 @@ class Character(object):
 		return IDEOGRAPHIC_COMMA.join(desc)
 	
 	def getCharacterDescriptionEnglishStr(self):
-		return self.getCharacterDescriptionLocaleStr(lang="en")	
+		return self.getCharacterDescriptionLocaleStr(lang="en")
 	
 	def getSymbolStr(self, locale=None):
 		if not locale:
@@ -642,7 +647,7 @@ class Character(object):
 			info.replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
-		)	
+		)
 	
 	def getSymbolUserStr(self):
 		locale = self.lang.split('_')[0]
@@ -716,7 +721,7 @@ class Characters(object):
 	def __init__(self, text, lang, font):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
 		self.lang = lang
-		self.font = font		
+		self.font = font
 	
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
@@ -809,14 +814,14 @@ class Characters(object):
 				[getattr(c, getter)() for c in self.charList],
 				section,
 			)
-			content.append(row)	
+			content.append(row)
 		return mkhi(
 			'table',
 			''.join(content),
 			{'border':'1'}
 		)
 	
-	def createHtmlInfoHeader(self):	
+	def createHtmlInfoHeader(self):
 		nChars = len(self.charList)
 		if nChars == 1:
 			# Translators: A column header on the char info displayed message
@@ -934,7 +939,7 @@ class Characters(object):
 			'ul',
 			''.join(mkhi('li', item) for item in optionList),
 		))
-		return ''.join(content)		
+		return ''.join(content)
 
 
 originalGetSafeScripts = security.getSafeScripts
@@ -957,7 +962,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		biScript = GlobalCommands.script_review_currentCharacter
 		self.biScriptDoc = biScript.__doc__
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
-		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
+		biScriptGestureMap = {g: biScriptInfo.scriptName for g in biScriptInfo.gestures}
 		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
 		commands.script_review_currentCharacter.__func__.__doc__ = ""
 		# Delete all associated gestures to original script
@@ -983,7 +988,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		super(GlobalPlugin, self).terminate ()
 	
 	def script_review_currentCharacter(self, gesture):
-		scriptCount=scriptHandler.getLastScriptRepeatCount()
+		scriptCount = scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
 			return
 		elif scriptCount <= 2:
@@ -993,16 +998,16 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
-		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
+		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
 	script_review_currentCharacter.__doc__ = (
-		commands.script_review_currentCharacter.__doc__ +
+		commands.script_review_currentCharacter.__doc__
 		# Translators: A part of the message presented in input help mode.
-		_(". Pressing four times presents a message with detailed information on this character.")
+		+ _(". Pressing four times presents a message with detailed information on this character.")
 	)
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 	
 	def script_currentCharInfo(self, gesture):
-		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
+		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
 	script_currentCharInfo.__doc__ = _(
 		# Translators: The message presented in input help mode.
 		"Presents a message with detailed information on the character of the current navigator object"
@@ -1051,13 +1056,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			lang = speech.getCurrentLanguage()
 		allChars = Characters(info.text, lang=lang, font=font)
 		htmlMessage = allChars.createHtmlInfoMessage(info.text)
-		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml= True)
+		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
 	
 	def getCurrCharFontName(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k, v in configDocFormatting}
+		formatConfig = {k: False for k, v in configDocFormatting}
 		formatConfig['reportFontName'] = True
-		info=info.copy()
+		info = info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
 			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
@@ -1069,8 +1074,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	
 	def getCurrentLanguage(self, info):
 		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k:False for k, v in configDocFormatting}
-		info=info.copy()
+		formatConfig = {k: False for k, v in configDocFormatting}
+		info = info.copy()
 		info.expand(textInfos.UNIT_CHARACTER)
 		for field in info.getTextWithFields(formatConfig):
 			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
