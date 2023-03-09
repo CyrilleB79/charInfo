@@ -12,19 +12,19 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		biScript = GlobalCommands.script_review_currentCharacter
 		self.biScriptDoc = biScript.__doc__
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
-		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
+		biScriptGestureMap = {g: biScriptInfo.scriptName for g in biScriptInfo.gestures}
 		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
 		commands.script_review_currentCharacter.im_func.__doc__ = ""
 		# Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
 		# Temp
 		self.generateCharList()
-	
+
 	def generateCharList(self):
 		def getNom(i):
 			try:
 				n = unicodeInfo.unicodeData['fr'][i][0].lower()
-				n = n.replace('lettre majuscule cyrillique','')
+				n = n.replace('lettre majuscule cyrillique', '')
 				n = n.replace('lettre minuscule cyrillique', '')
 				return n
 			except KeyError:

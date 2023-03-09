@@ -24,7 +24,7 @@ BLOCKS_FR_FILE_HEADER = \
 	# http://hapax.qc.ca/{nomsBlocksFrFileName}
 	#
 	# End of introduction note
-	
+
 	"""
 
 
@@ -60,17 +60,17 @@ def getBlockTranslation(transFile):
 				if locNameInDic != locName:
 					raise ValueError(f'locNameInDic != locName - {locNameInDic} != {locName}')
 	return dic
-	
-	
+
+
 def generateBlockFile(src, dst, transFile):
 	"""Generate a localized version of the file Blocks.txt on the same format as the English block file but with
 	localized block names.
-	
+
 	@param src: the path of the English file Blocks.txt.
-	 @param dst: the path of the translated file Blocks.txt to be generated.
-	 @param transFile: the file containing the translation of the block names.
+	@param dst: the path of the translated file Blocks.txt to be generated.
+	@param transFile: the file containing the translation of the block names.
 	"""
-	
+
 	p, transBlockFileName = os.path.split(transFile)
 	trans = getBlockTranslation(transFile)
 	with open(src, 'r', encoding='utf8') as fSrc:
