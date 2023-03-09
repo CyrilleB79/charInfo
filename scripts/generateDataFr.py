@@ -17,15 +17,15 @@ enDataPath = os.path.join(localeDataPath, 'en')
 blockFile = os.path.join(frDataPath, 'Blocks.txt')
 
 BLOCKS_FR_FILE_HEADER = \
-"""# Introduction note
-# 
-# This file is a French translation of https://unicode.org/Public/UNIDATA/Blocks.txt
-# It has been generated automatically thanks to the translations available in
-# http://hapax.qc.ca/{nomsBlocksFrFileName}
-#
-# End of introduction note
-
-"""
+	"""# Introduction note
+	# 
+	# This file is a French translation of https://unicode.org/Public/UNIDATA/Blocks.txt
+	# It has been generated automatically thanks to the translations available in
+	# http://hapax.qc.ca/{nomsBlocksFrFileName}
+	#
+	# End of introduction note
+	
+	"""
 
 
 def getBlockTranslation(transFile):

@@ -107,7 +107,8 @@ class NoValueError(InfoNotFoundError): pass
 STR_NO_CHAR_ERROR = '?'
 # Translators: Reported in the tables when no value is defined for a property of a specific character.
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
-# Translators: Reported in the symbol and character description tables when no file corresponding to the row exists.
+# Translators: Reported in the symbol and character description tables when no file corresponding to the row
+# exists.
 STR_NO_EXISTING_FILE = _('[No file]')
 
 
@@ -157,7 +158,8 @@ class UnicodeAttribute(Enum):
 	BLOCK = 'Block'
 
 
-# Mapping between UnicodeAttribute and a 2-tuple containing the attribute's translatable name and a function to retrieve the value.
+# Mapping between UnicodeAttribute and a 2-tuple containing the attribute's translatable name and a function
+# to retrieve the value.
 unicodeAttributeMapping = {
 	# Translators: A character attribute type in the Unicode table of the char info displayed message
 	UnicodeAttribute.CHARACTER: (_("Character"), 'getCharStr'),
@@ -193,8 +195,11 @@ msFontAttributeMapping = {
 	MsFontAttribute.EQ_UNICODE_NAME: (_("Equivalent Unicode character name"), 'getUCEqNameStr'),
 	# Translators: A character attribute type in the MS font table of the char info displayed message
 	MsFontAttribute.EQ_UNICODE_HEX_VALUE: (_("Equivalent Unicode character hex value"), 'getUCEqHexValStr'),
-	# Translators: A character attribute type in the MS font table of the char info displayed message
-	MsFontAttribute.EQ_UNICODE_DECIMAL_VALUE: (_("Equivalent Unicode character decimal value"), 'getUCEqDecValStr'),
+	MsFontAttribute.EQ_UNICODE_DECIMAL_VALUE: (
+		# Translators: A character attribute type in the MS font table of the char info displayed message
+		_("Equivalent Unicode character decimal value"),
+		'getUCEqDecValStr',
+	),
 }
 
 
@@ -249,10 +254,16 @@ class NVDACharacterDescriptionAttribute(Enum):
 nvdaCharacterDescriptionAttributeMapping = {
 	# Translators: A character attribute type in the table on the char info displayed message
 	NVDACharacterDescriptionAttribute.REPORTED: (_("Character description"), 'getCharacterDescriptionStr'),
-	# Translators: A character attribute type in the table on the char info displayed message
-	NVDACharacterDescriptionAttribute.LOCALE: (_("Character description{langInfo}"), 'getCharacterDescriptionLocaleStr'),
-	# Translators: A character attribute type in the table on the char info displayed message
-	NVDACharacterDescriptionAttribute.ENGLISH: (_("Character description (English file)"), 'getCharacterDescriptionEnglishStr'),
+	NVDACharacterDescriptionAttribute.LOCALE: (
+		# Translators: A character attribute type in the table on the char info displayed message
+		_("Character description{langInfo}"),
+		'getCharacterDescriptionLocaleStr',
+	),
+	NVDACharacterDescriptionAttribute.ENGLISH: (
+		# Translators: A character attribute type in the table on the char info displayed message
+		_("Character description (English file)"),
+		'getCharacterDescriptionEnglishStr',
+	),
 }
 
 
@@ -292,7 +303,7 @@ class UnicodeInfo(object):
 		self.blocks[lang] = self.getBlockInfo(lang)
 		self.generalCategories[lang] = self.getGeneralCategoryInfo(lang)
 		if lang != 'en':
-		#For english we use directly unicodedata lib -> no init.
+		# For english we use directly unicodedata lib -> no init.
 			self.unicodeData[lang] = self.getUnicodeDataInfo(lang)
 	
 	def getUnicodeDataInfo(self, lang):
@@ -376,7 +387,7 @@ class UnicodeInfo(object):
 				return None
 
 
-#Create UnicodeInfo instance
+# Create UnicodeInfo instance
 unicodeInfo = UnicodeInfo()
 
 
@@ -469,7 +480,7 @@ class MsCharsetsInfo(dict):
 		return csInfo
 
 
-#Initialize MsCharsetsInfoInstance
+# Initialize MsCharsetsInfoInstance
 msCharsetsInfo = MsCharsetsInfo()
 
 
@@ -585,7 +596,8 @@ class Character(object):
 	
 	def isMsFont(self):
 		if self.font in lstMsCharsets and (
-		self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256):
+			self.num >= UC_PRIVATE_USE_OFFSET and self.num < UC_PRIVATE_USE_OFFSET + 256
+		):
 			return True
 		else:
 			return False
@@ -635,7 +647,10 @@ class Character(object):
 	def getSymbolUserStr(self):
 		locale = self.lang.split('_')[0]
 		try:
-			info = self.getSymbolInfo(os.path.join(globalVars.appArgs.configPath, f"symbols-{locale}.dic"), allowComplexSymbols=False)
+			info = self.getSymbolInfo(
+				os.path.join(globalVars.appArgs.configPath, f"symbols-{locale}.dic"),
+				allowComplexSymbols=False,
+			)
 			return (
 				info.replacement,
 				SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
@@ -668,7 +683,7 @@ class Character(object):
 	def getSymbolLocaleCLDRStr(self, locale=None):
 		return self.getSymbolLocaleStr(locale, cldr=True)
 	
-	def getSymbolEnglishStr(self, cldr=False):\
+	def getSymbolEnglishStr(self, cldr=False):
 		return self.getSymbolLocaleStr(locale='en', cldr=cldr)
 	
 	def getSymbolEnglishCLDRStr(self):
@@ -738,7 +753,8 @@ class Characters(object):
 			return ''.join(content)
 	
 	def createHtmlInfoTable(self, section):
-		"""Create the HTML string corresponding to the table displaying names and values of various character attributes.
+		"""Create the HTML string corresponding to the table displaying names and values of various character
+		attributes.
 		"""
 		
 		content = []
@@ -752,7 +768,11 @@ class Characters(object):
 		mapping = dict(mapping)
 		toRemove = set()
 		if self.lang.split('_')[0] == "en":
-			toRemove.update({NVDASymbolAttribute.LOCALE, NVDASymbolAttribute.LOCALE_CLDR, NVDACharacterDescriptionAttribute.LOCALE})
+			toRemove.update({
+				NVDASymbolAttribute.LOCALE,
+				NVDASymbolAttribute.LOCALE_CLDR,
+				NVDACharacterDescriptionAttribute.LOCALE,
+			})
 		if not config.conf["speech"]["includeCLDR"]:
 			toRemove.update({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
 		for attr in toRemove:
@@ -872,7 +892,9 @@ class Characters(object):
 		optionList.append(
 			'{txt}: {val}'.format(
 				txt=removeAccelerator(
-					nvdaTranslations("Include Unicode Consortium data (including emoji) when processing characters and symbols"),
+					nvdaTranslations(
+						"Include Unicode Consortium data (including emoji) when processing characters and symbols",
+					),
 				),
 				val=convertToOnOff(config.conf["speech"]["includeCLDR"]),
 			)
@@ -936,9 +958,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.biScriptDoc = biScript.__doc__
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
 		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
-		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
+		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
 		commands.script_review_currentCharacter.__func__.__doc__ = ""
-		#Delete all associated gestures to original script
+		# Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
 		security.getSafeScripts = patchedGetSafeScripts
 	
@@ -952,9 +974,9 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			unicodeInfo.initLanguage(lang)
 	
 	def terminate (self):
-		#Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
+		# Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
 		commands.script_review_currentCharacter.__func__.__doc__ = self.biScriptDoc
-		#Clear charInfo plugin gestures
+		# Clear charInfo plugin gestures
 		self.clearGestureBindings()
 		# Restore original getSafeScripts function
 		security.getSafeScripts = originalGetSafeScripts
@@ -972,20 +994,29 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# once the session is reopened, which is quite useless and confusing.
 			return
 		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
-	# Translators: A part of the message presented in input help mode.
-	script_review_currentCharacter.__doc__ = commands.script_review_currentCharacter.__doc__ + _(". Pressing four times presents a message with detailed information on this character.")
+	script_review_currentCharacter.__doc__ = (
+		commands.script_review_currentCharacter.__doc__ +
+		# Translators: A part of the message presented in input help mode.
+		_(". Pressing four times presents a message with detailed information on this character.")
+	)
 	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 	
 	def script_currentCharInfo(self, gesture):
 		self.displayCurrentCharInfoMessage(info = api.getReviewPosition().copy())
-	# Translators: The message presented in input help mode.
-	script_currentCharInfo.__doc__ = _("Presents a message with detailed information on the character of the current navigator object where the review cursor is situated.")
+	script_currentCharInfo.__doc__ = _(
+		# Translators: The message presented in input help mode.
+		"Presents a message with detailed information on the character of the current navigator object"
+		" where the review cursor is situated."
+	)
 	script_currentCharInfo.category = commands.script_review_currentCharacter.category
 	
 	def script_currentCharAtCaretInfo(self, gesture):
 		obj = api.getFocusObject()
 		treeInterceptor = obj.treeInterceptor
-		if isinstance(treeInterceptor, treeInterceptorHandler.DocumentTreeInterceptor) and not treeInterceptor.passThrough:
+		if (
+			isinstance(treeInterceptor, treeInterceptorHandler.DocumentTreeInterceptor)
+			and not treeInterceptor.passThrough
+		):
 			obj = treeInterceptor
 		try:
 			info = obj.makeTextInfo(textInfos.POSITION_CARET)
@@ -994,8 +1025,10 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No caret"))
 			return
 		self.displayCurrentCharInfoMessage(info)
-	# Translators: The message presented in input help mode.
-	script_currentCharAtCaretInfo.__doc__ = _("Presents a message with detailed information on the character at the position of the caret.")
+	script_currentCharAtCaretInfo.__doc__ = _(
+		# Translators: The message presented in input help mode.
+		"Presents a message with detailed information on the character at the position of the caret."
+	)
 	script_currentCharAtCaretInfo.category = SCRCAT_SYSTEMCARET
 	
 	def displayCurrentCharInfoMessage(self, info):

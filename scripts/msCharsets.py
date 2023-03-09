@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*-
-#A tool script for NVDA add-on Character information
-#This script get the tables containing specific Microsoft character sets and their unicode equivalents.
-#from http://www.alanwood.net/
-#The Microsoft charsets that are retrieved from this website are: wingdings, wingdings 2, wingdings 3, webdings and symbol.
-#Copyright (C) 2019 Cyrille Bougot
-#This file is covered by the GNU General Public License.
-#See the file COPYING.txt for more details.
+# A tool script for NVDA add-on Character information
+# This script get the tables containing specific Microsoft character sets and their unicode equivalents.
+# from http://www.alanwood.net/
+# The Microsoft charsets that are retrieved from this website are: wingdings, wingdings 2, wingdings 3, webdings and symbol.
+# Copyright (C) 2019 Cyrille Bougot
+# This file is covered by the GNU General Public License.
+# See the file COPYING.txt for more details.
 
 from __future__ import absolute_import, division, print_function, unicode_literals
 
@@ -20,6 +20,7 @@ charsetList = [
 	'wingdings-3',
 	'webdings',
 	'symbol',
+]
 
 
 def getPageTree(url):
@@ -80,7 +81,7 @@ def getTableSymbol(url, nTable):
 	allCharInfo = []
 	for l in t[2:]:
 		if l[2] == 'space':
-			numMS = 32 #space
+			numMS = 32  # space
 			nameMS = l[2]
 			fieldNumUnicode = l[4]
 		else:

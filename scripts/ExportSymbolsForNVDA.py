@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
-
-#Snippet to modify char info __init__.py in order to export symbol dic.
-#To be edited and integrated in __init__.py
+# Snippet to modify char info __init__.py in order to export symbol dic.
+# To be edited and integrated in __init__.py
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
@@ -14,11 +13,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.biScriptDoc = biScript.__doc__
 		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
 		biScriptGestureMap = {g:biScriptInfo.scriptName for g in biScriptInfo.gestures}
-		#Empty the original script's docstring to prevent it from being displayed in gesture setting window.
+		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
 		commands.script_review_currentCharacter.im_func.__doc__ = ""
-		#Delete all associated gestures to original script
+		# Delete all associated gestures to original script
 		self.bindGestures(biScriptGestureMap)
-		#Temp
+		# Temp
 		self.generateCharList()
 	
 	def generateCharList(self):
@@ -30,6 +29,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				return n
 			except KeyError:
 				return 'NotAvailable'
-		g = (unichr(i)+'\t'+getNom(i)+'\tnone\tnever' for i in range(1000, 2000))
+		g = (unichr(i) + '\t' + getNom(i) + '\tnone\tnever' for i in range(1000, 2000))
 		with open(r'h:\charlist.txt', 'w', encoding='utf8') as f:
 			f.write('\r\n'.join(g))
