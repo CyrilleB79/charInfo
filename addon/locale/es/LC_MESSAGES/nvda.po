@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-03 10:55+0100\n"
+"PO-Revision-Date: 2023-03-10 10:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -18,9 +18,8 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Translators: Title on the char info displayed message
-#, fuzzy
 msgid "Detailed character information"
-msgstr "Información detallada del carácter'"
+msgstr "Información detallada del carácter"
 
 #. Translators: Reported in the tables when no value is defined for a property of a specific character.
 msgid "[Not defined]"
@@ -141,11 +140,11 @@ msgstr "Sin Bloque"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "On"
-msgstr ""
+msgstr "Activado"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "Off"
-msgstr ""
+msgstr "Desactivado"
 
 #. Translators: A column header on the char info displayed message
 msgid "Value"

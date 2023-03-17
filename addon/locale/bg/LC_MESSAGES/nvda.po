@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-03 09:20+0200\n"
+"PO-Revision-Date: 2023-03-10 08:53+0200\n"
 "Last-Translator: Kostadin Kolev <k_kolev1985@mail.bg>\n"
 "Language-Team: \n"
 "Language: bg\n"
@@ -18,7 +18,6 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Translators: Title on the char info displayed message
-#, fuzzy
 msgid "Detailed character information"
 msgstr "Подробна информация за знак"
 
@@ -141,11 +140,11 @@ msgstr "Няма група"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "On"
-msgstr ""
+msgstr "Включено"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "Off"
-msgstr ""
+msgstr "Изключено"
 
 #. Translators: A column header on the char info displayed message
 msgid "Value"

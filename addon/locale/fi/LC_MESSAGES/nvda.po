@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: charInfo\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-03 19:22+0200\n"
+"PO-Revision-Date: 2023-03-11 10:23+0200\n"
 "Last-Translator: Jani Kinnunen <janikinnunen340@gmail.com>\n"
 "Language-Team: fi_FI <janikinnunen340@gmail.com>\n"
 "Language: fi\n"
@@ -19,7 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Translators: Title on the char info displayed message
-#, fuzzy
 msgid "Detailed character information"
 msgstr "Yksityiskohtaiset merkin tiedot"
 
@@ -142,11 +141,11 @@ msgstr "Ei lohkoa"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "On"
-msgstr ""
+msgstr "Käytössä"
 
 #. Translators: The value of an option reported in symbol description section of the character info report.
 msgid "Off"
-msgstr ""
+msgstr "Ei käytössä"
 
 #. Translators: A column header on the char info displayed message
 msgid "Value"
