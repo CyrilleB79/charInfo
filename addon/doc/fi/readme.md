@@ -1,12 +1,27 @@
 # Merkin tiedot #
 
 * Tekijä: Cyrille Bougot
-* Yhteensopivuus: NVDA 2019.3 ja uudemmat
+* Yhteensopivuus: NVDA 2022.3.3 ja uudemmat
 * Lataa [vakaa versio][1]
 * Lataa [kehitysversio][2]
 
-Tämän lisäosan avulla on mahdollista näyttää merkin tiedot, kuten
-Unicode-nimi, numero, kategoria jne. selattavana viestinä.
+Tämän lisäosan avulla on mahdollista näyttää merkin tiedot erillisessä
+ikkunassa.
+
+## Näytettävät tiedot
+
+Seuraavat tiedot näytetään:
+
+* Unicode: merkin Unicode-tiedot, esim. nimi, CLDR-nimi, arvo, lohko, jne.
+* Merkeistä, jotka on kirjoitettu Microsoftin omilla fonteilla (Symbol,
+  Wingding 1-3 ja Webding), näytetään merkin ja fontin nimi sekä vastaavan
+  Unicode-merkin tiedot.
+* NVDA:n symbolitiedot: tiedot, jotka auttavat ymmärtämään, miten NVDA
+  ilmoittaa symbolin kuvauksen. NVDA käyttää ylimmillä riveilllä olevia
+  tietoja symbolin kuvailuun.
+* NVDA:n merkin tiedot: tiedot, jotka auttavat ymmärtämään, miten NVDA
+  ilmoittaa merkin kuvauksen (esim. "A" = "Antti"). NVDA käyttää ylimmillä
+  riveillä olevaa tietoa merkin kuvailuun.
 
 
 ## Komennot
@@ -14,37 +29,52 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 * Numeroryhmän 2 (kaikki näppäimistöasettelut) tai NVDA+. (kannettavien
   asettelu): Näyttää neljästi painettaessa tietoja merkistä, jonka kohdalla
   tarkastelukohdistin on nykyisessä navigointiobjektissa.
-
+* Ei määritetty: Komento tarkastelukohdistimen kohdalla olevan merkin
+  tietojen näyttämiseen nykyisestä navigointiobjektista. Mikäli neljän
+  painalluksen näppäinkomento tuntuu epämukavalta, voit määrittää sille
+  mieleisesi näppäinkomennon NVDA:n Näppäinkomennot-valintaikkunan "Tekstin
+  tarkastelu" -kategoriasta.
+* Ei määritetty: Skripti, joka näyttää kohdistimen kohdalla olevan merkin
+  tiedot (toimii vain paikoissa, joissa on kohdistin). Komento löytyy NVDA:n
+  Näppäinkomennot-valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
 
 ## Huomautuksia
 
-* Tämä lisäosa tarjoaa myös kaksi näppäinkomentoa, joita ei ole
-  oletusarvoisesti määritetty:
-
-    * Komento suoraan tarkastelukohdistimen kohdalla olevan merkin tietojen
-      näyttämiseen. Komennolle ei ole määritetty oletusarvoista
-      näppäinkomentoa. Mikäli neljän painalluksen näppäinkomento tuntuu
-      epämukavalta, voit määrittää sille mieleisesi näppäinkomennon NVDA:n
-      Näppäinkomennot-valintaikkunan "Tekstin tarkastelu" -kategoriasta.
-    * Skripti, joka näyttää kohdalla olevan merkin tiedot (toimii vain
-      paikoissa, joissa on kohdistin). Komento löytyy NVDA:n
-      Näppäinkomennot-valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
-
+* Kahta komentoa ei ole oletusarvoisesti määritetty. Ne on määritettävä
+  Näppäinkomennot-valintaikkunasta, jotta niitä voidaan käyttää.
 * Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
   Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
-  kielellä, myös sitä käytetään tietojen näyttämiseen.
-* Merkeistä, jotka on kirjoitettu Microsoftin omilla Symbol-, Wingding (1,
-  2, 3)- tai Webding-fonteilla, näytetään merkin ja fontin nimi sekä
-  vastaavan Unicode-merkin tiedot.
+  kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
 
 
 ## Muutosloki
+
+### Versio 2.0
+
+
+* Merkin tietojen ilmoittamista paranneltu NVDA:n symbolien ja merkkien
+  kuvauksilla.
+* Lisätty tuki yhdistelmämerkeille, esim. kahdesta tai useammasta merkistä
+  koostuville diakriittisille kirjaimille.
+* Päivitys Unicode 15.0:aan.
+* Ranskankielinen lohko päivitetty.
+* Merkin tietojen näyttämistä ei sallita lukitusnäytöllä tai suojatuissa
+  ruuduissa.
+* Nykyisen merkin lukeva skripti toimii nyt normaalisti (yksi, kaksi tai
+  kolme painallusta) Windowsin lukitusnäytössä.
+* Yhteensopivuus NVDA 2023.1:n kanssa.
+* Luovuttu yhteensopivuudesta NVDA:n 2022.3.3:a vanhempien versioiden
+  kanssa. Viimeisin NVDA 2019.3:n kanssa yhteensopiva versio on
+  [1.8][downloadVersion1.8].
+* Lokalisointeja päivitetty.
 
 ### Versio 1.8
 
 * Päivitys Unicode 14.0:aan.
 * Yhteensopivuus NVDA 2022.1:n kanssa.
-* NVDA 2019.3:a vanhempia versioita ei enää tueta.
+* Luovuttu yhteensopivuudesta NVDA:n 2019.3:a vanhempien versioiden
+  kanssa. Viimeisin NVDA 2017.3:n kanssa yhteensopiva versio on
+  [1.7][downloadVersion1.7].
 * Julkaisu suoritetaan nyt appVeyorin sijasta GitHub-toiminnolla.
 * Lokalisointeja päivitetty.
 
@@ -93,3 +123,9 @@ Unicode-nimi, numero, kategoria jne. selattavana viestinä.
 [1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+
+[downloadVersion1.7]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+
+[downloadVersion1.8]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon

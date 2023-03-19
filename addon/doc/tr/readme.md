@@ -1,12 +1,30 @@
 # Karakter bilgisi #
 
 * Yazar: Cyrille Bougot
-* NVDA compatibility: 2019.3 and beyond
+* NVDA compatibility: 2022.3.3 and beyond
 * [Kararlı sürümü][1] indir
 * [geliştirici sürümünü][2] indir
 
-Bu eklenti, NVDA'nın bir karakterin unikod adı, sayısı, kategorisi gibi
-bilgileri mesaj şeklinde sunmasını sağlar.
+This add-on allows to present in a message various information about a
+character.
+
+## Presented information
+
+The presented information include the following sections:
+
+* Unicode: information from Unicode norm, i.e. name, CLDR name, value,
+  block, etc.
+* MS font, only for characters written with proprietary Microsoft fonts
+  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
+  equivalent Unicode character.
+* NVDA symbol description: information allowing to understand how NVDA
+  reports the symbol description. NVDA uses the information in the top most
+  rows containing available information to provide the description of a
+  symbol.
+* NVDA character description: information allowing to understand how NVDA
+  reports the character description (e.g. "alpha" for "A"). NVDA uses the
+  information in the top most rows containing available information to
+  provide the description of a character.
 
 
 ## Komutlar
@@ -14,36 +32,50 @@ bilgileri mesaj şeklinde sunmasını sağlar.
 * Numaratör2 (tüm klavye düzenleri) veya NVDA+. (dizüstü düzeni): 4 kez
   basıldığında, inceleme imlecinin bulunduğu konumdaki nesne sunucusu
   karakteri hakkında bilgi gösterir.
-
+* Unassigned: Presents a message with detailed information on the character
+  of the current navigator object where the review cursor is situated. If
+  you feel uncomfortable with the four press gesture, you may assign to it a
+  gesture in NVDA's input gesture dialog ("Text review" category).
+* Unassigned: Presents a message with detailed information on the character
+  at the position of the caret (works only in places where there is a
+  caret). It can be found in the "system caret" category of NVDA input
+  gestures dialog.
 
 ## Notlar
 
-* Bu eklenti ayrıca varsayılan olarak kısayolu atanmamış olan 2 işlev sunar:
-
-    * İnceleme imlecinin üzerinde bulunduğu karakter hakkında bilgi
-      görüntülemek için bir script. 4 kez basma kısayolundan memnun
-      değilseniz farklı bir kısayol atayabilirsiniz. Atamayı girdi
-      hareketleri iletişim kutusunun metin incelemesi kategorisinden
-      yapabilirsiniz.
-    * Düzenleme imlecinin üzerinde bulunduğu karakter hakkında bilgi
-      göstermek için bir script (düzenleme imleci olan yerlerde
-      çalışır). NVDA girdi hareketleri iletişim kutusunun "sistem düzenleme
-      imleci" kategorisinde bulabilirsiniz.
-
-* Karakter hakkında bilgi, unicode düzeninde olduğu için İngilizce
-  verilir. Eklenti başka bir dile çevrildiyse bilgi İngilizceyle birlikte
-  verilir.
-* Microsoft proprietary yazı tipi sembolüyle yazılan karakterler için,
-  Wingding (1, 2,, 3) ve Webding, bazı ek bilgiler sunulur:
+* Two commands are unassigned by default. They need to be assigned in the
+  Input gestures dialog to be used.
+* The provided information in the Unicode section is in English since it is
+  part of Unicode norm. If a local translation exists for this add-on, the
+  information is also provided alongside with English.
 
 
 ## Değişiklikler
+
+### Version 2.0
+
+
+* Enhanced the character information report with information on NVDA symbol
+  and NVDA character description.
+* Added the support of compound character, e.g. letters with diacritic
+  consisting in two or more Unicode characters.
+* Update to Unicode 15.0
+* Updated French block data.
+* Viewing character information is not allowed on lock screen and secure
+  screens.
+* On Windows lock screen, the script to review the current character can now
+  operate normally (single, double or triple press).
+* Compatibility with NVDA 2023.1.
+* Drops compatibility with NVDA below 2022.3.3. The last version compatible
+  with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Update localizations.
 
 ### Version 1.8
 
 * Update to Unicode 14.0.
 * Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3.
+* Drops compatibility with NVDA below 2019.3. The last version compatible
+  with NVDA 2017.3 is the [1.7][downloadVersion1.7].
 * The release is now performed thanks to a GitHub action instead of
   appVeyor.
 * Update localizations.
@@ -95,3 +127,9 @@ bilgileri mesaj şeklinde sunmasını sağlar.
 [1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+
+[downloadVersion1.7]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+
+[downloadVersion1.8]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon

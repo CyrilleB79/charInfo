@@ -1,36 +1,79 @@
 # 字符信息 #
 
 * 作者： Cyrille Bougot
-* NVDA 兼容性：2019.3 及更高版本
+* NVDA compatibility: 2022.3.3 and beyond
 * 下载 [稳定版][1]
 * 下载[开发板][2]
 
-此插件可以用于展示字符的详细信息, 如 unicode 名称、数字、类别等。
+This add-on allows to present in a message various information about a
+character.
+
+## Presented information
+
+The presented information include the following sections:
+
+* Unicode: information from Unicode norm, i.e. name, CLDR name, value,
+  block, etc.
+* MS font, only for characters written with proprietary Microsoft fonts
+  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
+  equivalent Unicode character.
+* NVDA symbol description: information allowing to understand how NVDA
+  reports the symbol description. NVDA uses the information in the top most
+  rows containing available information to provide the description of a
+  symbol.
+* NVDA character description: information allowing to understand how NVDA
+  reports the character description (e.g. "alpha" for "A"). NVDA uses the
+  information in the top most rows containing available information to
+  provide the description of a character.
 
 
 ## 快捷键
 
 * 数字键盘2 （所有键盘布局）或 NVDA +句号 (.) （笔记本键盘布局）：按4次时，读出浏览光标处字符的信息。
-
+* Unassigned: Presents a message with detailed information on the character
+  of the current navigator object where the review cursor is situated. If
+  you feel uncomfortable with the four press gesture, you may assign to it a
+  gesture in NVDA's input gesture dialog ("Text review" category).
+* Unassigned: Presents a message with detailed information on the character
+  at the position of the caret (works only in places where there is a
+  caret). It can be found in the "system caret" category of NVDA input
+  gestures dialog.
 
 ## 注意
 
-* 此插件还提供了两个默认未分配的手势：
-
-    * 直接显示浏览光标字符信息的脚本。如果您对连按四次的按键感到不适，您可在 NVDA 按键与手势对话框的“文本查看”类别中为其指定一个按键。
-    * 在系统输入焦点处显示字符信息的脚本（仅在有系统输入焦点的地方有效）。它可以在 NVDA 按键与手势对话框的“系统输入焦点”类别中找到。
-
-* 所提供的信息是英文的, 因为它是 Unicode 规范的一部分。如果此插件有对应语言的翻译, 则信息也会与英语一起提供。
-* 对于使用Microsoft专有字体符号Wingding(1,2,3)和Webding编写的字符，提供了一些附加信息:字符名、字体名和相应unicode字符的信息。
+* Two commands are unassigned by default. They need to be assigned in the
+  Input gestures dialog to be used.
+* The provided information in the Unicode section is in English since it is
+  part of Unicode norm. If a local translation exists for this add-on, the
+  information is also provided alongside with English.
 
 
 ## 更新日志
+
+### Version 2.0
+
+
+* Enhanced the character information report with information on NVDA symbol
+  and NVDA character description.
+* Added the support of compound character, e.g. letters with diacritic
+  consisting in two or more Unicode characters.
+* Update to Unicode 15.0
+* Updated French block data.
+* Viewing character information is not allowed on lock screen and secure
+  screens.
+* On Windows lock screen, the script to review the current character can now
+  operate normally (single, double or triple press).
+* Compatibility with NVDA 2023.1.
+* Drops compatibility with NVDA below 2022.3.3. The last version compatible
+  with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* 更新本地化。
 
 ### 版本1.8
 
 * 更新到 Unicode 14.0。
 * 兼容 NVDA 2022.1。
-* 将与 NVDA 的兼容性降低到 2019.3 以下。
+* Drops compatibility with NVDA below 2019.3. The last version compatible
+  with NVDA 2017.3 is the [1.7][downloadVersion1.7].
 * 现在通过 GitHub 操作而不是 appVeyor 来执行发布。
 * 更新本地化。
 
@@ -77,3 +120,9 @@
 [1]: https://addons.nvda-project.org/files/get.php?file=chari
 
 [2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+
+[downloadVersion1.7]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+
+[downloadVersion1.8]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
