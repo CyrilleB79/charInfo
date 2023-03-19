@@ -31,6 +31,11 @@ The presented information include the following sections:
 
 ## Change log
 
+### Version 2.1
+
+* Fixed some bugs preventing the character information report to be displayed when some options were used.
+* Updated localizations.
+
 ### Version 2.0
 
 
