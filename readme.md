@@ -3,7 +3,6 @@
 * Author: Cyrille Bougot
 * NVDA compatibility: 2022.3.3 and beyond
 * Download [stable version][1]
-* Download [development version][2]
 
 This add-on allows to present in a message various information about a character.
 
@@ -95,9 +94,7 @@ The presented information include the following sections:
 
 * Initial release.
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
-
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
 
 [downloadVersion1.7]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
