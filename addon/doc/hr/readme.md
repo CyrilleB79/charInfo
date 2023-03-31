@@ -1,30 +1,27 @@
 # Informacije o znakovima (Character Information) #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2022.3.3 and beyond
+* NVDA kompatibilnost: 2022.3.3 i novije verzije
 * Preuzmi [stabilnu verziju][1]
-* Preuzmi [razvojnu verziju][2]
 
-This add-on allows to present in a message various information about a
-character.
+Ovaj dodatak omogućuje predstavljanje raznih informacija o znaku u poruci.
 
-## Presented information
+## Prikazane informacije
 
-The presented information include the following sections:
+Prikazane informacije uključuju sljedeće odjeljke:
 
-* Unicode: information from Unicode norm, i.e. name, CLDR name, value,
-  block, etc.
-* MS font, only for characters written with proprietary Microsoft fonts
-  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
-  equivalent Unicode character.
-* NVDA symbol description: information allowing to understand how NVDA
-  reports the symbol description. NVDA uses the information in the top most
-  rows containing available information to provide the description of a
-  symbol.
-* NVDA character description: information allowing to understand how NVDA
-  reports the character description (e.g. "alpha" for "A"). NVDA uses the
-  information in the top most rows containing available information to
-  provide the description of a character.
+* Unicode: informacije iz Unicode norme, npr. ime, CLDR ime, vrijednost,
+  blok itd.
+* MS font, samo za znakove koji su napisani s Microsoftovim fontovima
+  (Symbol, Wingding 1, 2, 3 i Webding): ime i informacije odgovarajućeg
+  unicode znaka.
+* NVDA opis simbola: informacije koje omogućuju razumijevanje kako NVDA
+  izvještava opis simbola. NVDA koristi informacije u najgornjim redcima
+  koji sadrže dostupne informacije za pružanje opisa simbola.
+* NVDA opis znakova: informacije koje omogućuju razumijevanje kako NVDA
+  izvještava opis znakova (npr. „alfa” za „A”). NVDA koristi informacije u
+  najgornjim redcima koji sadrže dostupne informacije za pružanje opisa
+  znakova.
 
 
 ## Naredbe
@@ -32,50 +29,56 @@ The presented information include the following sections:
 * Numpad2 (svi tipkovnički rasporedi) ili NVDA+. (raspored prijenosnog
   računala): kad se pritisne 4 puta, prikazuje informacije o znaku
   navigacijskog objekta na kojem se nalazi pregledni pokazivač.
-* Unassigned: Presents a message with detailed information on the character
-  of the current navigator object where the review cursor is situated. If
-  you feel uncomfortable with the four press gesture, you may assign to it a
-  gesture in NVDA's input gesture dialog ("Text review" category).
-* Unassigned: Presents a message with detailed information on the character
-  at the position of the caret (works only in places where there is a
-  caret). It can be found in the "system caret" category of NVDA input
-  gestures dialog.
+* Nedodijeljeno: Prikazuje poruku s detaljnim informacijama o znaku na kojem
+  se nalazi pregledni kursor. Ako ne želiš koristiti gestu s četiri
+  pritiska, možeš joj dodijeliti gestu u dijaloškom okviru za ulazne geste
+  (kategorija „Pregled teksta”).
+* Nedodijeljeno: Prikazuje poruku s detaljnim informacijama o znaku na
+  mjestu kursora (radi samo na mjestima gdje postoji kursor). Može se
+  pronaći u kategoriji „kursor sustava” u dijaloškom okviru NVDA čitača za
+  ulazne geste.
 
 ## Napomene
 
-* Two commands are unassigned by default. They need to be assigned in the
-  Input gestures dialog to be used.
-* The provided information in the Unicode section is in English since it is
-  part of Unicode norm. If a local translation exists for this add-on, the
-  information is also provided alongside with English.
+* Dvije naredbe standardno nisu dodijeljene. Da bi se koristile, moraju se
+  dodijeliti u dijaloškom okviru „Ulazne geste”.
+* Informacije u Unicode odjeljku su na engleskom jeziku jer su dio Unicode
+  norme. Ako postoji lokalni prijevod za ovaj dodatak, informacije se
+  također prikazuju uz engleski jezik.
 
 
 ## Dnevnik promjena
 
-### Version 2.0
+### Verzija 2.1
+
+* Fixed some bugs preventing the character information report to be
+  displayed when some options were used.
+* Aktualizirane lokalizacije.
+
+### Verzija 2.0
 
 
 * Enhanced the character information report with information on NVDA symbol
   and NVDA character description.
 * Added the support of compound character, e.g. letters with diacritic
   consisting in two or more Unicode characters.
-* Update to Unicode 15.0
+* Aktualiziranje na Unicode 15.0
 * Updated French block data.
 * Viewing character information is not allowed on lock screen and secure
   screens.
 * On Windows lock screen, the script to review the current character can now
   operate normally (single, double or triple press).
-* Compatibility with NVDA 2023.1.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible
-  with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Kompatibilnost s NVDA verzijom 2023.1.
+* Ukida kompatibilnost s ranijim NVDA verzijama od 2022.3.3. Zadnja verzija
+  kompatibilna s NVDA 2019.3 je [1.8][preuzmi verziju 1.8].
 * Aktualizirane lokalizacije.
 
 ### Verzija 1.8
 
 * Aktualiziranje na Unicode 14.0.
 * NVDA kompatibilnost: 2022.1.
-* Drops compatibility with NVDA below 2019.3. The last version compatible
-  with NVDA 2017.3 is the [1.7][downloadVersion1.7].
+* Ukida kompatibilnost s ranijim NVDA verzijama od 2019.3. Zadnja verzija
+  kompatibilna s NVDA 2017.3 je [1.7][preuzmi verziju 1.7].
 * Izdanje se sad izvodi zahvaljujući GitHub radnji umjesto appVeyor.
 * Aktualizirane lokalizacije.
 
@@ -121,12 +124,10 @@ The presented information include the following sections:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
+[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
 
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
-
-[downloadVersion1.7]:
+[preuzmi verziju 1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]:
+[preuzmi verziju 1.8]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon

@@ -3,7 +3,6 @@
 * Autor: Cyrille Bougot
 * Compatibilidad con NVDA: de 2022.3.3 en adelante
 * Descargar [versión estable][1]
-* Descargar [versión de desarrollo][2]
 
 Este complemento permite presentar en un mensaje diversa información sobre
 un carácter.
@@ -53,6 +52,12 @@ La información presentada incluye las siguientes secciones:
 
 
 ## Registro de cambios
+
+### Versión 2.1
+
+* Se han corregido algunos fallos que impedían mostrar la información del
+  carácter cuando se usaban ciertas opciones.
+* Traducciones actualizadas.
 
 ### Versión 2.0
 
@@ -127,9 +132,7 @@ La información presentada incluye las siguientes secciones:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
-
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
