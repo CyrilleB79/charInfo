@@ -57,7 +57,6 @@ Prezentowane informacje obejmują następujące sekcje:
 
 ### Wersja 2.0
 
-
 * Ulepszono raport informacji o postaci o informacje o symbolu NVDA i opisie
   znaku NVDA.
 * Dodano obsługę znaków złożonych, np. liter ze znakami diakrytycznymi
@@ -125,7 +124,7 @@ Prezentowane informacje obejmują następujące sekcje:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

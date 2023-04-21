@@ -57,7 +57,6 @@ Prikazane informacije uključuju sljedeće odjeljke:
 
 ### Verzija 2.0
 
-
 * Enhanced the character information report with information on NVDA symbol
   and NVDA character description.
 * Added the support of compound character, e.g. letters with diacritic
@@ -124,7 +123,7 @@ Prikazane informacije uključuju sljedeće odjeljke:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [preuzmi verziju 1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

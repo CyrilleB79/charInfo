@@ -55,7 +55,6 @@ Seuraavat tiedot näytetään:
 
 ### Versio 2.0
 
-
 * Merkin tietojen ilmoittamista paranneltu NVDA:n symbolien ja merkkien
   kuvauksilla.
 * Lisätty tuki yhdistelmämerkeille, esim. kahdesta tai useammasta merkistä
@@ -124,7 +123,7 @@ Seuraavat tiedot näytetään:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

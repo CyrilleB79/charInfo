@@ -59,7 +59,6 @@
 
 ### Версия 2.0
 
-
 * Подобрено е докладването с информация за символи с информация за символа
   от NVDA и описанието на знака от NVDA.
 * Добавена е поддръжка за съставни знаци, напр. букви с диакритика, състоящ
@@ -130,7 +129,7 @@
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

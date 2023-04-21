@@ -59,7 +59,6 @@ The presented information include the following sections:
 
 ### Version 2.0
 
-
 * Enhanced the character information report with information on NVDA symbol
   and NVDA character description.
 * Added the support of compound character, e.g. letters with diacritic
@@ -128,7 +127,7 @@ The presented information include the following sections:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

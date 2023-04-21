@@ -61,7 +61,6 @@ La información presentada incluye las siguientes secciones:
 
 ### Versión 2.0
 
-
 * Se ha mejorado la información en el anuncio de caracteres con información
   de símbolo y descripción de caracteres de NVDA.
 * Se ha añadido soporte para caracteres compuestos, como letras diacríticas
@@ -132,7 +131,7 @@ La información presentada incluye las siguientes secciones:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
