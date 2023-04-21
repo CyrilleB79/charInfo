@@ -94,7 +94,7 @@ The presented information include the following sections:
 
 * Initial release.
 
-[1]: https://addons.nvda-project.org/files/get.php?file=charInfo
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
