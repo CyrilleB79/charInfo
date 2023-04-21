@@ -3,7 +3,6 @@
 * Tekijä: Cyrille Bougot
 * Yhteensopivuus: NVDA 2022.3.3 ja uudemmat
 * Lataa [vakaa versio][1]
-* Lataa [kehitysversio][2]
 
 Tämän lisäosan avulla on mahdollista näyttää merkin tiedot erillisessä
 ikkunassa.
@@ -30,10 +29,9 @@ Seuraavat tiedot näytetään:
   asettelu): Näyttää neljästi painettaessa tietoja merkistä, jonka kohdalla
   tarkastelukohdistin on nykyisessä navigointiobjektissa.
 * Ei määritetty: Komento tarkastelukohdistimen kohdalla olevan merkin
-  tietojen näyttämiseen nykyisestä navigointiobjektista. Mikäli neljän
-  painalluksen näppäinkomento tuntuu epämukavalta, voit määrittää sille
-  mieleisesi näppäinkomennon NVDA:n Näppäinkomennot-valintaikkunan "Tekstin
-  tarkastelu" -kategoriasta.
+  tietojen näyttämiseen. Mikäli neljän painalluksen näppäinkomento tuntuu
+  epämukavalta, voit määrittää sille mieleisesi komennon NVDA:n
+  Näppäinkomennot-valintaikkunan "Tekstin tarkastelu" -
 * Ei määritetty: Skripti, joka näyttää kohdistimen kohdalla olevan merkin
   tiedot (toimii vain paikoissa, joissa on kohdistin). Komento löytyy NVDA:n
   Näppäinkomennot-valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
@@ -49,8 +47,13 @@ Seuraavat tiedot näytetään:
 
 ## Muutosloki
 
-### Versio 2.0
+### Versio 2.1
 
+* Korjattu bugeja, jotka estivät merkin tietojen näyttämisen joitakin
+  asetuksia käytettäessä.
+* Lokalisointeja päivitetty.
+
+### Versio 2.0
 
 * Merkin tietojen ilmoittamista paranneltu NVDA:n symbolien ja merkkien
   kuvauksilla.
@@ -120,9 +123,7 @@ Seuraavat tiedot näytetään:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
-
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

@@ -3,7 +3,6 @@
 * Auteur : Cyrille Bougot
 * Compatibilité NVDA : 2022.3.3 et ultérieure
 * Télécharger [version stable][1]
-* Télécharger [version de développement][2]
 
 Cette extension permet d'afficher dans un message des informations sur un
 caractère.
@@ -53,8 +52,13 @@ Les informations affichées comprennent les sections suivantes :
 
 ## Journal des changements
 
-### Version 2.0
+### Version 2.1
 
+* Correction de bugs empêchant l'affichage du message d'informations
+  caractère lorsque certaines options étaient utilisées.
+* Mise à jour des localisations.
+
+### Version 2.0
 
 * Amélioration de l'affichage d'informations caractères avec des
   informations sur le symbole NVDA et la description de caractère NVDA.
@@ -126,9 +130,7 @@ Les informations affichées comprennent les sections suivantes :
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
-
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

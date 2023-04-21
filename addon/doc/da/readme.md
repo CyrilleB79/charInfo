@@ -3,7 +3,6 @@
 * Forfatter: Cyrille Bougot
 * NVDA compatibility: 2022.3.3 and beyond
 * Download [stabil version][1]
-* Download [udviklingsversion][2]
 
 This add-on allows to present in a message various information about a
 character.
@@ -33,9 +32,9 @@ The presented information include the following sections:
   denne kommando fire gange vil der vises information om det aktuelle tegn
   der befinder sig under læsemarkøren.
 * Unassigned: Presents a message with detailed information on the character
-  of the current navigator object where the review cursor is situated. If
-  you feel uncomfortable with the four press gesture, you may assign to it a
-  gesture in NVDA's input gesture dialog ("Text review" category).
+  where the review cursor is situated. If you feel uncomfortable with the
+  four press gesture, you may assign to it a gesture in NVDA's input gesture
+  dialog ("Text review" category).
 * Unassigned: Presents a message with detailed information on the character
   at the position of the caret (works only in places where there is a
   caret). It can be found in the "system caret" category of NVDA input
@@ -52,8 +51,13 @@ The presented information include the following sections:
 
 ## Ændringshistorik
 
-### Version 2.0
+### Version 2.1
 
+* Fixed some bugs preventing the character information report to be
+  displayed when some options were used.
+* Updated localizations.
+
+### Version 2.0
 
 * Enhanced the character information report with information on NVDA symbol
   and NVDA character description.
@@ -123,9 +127,7 @@ The presented information include the following sections:
 
 [[!tag dev stable]]
 
-[1]: https://addons.nvda-project.org/files/get.php?file=chari
-
-[2]: https://addons.nvda-project.org/files/get.php?file=chari-dev
+[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [downloadVersion1.7]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
