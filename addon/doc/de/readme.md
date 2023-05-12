@@ -1,29 +1,29 @@
 # Zeichen-Informationen #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2022.3.3 and beyond
+* NVDA-Kompatibilität: 2022.3.3 und neuer
 * [Stabile Version herunterladen][1]
 
-This add-on allows to present in a message various information about a
-character.
+Mit dieser NVDA-Erweiterung können Sie in einer Nachricht verschiedene
+Informationen über ein bestimmtes Zeichen erfahren.
 
-## Presented information
+## Dargestellte Informationen
 
-The presented information include the following sections:
+Die dargestellten Informationen umfassen die folgenden Abschnitte:
 
-* Unicode: information from Unicode norm, i.e. name, CLDR name, value,
-  block, etc.
-* MS font, only for characters written with proprietary Microsoft fonts
-  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
-  equivalent Unicode character.
-* NVDA symbol description: information allowing to understand how NVDA
-  reports the symbol description. NVDA uses the information in the top most
-  rows containing available information to provide the description of a
-  symbol.
-* NVDA character description: information allowing to understand how NVDA
-  reports the character description (e.g. "alpha" for "A"). NVDA uses the
-  information in the top most rows containing available information to
-  provide the description of a character.
+* Unicode: Informationen aus der Unicode-Norm, d. h., Name, CLDR-Name, Wert,
+  Block, etc.
+* Microsoft-Schriftart, nur für Zeichen, die mit proprietären
+  Microsoft-Schriftarten (Symbol, Wingding 1, 2, 3 und Webding) geschrieben
+  wurden: Name und Informationen über das entsprechende Unicode-Zeichen.
+* Symbol-Beschreibung in NVDA: Informationen, die es ermöglichen, zu
+  verstehen, wie NVDA die Symbol-Beschreibung mitteilt. NVDA verwendet die
+  Informationen in den obersten Zeilen mit den verfügbaren Informationen, um
+  die Beschreibung eines Symbols zu liefern.
+* Zeichen-Beschreibung in NVDA: Informationen, die Aufschluss darüber geben,
+  wie NVDA die Zeichen-Beschreibung wiedergibt (z. B. "Alpha" für "A"). NVDA
+  verwendet die Informationen in den obersten Zeilen mit den verfügbaren
+  Informationen, um die Beschreibung eines Zeichens zu liefern.
 
 
 ## Befehle
@@ -32,55 +32,60 @@ The presented information include the following sections:
   Laptop): Wenn diese Tastenkombination viermal gedrückt wird, werden
   Informationen zum Zeichen des aktuellen Navigatorobjekts angezeigt, in dem
   sich der NVDA-Cursor befindet.
-* Unassigned: Presents a message with detailed information on the character
-  where the review cursor is situated. If you feel uncomfortable with the
-  four press gesture, you may assign to it a gesture in NVDA's input gesture
-  dialog ("Text review" category).
-* Unassigned: Presents a message with detailed information on the character
-  at the position of the caret (works only in places where there is a
-  caret). It can be found in the "system caret" category of NVDA input
-  gestures dialog.
+* Nicht zugewiesen: Zeigt eine Meldung mit detaillierten Informationen zu
+  dem Zeichen an, auf dem sich der NVDA-Cursor befindet. Wenn Sie nicht mit
+  diesem Tastenbefehl einverstanden sein sollten, können Sie ihn im
+  Dialogfeld für die Tastenbefehle in NVDA diese neu zuweisen (Kategorie
+  "Text betrachten").
+* Nicht zugewiesen: Zeigt eine Meldung mit detaillierten Informationen über
+  das Zeichen an der Position der Einfügemarke an (funktioniert nur an
+  Stellen, an denen es eine Einfügemarke gibt). Sie finden diese Option in
+  der Kategorie "System-Cursor" im Dialogfeld für die Tastenbefehle in NVDA.
 
 ## Anmerkungen
 
-* Two commands are unassigned by default. They need to be assigned in the
-  Input gestures dialog to be used.
-* The provided information in the Unicode section is in English since it is
-  part of Unicode norm. If a local translation exists for this add-on, the
-  information is also provided alongside with English.
+* Zwei Befehle sind standardmäßig nicht zugewiesen. Sie sollten diese im
+  Dialogfeld für die Tastenbefehle zuweisen, falls Sie diese benutzen
+  möchten.
+* Die Informationen im Unicode-Abschnitt sind in Englisch, da sie Teil der
+  Unicode-Norm sind. Wenn es eine lokale Übersetzung für dieser
+  NVDA-Erweiterung gibt, werden die Informationen auch auf Englisch
+  bereitgestellt.
 
 
 ## Änderungsprotokoll
 
 ### Version 2.1
 
-* Fixed some bugs preventing the character information report to be
-  displayed when some options were used.
-* Updated localizations.
+* Es wurden einige Fehler behoben, die verhinderten, dass die Rückmeldung
+  über die Zeichen-Informationen mitgeteilt wurden, wenn einige Optionen
+  verwendet wurden.
+* Aktualisierte Lokalisierungen.
 
 ### Version 2.0
 
-* Enhanced the character information report with information on NVDA symbol
-  and NVDA character description.
-* Added the support of compound character, e.g. letters with diacritic
-  consisting in two or more Unicode characters.
-* Update to Unicode 15.0
-* Updated French block data.
-* Viewing character information is not allowed on lock screen and secure
-  screens.
-* On Windows lock screen, the script to review the current character can now
-  operate normally (single, double or triple press).
-* Compatibility with NVDA 2023.1.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible
-  with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Die Rückmeldung von Zeichen-Informationen wurde um Informationen von
+  Symbolen und Zeichen-Beschreibungen in NVDA erweitert.
+* Unterstützung von zusammengesetzten Zeichen, z.B. Buchstaben mit
+  diakritischen Zeichen, die aus zwei oder mehr Unicode-Zeichen bestehen.
+* Auf Unicode 15.0 aktualisiert
+* Aktualisierte französische Blockdaten.
+* Die Anzeige von Zeichen-Informationen ist im Sperrbildschirmen und bei
+  Sicherheitsmeldungen nicht erlaubt.
+* Auf dem Sperrbildschirm von Windows kann das Skript zur Überprüfung des
+  aktuellen Zeichens jetzt normal funktionieren (einfaches, doppeltes oder
+  dreifaches Drücken).
+* Kompatibel mit NVDA 2023.1.
+* Beendet die Kompatibilität mit NVDA unter 2022.3.3. Die letzte mit NVDA
+  2019.3 kompatible Version ist die [1.8][Version 1.8 direkt herunterladen].
 * Lokalisierungen aktualisiert.
 
 ### Version 1.8
 
 * Update auf Unicode 14.0.
 * Kompatibel mit NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3. The last version compatible
-  with NVDA 2017.3 is the [1.7][downloadVersion1.7].
+* Beendet die Kompatibilität mit NVDA unter 2019.3. Die letzte mit NVDA
+  2017.3 kompatible Version ist die [1.7][Version 1.7 direkt herunterladen].
 * Die Versionsveröffentlichung erfolgt nun durch eine GitHub-Aktion anstatt
   appVeyor.
 * Lokalisierungen aktualisiert.
@@ -130,8 +135,8 @@ The presented information include the following sections:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]:
-https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+[Version 1.7 direkt
+herunterladen](https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon)
 
-[downloadVersion1.8]:
-https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+[Version 1.8 direkt
+herunterladen](https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon)
