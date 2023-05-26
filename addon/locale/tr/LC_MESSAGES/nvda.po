@@ -8,74 +8,169 @@ msgstr ""
 "Project-Id-Version: charInfo 1.7\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-09-03 03:20+0000\n"
-"PO-Revision-Date: 2022-03-03 15:15+0300\n"
-"Language: tr\n"
+"PO-Revision-Date: 2023-05-20 16:42+0300\n"
+"Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Burak Yüksek <burakyuksek94@gmail.com>\n"
-"Language-Team: \n"
-"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. Translators: Title on the char info displayed message
-msgid "Detailed character information'"
+msgid "Detailed character information"
 msgstr "Detaylı karakter bilgisi"
+
+#. Translators: Reported in the tables when no value is defined for a property of a specific character.
+msgid "[Not defined]"
+msgstr "[Not defined]"
+
+#. Translators: Reported in the symbol and character description tables when no file corresponding to the row
+#. exists.
+msgid "[No file]"
+msgstr "[No file]"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Character"
+msgstr "Karakter"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Name"
+msgstr "Ad"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "CLDR name"
+msgstr "CLDR adı"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Decimal value"
+msgstr "Decimal değeri"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Hex value"
+msgstr "Hex değeri"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Category"
+msgstr "Kategori"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Block"
+msgstr "Blok"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "MS name"
+msgstr "MS adı"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "MS Font"
+msgstr "MS yazı tipi"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character name"
+msgstr "Denk gelen Unicode karakter adı"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character hex value"
+msgstr "Denk gelen Unicode karakter hex değeri"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character decimal value"
+msgstr "Denk gelen Unicode karakter decimal değeri"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description"
+msgstr "Sembol bilgisi"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in user file ({lang})"
+msgstr "Kullanıcı dosyasındaki sembol bilgisi ({lang})"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in locale file{langInfo}"
+msgstr "Dil dosyasındaki simge açıklaması{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in locale CLDR file{langInfo}"
+msgstr "CLDR Dil dosyasındaki sembol açıklaması{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description in English file"
+msgstr "İngilizce dosyasında sembol açıklaması"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description in English CLDR file"
+msgstr "İngilizce CLDR dosyasında sembol açıklaması"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Character description"
+msgstr "Karakter bilgisi"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Character description{langInfo}"
+msgstr "Karakter bilgisi{langInfo}"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Character description (English file)"
+msgstr "Karakter bilgisi (İngilizce dosya)"
+
+#. Translators: A section name in the char info displayed message
+msgid "Unicode"
+msgstr "Unicode"
+
+#. Translators: A section name in the char info displayed message
+msgid "Microsoft font"
+msgstr "Microsoft yazı tipi"
+
+#. Translators: A section name in the char info displayed message
+msgid "Symbol description in NVDA"
+msgstr "NVDA'daki sembol bilgisi"
+
+#. Translators: A section name in the char info displayed message
+msgid "Character description in NVDA"
+msgstr "NVDA'da karakter bilgisi"
+
+#. Translators: Reported in the Unicode information table when the character does not belong to any block.
+msgid "No Block"
+msgstr "Blok Yok"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+msgid "On"
+msgstr "Açık"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+msgid "Off"
+msgstr "Kapalı"
+
+#. Translators: A column header on the char info displayed message
+msgid "Value"
+msgstr "Değer"
+
+#. Translators: A column title on the char info displayed message
+#, python-brace-format
+msgid "Character {numChar}"
+msgstr "Karakter {numChar}"
 
 #. Translators: A column title on the char info displayed message
 msgid "Attribute"
 msgstr "Özellik"
 
-#. Translators: A column title on the char info displayed message
-msgid "Value"
-msgstr "Değer"
+#. Translators: A piece of text in the symbol description section of the character info report.
+msgid "Options used to compute the symbol:"
+msgstr "Sembol hesaplamak için kullanılan seçenekler:"
 
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Character"
-msgstr "Karakter"
+#. Translators: An option text in the symbol description section of the character info report.
+msgid "Voice language"
+msgstr "Ses dili"
 
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Name"
-msgstr "Ad"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "CLDR name"
-msgstr "CLDR adı"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Decimal value"
-msgstr "Decimal değeri"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Hex value"
-msgstr "Hex değeri"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Category"
-msgstr "Kategori"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Block"
-msgstr "Blok"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "MS name"
-msgstr "MS adı"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "MS Font"
-msgstr "MS yazı tipi"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character name"
-msgstr "Denk gelen Unicode karakter adı"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character hex value"
-msgstr "Denk gelen Unicode karakter hex değeri"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character decimal value"
-msgstr "Denk gelen Unicode karakter decimal değeri"
+#. Translators: An option text in the symbol description section of the character info report.
+msgid "NVDA interface language"
+msgstr "NVDA arayüz dili"
 
 #. Translators: A part of the message presented in input help mode.
 msgid ""
@@ -104,15 +199,16 @@ msgstr ""
 "gösterir."
 
 #. Add-on summary, usually the user visible name of the addon.
-#. Translators: Summary for this add-on to be shown on installation and add-on information.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "Character information"
 msgstr "Karakter bilgisi"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid ""
-"This add-on allows to present in a message character information such as "
-"unicode name, number, category, etc.\n"
+"This add-on allows to present in a message various information about a "
+"character.\n"
 msgstr ""
-"Bu eklenti, NVDA'nın bir karakterin unikod adı, sayısı, kategorisi gibi "
-"bilgileri mesaj şeklinde sunmasını sağlar.\n"
+"Bu eklenti, bir mesajda bir karakter hakkında çeşitli bilgiler sunmaya izin "
+"verir.\n"
