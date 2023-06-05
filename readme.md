@@ -30,6 +30,10 @@ The presented information include the following sections:
 
 ## Change log
 
+### Version 2.3
+
+* Updated localizations.
+
 ### Version 2.2
 
 * Removed the dev channel.

@@ -28,7 +28,7 @@ addon_info = {
 	"addon_description": _("""This add-on allows to present in a message various information about a character.
 """),
 	# version
-	"addon_version": "2.2",
+	"addon_version": "2.3",
 	# Author(s)
 	"addon_author": "Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support
