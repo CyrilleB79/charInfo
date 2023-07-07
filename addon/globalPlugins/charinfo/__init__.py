@@ -31,10 +31,10 @@ import config
 from utils import security
 try
 	# For NVDA >= 2023.2
-	from winAPI.sessionTracking import isLockScreenModeActive as isLockScreen
+	from winAPI.sessionTracking import isLockScreenModeActive
 except ImportError:
 	# For NVDA < 2023.2
-	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreen
+	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreenModeActive
 import sys
 import os
 import re
@@ -1001,7 +1001,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
-		if isLockScreen():
+		if isLockScreenModeActive():
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
