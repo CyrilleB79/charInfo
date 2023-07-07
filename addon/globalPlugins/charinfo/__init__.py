@@ -29,7 +29,7 @@ from characterProcessing import (
 import globalVars
 import config
 from utils import security
-try
+try:
 	# For NVDA >= 2023.2
 	from winAPI.sessionTracking import isLockScreenModeActive
 except ImportError:
