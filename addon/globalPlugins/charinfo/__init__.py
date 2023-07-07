@@ -29,11 +29,12 @@ from characterProcessing import (
 import globalVars
 import config
 from utils import security
-
-# Temporarily import private function as advised by Sean Budd from NVAccess.
-# A public API can be requested by add-on developers 2-3 month after 2022.3.3 release if no issue is found.
-from winAPI.sessionTracking import isLockScreenModeActive
-
+try
+	# For NVDA >= 2023.2
+	from winAPI.sessionTracking import isLockScreenModeActive as isLockScreen
+except ImportError:
+	# For NVDA < 2023.2
+	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreen
 import sys
 import os
 import re
@@ -1000,7 +1001,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
-		if isLockScreenModeActive():
+		if isLockScreen():
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
