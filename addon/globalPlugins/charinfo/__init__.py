@@ -32,7 +32,7 @@ from utils import security
 
 # Temporarily import private function as advised by Sean Budd from NVAccess.
 # A public API can be requested by add-on developers 2-3 month after 2022.3.3 release if no issue is found.
-from winAPI.sessionTracking import _isLockScreenModeActive
+from winAPI.sessionTracking import isLockScreenModeActive
 
 import sys
 import os
@@ -1000,7 +1000,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		elif scriptCount <= 2:
 			commands.script_review_currentCharacter(gesture)
 			return
-		if _isLockScreenModeActive():
+		if isLockScreenModeActive():
 			# In lock screen do not display character info. The character information window would appear only
 			# once the session is reopened, which is quite useless and confusing.
 			return
