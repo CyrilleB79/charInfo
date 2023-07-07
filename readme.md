@@ -30,6 +30,10 @@ The presented information include the following sections:
 
 ## Change log
 
+### Version 2.5
+
+* Fixed import error with last NVDA alpha versions, NVDA 2023.2 development cycle (contribution Noelia Ruiz Martínez).
+
 ### Version 2.4
 
 * Updated localizations.
