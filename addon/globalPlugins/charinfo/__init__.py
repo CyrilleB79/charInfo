@@ -7,6 +7,7 @@
 import globalPluginHandler
 import addonHandler
 import scriptHandler
+from scriptHandler import script
 import treeInterceptorHandler
 import ui
 from globalCommands import SCRCAT_SYSTEMCARET, commands, GlobalCommands
@@ -296,7 +297,7 @@ sectionMapping = {
 class UnicodeInfo(object):
 
 	def __init__(self):
-		super(UnicodeInfo, self).__init__()
+		super().__init__()
 		self.blocks = {}
 		self.generalCategories = {}
 		self.unicodeData = {}
@@ -466,7 +467,7 @@ characterData = CharacterData()
 class MsCharsetsInfo(dict):
 
 	def __init__(self, *args, **kw):
-		super(MsCharsetsInfo, self).__init__(*args, **kw)
+		super().__init__(*args, **kw)
 		for cs in lstMsCharsets:
 			try:
 				self[cs] = self.getCharsetInfo(cs)
@@ -498,7 +499,7 @@ class Character(object):
 	CHAR_DESC_LOCALE_DATA_MAP = LocaleDataMap(CharacterDescriptions)
 
 	def __init__(self, num, text, lang, font=None):
-		super(Character, self).__init__()
+		super().__init__()
 		self.num = num
 		self.text = text
 		self.lang = lang
@@ -963,7 +964,7 @@ def patchedGetSafeScripts():
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def __init__(self, *args, **kwargs):
-		super(GlobalPlugin, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		log.debug('Unicode version: ' + unicodedata.unidata_version)
 		self.initUnicodeInfo()
 		biScript = GlobalCommands.script_review_currentCharacter
@@ -992,8 +993,16 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.clearGestureBindings()
 		# Restore original getSafeScripts function
 		security.getSafeScripts = originalGetSafeScripts
-		super(GlobalPlugin, self).terminate()
+		super().terminate()
 
+	@script(
+		description=(
+			commands.script_review_currentCharacter.__doc__
+			# Translators: A part of the message presented in input help mode.
+			+ _(". Pressing four times presents a message with detailed information on this character.")
+		),
+		category=commands.script_review_currentCharacter.category
+	)
 	def script_review_currentCharacter(self, gesture):
 		scriptCount = scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
@@ -1006,22 +1015,25 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# once the session is reopened, which is quite useless and confusing.
 			return
 		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
-	script_review_currentCharacter.__doc__ = (
-		commands.script_review_currentCharacter.__doc__
-		# Translators: A part of the message presented in input help mode.
-		+ _(". Pressing four times presents a message with detailed information on this character.")
-	)
-	script_review_currentCharacter.category = commands.script_review_currentCharacter.category
 
+	@script(
+		description=_(
+			# Translators: The message presented in input help mode.
+			"Presents a message with detailed information on the character of the current navigator object"
+			" where the review cursor is situated."
+		),
+		category=commands.script_review_currentCharacter.category
+	)
 	def script_currentCharInfo(self, gesture):
 		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
-	script_currentCharInfo.__doc__ = _(
-		# Translators: The message presented in input help mode.
-		"Presents a message with detailed information on the character of the current navigator object"
-		" where the review cursor is situated."
-	)
-	script_currentCharInfo.category = commands.script_review_currentCharacter.category
 
+	@script(
+		description=_(
+			# Translators: The message presented in input help mode.
+			"Presents a message with detailed information on the character at the position of the caret."
+		),
+		category=SCRCAT_SYSTEMCARET
+	)
 	def script_currentCharAtCaretInfo(self, gesture):
 		obj = api.getFocusObject()
 		treeInterceptor = obj.treeInterceptor
@@ -1037,11 +1049,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			ui.message(_("No caret"))
 			return
 		self.displayCurrentCharInfoMessage(info)
-	script_currentCharAtCaretInfo.__doc__ = _(
-		# Translators: The message presented in input help mode.
-		"Presents a message with detailed information on the character at the position of the caret."
-	)
-	script_currentCharAtCaretInfo.category = SCRCAT_SYSTEMCARET
 
 	def displayCurrentCharInfoMessage(self, info):
 		info.expand(textInfos.UNIT_CHARACTER)
