@@ -5,8 +5,25 @@
 * Download [stable version][1]
 
 This add-on allows to present in a message various information about a character.
+It also allows to customize the information reported on a character when using review cursor character navigation commands or multiple presses of the review character command.
 
-## Presented information
+### Features
+
+* Display detailed information on a character, e.g. Unicode name, number, CLDR, symbol name, etc.
+* This information can be displayed either at the location of the review cursor or at the location of the system cursor.
+* Customize the reported information when pressing `numpad2`.
+* Use the same custom information when moving the review cursor by character.
+
+## Commands
+
+* `Numpad2` (all keyboard layouts) or `NVDA+.` (laptop layout): when pressed 4 times, displays information about the character of the current navigator object where the review cursor is situated. This command can also be customized in the settings of the add-on.
+* Unassigned: Presents a message with detailed information on the character where the review cursor is situated. If you feel uncomfortable with the four press gesture, you may use this command instead.
+* Unassigned: Presents a message with detailed information on the character at the position of the caret (works only in places where there is a caret).
+* Unassigned: Opens Character Information add-on settings.
+
+The unassigned commands need first to be assigned in the Input gestures dialog to be used.
+
+## Detailed information on a character
 
 The presented information include the following sections:
 
@@ -15,18 +32,23 @@ The presented information include the following sections:
 * NVDA symbol description: information allowing to understand how NVDA reports the symbol description. NVDA uses the information in the top most rows containing available information to provide the description of a symbol.
 * NVDA character description: information allowing to understand how NVDA reports the character description (e.g. "alpha" for "A"). NVDA uses the information in the top most rows containing available information to provide the description of a character.
 
+The provided information in the Unicode section is in English since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with English.
 
-## Commands
+## Settings
 
-* Numpad2 (all keyboard layouts) or NVDA+. (laptop layout): when pressed 4 times, displays information about the character of the current navigator object where the review cursor is situated.
-* Unassigned: Presents a message with detailed information on the character where the review cursor is situated. If you feel uncomfortable with the four press gesture, you may assign to it a gesture in NVDA's input gesture dialog ("Text review" category).
-* Unassigned: Presents a message with detailed information on the character at the position of the caret (works only in places where there is a caret). It can be found in the "system caret" category of NVDA input gestures dialog.
+This add-on has its own category in NVDA's settings dialog where you can configure the following options.
 
-## Notes
+### Action for multiple presses of the report review character command
 
-* Two commands are unassigned by default. They need to be assigned in the Input gestures dialog to be used.
-* The provided information in the Unicode section is in English since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with English.
+The three combo boxes of this group allow to customize what is reported by the report review character command (`numpad2`) when using two, three or four presses.
+By default, NVDA reports the character description on second press and its numeric value, decimal and hexadecimal, on third press.
+You can change what is reported on the character at the position of the review cursor upon multiple presses.
+For example, you can report its CLDR English name on second press, its Unicode name on third press and display detailed information on it on fourth press.
 
+### Remember these action during character navigation
+
+When you have reported specific information with the report review character command (`numpad2`) called multiple times, you may want to continue reporting the same information while navigating with the review cursor (`numpad1` and `numpad3`).
+Checking this option will allow you to do it, as long as you navigate with the review cursor by character just after a multiple press of `numpad2`.
 
 ## Change log
 

@@ -26,7 +26,7 @@ addon_info = {
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""This add-on allows to present in a message various information about a character.
-"""),
+	It also allows to customize the information reported on a character when using review cursor character navigation commands or multiple presses of the review character command."""),
 	# version
 	"addon_version": "2.6",
 	# Author(s)

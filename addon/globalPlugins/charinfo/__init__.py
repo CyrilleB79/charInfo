@@ -4,19 +4,25 @@
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
+import sys
+import os
+import re
+from enum import Enum
+from functools import lru_cache
+
 import globalPluginHandler
 import addonHandler
 import scriptHandler
 from scriptHandler import script
 import treeInterceptorHandler
 import ui
-from globalCommands import SCRCAT_SYSTEMCARET, commands, GlobalCommands
+from globalCommands import SCRCAT_SYSTEMCARET, commands
 import api
 import speech
+import braille
 import languageHandler
 import textInfos
 import controlTypes
-import inputCore
 from logHandler import log
 from characterProcessing import (
 	LocaleDataMap,
@@ -29,6 +35,7 @@ from characterProcessing import (
 )
 import globalVars
 import config
+import gui
 from utils import security
 try:
 	# For NVDA >= 2023.2
@@ -36,12 +43,11 @@ try:
 except ImportError:
 	# For NVDA < 2023.2
 	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreenModeActive
-import sys
-import os
-import re
-from enum import Enum
-from functools import lru_cache
 
+from .ciGui import CharInfoSettingsPanel
+
+
+ADDON_SUMMARY = addonHandler.getCodeAddon().manifest["summary"]
 
 addonPath = os.path.dirname(__file__)
 
@@ -72,6 +78,28 @@ unicodedata = getUniDatData()
 nvdaTranslations = _
 
 addonHandler.initTranslation()
+
+
+ACTIONS = [
+	'speakCharacter',
+	'speakCharacterDescription',
+	'speakCharacterNum',
+	'displayCurrentCharInfoMessage',
+	'speakCLDRLocaleName',
+	'speakCLDREnglishName',
+	'speakCharacterLocaleName',
+	'speakCharacterEnglishName',
+	'speakMSChar',
+]
+ACTION_LIST_STRING = ', '.join(f'"{action}"' for action in ACTIONS)
+
+confspec = {
+	"action2Presses": f'option({ACTION_LIST_STRING}, default="speakCharacterDescription")',
+	"action3Presses": f'option({ACTION_LIST_STRING}, default="speakCharacterNum")',
+	"action4Presses": f'option({ACTION_LIST_STRING}, default="displayCurrentCharInfoMessage")',
+	"lockActionDuringCharNav": "boolean(default=False)",
+}
+config.conf.spec["charInfo"] = confspec
 
 
 UC_PRIVATE_USE_OFFSET = 0xf000
@@ -110,7 +138,7 @@ class NoValueError(InfoNotFoundError):
 	pass
 
 
-STR_NO_CHAR_ERROR = '?'
+STR_NO_CHAR_PLACEHOLDER = '?'
 # Translators: Reported in the tables when no value is defined for a property of a specific character.
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
 # Translators: Reported in the symbol and character description tables when no file corresponding to the row
@@ -516,34 +544,45 @@ class Character(object):
 		return self.text
 
 	def getNameStr(self):
-		names = [self.getNameValue(ln) for ln in unicodeInfo.langs]
+		names = []
+		for ln in unicodeInfo.langs:
+			names.append(self.getNameValue(ln))
 		return ' / '.join(n for n in names if n is not None)
 
-	def getNameValue(self, lang):
+	def getNameValue(self, lang, fallbackToEnglish=False):
 		if lang == 'en':
 			try:
 				return unicodedata.name(self.text)
 			except ValueError:
-				return STR_NO_CHAR_ERROR
+				return STR_NO_CHAR_PLACEHOLDER
 		if not unicodeInfo.unicodeData[lang]:
 			return None
 		try:
 			return unicodeInfo.unicodeData[lang][self.num][0]
 		except KeyError:
-			return STR_NO_CHAR_ERROR
+			return STR_NO_CHAR_PLACEHOLDER
 
 	def getCldrNameStr(self):
-		names = [self.getCldrNameValue(ln) for ln in unicodeInfo.langs]
+		names = []
+		for ln in unicodeInfo.langs:
+			try:
+				names.append(self.getCldrNameValue(ln))
+			except NoValueError:
+				names.append(STR_NO_CHAR_PLACEHOLDER)
+			except NoFileError:
+				pass  # Do not append anything if there is no file at all.
 		return ' / '.join(n for n in names if n is not None)
 
-	def getCldrNameValue(self, lang):
+	def getCldrNameValue(self, lang, fallbackToEnglish=False):
 		data = cldrData.fetch(lang)
 		if not data:
-			return None
+			if lang != 'en' and fallbackToEnglish:
+				return self.getCldrNameValue('en')
+			raise NoFileError(f'CLDR {lang}')
 		try:
 			return data.symbols[self.text].replacement
 		except KeyError:
-			return STR_NO_CHAR_ERROR
+			raise NoValueError(f'text={self.text}; lang={lang}')
 
 	def getDecStr(self):
 		return str(self.num)
@@ -588,21 +627,42 @@ class Character(object):
 	def getMsFontStr(self):
 		return self.font
 
+	def getUCEqNameValue(self, lang):
+		if self.UCEqChar is None:
+			raise NoValueError(self.text)
+		return self.UCEqChar.getNameValue(lang)
+
 	def getUCEqNameStr(self):
 		if self.UCEqChar is None:
-			return STR_NO_CHAR_ERROR
-		names = [self.UCEqChar.getNameValue(ln) for ln in unicodeInfo.langs]
-		return ' / '.join(n for n in names if n is not None)
+			return STR_NO_CHAR_PLACEHOLDER
+		names = []
+		for ln in unicodeInfo.langs:
+			n = self.getUCEqNameValue(ln)
+			if n is not None:
+				names.append(n)
+		return ' / '.join(names)
 
-	def getUCEqHexValStr(self):
+	def getUCEqHexValValue(self):
 		if self.UCEqChar is None:
-			return STR_NO_CHAR_ERROR
+			raise NoValueError(self.text)
 		return hex(self.UCEqChar.num)
 
-	def getUCEqDecValStr(self):
+	def getUCEqHexValStr(self):
+		try:
+			return self.getUCEqDecValValue()
+		except NoValueError:
+			return STR_NO_CHAR_PLACEHOLDER
+
+	def getUCEqDecValValue(self):
 		if self.UCEqChar is None:
-			return STR_NO_CHAR_ERROR
-		return str(self.UCEqChar.num)
+			raise NoValueError(self.text)
+		return self.UCEqChar.num
+
+	def getUCEqDecValStr(self):
+		try:
+			return str(self.getUCEqDecValValue())
+		except NoValueError:
+			return STR_NO_CHAR_PLACEHOLDER
 
 	def isMsFont(self):
 		if self.font in lstMsCharsets and (
@@ -736,7 +796,7 @@ class Characters(object):
 		content.append(title)
 		validSectionList = [s for s in Section]
 		# Keep MSFont section only for MS characters.
-		if all([not c.isMsFont() for c in self.charList]):
+		if not self.isMsFont():
 			validSectionList.remove(Section.MS_FONT)
 		for section in validSectionList:
 			htmlSection = self.createHtmlInfoSection(section)
@@ -949,6 +1009,9 @@ class Characters(object):
 		))
 		return ''.join(content)
 
+	def isMsFont(self):
+		return all([c.isMsFont() for c in self.charList])
+
 
 originalGetSafeScripts = security.getSafeScripts
 
@@ -957,24 +1020,146 @@ def patchedGetSafeScripts():
 	# Current running charInfo global plugin
 	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charinfo')
 	safeScripts = originalGetSafeScripts()
-	safeScripts.add(ci.script_review_currentCharacter)
+	safeScripts.update({
+		ci.script_review_currentCharacter,
+		ci.script_review_nextCharacter,
+		ci.script_review_previousCharacter,
+	})
 	return safeScripts
 
 
-class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+def displayCurrentCharInfoMessage(info):
+	info.expand(textInfos.UNIT_CHARACTER)
+	if info.text == '':
+		speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=controlTypes.OutputReason.CARET)
+		return
+	font = getCurrCharFontName(info)
+	lang = None
+	if config.conf['speech']['autoLanguageSwitching']:
+		# Get language from text tagging if any
+		lang = getCurrentLanguage(info)
+	if not lang:
+		# Get language from synth or UI depending on if trust voice language is activated
+		# and if it is possible to know the language of the current synth.
+		lang = speech.getCurrentLanguage()
+	allChars = Characters(info.text, lang=lang, font=font)
+	htmlMessage = allChars.createHtmlInfoMessage(info.text)
+	ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
 
+
+def getCurrCharFontName(info):
+	configDocFormatting = config.conf['documentFormatting'].items()
+	formatConfig = {k: False for k, v in configDocFormatting}
+	formatConfig['reportFontName'] = True
+	info = info.copy()
+	#info.expand(textInfos.UNIT_CHARACTER)
+	for field in info.getTextWithFields(formatConfig):
+		if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
+			try:
+				return field.field["font-name"]
+			except KeyError:
+				return None
+	return None
+
+
+def getCurrentLanguage(info):
+	configDocFormatting = config.conf['documentFormatting'].items()
+	formatConfig = {k: False for k, v in configDocFormatting}
+	info = info.copy()
+	info.expand(textInfos.UNIT_CHARACTER)
+	for field in info.getTextWithFields(formatConfig):
+		if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
+			try:
+				return field.field["language"]
+			except KeyError:
+				pass
+	return None
+
+
+def speakCharacter(info):
+	speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=controlTypes.OutputReason.CARET)
+
+
+def speakCharacterDescription(info):
+	speech.spellTextInfo(info, useCharacterDescriptions=True),
+
+def speakCharacterNum(info, reportHex=False):
+	try:
+		cList = [ord(c) for c in info.text]
+	except TypeError:
+		cList = None
+	if cList:
+		for c in cList:
+			speech.speakMessage("%d," % c)
+			# Report hex along with decimal only when there is one character; else, it's confusing.
+			if reportHex and len(cList) == 1:
+				speech.speakSpelling(hex(c))
+		braille.handler.message("; ".join(f"{c}, {hex(c)}" for c in cList))
+	else:
+		log.debugWarning("Couldn't calculate ordinal for character %r" % info.text)
+		speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=controlTypes.OutputReason.CARET)
+
+
+def speakCharacterName(info, lang):
+	allChars = Characters(info.text, lang='en', font=None)
+	speech.speakMessage(', '.join(c.getNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList))
+
+
+def speakCharacterEnglishName(info):
+	speakCharacterName(info, lang='en')
+
+def speakCharacterLocaleName(info):
+	speakCharacterName(info, lang=languageHandler.getLanguage())
+
+def speakCLDRName(info, lang):
+	allChars = Characters(info.text, lang='en', font=None)
+	speech.speakMessage(', '.join(c.getCldrNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList))
+	
+	
+def speakCLDREnglishName(info):
+	speakCLDRName(info, lang='en')
+
+def speakCLDRLocaleName(info):
+	speakCLDRName(info, lang=languageHandler.getLanguage())
+
+def speakMSChar(info):
+	font = getCurrCharFontName(info)
+	allChars = Characters(info.text, lang='en', font=font)
+	if allChars.isMsFont():
+		def getCharInfo(c, font):
+			name = c.getMsNameStr()
+			try:
+				eq = c.getUCEqNameValue(lang)
+				return f'{name}, {font}, {eq}'
+			except NoValueError:
+				return f'{name}, {font}'
+		speech.speakMessage(', '.join(getCharInfo(c, font) for c in allChars.charList))
+	else:
+		speakCharacter(info)
+		
+	
+
+
+def getReportFunction(nRepeat):
+	modName = globals()['__name__']
+	module = sys.modules[modName]
+	if nRepeat == 0:
+		return speakCharacter
+	if nRepeat not in (1, 2, 3):
+		raise ValueError(nRepeat)
+	name = config.conf['charInfo'][f'action{nRepeat + 1}Presses']
+	return getattr(module, name)
+
+
+class GlobalPlugin(globalPluginHandler.GlobalPlugin):
+	
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		log.debug('Unicode version: ' + unicodedata.unidata_version)
 		self.initUnicodeInfo()
-		biScript = GlobalCommands.script_review_currentCharacter
-		self.biScriptDoc = biScript.__doc__
-		biScriptInfo = inputCore.manager.getAllGestureMappings()[biScript.category][self.biScriptDoc]
-		biScriptGestureMap = {g: biScriptInfo.scriptName for g in biScriptInfo.gestures}
-		# Empty the original script's docstring to prevent it from being displayed in gesture setting window.
-		commands.script_review_currentCharacter.__func__.__doc__ = ""
-		# Delete all associated gestures to original script
-		self.bindGestures(biScriptGestureMap)
+		self.scriptCurCharRepeat = 0
+		gui.settingsDialogs.NVDASettingsDialog.categoryClasses.append(CharInfoSettingsPanel)
+		# Add our character review script to safe scripts when the screen is locked
 		security.getSafeScripts = patchedGetSafeScripts
 
 	def initUnicodeInfo(self):
@@ -987,13 +1172,22 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			unicodeInfo.initLanguage(lang)
 
 	def terminate(self):
-		# Restore built-in script doc so that it be listed in the gesture modification dialog and supports help
-		commands.script_review_currentCharacter.__func__.__doc__ = self.biScriptDoc
-		# Clear charInfo plugin gestures
-		self.clearGestureBindings()
 		# Restore original getSafeScripts function
 		security.getSafeScripts = originalGetSafeScripts
+		gui.settingsDialogs.NVDASettingsDialog.categoryClasses.remove(CharInfoSettingsPanel)
 		super().terminate()
+
+	def getScript(self, gesture):
+		try:
+			if commands.getScript(gesture) not in [
+				commands.script_review_currentCharacter,
+				commands.script_review_nextCharacter,
+				commands.script_review_previousCharacter
+			]:
+				self.scriptCurCharRepeat = 0
+		except Exception:
+			log.exception()
+		return super().getScript(gesture)
 
 	@script(
 		description=(
@@ -1001,20 +1195,82 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# Translators: A part of the message presented in input help mode.
 			+ _(". Pressing four times presents a message with detailed information on this character.")
 		),
+		gestures=commands.script_review_currentCharacter.gestures,
 		category=commands.script_review_currentCharacter.category
 	)
 	def script_review_currentCharacter(self, gesture):
+		# While in lock screen do not use custom character review scripts to avoid introducing potential security
+		# issue with the add-on; rather fall back to NVDA's code.
+		if isLockScreenModeActive():
+			return commands.script_review_currentCharacter(gesture)
 		scriptCount = scriptHandler.getLastScriptRepeatCount()
 		if scriptCount >= 4:
 			return
-		elif scriptCount <= 2:
-			commands.script_review_currentCharacter(gesture)
-			return
+		info = api.getReviewPosition().copy()
+		info.expand(textInfos.UNIT_CHARACTER)
+		# Explicitly tether here
+		braille.handler.handleReviewMove(shouldAutoTether=True)
+
+		reportFunction = getReportFunction(scriptCount)
+		if reportFunction == speakCharacterNum:
+			def reportFunction(i):
+				speakCharacterNum(i, reportHex=True)
+		if config.conf['charInfo']['lockActionDuringCharNav']:
+			self.scriptCurCharRepeat = scriptCount
+		if reportFunction == displayCurrentCharInfoMessage:
+			self.scriptCurCharRepeat = 0
+			info = api.getReviewPosition().copy()
+		reportFunction(info)
+
+	@script(
+		description=commands.script_review_nextCharacter.__doc__,
+		gestures=commands.script_review_nextCharacter.gestures,
+		category=commands.script_review_nextCharacter.category
+	)
+	def script_review_nextCharacter(self, gesture):
+		# While in lock screen do not use custom character review scripts to avoid introducing potential security
+		# issue with the add-on; rather fall back to NVDA's code.
 		if isLockScreenModeActive():
-			# In lock screen do not display character info. The character information window would appear only
-			# once the session is reopened, which is quite useless and confusing.
-			return
-		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
+			return commands.script_review_nextCharacter(gesture)
+		self.review_moveCharacter(
+			direction=1,
+			edgeMsg=nvdaTranslations("Right"),
+			nRepeat=self.scriptCurCharRepeat,
+		)
+
+	@script(
+		description=commands.script_review_previousCharacter.__doc__,
+		gestures=commands.script_review_previousCharacter.gestures,
+		category=commands.script_review_previousCharacter.category
+	)
+	def script_review_previousCharacter(self, gesture):
+		# While in lock screen do not use custom character review scripts to avoid introducing potential security
+		# issue with the add-on; rather fall back to NVDA's code.
+		if isLockScreenModeActive():
+			return commands.script_review_previousCharacter(gesture)
+		self.review_moveCharacter(
+			direction=-1,
+			edgeMsg=nvdaTranslations("Left"),
+			nRepeat=self.scriptCurCharRepeat,
+		)
+
+	def review_moveCharacter(self, direction, edgeMsg, nRepeat):
+		lineInfo = api.getReviewPosition().copy()
+		lineInfo.expand(textInfos.UNIT_LINE)
+		charInfo = api.getReviewPosition().copy()
+		charInfo.expand(textInfos.UNIT_CHARACTER)
+		charInfo.collapse()
+		res = charInfo.move(textInfos.UNIT_CHARACTER, direction)
+		if res == 0 or charInfo.compareEndPoints(lineInfo, "startToStart") < 0:
+			ui.reviewMessage(edgeMsg)
+			reviewInfo = api.getReviewPosition().copy()
+		else:
+			reviewInfo = charInfo
+			api.setReviewPosition(reviewInfo)
+
+		reviewInfo.expand(textInfos.UNIT_CHARACTER)
+		reportFunction = getReportFunction(nRepeat)
+		reportFunction(reviewInfo)
 
 	@script(
 		description=_(
@@ -1022,17 +1278,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			"Presents a message with detailed information on the character of the current navigator object"
 			" where the review cursor is situated."
 		),
-		category=commands.script_review_currentCharacter.category
+		category=ADDON_SUMMARY,
 	)
 	def script_currentCharInfo(self, gesture):
-		self.displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
+		displayCurrentCharInfoMessage(info=api.getReviewPosition().copy())
 
 	@script(
 		description=_(
 			# Translators: The message presented in input help mode.
 			"Presents a message with detailed information on the character at the position of the caret."
 		),
-		category=SCRCAT_SYSTEMCARET
+		category=ADDON_SUMMARY,
 	)
 	def script_currentCharAtCaretInfo(self, gesture):
 		obj = api.getFocusObject()
@@ -1048,53 +1304,22 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			# Translators: Reported when there is no caret
 			ui.message(_("No caret"))
 			return
-		self.displayCurrentCharInfoMessage(info)
+		displayCurrentCharInfoMessage(info)
 
-	def displayCurrentCharInfoMessage(self, info):
-		info.expand(textInfos.UNIT_CHARACTER)
-		if info.text == '':
-			try:
-				reasonCaret = controlTypes.OutputReason.CARET  # NVDA 2021.1 and later
-			except AttributeError:
-				reasonCaret = controlTypes.REASON_CARET  # NVDA 2020.4 and older
-			speech.speakTextInfo(info, unit=textInfos.UNIT_CHARACTER, reason=reasonCaret)
-			return
-		font = self.getCurrCharFontName(info)
-		lang = None
-		if config.conf['speech']['autoLanguageSwitching']:
-			# Get language from text tagging if any
-			lang = self.getCurrentLanguage(info)
-		if not lang:
-			# Get language from synth or UI depending on if trust voice language is activated
-			# and if it is possible to know the language of the current synth.
-			lang = speech.getCurrentLanguage()
-		allChars = Characters(info.text, lang=lang, font=font)
-		htmlMessage = allChars.createHtmlInfoMessage(info.text)
-		ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
-
-	def getCurrCharFontName(self, info):
-		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k: False for k, v in configDocFormatting}
-		formatConfig['reportFontName'] = True
-		info = info.copy()
-		info.expand(textInfos.UNIT_CHARACTER)
-		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
-				try:
-					return field.field["font-name"]
-				except KeyError:
-					return None
-		return None
-
-	def getCurrentLanguage(self, info):
-		configDocFormatting = config.conf['documentFormatting'].items()
-		formatConfig = {k: False for k, v in configDocFormatting}
-		info = info.copy()
-		info.expand(textInfos.UNIT_CHARACTER)
-		for field in info.getTextWithFields(formatConfig):
-			if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
-				try:
-					return field.field["language"]
-				except KeyError:
-					pass
-		return None
+	@script(
+		# Translators: The description of a command of this add-on.
+		description=_("Opens Character Information add-on settings"),
+		category=ADDON_SUMMARY,
+	)
+	def script_openSettings(self, gesture):
+		try:
+			# For NVDA >= 2023.2
+			popupSettingsDialog = gui.mainFrame.popupSettingsDialog
+		except AttributeError:
+			# For NVDA <= 2023.1
+			popupSettingsDialog = gui.mainFrame._popupSettingsDialog
+		wx.CallAfter(
+			popupSettingsDialog,
+			gui.settingsDialogs.NVDASettingsDialog,
+			CharInfoSettingsPanel,
+		)
