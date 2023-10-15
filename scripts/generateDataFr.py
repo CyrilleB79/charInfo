@@ -59,6 +59,12 @@ def getBlockTranslation(transFile):
 				# Check that localized name in the dic is the same as the one parsed on the current line.
 				if locNameInDic != locName:
 					raise ValueError(f'locNameInDic != locName - {locNameInDic} != {locName}')
+	# Code needed since we do not have "noms_blocs_v15.txt" for version 15.1
+	if "CJK Unified Ideographs Extension I" not in dic:
+		dic["CJK Unified Ideographs Extension I"] = "Supplément I aux idéogrammes unifiés CJC"
+	else:
+		print(dic)
+		raise Exception("Data now available, this if statement should be removed.")
 	return dic
 
 

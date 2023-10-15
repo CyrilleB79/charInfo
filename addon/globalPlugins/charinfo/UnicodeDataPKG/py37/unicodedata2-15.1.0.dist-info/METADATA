@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: unicodedata2
-Version: 15.0.0
+Version: 15.1.0
 Summary: Unicodedata backport updated to the latest Unicode version.
 Home-page: http://github.com/fonttools/unicodedata2
 Download-URL: http://github.com/fonttools/unicodedata2
