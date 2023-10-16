@@ -30,6 +30,12 @@ The presented information include the following sections:
 
 ## Change log
 
+### Version 2.6
+
+* Update to Unicode 15.1.
+* Adds support for Python 3.11 to prepare compatibility with NVDA 2024.1.
+* Note: From now on, translation updates will not appear anymore in the change log.
+
 ### Version 2.5
 
 * Fixed import error with last NVDA alpha versions, NVDA 2023.2 development cycle (contribution Noelia Ruiz Martínez).
