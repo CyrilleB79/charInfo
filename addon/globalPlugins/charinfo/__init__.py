@@ -10,13 +10,15 @@ import re
 from enum import Enum
 from functools import lru_cache
 
+import wx
+
 import globalPluginHandler
 import addonHandler
 import scriptHandler
 from scriptHandler import script
 import treeInterceptorHandler
 import ui
-from globalCommands import SCRCAT_SYSTEMCARET, commands
+from globalCommands import commands
 import api
 import speech
 import braille
@@ -1052,7 +1054,6 @@ def getCurrCharFontName(info):
 	formatConfig = {k: False for k, v in configDocFormatting}
 	formatConfig['reportFontName'] = True
 	info = info.copy()
-	#info.expand(textInfos.UNIT_CHARACTER)
 	for field in info.getTextWithFields(formatConfig):
 		if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 			try:
@@ -1083,6 +1084,7 @@ def speakCharacter(info):
 def speakCharacterDescription(info):
 	speech.spellTextInfo(info, useCharacterDescriptions=True),
 
+
 def speakCharacterNum(info, reportHex=False):
 	try:
 		cList = [ord(c) for c in info.text]
@@ -1108,19 +1110,25 @@ def speakCharacterName(info, lang):
 def speakCharacterEnglishName(info):
 	speakCharacterName(info, lang='en')
 
+
 def speakCharacterLocaleName(info):
 	speakCharacterName(info, lang=languageHandler.getLanguage())
 
+
 def speakCLDRName(info, lang):
 	allChars = Characters(info.text, lang='en', font=None)
-	speech.speakMessage(', '.join(c.getCldrNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList))
-	
-	
+	speech.speakMessage(
+		', '.join(c.getCldrNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList)
+	)
+
+
 def speakCLDREnglishName(info):
 	speakCLDRName(info, lang='en')
 
+
 def speakCLDRLocaleName(info):
 	speakCLDRName(info, lang=languageHandler.getLanguage())
+
 
 def speakMSChar(info):
 	font = getCurrCharFontName(info)
@@ -1129,15 +1137,13 @@ def speakMSChar(info):
 		def getCharInfo(c, font):
 			name = c.getMsNameStr()
 			try:
-				eq = c.getUCEqNameValue(lang)
+				eq = c.getUCEqNameValue(c.lang)
 				return f'{name}, {font}, {eq}'
 			except NoValueError:
 				return f'{name}, {font}'
 		speech.speakMessage(', '.join(getCharInfo(c, font) for c in allChars.charList))
 	else:
 		speakCharacter(info)
-		
-	
 
 
 def getReportFunction(nRepeat):

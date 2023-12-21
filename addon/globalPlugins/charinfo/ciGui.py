@@ -4,10 +4,9 @@
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
-from gui import guiHelper, nvdaControls, settingsDialogs
+from gui import guiHelper, settingsDialogs
 import config
 from logHandler import log
-import globalPluginHandler
 import wx
 
 import addonHandler
@@ -39,7 +38,6 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 		('speakCharacterEnglishName', _('Report the English name of the character')),
 		# Translators: An option in an action definition combobox Character Information setting panel.
 		('speakMSChar', _('Report Microsoft font proprietary character (name, font and equivalent Unicode name)')),
-		
 	)
 
 	def makeSettings(self, settingsSizer):
@@ -53,7 +51,6 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 		# Translators: This is the label for a group of action choices in the add-on's settings panel
 		actionGroupText = _("Action for multiple presses of the report review character command")
 		actionGroupSizer = wx.StaticBoxSizer(wx.VERTICAL, self, label=actionGroupText)
-		actionGroupBox = actionGroupSizer.GetStaticBox()
 		self.actionGroup = guiHelper.BoxSizerHelper(self, sizer=actionGroupSizer)
 		sHelper.addItem(self.actionGroup)
 
@@ -68,7 +65,8 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 		self.lockActionDuringCharNavCheckBox.SetValue(config.conf['charInfo']['lockActionDuringCharNav'])
 
 	def makeActionNPressCombobox(self, nPresses):
-		# Translators: This is the label for the action definition comboboxes in the Character Information settings panel.
+		# Translators: This is the label for the action definition comboboxes in the Character Information settings
+		# panel.
 		actionNPressesText = _("{n} presses:").format(n=nPresses)
 		actionNPressesChoices = [name for setting, name in self.actionNPressesLabels]
 		actionNPressesCombobox = self.actionGroup.addLabeledControl(
