@@ -1195,6 +1195,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			log.exception()
 		return super().getScript(gesture)
 
+	speakOnDemandReviewCurrentCharacter = (
+		{'speakOnDemand': True}
+		if hasattr(commands.script_review_currentCharacter, 'speakOnDemand')
+		else {}
+	)
+
 	@script(
 		description=(
 			commands.script_review_currentCharacter.__doc__
@@ -1202,7 +1208,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			+ _(". Pressing four times presents a message with detailed information on this character.")
 		),
 		gestures=commands.script_review_currentCharacter.gestures,
-		category=commands.script_review_currentCharacter.category
+		category=commands.script_review_currentCharacter.category,
+		**speakOnDemandReviewCurrentCharacter,
 	)
 	def script_review_currentCharacter(self, gesture):
 		# While in lock screen do not use custom character review scripts to avoid introducing potential security
