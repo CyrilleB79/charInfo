@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # NVDA add-on: Character information
-# Copyright (C) 2019-2023 Cyrille Bougot
+# Copyright (C) 2019-2024 Cyrille Bougot
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
@@ -9,6 +9,7 @@ import os
 import re
 from enum import Enum
 from functools import lru_cache
+from html import escape
 
 import wx
 
@@ -80,7 +81,6 @@ unicodedata = getUniDatData()
 nvdaTranslations = _
 
 addonHandler.initTranslation()
-
 
 ACTIONS = [
 	'speakCharacter',
@@ -167,10 +167,22 @@ def removeAccelerator(s):
 	return out
 
 
-def mkhi(itemType, content, attribDic={}):
-	"""Creates an HTML item."""
+def mkhi(itemType, htmlContent, attribDic={}):
+	"""Creates an HTML item encapsulating other htmlContent with itemType tag with the attributes in attribDic.
+	If the content to encapsulate is single text instead, use mkhiText instead.
+	"""
+	log.debug(htmlContent)
+	assert htmlContent[0] == '<' and htmlContent[-1] == '>'
 	sAttribs = ''.join(f' {n}={v}' for n, v in attribDic.items())
-	return f'<{itemType}{sAttribs}>{content}</{itemType}>'
+	return f'<{itemType}{sAttribs}>{htmlContent}</{itemType}>'
+
+
+def mkhiText(itemType, textContent, attribDic={}):
+	"""Creates an HTML item encapsulating a single text with itemType tag with the attributes in attribDic.
+	"""
+
+	sAttribs = ''.join(f' {n}={v}' for n, v in attribDic.items())
+	return f'<{itemType}{sAttribs}>{escape(textContent)}</{itemType}>'
 
 
 css = """
@@ -792,9 +804,9 @@ class Characters(object):
 
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
-		head = mkhi('head', '<meta charset= "utf-8"/>' + mkhi('style', css))
+		head = mkhi('head', '<meta charset= "utf-8"/>' + mkhiText('style', css))
 		content = []
-		title = mkhi('h1', text)
+		title = mkhiText('h1', text)
 		content.append(title)
 		validSectionList = [s for s in Section]
 		# Keep MSFont section only for MS characters.
@@ -815,7 +827,7 @@ class Characters(object):
 	def createHtmlInfoSection(self, section):
 		content = []
 		name, mapping = sectionMapping[section]
-		title = mkhi('h2', name)
+		title = mkhiText('h2', name)
 		content.append(title)
 		table = self.createHtmlInfoTable(section)
 		content.append(table)
@@ -897,14 +909,14 @@ class Characters(object):
 			# Translators: A column title on the char info displayed message
 			headerVal = _("Character {numChar}")
 
-		htmlHeaderLabel = mkhi(
+		htmlHeaderLabel = mkhiText(
 			'th',
 			# Translators: A column title on the char info displayed message
 			_("Attribute"),
 			attribDic={'scope': 'row'},
 		)
 		htmlHeaderValues = ''.join(
-			mkhi(
+			mkhiText(
 				'th',
 				headerVal.format(numChar=n + 1),
 				attribDic={'scope': 'col'},
@@ -917,7 +929,7 @@ class Characters(object):
 
 	def createHtmlInfoHeaderForSymbolDesc(self):
 		nChars = len(self.charList)
-		htmlHeaderLabel = mkhi(
+		htmlHeaderLabel = mkhiText(
 			'th',
 			# Translators: A column title on the char info displayed message
 			_("Attribute"),
@@ -930,11 +942,11 @@ class Characters(object):
 			else:
 				charIndicator = ''
 			val = nvdaTranslations("Replacement") + charIndicator
-			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+			htmlHeaderValues.append(mkhiText('th', val, attribDic={'scope': 'col'}))
 			val = nvdaTranslations("Level") + charIndicator
-			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+			htmlHeaderValues.append(mkhiText('th', val, attribDic={'scope': 'col'}))
 			val = nvdaTranslations("Preserve") + charIndicator
-			htmlHeaderValues.append(mkhi('th', val, attribDic={'scope': 'col'}))
+			htmlHeaderValues.append(mkhiText('th', val, attribDic={'scope': 'col'}))
 		htmlHeaderRow = htmlHeaderLabel + ''.join(htmlHeaderValues)
 		return mkhi(
 			'tr',
@@ -943,16 +955,16 @@ class Characters(object):
 
 	def createHtmlInfoRow(self, attr, valueList, session):
 		content = []
-		htmlAttribute = mkhi('th', attr)
+		htmlAttribute = mkhiText('th', attr)
 		content.append(htmlAttribute)
 		for value in valueList:
 			if session == Section.NVDA_SYMBOL_DESC:
 				if isinstance(value, tuple):
-					htmlCells = ''.join(mkhi('td', i) for i in value)
+					htmlCells = ''.join(mkhiText('td', i) for i in value)
 				else:
-					htmlCells = mkhi('td', value, attribDic={'colspan': 3})
+					htmlCells = mkhiText('td', value, attribDic={'colspan': 3})
 			else:
-				htmlCells = mkhi('td', value)
+				htmlCells = mkhiText('td', value)
 			content.append(htmlCells)
 		return mkhi('tr', ''.join(content))
 
@@ -960,7 +972,7 @@ class Characters(object):
 		content = []
 		# Translators: A piece of text in the symbol description section of the character info report.
 		introStr = _("Options used to compute the symbol:")
-		content.append(mkhi('p', introStr))
+		content.append(mkhiText('p', introStr))
 		optionList = []
 		optionList.append(
 			'{txt}: {val}'.format(
@@ -1007,7 +1019,7 @@ class Characters(object):
 			)
 		content.append(mkhi(
 			'ul',
-			''.join(mkhi('li', item) for item in optionList),
+			''.join(mkhiText('li', item) for item in optionList),
 		))
 		return ''.join(content)
 
