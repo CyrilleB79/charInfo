@@ -1158,7 +1158,7 @@ def getReportFunction(nRepeat):
 
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-	
+
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		log.debug('Unicode version: ' + unicodedata.unidata_version)

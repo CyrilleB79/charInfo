@@ -47,7 +47,7 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 			log.error('Options mismatch in charInfo settings panel')
 
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
-		
+
 		# Translators: This is the label for a group of action choices in the add-on's settings panel
 		actionGroupText = _("Action for multiple presses of the report review character command")
 		actionGroupSizer = wx.StaticBoxSizer(wx.VERTICAL, self, label=actionGroupText)

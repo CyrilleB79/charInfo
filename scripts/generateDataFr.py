@@ -25,7 +25,7 @@ BLOCKS_FR_FILE_HEADER = \
 #
 # End of introduction note
 
-"""
+""" # noqa E122: Accept to have this multi-line string not indented.
 
 
 def getBlockTranslation(transFile):
