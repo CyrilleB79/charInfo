@@ -52,6 +52,14 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ## Change log
 
+### Version 3.0
+
+* It is now possible to configure the property reported for the character under the review cursor upon multiple presses on `numpad2`.
+Optionally, after having used multiple press on `numpad2`, the last reported property can also be reported as long as you navigate by character with the review cursor (`numpad1` and `numpad3`).
+* Prepares compatibility with NVDA 2024.1: speech on-demand support.
+* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][ghsaLink] when using the add-on with older versions of NVDA.
+However, it is recommended to use NVDA 2023.3.3 or higher.
+
 ### Version 2.6
 
 * Update to Unicode 15.1.
@@ -144,3 +152,5 @@ Checking this option will allow you to do it, as long as you navigate with the r
 [downloadVersion1.7]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
 [downloadVersion1.8]: https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[ghsaLink]: https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
