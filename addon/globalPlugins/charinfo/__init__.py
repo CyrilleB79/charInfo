@@ -48,6 +48,7 @@ except ImportError:
 	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreenModeActive
 
 from .ciGui import CharInfoSettingsPanel
+from .securityUtils import secureBrowseableMessage
 
 
 ADDON_SUMMARY = addonHandler.getCodeAddon().manifest["summary"]
@@ -1058,7 +1059,7 @@ def displayCurrentCharInfoMessage(info):
 		lang = speech.getCurrentLanguage()
 	allChars = Characters(info.text, lang=lang, font=font)
 	htmlMessage = allChars.createHtmlInfoMessage(info.text)
-	ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
+	secureBrowseableMessage(htmlMessage, title=pageTitle, isHtml=True)
 
 
 def getCurrCharFontName(info):
