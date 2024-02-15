@@ -54,11 +54,9 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ### Version 3.0
 
-* It is now possible to configure the property reported for the character under the review cursor upon multiple presses on `numpad2`.
-Optionally, after having used multiple press on `numpad2`, the last reported property can also be reported as long as you navigate by character with the review cursor (`numpad1` and `numpad3`).
+* It is now possible to configure the property reported for the character under the review cursor upon multiple presses on `numpad2`. Optionally, after having used multiple press on `numpad2`, the last reported property can also be reported as long as you navigate by character with the review cursor (`numpad1` and `numpad3`).
 * Prepares compatibility with NVDA 2024.1: speech on-demand support.
-* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][ghsaLink] when using the add-on with older versions of NVDA.
-However, it is recommended to use NVDA 2023.3.3 or higher.
+* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][4] when using the add-on with older versions of NVDA. However, it is recommended to use NVDA 2023.3.3 or higher.
 
 ### Version 2.6
 
@@ -98,14 +96,14 @@ However, it is recommended to use NVDA 2023.3.3 or higher.
 * Viewing character information is not allowed on lock screen and secure screens.
 * On Windows lock screen, the script to review the current character can now operate normally (single, double or triple press).
 * Compatibility with NVDA 2023.1.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible with NVDA 2019.3 is the [1.8][downloadVersion1.8].
+* Drops compatibility with NVDA below 2022.3.3. The last version compatible with NVDA 2019.3 is the [1.8][3].
 * Update localizations.
 
 ### Version 1.8
 
 * Update to Unicode 14.0.
 * Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3. The last version compatible with NVDA 2017.3 is the [1.7][downloadVersion1.7].
+* Drops compatibility with NVDA below 2019.3. The last version compatible with NVDA 2017.3 is the [1.7][2].
 * The release is now performed thanks to a GitHub action instead of appVeyor.
 * Update localizations.
 
@@ -119,12 +117,12 @@ However, it is recommended to use NVDA 2023.3.3 or higher.
 
 ### Version 1.5
 
-* Prepare compatibility with NVDA 2021.1 (contribution Łukasz Golonka).
+* Prepare compatibility with NVDA 2021.1 (contribution Lukasz Golonka).
 * Update along with last modifications on add-on template.
 
 ### Version 1.4
 
-* Added a script to get information for the character at the caret position (contribution Łukasz Golonka).
+* Added a script to get information for the character at the caret position (contribution Lukasz Golonka).
 * Update to Unicode 13.0.
 
 ### Version 1.3
@@ -149,8 +147,8 @@ However, it is recommended to use NVDA 2023.3.3 or higher.
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
+[2]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]: https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+[3]: https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
 
-[ghsaLink]: https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
+[4]: https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
