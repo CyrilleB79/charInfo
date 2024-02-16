@@ -4,10 +4,39 @@
 * Сумісність з NVDA: 2022.3.3 і вище
 * Завантажити [стабільну версію][1]
 
-Цей додаток дозволяє відображати в повідомленні різноманітну інформацію про
-символ.
+This add-on allows to present in a message various information about a
+character.  It also allows to customize the information reported on a
+character when using review cursor character navigation commands or multiple
+presses of the review character command.
 
-## Представлена інформація
+### Features
+
+* Display detailed information on a character, e.g. Unicode name, number,
+  CLDR, symbol name, etc.
+* This information can be displayed either at the location of the review
+  cursor or at the location of the system cursor.
+* Customize the reported information when pressing `numpad2`.
+* Use the same custom information when moving the review cursor by
+  character.
+
+## Команди
+
+* `Numpad2` (all keyboard layouts) or `NVDA+.` (laptop layout): when pressed
+  4 times, displays information about the character of the current navigator
+  object where the review cursor is situated. This command can also be
+  customized in the settings of the add-on.
+* Unassigned: Presents a message with detailed information on the character
+  where the review cursor is situated. If you feel uncomfortable with the
+  four press gesture, you may use this command instead.
+* Unassigned: Presents a message with detailed information on the character
+  at the position of the caret (works only in places where there is a
+  caret).
+* Unassigned: Opens Character Information add-on settings.
+
+The unassigned commands need first to be assigned in the Input gestures
+dialog to be used.
+
+## Detailed information on a character
 
 Представлена інформація містить такі розділи:
 
@@ -23,30 +52,73 @@
   символів (e.g., "альфа" для "A"). NVDA використовує інформацію у верхніх
   рядках, що містять доступну інформацію, для надання опису символу.
 
+Інформація надається англійською мовою, так як вона є частиною норми
+Unicode. Якщо для цього додатка існує локальний переклад, інформація
+надається також разом з англійською мовою.
 
-## Команди
+## Settings
 
-* Додаткова2 (всі розкладки клавіатури) або NVDA+. (розкладка Laptop): при
-  натисканні 4 рази, відображається інформація про символ поточного об'єкта
-  навігатора, в якому розташований переглядовий курсор.
-* Непризначено: Скрипт для відображення інформації про символ у позиції
-  переглядового курсора. Якщо вам незручно використовувати жест
-  чотириразового натискання, ви можете призначити жест в діалозі «Жести
-  вводу» NVDA (Категорія«Перегляд тексту»).
-* Непризначено: Скрипт для відображення інформації про символ для символа в
-  позиції системної каретки (працює лише в тих місцях, де є каретка). Його
-  можна знайти в категорії «Системна каретка» діалогу «Жести вводу» NVDA.
+This add-on has its own category in NVDA's settings dialog where you can
+configure the following options.
 
-## Примітки
+### Action for multiple presses of the report review character command
 
-* Дві команди початково не призначено. Для використання їх потрібно
-  призначити у діалозі Жести вводу.
-* Інформація надається англійською мовою, так як вона є частиною норми
-  Unicode. Якщо для цього додатка існує локальний переклад, інформація
-  надається також разом з англійською мовою.
+The three combo boxes of this group allow to customize what is reported by
+the report review character command (`numpad2`) when using two, three or
+four presses.  By default, NVDA reports the character description on second
+press and its numeric value, decimal and hexadecimal, on third press.  You
+can change what is reported on the character at the position of the review
+cursor upon multiple presses.  For example, you can report its CLDR English
+name on second press, its Unicode name on third press and display detailed
+information on it on fourth press.
 
+### Remember these action during character navigation
+
+When you have reported specific information with the report review character
+command (`numpad2`) called multiple times, you may want to continue
+reporting the same information while navigating with the review cursor
+(`numpad1` and `numpad3`).  Checking this option will allow you to do it, as
+long as you navigate with the review cursor by character just after a
+multiple press of `numpad2`.
 
 ## Журнал змін
+
+### Version 3.0
+
+* It is now possible to configure the property reported for the character
+  under the review cursor upon multiple presses on `numpad2`. Optionally,
+  after having used multiple press on `numpad2`, the last reported property
+  can also be reported as long as you navigate by character with the review
+  cursor (`numpad1` and `numpad3`).
+* Prepares compatibility with NVDA 2024.1: speech on-demand support.
+* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][4]
+  when using the add-on with older versions of NVDA. However, it is
+  recommended to use NVDA 2023.3.3 or higher.
+
+### Version 2.6
+
+* Update to Unicode 15.1.
+* Adds support for Python 3.11 to prepare compatibility with NVDA 2024.1.
+* Note: From now on, translation updates will not appear anymore in the
+  change log.
+
+### Version 2.5
+
+* Fixed import error with last NVDA alpha versions, NVDA 2023.2 development
+  cycle (contribution Noelia Ruiz Mart�nez).
+
+### Version 2.4
+
+* Оновлено локалізації.
+
+### Version 2.3
+
+* Оновлено локалізації.
+
+### Version 2.2
+
+* Removed the dev channel.
+* Оновлено локалізації.
 
 ### Версія 2.1
 
@@ -55,6 +127,7 @@
 * Оновлено локалізації.
 
 ### Версія 2.0
+
 
 * Покращено інформацію про символ NVDA у звіті про символ і опис символа
   NVDA.
@@ -68,16 +141,16 @@
   тепер може працювати в звичайному режимі (одноразове, подвійне або
   потрійне натискання).
 * Сумісність з NVDA 2023.1.
-* Знижено сумісність з NVDA нижче 2022.3.3. Остання версія, сумісна з NVDA
-  2019.3 [1.8][downloadVersion1.8].
+* Drops compatibility with NVDA below 2022.3.3. The last version compatible
+  with NVDA 2019.3 is the [1.8][3].
 * Оновлення локалізації.
 
 ### Версія 1.8
 
 * Оновлення до Unicode 14.0.
 * Сумісність з NVDA 2022.1.
-* Знижено сумісність з NVDA нижче 2019.3. Остання версія, сумісна з NVDA
-  2017.3 [1.7][downloadVersion1.7].
+* Drops compatibility with NVDA below 2019.3. The last version compatible
+  with NVDA 2017.3 is the [1.7][2].
 * Реліз тепер виконується завдяки дії GitHub замість appVeyor.
 * Оновлення локалізації.
 
@@ -124,8 +197,11 @@
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]:
+[2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]:
+[3]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994

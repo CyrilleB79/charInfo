@@ -187,10 +187,6 @@ msgstr ""
 "Prezintă un mesaj cu informații detaliate despre caracterul obiectului "
 "navigator curent pe care este situat cursorul de examinare."
 
-#. Translators: Reported when there is no caret
-msgid "No caret"
-msgstr "Niciun cursor de scriere al sistemului"
-
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
@@ -199,17 +195,87 @@ msgstr ""
 "Prezintă un mesaj cu informații detaliate despre caracterul de la poziția "
 "cursorului de scriere al sistemului."
 
+#. Translators: Reported when there is no caret
+msgid "No caret"
+msgstr "Niciun cursor de scriere al sistemului"
+
+#. Translators: The description of a command of this add-on.
+#, fuzzy
+msgid "Opens Character Information add-on settings"
+msgstr "Informații despre caracter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+#, fuzzy
+msgid "Report the character description"
+msgstr "Descriere caracter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+#, fuzzy
+msgid "Report the character number"
+msgstr "Nume de caracter Unicode echivalent"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Display information on the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR locale name of the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR English name of the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the locale name of the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the English name of the character"
+msgstr ""
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid ""
+"Report Microsoft font proprietary character (name, font and equivalent "
+"Unicode name)"
+msgstr ""
+
+#. Translators: This is the label for a group of action choices in the add-on's settings panel
+msgid "Action for multiple presses of the report review character command"
+msgstr ""
+
+#. Translators: This is the label for a checkbox in the Character Information settings panel.
+msgid "Remember these action during character navigation"
+msgstr ""
+
+#. Translators: This is the label for the action definition comboboxes in the Character Information settings
+#. panel.
+#, python-brace-format
+msgid "{n} presses:"
+msgstr ""
+
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "Character information"
 msgstr "Informații despre caracter"
 
-#. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid ""
 "This add-on allows to present in a message various information about a "
 "character.\n"
+"\t\tIt also allows to customize the information reported on a character when "
+"using review cursor character navigation commands or multiple presses of the "
+"review character command."
 msgstr ""
-"Acest supliment permite prezentarea într-un mesaj informații diverse despre "
-"un caracter.\n"
+
+#~ msgid ""
+#~ "This add-on allows to present in a message various information about a "
+#~ "character.\n"
+#~ msgstr ""
+#~ "Acest supliment permite prezentarea într-un mesaj informații diverse "
+#~ "despre un caracter.\n"

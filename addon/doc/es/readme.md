@@ -4,10 +4,40 @@
 * Compatibilidad con NVDA: de 2022.3.3 en adelante
 * Descargar [versión estable][1]
 
-Este complemento permite presentar en un mensaje diversa información sobre
-un carácter.
+Este complemento permite presentar en un mensaje información diversa sobre
+un carácter. También permite personalizar la información anunciada de un
+carácter al usar las órdenes de navegación del cursor de revisión o pulsar
+varias veces la orden de revisar carácter.
 
-## Información presentada
+### Características
+
+* Mostrar información detallada de un carácter, como su nombre Unicode,
+  número, CLDR, nombre de símbolo, etc.
+* Esta información se puede mostrar en la posición del cursor de revisión, o
+  bien en la posición del cursor del sistema.
+* Personalizar la información anunciada al pulsar `2 del teclado numérico`.
+* Usar la misma información personalizada al mover el cursor de revisión por
+  caracteres.
+
+## Órdenes
+
+* `2 del teclado numérico` (todas las disposiciones de teclado) o `NVDA+.`
+  (disposición portátil): si se pulsa 4 veces, muestra información del
+  carácter bajo el cursor de revisión situado en el objeto actual del
+  navegador de objetos. Se puede personalizar también esta orden desde las
+  opciones del complemento.
+* Sin asignar: presenta un mensaje con información detallada sobre el
+  carácter situado bajo el cursor de revisión en el objeto donde está el
+  navegador de objetos. Si no te sientes cómodo con el gesto de cuatro
+  pulsaciones, puedes usar este en su lugar.
+* Sin asignar: presenta un mensaje con información detallada del carácter en
+  la posición del cursor (sólo funciona en lugares donde hay un cursor).
+* Sin asignar: abre las opciones del complemento Información del carácter.
+
+Se deben asignar las órdenes sin asignar primero desde el diálogo Gestos de
+entrada para poder usarlas.
+
+## Información detallada de un carácter
 
 La información presentada incluye las siguientes secciones:
 
@@ -25,33 +55,78 @@ La información presentada incluye las siguientes secciones:
   "A"). NVDA usa la información de las filas superiores que contengan la
   información disponible para proporcionar la descripción de un carácter.
 
+La información proporcionada en la sección Unicode está en inglés, ya que
+forma parte de la norma Unicode. Si existe una traducción local para este
+complemento, se proporciona esa información también aparte de la inglesa.
 
-## Órdenes
+## Opciones
 
-* 2 del teclado numérico (todas las disposiciones de teclado) o
-  NVDA+. (disposición portátil): si se pulsa 4 veces, muestra información
-  del carácter bajo el cursor de revisión situado en el objeto actual del
-  navegador de objetos.
-* Sin asignar: presenta un mensaje con información detallada sobre el
-  carácter situado bajo el cursor de revisión en el objeto donde está el
-  navegador de objetos. Si no te sientes cómodo con el gesto de cuatro
-  pulsaciones, puedes asignarle un gesto desde el diálogo Gestos de entrada
-  de NVDA (categoría "Revisión de texto").
-* Sin asignar: presenta un mensaje con información detallada del carácter en
-  la posición del cursor (sólo funciona en lugares donde hay un cursor). Se
-  puede encontrar en la categoría "Cursor del sistema" del diálogo Gestos de
-  entrada de NVDA.
+Este complemento dispone de su propia categoría en el diálogo de opciones de
+NVDA, donde se pueden configurar las siguientes opciones.
 
-## Notas
+### Acción para varias pulsaciones de la orden de anunciar el carácter revisado
 
-* Hay dos órdenes sin asignar por defecto. Se deben asignar desde el diálogo
-  Gestos de entrada para poder usarlas.
-* La información proporcionada en la sección Unicode está en inglés, ya que
-  forma parte de la norma Unicode. Si existe una traducción local para este
-  complemento, se proporciona esa información también aparte de la inglesa.
+Los tres cuadros combinados de este grupo permiten personalizar lo que
+anuncia la orden de anunciar el carácter en revisión (`2 del teclado
+numérico`) al pulsarla dos, tres o cuatro veces. Por defecto, NVDA anuncia
+la descripción del carácter en la segunda pulsación, y su valor numérico,
+decimal y hexadecimal en la tercera. Puedes cambiar qué se anuncia del
+carácter en la posición del cursor de revisión ante varias pulsaciones. Por
+ejemplo, puedes anunciar su nombre CLDR en inglés en la segunda pulsación,
+su nombre Unicode en la tercera y mostrar información detallada sobre él en
+la cuarta.
 
+### Recordar esta acción durante la navegación por caracteres
+
+Cuando has anunciado información concreta con la orden de anunciar el
+carácter en revisión (`2 del teclado numérico`) pulsada varias veces, puedes
+querer que se siga anunciando la misma información mientras navegas con el
+cursor de revisión (`1 del teclado numérico` y `3 del teclado
+numérico`). Marcando esta opción podrás hacerlo, siempre que navegues con el
+cursor de revisión por caracteres después de pulsar varias veces el `2 del
+teclado numérico`.
 
 ## Registro de cambios
+
+### Versión 3.0
+
+* Ahora es posible configurar la propiedad anunciada para el carácter bajo
+  el cursor de revisión tras varias pulsaciones del `2 del teclado
+  numérico`. Opcionalmente, tras haber pulsado varias veces el `2 del
+  teclado numérico`, se puede repetir la última propiedad anunciada según se
+  navega por caracteres con el cursor de revisión (`1 del teclado numérico`
+  y `3 del teclado numérico`).
+* Prepara la compatibilidad con NVDA 2024.1: soporte para el modo de voz a
+  petición.
+* Soluciona posibles problemas de seguridad relacionados con
+  [GHSA-xg6w-23rw-39r8][4] al usar el complemento con versiones antiguas de
+  NVDA. Sin embargo, se recomienda usar NVDA 2023.3.3 o posterior.
+
+### Versión 2.6
+
+* Se actualiza a Unicode 15.1.
+* Se añade soporte para Python 3.11 para preparar la compatibilidad con NVDA
+  2024.1.
+* Nota: a partir de ahora, ya no aparecerán en el registro de cambios las
+  actualizaciones de traducciones.
+
+### Versión 2.5
+
+* Corregido error de importación en las últimas versiones alfa de NVDA,
+  ciclo de desarrollo de NVDA 2023.2 (colaboración de Noelia Ruiz Martínez).
+
+### Versión 2.4
+
+* Traducciones actualizadas.
+
+### Versión 2.3
+
+* Traducciones actualizadas.
+
+### Versión 2.2
+
+* Se elimina el canal dev.
+* Traducciones actualizadas.
 
 ### Versión 2.1
 
@@ -60,6 +135,7 @@ La información presentada incluye las siguientes secciones:
 * Traducciones actualizadas.
 
 ### Versión 2.0
+
 
 * Se ha mejorado la información en el anuncio de caracteres con información
   de símbolo y descripción de caracteres de NVDA.
@@ -73,8 +149,7 @@ La información presentada incluye las siguientes secciones:
   actual puede operar con normalidad (única, doble o triple pulsación).
 * Compatibilidad con NVDA 2023.1.
 * Se elimina la compatibilidad con versiones de NVDA inferiores a la
-  2022.3.3. La última versión compatible con NVDA 2019.3 es la
-  [1.8][downloadVersion1.8].
+  2022.3.3. La última versión compatible con NVDA 2019.3 es la [1.8][3].
 * Traducciones actualizadas.
 
 ### Versión 1.8
@@ -82,8 +157,7 @@ La información presentada incluye las siguientes secciones:
 * Se actualiza a Unicode 14.0.
 * Compatibilidad con NVDA 2022.1.
 * Se elimina la compatibilidad con versiones de NVDA inferiores a la
-  2019.3. La última versión compatible con NVDA 2017.3 es la
-  [1.7][downloadVersion1.7].
+  2019.3. La última versión compatible con NVDA 2017.3 es la [1.7][2].
 * La liberación se hace gracias a una acción de GitHub en vez de AppVeyor.
 * Traducciones actualizadas.
 
@@ -133,8 +207,11 @@ La información presentada incluye las siguientes secciones:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]:
+[2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]:
+[3]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
