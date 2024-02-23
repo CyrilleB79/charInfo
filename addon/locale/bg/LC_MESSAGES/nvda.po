@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-10 08:53+0200\n"
+"PO-Revision-Date: 2024-02-16 09:22+0200\n"
 "Last-Translator: Kostadin Kolev <k_kolev1985@mail.bg>\n"
 "Language-Team: \n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -199,63 +199,64 @@ msgid "No caret"
 msgstr "Няма каретка"
 
 #. Translators: The description of a command of this add-on.
-#, fuzzy
 msgid "Opens Character Information add-on settings"
-msgstr "Информация за знаците"
+msgstr "Отваря екрана с настройките за добавката \"Информация за знака\""
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the character"
-msgstr ""
+msgstr "Докладвай знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character description"
-msgstr "Описание на знака"
+msgstr "Докладвай описанието на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character number"
-msgstr "Еквивалентно име на Уникод символ"
+msgstr "Докладвай номера на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Display information on the character"
-msgstr ""
+msgstr "Покажи информация за знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR locale name of the character"
-msgstr ""
+msgstr "Докладвай локализираното CLDR име на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR English name of the character"
-msgstr ""
+msgstr "Докладвай англоезичното CLDR име на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the locale name of the character"
-msgstr ""
+msgstr "Докладвай локализираното име на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the English name of the character"
-msgstr ""
+msgstr "Докладвай англоезичното име на знака"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid ""
 "Report Microsoft font proprietary character (name, font and equivalent "
 "Unicode name)"
 msgstr ""
+"Докладвай знака от частния шрифт на Microsoft (име, шрифт и еквивалентно "
+"Уникод име)"
 
 #. Translators: This is the label for a group of action choices in the add-on's settings panel
 msgid "Action for multiple presses of the report review character command"
 msgstr ""
+"Действие при многократно натискане на командата за докладване на знака под "
+"курсора за преглед"
 
 #. Translators: This is the label for a checkbox in the Character Information settings panel.
 msgid "Remember these action during character navigation"
-msgstr ""
+msgstr "Запомни това действие при навигация знак по знак"
 
 #. Translators: This is the label for the action definition comboboxes in the Character Information settings
 #. panel.
 #, python-brace-format
 msgid "{n} presses:"
-msgstr ""
+msgstr "{n} натискания:"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
@@ -271,6 +272,11 @@ msgid ""
 "using review cursor character navigation commands or multiple presses of the "
 "review character command."
 msgstr ""
+"Тази добавка позволява да се представи в съобщение различна информация за "
+"знак.\n"
+"\t\tСъщо така ви позволява да персонализирате информацията, докладвана за "
+"даден знак, когато използвате командите за навигация по знаци с курсора за "
+"преглед или многократно натискане на командата за преглед по знаци."
 
 #~ msgid ""
 #~ "This add-on allows to present in a message various information about a "

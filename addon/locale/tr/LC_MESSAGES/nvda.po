@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: charInfo 1.7\n"
+"Project-Id-Version: Karakter Bilgisi\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-09-03 03:20+0000\n"
-"PO-Revision-Date: 2023-05-20 16:42+0300\n"
+"PO-Revision-Date: 2024-02-16 14:13+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -24,12 +24,12 @@ msgstr "Detaylı karakter bilgisi"
 
 #. Translators: Reported in the tables when no value is defined for a property of a specific character.
 msgid "[Not defined]"
-msgstr "[Not defined]"
+msgstr "[Tanımlanmamış]"
 
 #. Translators: Reported in the symbol and character description tables when no file corresponding to the row
 #. exists.
 msgid "[No file]"
-msgstr "[No file]"
+msgstr "[Dosya yok]"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
@@ -45,11 +45,11 @@ msgstr "CLDR adı"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Decimal value"
-msgstr "Decimal değeri"
+msgstr "Ondalık değer"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Hex value"
-msgstr "Hex değeri"
+msgstr "Onaltılık değer"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Category"
@@ -73,51 +73,51 @@ msgstr "Denk gelen Unicode karakter adı"
 
 #. Translators: A character attribute type in the MS font table of the char info displayed message
 msgid "Equivalent Unicode character hex value"
-msgstr "Denk gelen Unicode karakter hex değeri"
+msgstr "Denk gelen Unicode karakter onaltılık değeri"
 
 #. Translators: A character attribute type in the MS font table of the char info displayed message
 msgid "Equivalent Unicode character decimal value"
-msgstr "Denk gelen Unicode karakter decimal değeri"
+msgstr "Denk gelen Unicode karakter ondalık değeri"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 msgid "Symbol description"
-msgstr "Sembol bilgisi"
+msgstr "Sembol tanımı"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 #, python-brace-format
 msgid "Symbol description in user file ({lang})"
-msgstr "Kullanıcı dosyasındaki sembol bilgisi ({lang})"
+msgstr "Kullanıcı dosyasındaki sembol tanımı ({lang})"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 #, python-brace-format
 msgid "Symbol description in locale file{langInfo}"
-msgstr "Dil dosyasındaki simge açıklaması{langInfo}"
+msgstr "Dil dosyasındaki simge tanımı{langInfo}"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 #, python-brace-format
 msgid "Symbol description in locale CLDR file{langInfo}"
-msgstr "CLDR Dil dosyasındaki sembol açıklaması{langInfo}"
+msgstr "CLDR Dil dosyasındaki sembol tanımı{langInfo}"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 msgid "Symbol description in English file"
-msgstr "İngilizce dosyasında sembol açıklaması"
+msgstr "İngilizce dosyasında sembol tanımı"
 
 #. Translators: A symbol attribute type in the table on the char info displayed message
 msgid "Symbol description in English CLDR file"
-msgstr "İngilizce CLDR dosyasında sembol açıklaması"
+msgstr "İngilizce CLDR dosyasında sembol tanımı"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Character description"
-msgstr "Karakter bilgisi"
+msgstr "Karakter tanımı"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 #, python-brace-format
 msgid "Character description{langInfo}"
-msgstr "Karakter bilgisi{langInfo}"
+msgstr "Karakter tanımı{langInfo}"
 
 #. Translators: A character attribute type in the table on the char info displayed message
 msgid "Character description (English file)"
-msgstr "Karakter bilgisi (İngilizce dosya)"
+msgstr "Karakter tanımı (İngilizce dosya)"
 
 #. Translators: A section name in the char info displayed message
 msgid "Unicode"
@@ -129,11 +129,11 @@ msgstr "Microsoft yazı tipi"
 
 #. Translators: A section name in the char info displayed message
 msgid "Symbol description in NVDA"
-msgstr "NVDA'daki sembol bilgisi"
+msgstr "NVDA'daki sembol tanımı"
 
 #. Translators: A section name in the char info displayed message
 msgid "Character description in NVDA"
-msgstr "NVDA'da karakter bilgisi"
+msgstr "NVDA'da karakter tanımı"
 
 #. Translators: Reported in the Unicode information table when the character does not belong to any block.
 msgid "No Block"
@@ -199,63 +199,63 @@ msgid "No caret"
 msgstr "Düzenleme imleci yok"
 
 #. Translators: The description of a command of this add-on.
-#, fuzzy
 msgid "Opens Character Information add-on settings"
-msgstr "Karakter bilgisi"
+msgstr "Karakter Bilgisi eklenti ayarlarını açar"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the character"
-msgstr ""
+msgstr "Karakteri bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character description"
-msgstr "Karakter bilgisi"
+msgstr "Karakter tanımını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character number"
-msgstr "Denk gelen Unicode karakter adı"
+msgstr "Karakter numarasını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Display information on the character"
-msgstr ""
+msgstr "Karakterle ilgili bilgileri görüntüler"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR locale name of the character"
-msgstr ""
+msgstr "Karakterin CLDR yerel dildeki adını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR English name of the character"
-msgstr ""
+msgstr "Karakterin CLDR İngilizce adını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the locale name of the character"
-msgstr ""
+msgstr "Karakterin yerel dildeki adını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the English name of the character"
-msgstr ""
+msgstr "Karakterin İngilizce adını bildirir"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid ""
 "Report Microsoft font proprietary character (name, font and equivalent "
 "Unicode name)"
 msgstr ""
+"Microsoft yazı tipinin özel karakterini bildirir (ad, yazı tipi ve eşdeğer "
+"Unicode adı)"
 
 #. Translators: This is the label for a group of action choices in the add-on's settings panel
 msgid "Action for multiple presses of the report review character command"
 msgstr ""
+"Gözden geçirme karakteri bildirimi komutuna birden fazla basılması için eylem"
 
 #. Translators: This is the label for a checkbox in the Character Information settings panel.
 msgid "Remember these action during character navigation"
-msgstr ""
+msgstr "Karakter gezintisi sırasında bu eylemleri hatırla"
 
 #. Translators: This is the label for the action definition comboboxes in the Character Information settings
 #. panel.
 #, python-brace-format
 msgid "{n} presses:"
-msgstr ""
+msgstr "{n} defa basma:"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
@@ -271,6 +271,11 @@ msgid ""
 "using review cursor character navigation commands or multiple presses of the "
 "review character command."
 msgstr ""
+"Bu eklenti, bir mesajda bir karakter hakkında çeşitli bilgiler sunulmasına "
+"imkan verir.\n"
+"\t\tAyrıca, gözden geçirme imleci karakter gezinme komutlarını kullanırken "
+"veya karakteri gözden geçir komutuna birden çok basıldığında bir karakter "
+"hakkında bildirilen bilgileri özelleştirmeye olanak tanır."
 
 #~ msgid ""
 #~ "This add-on allows to present in a message various information about a "

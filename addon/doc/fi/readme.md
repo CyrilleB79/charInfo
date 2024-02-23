@@ -4,39 +4,39 @@
 * Yhteensopivuus: NVDA 2022.3.3 ja uudemmat
 * Lataa [vakaa versio][1]
 
-This add-on allows to present in a message various information about a
-character.  It also allows to customize the information reported on a
-character when using review cursor character navigation commands or multiple
-presses of the review character command.
+Tämä lisäosa näyttää merkin tiedot selaustilassa. Sen avulla on myös
+mahdollista mukauttaa merkistä puhuttavaa tietoa liikuttaessa merkeittäin
+tarkastelukohdistinkomennoilla tai painettaessa useasti Lue
+tarkastelukohdistimen kohdalla oleva merkki -komentoa.
 
-### Features
+### Ominaisuudet
 
-* Display detailed information on a character, e.g. Unicode name, number,
-  CLDR, symbol name, etc.
-* This information can be displayed either at the location of the review
-  cursor or at the location of the system cursor.
-* Customize the reported information when pressing `numpad2`.
-* Use the same custom information when moving the review cursor by
-  character.
+* Näytä merkin yksityiskohtaiset tiedot, esim. Unicode-nimi, numero,
+  CLDR-nimi, symbolin nimi jne.
+* Tiedot voidaan näyttää joko tarkastelu- tai järjestelmäkohdistimen
+  sijainnista.
+* Mukauta ``Laskinnäppäimistön 2`` -komennolla puhuttavia tietoja.
+* Käytä samoja mukautettuja tietoja siirrettäessä tarkastelukohdistinta
+  merkeittäin.
 
 ## Komennot
 
-* `Numpad2` (all keyboard layouts) or `NVDA+.` (laptop layout): when pressed
-  4 times, displays information about the character of the current navigator
-  object where the review cursor is situated. This command can also be
-  customized in the settings of the add-on.
-* Unassigned: Presents a message with detailed information on the character
-  where the review cursor is situated. If you feel uncomfortable with the
-  four press gesture, you may use this command instead.
-* Unassigned: Presents a message with detailed information on the character
-  at the position of the caret (works only in places where there is a
-  caret).
-* Unassigned: Opens Character Information add-on settings.
+* Laskinnäppäimistön 2 (kaikki näppäinasettelut) tai NVDA+. (kannettavien
+  asettelu): Näyttää neljästi painettaessa tietoja merkistä, jonka kohdalla
+  tarkastelukohdistin on nykyisessä navigointiobjektissa. Tätä komentoa
+  voidaan myös mukauttaa lisäosan asetuksissa.
+* Ei määritetty: Komento yksityiskohtaisten tietojen näyttämiseen
+  tarkastelukohdistimen kohdalla olevasta merkistä. Mikäli neljän
+  painalluksen näppäinkomento tuntuu epämukavalta, voit käyttää tätä
+  komentoa sen sijaan.
+* Ei määritetty: Komento, joka näyttää yksityiskohtaisia tietoja kohdistimen
+  kohdalla olevasta merkistä (toimii vain paikoissa, joissa on kohdistin).
+* Ei määritetty: Avaa Merkin tiedot -lisäosan asetukset.
 
-The unassigned commands need first to be assigned in the Input gestures
-dialog to be used.
+Ei-määritetyt komennot on määritettävä Näppäinkomennot-valintaikkunasta,
+jotta niitä voidaan käyttää.
 
-## Detailed information on a character
+## Merkin yksityiskohtaiset tiedot
 
 Seuraavat tiedot näytetään:
 
@@ -55,68 +55,72 @@ Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
 Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
 kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
 
-## Settings
+## Asetukset
 
-This add-on has its own category in NVDA's settings dialog where you can
-configure the following options.
+Tällä lisäosalla on NVDA:n asetusvalintaikkunassa oma kategoria, jossa voit
+määrittää seuraavat asetukset.
 
-### Action for multiple presses of the report review character command
+### Toiminto Puhu tarkastelukohdistimen kohdalla oleva merkki -komennon useille painalluksille
 
-The three combo boxes of this group allow to customize what is reported by
-the report review character command (`numpad2`) when using two, three or
-four presses.  By default, NVDA reports the character description on second
-press and its numeric value, decimal and hexadecimal, on third press.  You
-can change what is reported on the character at the position of the review
-cursor upon multiple presses.  For example, you can report its CLDR English
-name on second press, its Unicode name on third press and display detailed
-information on it on fourth press.
+Tämän ryhmän kolmesta yhdistelmäruudusta voidaan määrittää, mitä Puhu
+tarkastelukohdistimen kohdalla oleva merkki -komennolla
+(``Laskinnäppäimistön 2``) puhutaan kahta, kolmea tai neljää painallusta
+käytettäessä. Oletusarvoisesti NVDA puhuu toisella painalluksella merkin
+kuvauksen sekä sen numeerisen arvon ja kolmannella painalluksella
+desimaalisen sekä heksadesimaalisen arvon. Voit määrittää, mitä tietoja
+tarkastelukohdistimen kohdalla olevasta merkistä puhutaan useilla
+painalluksilla. Voit esimerkiksi puhuttaa sen englanninkielisen CLDR-nimen
+toisella painalluksella, Unicode-nimen kolmannella ja näyttää
+yksityiskohtaiset tiedot neljännellä painalluksella.
 
-### Remember these action during character navigation
+### Muista nämä toiminnot merkeittäin liikuttaessa
 
-When you have reported specific information with the report review character
-command (`numpad2`) called multiple times, you may want to continue
-reporting the same information while navigating with the review cursor
-(`numpad1` and `numpad3`).  Checking this option will allow you to do it, as
-long as you navigate with the review cursor by character just after a
-multiple press of `numpad2`.
+Kun olet puhuttanut tiettyjä tietoja painamalla useasti Puhu
+tarkastelukohdistimen kohdalla oleva merkki -komentoa (``Laskinnäppäimistön
+2``), saatat haluta jatkaa samojen tietojen puhumista
+tarkastelukohdistimella liikkuessasi (``Laskinnäppäimistön 1`` ja
+``Laskinnäppäimistön 3``). Tämän vaihtoehdon valitseminen mahdollistaa sen,
+kunhan liikut tarkastelukohdistimella merkeittäin heti usean
+``Laskinnäppäimistön 2`` -painalluksen jälkeen.
 
 ## Muutosloki
 
-### Version 3.0
+### Versio 3.0
 
-* It is now possible to configure the property reported for the character
-  under the review cursor upon multiple presses on `numpad2`. Optionally,
-  after having used multiple press on `numpad2`, the last reported property
-  can also be reported as long as you navigate by character with the review
-  cursor (`numpad1` and `numpad3`).
-* Prepares compatibility with NVDA 2024.1: speech on-demand support.
-* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][4]
-  when using the add-on with older versions of NVDA. However, it is
-  recommended to use NVDA 2023.3.3 or higher.
+* Nyt on mahdollista määrittää ominaisuus, joka puhutaan
+  tarkastelukohdistimen kohdalla olevasta merkistä ``Laskinnäppäimistön 2``
+  -komennon useilla painalluksilla. Käytettyäsi tämän komennon useaa
+  painallusta, viimeksi puhuttu ominaisuus voidaan myös puhua valinnaisesti,
+  kunhan liikut tarkastelukohdistimella merkeittäin ``Laskinnäppäimistön
+  1``- ja ``Laskinnäppäimistön 3`` -komentoja käyttäen.
+* Valmisteltu yhteensopivuutta NVDA 2024.1:lle: pyydettäessä-puhetilan tuki.
+* Ratkaisee mahdolliset [GHSA-xg6w-23rw-39r8][4]:aan liittyvät
+  tietoturvaongelmat käytettäessä lisäosaa vanhemmilla NVDA-versioilla. On
+  kuitenkin suositeltavaa käyttää NVDA 2023.3.3:ea tai sitä uudempaa
+  versiota.
 
-### Version 2.6
+### Versio 2.6
 
-* Update to Unicode 15.1.
-* Adds support for Python 3.11 to prepare compatibility with NVDA 2024.1.
-* Note: From now on, translation updates will not appear anymore in the
-  change log.
+* Päivitys Unicode 15.1:een.
+* Lisätty tuki Python 3.11:lle NVDA 2024.1:n tukeen valmistautumiseksi.
+* Huom: Tästä lähtien käännöspäivitykset eivät enää näy muutoslokissa.
 
-### Version 2.5
+### Versio 2.5
 
-* Fixed import error with last NVDA alpha versions, NVDA 2023.2 development
-  cycle (contribution Noelia Ruiz Mart�nez).
+* Korjattu tuontivirhe uusimmissa NVDA:n alfaversioissa (NVDA 2023.2:n
+  kehityssykli, avustanut Noelia Ruiz Martínez).
 
-### Version 2.4
-
-* Lokalisointeja päivitetty.
-
-### Version 2.3
+### Versio 2.4
 
 * Lokalisointeja päivitetty.
 
-### Version 2.2
+### Versio 2.3
 
-* Removed the dev channel.
+* Lokalisointeja päivitetty.
+
+### Versio 2.2
+
+* Dev-kanava poistettu.
 * Lokalisointeja päivitetty.
 
 ### Versio 2.1
@@ -139,16 +143,16 @@ multiple press of `numpad2`.
 * Nykyisen merkin lukeva skripti toimii nyt normaalisti (yksi, kaksi tai
   kolme painallusta) Windowsin lukitusnäytössä.
 * Yhteensopivuus NVDA 2023.1:n kanssa.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible
-  with NVDA 2019.3 is the [1.8][3].
+* Luovuttu yhteensopivuudesta NVDA:n 2022.3.3:a vanhempien versioiden
+  kanssa. Viimeisin NVDA 2019.3:n kanssa yhteensopiva versio on [1.8][3].
 * Lokalisointeja päivitetty.
 
 ### Versio 1.8
 
 * Päivitys Unicode 14.0:aan.
 * Yhteensopivuus NVDA 2022.1:n kanssa.
-* Drops compatibility with NVDA below 2019.3. The last version compatible
-  with NVDA 2017.3 is the [1.7][2].
+* Luovuttu yhteensopivuudesta NVDA:n 2019.3:a vanhempien versioiden
+  kanssa. Viimeisin NVDA 2017.3:n kanssa yhteensopiva versio on [1.7][2].
 * Julkaisu suoritetaan nyt appVeyorin sijasta GitHub-toiminnolla.
 * Lokalisointeja päivitetty.
 

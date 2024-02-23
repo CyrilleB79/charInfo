@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-10 09:09+0100\n"
+"PO-Revision-Date: 2024-02-16 09:54+0100\n"
 "Last-Translator: Michel Such <michelsuch93@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -200,63 +200,64 @@ msgid "No caret"
 msgstr "Pas de curseur"
 
 #. Translators: The description of a command of this add-on.
-#, fuzzy
 msgid "Opens Character Information add-on settings"
-msgstr "Information caractère"
+msgstr "Ouvre les paramètres de l'extension Information caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the character"
-msgstr ""
+msgstr "Annoncer le caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character description"
-msgstr "Description du caractère"
+msgstr "Annoncer la description du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
-#, fuzzy
 msgid "Report the character number"
-msgstr "Nom du caractère Unicode équivalent"
+msgstr "Annoncer le numéro du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Display information on the character"
-msgstr ""
+msgstr "Afficher des informations sur le caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR locale name of the character"
-msgstr ""
+msgstr "Annoncer le nom CLDR local du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the CLDR English name of the character"
-msgstr ""
+msgstr "Annoncer le nom CLDR anglais du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the locale name of the character"
-msgstr ""
+msgstr "Annoncer le nom local du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid "Report the English name of the character"
-msgstr ""
+msgstr "Annoncer le nom anglais du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
 msgid ""
 "Report Microsoft font proprietary character (name, font and equivalent "
 "Unicode name)"
 msgstr ""
+"Annoncer le caractère propriétaire de la police Microsoft (nom, police et "
+"nom Unicode équivalent)"
 
 #. Translators: This is the label for a group of action choices in the add-on's settings panel
 msgid "Action for multiple presses of the report review character command"
 msgstr ""
+"Action pour les appuis multiples sur la commande d'annonce du caractère sous "
+"le curseur de revue"
 
 #. Translators: This is the label for a checkbox in the Character Information settings panel.
 msgid "Remember these action during character navigation"
-msgstr ""
+msgstr "Se souvenir de ces actions lors de la navigation par caractère"
 
 #. Translators: This is the label for the action definition comboboxes in the Character Information settings
 #. panel.
 #, python-brace-format
 msgid "{n} presses:"
-msgstr ""
+msgstr "{n} appuis:"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
@@ -272,6 +273,11 @@ msgid ""
 "using review cursor character navigation commands or multiple presses of the "
 "review character command."
 msgstr ""
+"Cette extension permet de présenter dans un message diverses informations "
+"sur un caractère.\n"
+"\t\tIl permet également de personnaliser les informations annoncées sur un "
+"caractère lors de l'utilisation des commandes de navigation par caractère du "
+"curseur de revue ou d'appuis multiples sur la commande de caractère de revue."
 
 #~ msgid ""
 #~ "This add-on allows to present in a message various information about a "
