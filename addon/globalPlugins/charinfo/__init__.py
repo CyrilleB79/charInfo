@@ -595,8 +595,10 @@ class Character(object):
 				return self.getCldrNameValue('en')
 			raise NoFileError(f'CLDR {lang}')
 		try:
+			log.info('zzz1')
 			return data.symbols[self.text].replacement
 		except KeyError:
+			log.info('zzz2')
 			raise NoValueError(f'text={self.text}; lang={lang}')
 
 	def getDecStr(self):
@@ -1130,8 +1132,14 @@ def speakCharacterLocaleName(info):
 
 def speakCLDRName(info, lang):
 	allChars = Characters(info.text, lang='en', font=None)
+	spokenChars = []
+	for c in allChars.charList:
+		try:
+			spokenChars.append(c.getCldrNameValue(lang=lang, fallbackToEnglish=True))
+		except NoValueError:
+			spokenChars.append(c.text)
 	speech.speakMessage(
-		', '.join(c.getCldrNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList)
+		', '.join(spokenChars)
 	)
 
 
