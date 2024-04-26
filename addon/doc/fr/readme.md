@@ -95,7 +95,7 @@ multiple sur `pavnum2`.
 
 * Il est désormais possible de configurer la propriété annoncée pour le
   caractère sous le curseur de revue lors de plusieurs appuis sur
-  `pavnum2`. En option, après plusieurs appuis sur `numpad2`, la dernière
+  `pavnum2`. En option, après plusieurs appuis sur `pavnum2`, la dernière
   propriété annoncée peut également être annoncée tant que vous naviguez par
   caractère avec le curseur de revue (`pavnum1` et `pavnum3`).
 * Prépare la compatibilité avec NVDA 2024.1 : prise en charge de la parole à
