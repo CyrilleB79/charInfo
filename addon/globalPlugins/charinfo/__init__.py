@@ -101,6 +101,7 @@ confspec = {
 	"action3Presses": f'option({ACTION_LIST_STRING}, default="speakCharacterNum")',
 	"action4Presses": f'option({ACTION_LIST_STRING}, default="displayCurrentCharInfoMessage")',
 	"lockActionDuringCharNav": "boolean(default=False)",
+	"replaceMissingValue": "boolean(default=True)",
 }
 config.conf.spec["charInfo"] = confspec
 
@@ -147,6 +148,8 @@ STR_VALUE_NOT_DEFINED = _('[Not defined]')
 # Translators: Reported in the symbol and character description tables when no file corresponding to the row
 # exists.
 STR_NO_EXISTING_FILE = _('[No file]')
+# Translators: When speaking a missing character property
+STR_UNDEFINED = _('Undefined')
 
 
 def removeAccelerator(s):
@@ -666,7 +669,7 @@ class Character(object):
 
 	def getUCEqHexValStr(self):
 		try:
-			return self.getUCEqDecValValue()
+			return self.getUCEqHexValValue()
 		except NoValueError:
 			return STR_NO_CHAR_PLACEHOLDER
 
@@ -804,6 +807,8 @@ class Characters(object):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
 		self.lang = lang
 		self.font = font
+		import globalVars as gv
+		gv.dbg=self
 
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
@@ -1119,7 +1124,10 @@ def speakCharacterNum(info, reportHex=False):
 
 def speakCharacterName(info, lang):
 	allChars = Characters(info.text, lang='en', font=None)
-	speech.speakMessage(', '.join(c.getNameValue(lang=lang, fallbackToEnglish=True) for c in allChars.charList))
+	speakCharactersProperty(
+		allChars,
+		fct=lambda c: c.getNameValue(lang=lang, fallbackToEnglish=True)
+	)
 
 
 def speakCharacterEnglishName(info):
@@ -1132,14 +1140,9 @@ def speakCharacterLocaleName(info):
 
 def speakCLDRName(info, lang):
 	allChars = Characters(info.text, lang='en', font=None)
-	spokenChars = []
-	for c in allChars.charList:
-		try:
-			spokenChars.append(c.getCldrNameValue(lang=lang, fallbackToEnglish=True))
-		except NoValueError:
-			spokenChars.append(c.text)
-	speech.speakMessage(
-		', '.join(spokenChars)
+	speakCharactersProperty(
+		allChars,
+		fct=lambda c: c.getCldrNameValue(lang=lang, fallbackToEnglish=True)
 	)
 
 
@@ -1154,17 +1157,34 @@ def speakCLDRLocaleName(info):
 def speakMSChar(info):
 	font = getCurrCharFontName(info)
 	allChars = Characters(info.text, lang='en', font=font)
-	if allChars.isMsFont():
-		def getCharInfo(c, font):
-			name = c.getMsNameStr()
-			try:
-				eq = c.getUCEqNameValue(c.lang)
-				return f'{name}, {font}, {eq}'
-			except NoValueError:
-				return f'{name}, {font}'
-		speech.speakMessage(', '.join(getCharInfo(c, font) for c in allChars.charList))
-	else:
+	if not allChars.isMsFont():
 		speakCharacter(info)
+		return
+	def getCharInfo(c, font):
+		name = c.getMsNameStr()
+		try:
+			eq = c.getUCEqNameValue(c.lang)
+			return f'{name}, {font}, {eq}'
+		except NoValueError:
+			return f'{name}, {font}'
+	speakCharactersProperty(
+		allChars,
+		fct=lambda c: getCharInfo(c, font),
+	)
+
+
+def speakCharactersProperty(allChars, fct):
+	spokenChars = []
+	for c in allChars.charList:
+		try:
+			spokenChars.append(fct(c))
+		except NoValueError:
+			if config.conf['charInfo']['replaceMissingValue']:
+				spokenChars.extend(list(speech.getSpellingSpeech(c.text, locale=None)))  #zzz None -> faut il changer?
+			else:
+				spokenChars.append(STR_UNDEFINED)
+			
+	speech.speak(spokenChars)
 
 
 def getReportFunction(nRepeat):
