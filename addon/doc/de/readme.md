@@ -11,8 +11,8 @@ presses of the review character command.
 
 ### Features
 
-* Display detailed information on a character, e.g. Unicode name, number,
-  CLDR, symbol name, etc.
+* Anzeige detaillierter Informationen zu einem bestimmten Zeichen,
+  z. B. Unicode-Name, Nummer, CLDR, Symbolname, etc.
 * This information can be displayed either at the location of the review
   cursor or at the location of the system cursor.
 * Customize the reported information when pressing `numpad2`.
@@ -36,7 +36,7 @@ presses of the review character command.
 The unassigned commands need first to be assigned in the Input gestures
 dialog to be used.
 
-## Detailed information on a character
+## Detaillierte Informationen über ein bestimmtes Zeichen
 
 Die dargestellten Informationen umfassen die folgenden Abschnitte:
 
@@ -59,10 +59,10 @@ Unicode-Norm sind. Wenn es eine lokale Übersetzung für dieser
 NVDA-Erweiterung gibt, werden die Informationen auch auf Englisch
 bereitgestellt.
 
-## Settings
+## Einstellungen
 
-This add-on has its own category in NVDA's settings dialog where you can
-configure the following options.
+Diese NVDA-Erweiterung hat eine eigene Kategorie in den NVDA-Einstellungen,
+in der Sie die folgenden Optionen konfigurieren können.
 
 ### Action for multiple presses of the report review character command
 
@@ -75,7 +75,7 @@ cursor upon multiple presses.  For example, you can report its CLDR English
 name on second press, its Unicode name on third press and display detailed
 information on it on fourth press.
 
-### Remember these action during character navigation
+### Diese Aktionen während der Zeichen-Navigation sich merken
 
 When you have reported specific information with the report review character
 command (`numpad2`) called multiple times, you may want to continue
@@ -93,22 +93,25 @@ multiple press of `numpad2`.
   after having used multiple press on `numpad2`, the last reported property
   can also be reported as long as you navigate by character with the review
   cursor (`numpad1` and `numpad3`).
-* Prepares compatibility with NVDA 2024.1: speech on-demand support.
-* Addresses potential security issues related to [GHSA-xg6w-23rw-39r8][4]
-  when using the add-on with older versions of NVDA. However, it is
-  recommended to use NVDA 2023.3.3 or higher.
+* Kompatibilität mit NVDA 2024.1 vorbereitet: Unterstützung der
+  Sprachausgabe bei Bedarf.
+* Behebt mögliche Sicherheitsprobleme im Zusammenhang mit
+  [GHSA-xg6w-23rw-39r8][4] bei der Verwendung der NVDA-Erweiterung mit
+  älteren NVDA-Versionen. Es wird jedoch empfohlen, NVDA 2023.3.3 oder neuer
+  zu verwenden.
 
 ### Version 2.6
 
-* Update to Unicode 15.1.
-* Adds support for Python 3.11 to prepare compatibility with NVDA 2024.1.
-* Note: From now on, translation updates will not appear anymore in the
-  change log.
+* Aktualisiert auf Unicode 15.1.
+* Hinzufügen von Unterstützung für Python 3.11 zur Vorbereitung der
+  Kompatibilität mit NVDA 2024.1.
+* Hinweis: Von nun an werden Updates von Übersetzungen nicht mehr im
+  Änderungsprotokoll erscheinen.
 
 ### Version 2.5
 
-* Fixed import error with last NVDA alpha versions, NVDA 2023.2 development
-  cycle (contribution Noelia Ruiz Mart�nez).
+* Fehler beim Importieren mit den letzten NVDA-Alpha-Versionen behoben, NVDA
+  2023.2 Entwicklungszyklus (Beitrag Noelia Ruiz Martínez).
 
 ### Version 2.4
 
@@ -120,7 +123,7 @@ multiple press of `numpad2`.
 
 ### Version 2.2
 
-* Removed the dev channel.
+* Dev-Kanal entfernt.
 * Aktualisierte Lokalisierungen.
 
 ### Version 2.1
@@ -145,16 +148,16 @@ multiple press of `numpad2`.
   aktuellen Zeichens jetzt normal funktionieren (einfaches, doppeltes oder
   dreifaches Drücken).
 * Kompatibel mit NVDA 2023.1.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible
-  with NVDA 2019.3 is the [1.8][3].
+* Beendet die Kompatibilität mit NVDA älter 2022.3.3. Die letzte mit NVDA
+  2019.3 kompatible Version ist die [1.8][3].
 * Lokalisierungen aktualisiert.
 
 ### Version 1.8
 
 * Update auf Unicode 14.0.
 * Kompatibel mit NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3. The last version compatible
-  with NVDA 2017.3 is the [1.7][2].
+* Beendet die Kompatibilität mit NVDA älter 2019.3. Die letzte mit NVDA
+  2017.3 kompatible Version ist die [1.7][2].
 * Die Versionsveröffentlichung erfolgt nun durch eine GitHub-Aktion anstatt
   appVeyor.
 * Lokalisierungen aktualisiert.
