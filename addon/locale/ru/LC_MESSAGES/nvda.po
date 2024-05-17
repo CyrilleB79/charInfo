@@ -8,74 +8,168 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2021-08-03 16:18+0200\n"
+"PO-Revision-Date: 2024-05-12 15:35+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. Translators: Title on the char info displayed message
-msgid "Detailed character information'"
+msgid "Detailed character information"
 msgstr "Подробная информация о символе»"
+
+#. Translators: Reported in the tables when no value is defined for a property of a specific character.
+msgid "[Not defined]"
+msgstr "[Не определено]"
+
+#. Translators: Reported in the symbol and character description tables when no file corresponding to the row
+#. exists.
+msgid "[No file]"
+msgstr "[Нет файла]"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Character"
+msgstr "Символ"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Name"
+msgstr "Название"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "CLDR name"
+msgstr "Название CLDR"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Decimal value"
+msgstr "Десятичное значение"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Hex value"
+msgstr "Шестнадцатиричное значение"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Category"
+msgstr "Категория"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+msgid "Block"
+msgstr "Юникодовый блок"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "MS name"
+msgstr "Название MS"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "MS Font"
+msgstr "Шрифт MS"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character name"
+msgstr "Эквивалентное имя символа Юникода"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character hex value"
+msgstr "Эквивалентное шестнадцатиричное значение символа Юникода"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+msgid "Equivalent Unicode character decimal value"
+msgstr "Эквивалентное десятичное значение символа Юникода"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description"
+msgstr "Описание символа"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in user file ({lang})"
+msgstr "Описание символа в пользовательском файле ({lang})"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in locale file{langInfo}"
+msgstr "Описание символа в языковом файле{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Symbol description in locale CLDR file{langInfo}"
+msgstr "Описание символа в файле локализации CLDR{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description in English file"
+msgstr "Описание символов в файле на английском языке"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+msgid "Symbol description in English CLDR file"
+msgstr "Описание символа в файле CLDR на английском языке"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Character description"
+msgstr "Описание символа (файл на английском языке)"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+#, python-brace-format
+msgid "Character description{langInfo}"
+msgstr "Описание символа {langInfo}"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+msgid "Character description (English file)"
+msgstr "Описание символа в файле на английском языке"
+
+#. Translators: A section name in the char info displayed message
+msgid "Unicode"
+msgstr "Юникод"
+
+#. Translators: A section name in the char info displayed message
+msgid "Microsoft font"
+msgstr "Шрифт Microsoft"
+
+#. Translators: A section name in the char info displayed message
+msgid "Symbol description in NVDA"
+msgstr "Описание символа в NVDA"
+
+#. Translators: A section name in the char info displayed message
+msgid "Character description in NVDA"
+msgstr "Описание символа в NVDA"
+
+#. Translators: Reported in the Unicode information table when the character does not belong to any block.
+msgid "No Block"
+msgstr "Блок отсутствует"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+msgid "On"
+msgstr "Включено"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+msgid "Off"
+msgstr "Выключено"
+
+#. Translators: A column header on the char info displayed message
+msgid "Value"
+msgstr "Значение"
+
+#. Translators: A column title on the char info displayed message
+#, python-brace-format
+msgid "Character {numChar}"
+msgstr "Символ {numChar}"
 
 #. Translators: A column title on the char info displayed message
 msgid "Attribute"
 msgstr "Атрибут"
 
-#. Translators: A column title on the char info displayed message
-msgid "Value"
-msgstr "Значение"
+#. Translators: A piece of text in the symbol description section of the character info report.
+msgid "Options used to compute the symbol:"
+msgstr "Параметры, используемые для вычисления символа:"
 
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Character"
-msgstr "Символ"
+#. Translators: An option text in the symbol description section of the character info report.
+msgid "Voice language"
+msgstr "Язык голоса"
 
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Name"
-msgstr "Название"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "CLDR name"
-msgstr "Название CLDR"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Decimal value"
-msgstr "десятиричное значение"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Hex value"
-msgstr "шестнадцатиричное значение"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Category"
-msgstr "Категория"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Block"
-msgstr "Юникодовый блок"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "MS name"
-msgstr "Название MS"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "MS Font"
-msgstr "Шрифт MS"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character name"
-msgstr "Эквивалентное имя символа Юникода"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character hex value"
-msgstr "Эквивалентное шестнадцатиричное значение символа Юникода"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Equivalent Unicode character decimal value"
-msgstr "Эквивалентное десятиричное значение символа Юникода"
+#. Translators: An option text in the symbol description section of the character info report.
+msgid "NVDA interface language"
+msgstr "Язык NVDA"
 
 #. Translators: A part of the message presented in input help mode.
 msgid ""
@@ -90,31 +184,102 @@ msgid ""
 "Presents a message with detailed information on the character of the current "
 "navigator object where the review cursor is situated."
 msgstr ""
-"Представляет сообщение с подробными сведениями о характере текущего объекта "
-"навигатора, в котором расположен просмотровый курсор."
-
-#. Translators: Reported when there is no caret
-msgid "No caret"
-msgstr "Без каретки"
+"Показывает сообщение с подробной информацией о символе текущего объекта "
+"навигатора, на котором находится просмотровый курсор."
 
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
 "position of the caret."
+msgstr "Показывает сообщение с подробной информацией о символе под кареткой."
+
+#. Translators: Reported when there is no caret
+msgid "No caret"
+msgstr "Нет каретки"
+
+#. Translators: The description of a command of this add-on.
+msgid "Opens Character Information add-on settings"
+msgstr "Открывает настройки дополнения"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character"
+msgstr "Сообщить символ"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character description"
+msgstr "Сообщить описание символа"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character number"
+msgstr "Сообщить номер символа"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Display information on the character"
+msgstr "Показать информацию о символе"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR locale name of the character"
+msgstr "Сообщить название символа в соответствии с языковым стандартом CLDR"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR English name of the character"
+msgstr "Сообщить английское название символа CLDR"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the locale name of the character"
+msgstr "Сообщить языковое название символа"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the English name of the character"
+msgstr "Сообщить английское название символа"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid ""
+"Report Microsoft font proprietary character (name, font and equivalent "
+"Unicode name)"
 msgstr ""
-"Представляет сообщение с подробной информацией о характере в положении "
-"каретки."
+"Сообщить о проприетарном символе шрифта Microsoft (название, шрифт и "
+"эквивалентное название Юникода)"
+
+#. Translators: This is the label for a group of action choices in the add-on's settings panel
+msgid "Action for multiple presses of the report review character command"
+msgstr ""
+"Действие при многократном нажатии команды просмотра информации о символе"
+
+#. Translators: This is the label for a checkbox in the Character Information settings panel.
+msgid "Remember these action during character navigation"
+msgstr "Запомнить действия при навигации по символам"
+
+#. Translators: This is the label for the action definition comboboxes in the Character Information settings
+#. panel.
+#, python-brace-format
+msgid "{n} presses:"
+msgstr "{n} нажатий:"
 
 #. Add-on summary, usually the user visible name of the addon.
-#. Translators: Summary for this add-on to be shown on installation and add-on information.
+#. Translators: Summary for this add-on
+#. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "Character information"
 msgstr "Информация о символе"
 
-#. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid ""
-"This add-on allows to present in a message character information such as "
-"unicode name, number, category, etc.\n"
+"This add-on allows to present in a message various information about a "
+"character.\n"
+"\t\tIt also allows to customize the information reported on a character when "
+"using review cursor character navigation commands or multiple presses of the "
+"review character command."
 msgstr ""
-"Это дополнение позволяет представлять в сообщении и информацию о символе, "
-"такую как имя юникода, число, категория и т.д.\n"
+"Это дополнение позволяет отображать в сообщении различную информацию о "
+"символе.\n"
+"\t\tОно также позволяет настраивать информацию, сообщаемую о символе, при "
+"использовании команд навигации по символам с помощью просмотрового курсора "
+"или многократного нажатия команды просмотра символов."
+
+#, fuzzy
+#~ msgid ""
+#~ "This add-on allows to present in a message various information about a "
+#~ "character.\n"
+#~ msgstr ""
+#~ "Это дополнение позволяет представлять в сообщении и информацию о символе, "
+#~ "такую как имя юникода, число, категория и т.д.\n"
