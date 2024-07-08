@@ -1,5 +1,6 @@
 # Character information
 
+3.0
 * Author: Cyrille Bougot
 * NVDA compatibility: 2022.3.3 and beyond
 * Download [stable version][1]
@@ -51,6 +52,11 @@ When you have reported specific information with the report review character com
 Checking this option will allow you to do it, as long as you navigate with the review cursor by character just after a multiple press of `numpad2`.
 
 ## Change log
+
+### Version 3.1
+
+* Fixed an error when there was no value to report for a character.
+* Compatibility with NVDA 2024.1.
 
 ### Version 3.0
 
