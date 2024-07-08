@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-10 10:02+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-02-16 09:33+0100\n"
+"Last-Translator: José Manuel Delicado <jm.delicado@nvda.es>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -187,10 +187,6 @@ msgstr ""
 "Presenta un mensaje con información detallada sobre el carácter bajo el "
 "cursor de revisión en el navegador de objetos actual."
 
-#. Translators: Reported when there is no caret
-msgid "No caret"
-msgstr "No hay cursor"
-
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
@@ -199,17 +195,85 @@ msgstr ""
 "Presenta un mensaje con información detallada sobre el carácter en la "
 "posición del cursor."
 
+#. Translators: Reported when there is no caret
+msgid "No caret"
+msgstr "No hay cursor"
+
+#. Translators: The description of a command of this add-on.
+msgid "Opens Character Information add-on settings"
+msgstr "Abre las opciones del complemento Información del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character"
+msgstr "Anunciar el carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character description"
+msgstr "Anunciar la descripción del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character number"
+msgstr "Anunciar el número del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Display information on the character"
+msgstr "Mostrar información sobre el carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR locale name of the character"
+msgstr "Anunciar el nombre CLDR local del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR English name of the character"
+msgstr "Anunciar el nombre CLDR en inglés del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the locale name of the character"
+msgstr "Anunciar el nombre local del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the English name of the character"
+msgstr "Anunciar el nombre en inglés del carácter"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid ""
+"Report Microsoft font proprietary character (name, font and equivalent "
+"Unicode name)"
+msgstr ""
+"Anunciar carácter propietario de fuente de Microsoft (nombre, fuente y "
+"nombre Unicode equivalente)"
+
+#. Translators: This is the label for a group of action choices in the add-on's settings panel
+msgid "Action for multiple presses of the report review character command"
+msgstr ""
+"Acción al pulsar varias veces la orden de anunciar el carácter en revisión"
+
+#. Translators: This is the label for a checkbox in the Character Information settings panel.
+msgid "Remember these action during character navigation"
+msgstr "Recordar estas acciones durante la navegación por caracteres"
+
+#. Translators: This is the label for the action definition comboboxes in the Character Information settings
+#. panel.
+#, python-brace-format
+msgid "{n} presses:"
+msgstr "{n} pulsaciones:"
+
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "Character information"
 msgstr "Información del carácter"
 
-#. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid ""
 "This add-on allows to present in a message various information about a "
 "character.\n"
+"\t\tIt also allows to customize the information reported on a character when "
+"using review cursor character navigation commands or multiple presses of the "
+"review character command."
 msgstr ""
 "Este complemento permite presentar en un mensaje información diversa sobre "
 "un carácter.\n"
+"\t\tTambién permite personalizar la información anunciada sobre un carácter "
+"al usar las órdenes de navegación por caracteres del cursor de revisión o "
+"pulsar varias veces la orden de leer carácter."

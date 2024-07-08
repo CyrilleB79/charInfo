@@ -4,10 +4,39 @@
 * NVDA-Kompatibilität: 2022.3.3 und neuer
 * [Stabile Version herunterladen][1]
 
-Mit dieser NVDA-Erweiterung können Sie in einer Nachricht verschiedene
-Informationen über ein bestimmtes Zeichen erfahren.
+This add-on allows to present in a message various information about a
+character.  It also allows to customize the information reported on a
+character when using review cursor character navigation commands or multiple
+presses of the review character command.
 
-## Dargestellte Informationen
+### Features
+
+* Anzeige detaillierter Informationen zu einem bestimmten Zeichen,
+  z. B. Unicode-Name, Nummer, CLDR, Symbolname, etc.
+* This information can be displayed either at the location of the review
+  cursor or at the location of the system cursor.
+* Customize the reported information when pressing `numpad2`.
+* Use the same custom information when moving the review cursor by
+  character.
+
+## Befehle
+
+* `Numpad2` (all keyboard layouts) or `NVDA+.` (laptop layout): when pressed
+  4 times, displays information about the character of the current navigator
+  object where the review cursor is situated. This command can also be
+  customized in the settings of the add-on.
+* Unassigned: Presents a message with detailed information on the character
+  where the review cursor is situated. If you feel uncomfortable with the
+  four press gesture, you may use this command instead.
+* Unassigned: Presents a message with detailed information on the character
+  at the position of the caret (works only in places where there is a
+  caret).
+* Unassigned: Opens Character Information add-on settings.
+
+The unassigned commands need first to be assigned in the Input gestures
+dialog to be used.
+
+## Detaillierte Informationen über ein bestimmtes Zeichen
 
 Die dargestellten Informationen umfassen die folgenden Abschnitte:
 
@@ -25,35 +54,77 @@ Die dargestellten Informationen umfassen die folgenden Abschnitte:
   verwendet die Informationen in den obersten Zeilen mit den verfügbaren
   Informationen, um die Beschreibung eines Zeichens zu liefern.
 
+Die Informationen im Unicode-Abschnitt sind in Englisch, da sie Teil der
+Unicode-Norm sind. Wenn es eine lokale Übersetzung für dieser
+NVDA-Erweiterung gibt, werden die Informationen auch auf Englisch
+bereitgestellt.
 
-## Befehle
+## Einstellungen
 
-* Nummernblock2 (alle Tastaturschemata) oder NVDA +. (Tastaturschema
-  Laptop): Wenn diese Tastenkombination viermal gedrückt wird, werden
-  Informationen zum Zeichen des aktuellen Navigatorobjekts angezeigt, in dem
-  sich der NVDA-Cursor befindet.
-* Nicht zugewiesen: Zeigt eine Meldung mit detaillierten Informationen zu
-  dem Zeichen an, auf dem sich der NVDA-Cursor befindet. Wenn Sie nicht mit
-  diesem Tastenbefehl einverstanden sein sollten, können Sie ihn im
-  Dialogfeld für die Tastenbefehle in NVDA diese neu zuweisen (Kategorie
-  "Text betrachten").
-* Nicht zugewiesen: Zeigt eine Meldung mit detaillierten Informationen über
-  das Zeichen an der Position der Einfügemarke an (funktioniert nur an
-  Stellen, an denen es eine Einfügemarke gibt). Sie finden diese Option in
-  der Kategorie "System-Cursor" im Dialogfeld für die Tastenbefehle in NVDA.
+Diese NVDA-Erweiterung hat eine eigene Kategorie in den NVDA-Einstellungen,
+in der Sie die folgenden Optionen konfigurieren können.
 
-## Anmerkungen
+### Action for multiple presses of the report review character command
 
-* Zwei Befehle sind standardmäßig nicht zugewiesen. Sie sollten diese im
-  Dialogfeld für die Tastenbefehle zuweisen, falls Sie diese benutzen
-  möchten.
-* Die Informationen im Unicode-Abschnitt sind in Englisch, da sie Teil der
-  Unicode-Norm sind. Wenn es eine lokale Übersetzung für dieser
-  NVDA-Erweiterung gibt, werden die Informationen auch auf Englisch
-  bereitgestellt.
+The three combo boxes of this group allow to customize what is reported by
+the report review character command (`numpad2`) when using two, three or
+four presses.  By default, NVDA reports the character description on second
+press and its numeric value, decimal and hexadecimal, on third press.  You
+can change what is reported on the character at the position of the review
+cursor upon multiple presses.  For example, you can report its CLDR English
+name on second press, its Unicode name on third press and display detailed
+information on it on fourth press.
 
+### Diese Aktionen während der Zeichen-Navigation sich merken
+
+When you have reported specific information with the report review character
+command (`numpad2`) called multiple times, you may want to continue
+reporting the same information while navigating with the review cursor
+(`numpad1` and `numpad3`).  Checking this option will allow you to do it, as
+long as you navigate with the review cursor by character just after a
+multiple press of `numpad2`.
 
 ## Änderungsprotokoll
+
+### Version 3.0
+
+* It is now possible to configure the property reported for the character
+  under the review cursor upon multiple presses on `numpad2`. Optionally,
+  after having used multiple press on `numpad2`, the last reported property
+  can also be reported as long as you navigate by character with the review
+  cursor (`numpad1` and `numpad3`).
+* Kompatibilität mit NVDA 2024.1 vorbereitet: Unterstützung der
+  Sprachausgabe bei Bedarf.
+* Behebt mögliche Sicherheitsprobleme im Zusammenhang mit
+  [GHSA-xg6w-23rw-39r8][4] bei der Verwendung der NVDA-Erweiterung mit
+  älteren NVDA-Versionen. Es wird jedoch empfohlen, NVDA 2023.3.3 oder neuer
+  zu verwenden.
+
+### Version 2.6
+
+* Aktualisiert auf Unicode 15.1.
+* Hinzufügen von Unterstützung für Python 3.11 zur Vorbereitung der
+  Kompatibilität mit NVDA 2024.1.
+* Hinweis: Von nun an werden Updates von Übersetzungen nicht mehr im
+  Änderungsprotokoll erscheinen.
+
+### Version 2.5
+
+* Fehler beim Importieren mit den letzten NVDA-Alpha-Versionen behoben, NVDA
+  2023.2 Entwicklungszyklus (Beitrag Noelia Ruiz Martínez).
+
+### Version 2.4
+
+* Aktualisierte Lokalisierungen.
+
+### Version 2.3
+
+* Aktualisierte Lokalisierungen.
+
+### Version 2.2
+
+* Dev-Kanal entfernt.
+* Aktualisierte Lokalisierungen.
 
 ### Version 2.1
 
@@ -63,6 +134,7 @@ Die dargestellten Informationen umfassen die folgenden Abschnitte:
 * Aktualisierte Lokalisierungen.
 
 ### Version 2.0
+
 
 * Die Rückmeldung von Zeichen-Informationen wurde um Informationen von
   Symbolen und Zeichen-Beschreibungen in NVDA erweitert.
@@ -76,16 +148,16 @@ Die dargestellten Informationen umfassen die folgenden Abschnitte:
   aktuellen Zeichens jetzt normal funktionieren (einfaches, doppeltes oder
   dreifaches Drücken).
 * Kompatibel mit NVDA 2023.1.
-* Beendet die Kompatibilität mit NVDA unter 2022.3.3. Die letzte mit NVDA
-  2019.3 kompatible Version ist die [1.8][Version 1.8 direkt herunterladen].
+* Beendet die Kompatibilität mit NVDA älter 2022.3.3. Die letzte mit NVDA
+  2019.3 kompatible Version ist die [1.8][3].
 * Lokalisierungen aktualisiert.
 
 ### Version 1.8
 
 * Update auf Unicode 14.0.
 * Kompatibel mit NVDA 2022.1.
-* Beendet die Kompatibilität mit NVDA unter 2019.3. Die letzte mit NVDA
-  2017.3 kompatible Version ist die [1.7][Version 1.7 direkt herunterladen].
+* Beendet die Kompatibilität mit NVDA älter 2019.3. Die letzte mit NVDA
+  2017.3 kompatible Version ist die [1.7][2].
 * Die Versionsveröffentlichung erfolgt nun durch eine GitHub-Aktion anstatt
   appVeyor.
 * Lokalisierungen aktualisiert.
@@ -135,8 +207,11 @@ Die dargestellten Informationen umfassen die folgenden Abschnitte:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[Version 1.7 direkt
-herunterladen](https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon)
+[2]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[Version 1.8 direkt
-herunterladen](https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon)
+[3]:
+https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994

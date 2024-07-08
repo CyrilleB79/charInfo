@@ -4,10 +4,39 @@
 * Yhteensopivuus: NVDA 2022.3.3 ja uudemmat
 * Lataa [vakaa versio][1]
 
-Tämän lisäosan avulla on mahdollista näyttää merkin tiedot erillisessä
-ikkunassa.
+Tämä lisäosa näyttää merkin tiedot selaustilassa. Sen avulla on myös
+mahdollista mukauttaa merkistä puhuttavaa tietoa liikuttaessa merkeittäin
+tarkastelukohdistinkomennoilla tai painettaessa useasti Lue
+tarkastelukohdistimen kohdalla oleva merkki -komentoa.
 
-## Näytettävät tiedot
+### Ominaisuudet
+
+* Näytä merkin yksityiskohtaiset tiedot, esim. Unicode-nimi, numero,
+  CLDR-nimi, symbolin nimi jne.
+* Tiedot voidaan näyttää joko tarkastelu- tai järjestelmäkohdistimen
+  sijainnista.
+* Mukauta ``Laskinnäppäimistön 2`` -komennolla puhuttavia tietoja.
+* Käytä samoja mukautettuja tietoja siirrettäessä tarkastelukohdistinta
+  merkeittäin.
+
+## Komennot
+
+* Laskinnäppäimistön 2 (kaikki näppäinasettelut) tai NVDA+. (kannettavien
+  asettelu): Näyttää neljästi painettaessa tietoja merkistä, jonka kohdalla
+  tarkastelukohdistin on nykyisessä navigointiobjektissa. Tätä komentoa
+  voidaan myös mukauttaa lisäosan asetuksissa.
+* Ei määritetty: Komento yksityiskohtaisten tietojen näyttämiseen
+  tarkastelukohdistimen kohdalla olevasta merkistä. Mikäli neljän
+  painalluksen näppäinkomento tuntuu epämukavalta, voit käyttää tätä
+  komentoa sen sijaan.
+* Ei määritetty: Komento, joka näyttää yksityiskohtaisia tietoja kohdistimen
+  kohdalla olevasta merkistä (toimii vain paikoissa, joissa on kohdistin).
+* Ei määritetty: Avaa Merkin tiedot -lisäosan asetukset.
+
+Ei-määritetyt komennot on määritettävä Näppäinkomennot-valintaikkunasta,
+jotta niitä voidaan käyttää.
+
+## Merkin yksityiskohtaiset tiedot
 
 Seuraavat tiedot näytetään:
 
@@ -22,30 +51,77 @@ Seuraavat tiedot näytetään:
   ilmoittaa merkin kuvauksen (esim. "A" = "Antti"). NVDA käyttää ylimmillä
   riveillä olevaa tietoa merkin kuvailuun.
 
+Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
+Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
+kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
 
-## Komennot
+## Asetukset
 
-* Numeroryhmän 2 (kaikki näppäimistöasettelut) tai NVDA+. (kannettavien
-  asettelu): Näyttää neljästi painettaessa tietoja merkistä, jonka kohdalla
-  tarkastelukohdistin on nykyisessä navigointiobjektissa.
-* Ei määritetty: Komento tarkastelukohdistimen kohdalla olevan merkin
-  tietojen näyttämiseen. Mikäli neljän painalluksen näppäinkomento tuntuu
-  epämukavalta, voit määrittää sille mieleisesi komennon NVDA:n
-  Näppäinkomennot-valintaikkunan "Tekstin tarkastelu" -
-* Ei määritetty: Skripti, joka näyttää kohdistimen kohdalla olevan merkin
-  tiedot (toimii vain paikoissa, joissa on kohdistin). Komento löytyy NVDA:n
-  Näppäinkomennot-valintaikkunan "Järjestelmän kohdistin" -kategoriasta.
+Tällä lisäosalla on NVDA:n asetusvalintaikkunassa oma kategoria, jossa voit
+määrittää seuraavat asetukset.
 
-## Huomautuksia
+### Toiminto Puhu tarkastelukohdistimen kohdalla oleva merkki -komennon useille painalluksille
 
-* Kahta komentoa ei ole oletusarvoisesti määritetty. Ne on määritettävä
-  Näppäinkomennot-valintaikkunasta, jotta niitä voidaan käyttää.
-* Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
-  Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
-  kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
+Tämän ryhmän kolmesta yhdistelmäruudusta voidaan määrittää, mitä Puhu
+tarkastelukohdistimen kohdalla oleva merkki -komennolla
+(``Laskinnäppäimistön 2``) puhutaan kahta, kolmea tai neljää painallusta
+käytettäessä. Oletusarvoisesti NVDA puhuu toisella painalluksella merkin
+kuvauksen sekä sen numeerisen arvon ja kolmannella painalluksella
+desimaalisen sekä heksadesimaalisen arvon. Voit määrittää, mitä tietoja
+tarkastelukohdistimen kohdalla olevasta merkistä puhutaan useilla
+painalluksilla. Voit esimerkiksi puhuttaa sen englanninkielisen CLDR-nimen
+toisella painalluksella, Unicode-nimen kolmannella ja näyttää
+yksityiskohtaiset tiedot neljännellä painalluksella.
 
+### Muista nämä toiminnot merkeittäin liikuttaessa
+
+Kun olet puhuttanut tiettyjä tietoja painamalla useasti Puhu
+tarkastelukohdistimen kohdalla oleva merkki -komentoa (``Laskinnäppäimistön
+2``), saatat haluta jatkaa samojen tietojen puhumista
+tarkastelukohdistimella liikkuessasi (``Laskinnäppäimistön 1`` ja
+``Laskinnäppäimistön 3``). Tämän vaihtoehdon valitseminen mahdollistaa sen,
+kunhan liikut tarkastelukohdistimella merkeittäin heti usean
+``Laskinnäppäimistön 2`` -painalluksen jälkeen.
 
 ## Muutosloki
+
+### Versio 3.0
+
+* Nyt on mahdollista määrittää ominaisuus, joka puhutaan
+  tarkastelukohdistimen kohdalla olevasta merkistä ``Laskinnäppäimistön 2``
+  -komennon useilla painalluksilla. Käytettyäsi tämän komennon useaa
+  painallusta, viimeksi puhuttu ominaisuus voidaan myös puhua valinnaisesti,
+  kunhan liikut tarkastelukohdistimella merkeittäin ``Laskinnäppäimistön
+  1``- ja ``Laskinnäppäimistön 3`` -komentoja käyttäen.
+* Valmisteltu yhteensopivuutta NVDA 2024.1:lle: pyydettäessä-puhetilan tuki.
+* Ratkaisee mahdolliset [GHSA-xg6w-23rw-39r8][4]:aan liittyvät
+  tietoturvaongelmat käytettäessä lisäosaa vanhemmilla NVDA-versioilla. On
+  kuitenkin suositeltavaa käyttää NVDA 2023.3.3:ea tai sitä uudempaa
+  versiota.
+
+### Versio 2.6
+
+* Päivitys Unicode 15.1:een.
+* Lisätty tuki Python 3.11:lle NVDA 2024.1:n tukeen valmistautumiseksi.
+* Huom: Tästä lähtien käännöspäivitykset eivät enää näy muutoslokissa.
+
+### Versio 2.5
+
+* Korjattu tuontivirhe uusimmissa NVDA:n alfaversioissa (NVDA 2023.2:n
+  kehityssykli, avustanut Noelia Ruiz Martínez).
+
+### Versio 2.4
+
+* Lokalisointeja päivitetty.
+
+### Versio 2.3
+
+* Lokalisointeja päivitetty.
+
+### Versio 2.2
+
+* Dev-kanava poistettu.
+* Lokalisointeja päivitetty.
 
 ### Versio 2.1
 
@@ -54,6 +130,7 @@ Seuraavat tiedot näytetään:
 * Lokalisointeja päivitetty.
 
 ### Versio 2.0
+
 
 * Merkin tietojen ilmoittamista paranneltu NVDA:n symbolien ja merkkien
   kuvauksilla.
@@ -67,8 +144,7 @@ Seuraavat tiedot näytetään:
   kolme painallusta) Windowsin lukitusnäytössä.
 * Yhteensopivuus NVDA 2023.1:n kanssa.
 * Luovuttu yhteensopivuudesta NVDA:n 2022.3.3:a vanhempien versioiden
-  kanssa. Viimeisin NVDA 2019.3:n kanssa yhteensopiva versio on
-  [1.8][downloadVersion1.8].
+  kanssa. Viimeisin NVDA 2019.3:n kanssa yhteensopiva versio on [1.8][3].
 * Lokalisointeja päivitetty.
 
 ### Versio 1.8
@@ -76,8 +152,7 @@ Seuraavat tiedot näytetään:
 * Päivitys Unicode 14.0:aan.
 * Yhteensopivuus NVDA 2022.1:n kanssa.
 * Luovuttu yhteensopivuudesta NVDA:n 2019.3:a vanhempien versioiden
-  kanssa. Viimeisin NVDA 2017.3:n kanssa yhteensopiva versio on
-  [1.7][downloadVersion1.7].
+  kanssa. Viimeisin NVDA 2017.3:n kanssa yhteensopiva versio on [1.7][2].
 * Julkaisu suoritetaan nyt appVeyorin sijasta GitHub-toiminnolla.
 * Lokalisointeja päivitetty.
 
@@ -125,8 +200,11 @@ Seuraavat tiedot näytetään:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]:
+[2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]:
+[3]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994

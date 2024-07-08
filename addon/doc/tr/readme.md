@@ -4,10 +4,39 @@
 * NVDA uyumluluğu: 2022.3.3 ve sonrası
 * [Kararlı sürümü][1] indir
 
-Bu eklenti, bir mesajda bir karakter hakkında çeşitli bilgiler sunmaya izin
-verir.
+Bu eklenti, bir mesajda bir karakter hakkında çeşitli bilgilerin sunulmasına
+olanak tanır. Ayrıca, gözden geçirme imleci karakter gezinme komutlarını
+kullanırken veya karakteri gözden geçirme komutuna birden çok kez
+basıldığında, bir karakter hakkında bildirilen bilgilerin özelleştirilmesine
+de olanak tanır.
 
-## Sunulan bilgiler
+### Özellikler
+
+* Bir karaktere ilişkin ayrıntılı bilgileri görüntüleyin, ör. Unicode adı,
+  numarası, CLDR, sembol adı vb.
+* Bu bilgi, inceleme imlecinin bulunduğu konumda veya sistem imlecinin
+  bulunduğu konumda görüntülenebilir.
+* 'Numpad2'ye basıldığında bildirilen bilgileri özelleştirir.
+* İnceleme imlecini karakter karakter hareket ettirirken aynı özel bilgileri
+  kullanır.
+
+## Komutlar
+
+* 'Numpad2' (tüm klavye düzenleri) veya 'NVDA+.' (dizüstü bilgisayar
+  düzeni): 4 kez basıldığında, inceleme imlecinin bulunduğu geçerli gezinme
+  nesnesinin karakteri hakkında bilgi görüntüler. Bu komut eklentinin
+  ayarlarında da özelleştirilebilir.
+* Atanmamış: İnceleme imlecinin bulunduğu karakter hakkında ayrıntılı bilgi
+  içeren bir mesaj sunar. Dört basma hareketinden rahatsızlık duyuyorsanız
+  bunun yerine bu komutu kullanabilirsiniz.
+* Atanmamış: İmlecin konumundaki karakter hakkında detaylı bilgi içeren bir
+  mesaj sunar (yalnızca imlecin olduğu yerlerde çalışır).
+* Atanmamış: Karakter Bilgisi eklenti ayarlarını açar.
+
+Atanmamış komutların kullanılabilmesi için öncelikle Girdi hareketleri
+iletişim kutusunda atanması gerekir.
+
+## Bir karakter hakkında detaylı bilgi
 
 Sunulan bilgiler aşağıdaki bölümleri içerir:
 
@@ -24,31 +53,73 @@ Sunulan bilgiler aşağıdaki bölümleri içerir:
   karakterin tanımını sağlamak için mevcut bilgileri içeren en üstteki
   satırlardaki bilgileri kullanır.
 
+Karakter hakkında bilgi, unicode düzeninde olduğu için İngilizce
+verilir. Eklenti başka bir dile çevrildiyse bilgi İngilizceyle birlikte
+verilir.
 
-## Komutlar
+## Ayarlar
 
-* Numaratör2 (tüm klavye düzenleri) veya NVDA+. (dizüstü düzeni): 4 kez
-  basıldığında, inceleme imlecinin bulunduğu konumdaki nesne sunucusu
-  karakteri hakkında bilgi gösterir.
-* Atanmamış: İnceleme imlecinin bulunduğu karakter hakkında ayrıntılı
-  bilgiler içeren bir mesaj sunar. Dörtlü basma hareketinden rahatsızsanız,
-  NVDA'nın girdi hareketi iletişim kutusunda ("Metin incelemesi" kategorisi)
-  buna bir hareket atayabilirsiniz.
-* Atanmamış: İmlecin bulunduğu konumdaki karakter hakkında ayrıntılı
-  bilgiler içeren bir mesaj sunar (yalnızca bir imlecin olduğu yerlerde
-  çalışır). NVDA girdi hareketleri iletişim kutusunun "sistem düzenleme
-  imleci" kategorisinde bulunabilir.
+Bu eklentinin NVDA'nın ayarlar iletişim kutusunda aşağıdaki seçenekleri
+yapılandırabileceğiniz kendi kategorisi vardır.
 
-## Notlar
+### Gözden geçirme karakteri bildirimi komutuna birden çok kez basıldığında yapılacak eylem
 
-* İki komut varsayılan olarak atanmamıştır. Kullanılabilmeleri için Girdi
-  hareketleri iletişim kutusunda atanmaları gerekir.
-* Karakter hakkında bilgi, unicode düzeninde olduğu için İngilizce
-  verilir. Eklenti başka bir dile çevrildiyse bilgi İngilizceyle birlikte
-  verilir.
+Bu grubun üç birleşik kutusu, iki, üç veya dört basış kullanıldığında
+inceleme karakteri bildirimi komutu (`numpad2`) tarafından neyin
+bildirileceğini özelleştirmeye izin verir.  Varsayılan olarak, NVDA karakter
+açıklamasını ikinci basışta, sayısal değerini, ondalık ve onaltılık olarak
+üçüncü basışta bildirir.  Birden fazla basışta inceleme imlecinin
+konumundaki karakterde bildirilenleri değiştirebilirsiniz.  Örneğin, ikinci
+basışta CLDR İngilizce adını, üçüncü basışta Unicode adını bildirebilir ve
+dördüncü basışta ayrıntılı bilgileri görüntüleyebilirsiniz.
 
+### Karakter gezintisi sırasında bu eylemleri hatırla
+
+İnceleme karakteri bildirimi komutunu ("numpad2") birden çok kez çağırarak
+belirli bilgileri bildirdiğinizde, inceleme imleciyle ("numpad1" ve
+"numpad3") gezinirken aynı bilgileri bildirmeye devam etmek
+isteyebilirsiniz. Bu seçeneğin işaretlenmesi, 'numpad2'ye birden çok kez
+basıldıktan hemen sonra inceleme imleciyle karakter karakter gezindiğiniz
+sürece bunu yapmanıza olanak tanır.
 
 ## Değişiklikler
+
+### Sürüm 3.0
+
+* Artık 'numpad2'ye birden fazla basıldığında inceleme imlecinin altındaki
+  karakter için bildirilen özelliği yapılandırmak mümkün. İsteğe bağlı
+  olarak, 'numpad2'ye birden fazla bastıktan sonra, gözden geçirme imleciyle
+  ('numpad1' ve 'numpad3') karaktere göre gezindiğiniz sürece son bildirilen
+  özellik de bildirilebilir.
+* NVDA 2024.1 ile uyumluluğu hazırlar: isteğe bağlı konuşma desteği.
+* Eklentiyi NVDA'nın eski sürümleriyle kullanırken [GHSA-xg6w-23rw-39r8][4]
+  ile ilgili olası güvenlik sorunlarını giderir. Ancak NVDA 2023.3.3 veya
+  üzerini kullanmanız tavsiye edilir.
+
+### Sürüm 2.6
+
+* Unicode 15.1'e güncellendi.
+* NVDA 2024.1 ile uyumluluğu hazırlamak amacıyla Python 3.11 desteği
+  eklendi.
+* Not: Artık çeviri güncellemeleri değişiklik günlüğünde görünmeyecek.
+
+### Sürüm 2.5
+
+* NVDA 2023.2 geliştirme döngüsündeki son NVDA alfa sürümleriyle ilgili içe
+  aktarma hatası düzeltildi (katkı Noelia Ruiz Marténez).
+
+### Sürüm 2.4
+
+* Yerelleştirmeler güncellendi.
+
+### Sürüm 2.3
+
+* Yerelleştirmeler güncellendi.
+
+### Sürüm 2.2
+
+* Geliştirici kanalı kaldırıldı.
+* Yerelleştirmeler güncellendi.
 
 ### Sürüm 2.1
 
@@ -58,19 +129,20 @@ Sunulan bilgiler aşağıdaki bölümleri içerir:
 
 ### Sürüm 2.0
 
+
 * Karakter bilgisi duyurusu, NVDA sembolü ve NVDA karakter açıklaması
   hakkında bilgilerle geliştirildi.
 * Bileşik karakter desteği eklendi, örn. iki veya daha fazla Unicode
   karakterinden oluşan aksanlı harfler.
-* Unicode 15.0'a güncellendi.
+* Unicode 15.0'a güncellendi
 * Fransız blok verileri güncellendi.
 * Kilit ekranında ve güvenli ekranlarda karakter bilgilerinin
   görüntülenmesine izin verilmez.
 * Windows kilit ekranında, mevcut karakteri gözden geçiren komut artık
   normal şekilde çalışabilir (tek, çift veya üçlü basın).
 * Eklenti NVDA 2023.1 sürümüyle uyumlu hâle getirildi.
-* NVDA ile uyumluluğu 2022.3.3'ün altına düşürür. NVDA 2019.3 ile uyumlu son
-  sürüm [1.8][indirSürüm 1.8]'dir.
+* NVDA uyumluluğu 2022.3.3'ün altına düşer. NVDA 2019.3 ile uyumlu son sürüm
+  [1.8][3]'tür.
 * Yerelleştirmeleri güncellendi.
 
 ### Sürüm 1.8
@@ -78,7 +150,7 @@ Sunulan bilgiler aşağıdaki bölümleri içerir:
 * Unicode 14.0'a güncellendi.
 * Eklenti NVDA 2022.1 sürümüyle uyumlu hâle getirildi.
 * NVDA ile uyumluluğu 2019.3'ün altına düşürür. NVDA 2017.3 ile uyumlu son
-  sürüm [1.7][indirSürüm 1.7]'dir.
+  sürüm [1.7][2]'dir.
 * Sürüm artık appVeyor yerine bir GitHub eylemi sayesinde
   gerçekleştiriliyor.
 * Yerelleştirmeleri güncellendi.
@@ -129,8 +201,11 @@ Sunulan bilgiler aşağıdaki bölümleri içerir:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[indirSürüm 1.7]:
+[2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[indirSürüm 1.8]:
+[3]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994

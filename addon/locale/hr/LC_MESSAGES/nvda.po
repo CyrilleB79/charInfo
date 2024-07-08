@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2023-03-10 16:20+0100\n"
+"PO-Revision-Date: 2024-05-12 16:58+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -186,15 +186,74 @@ msgstr ""
 "Prikazuje podatke o znaku pod objektom navigatora gdje se nalazi pregledni "
 "kursor."
 
-#. Translators: Reported when there is no caret
-msgid "No caret"
-msgstr "Nema kursora"
-
 #. Translators: The message presented in input help mode.
 msgid ""
 "Presents a message with detailed information on the character at the "
 "position of the caret."
 msgstr "Prikazuje poruku s detaljnim podacima o znaku pod kursorom."
+
+#. Translators: Reported when there is no caret
+msgid "No caret"
+msgstr "Nema kursora"
+
+#. Translators: The description of a command of this add-on.
+msgid "Opens Character Information add-on settings"
+msgstr "Otvara postavke dodatka Informacije o znakovima"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character"
+msgstr "Čitaj znak"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character description"
+msgstr "Čita opis znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the character number"
+msgstr "Čita broj znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Display information on the character"
+msgstr "Prikazuj informacije o znaku"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR locale name of the character"
+msgstr "Čitaj CLDR lokalni naziv znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the CLDR English name of the character"
+msgstr "Čitaj engleski CLDR naziv znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the locale name of the character"
+msgstr "Čitaj lokalni naziv znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid "Report the English name of the character"
+msgstr "Čitaj engleski naziv znaka"
+
+#. Translators: An option in an action definition combobox Character Information setting panel.
+msgid ""
+"Report Microsoft font proprietary character (name, font and equivalent "
+"Unicode name)"
+msgstr ""
+"Čitaj Microsoftov vlasnički znak fonta (naziv, font i ekvivalentni Unicode "
+"naziv)"
+
+#. Translators: This is the label for a group of action choices in the add-on's settings panel
+msgid "Action for multiple presses of the report review character command"
+msgstr ""
+"Radnja za višestruki pritisak prečaca čitanja znaka pod preglednim kursorom"
+
+#. Translators: This is the label for a checkbox in the Character Information settings panel.
+msgid "Remember these action during character navigation"
+msgstr "Zapamti ovu radnju pri kretanju po znakovima"
+
+#. Translators: This is the label for the action definition comboboxes in the Character Information settings
+#. panel.
+#, python-brace-format
+msgid "{n} presses:"
+msgstr "{n} pritisaka:"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
@@ -202,9 +261,21 @@ msgstr "Prikazuje poruku s detaljnim podacima o znaku pod kursorom."
 msgid "Character information"
 msgstr "Podaci o znaku"
 
-#. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid ""
 "This add-on allows to present in a message various information about a "
 "character.\n"
-msgstr "Ovaj dodatak omogućuje prikaz raznih podataka o znaku.\n"
+"\t\tIt also allows to customize the information reported on a character when "
+"using review cursor character navigation commands or multiple presses of the "
+"review character command."
+msgstr ""
+"Ovaj dodatak omogućuje prikazivanje u poruci različitih informacija o "
+"znaku.\n"
+"\t\tTakođer omogućuje prilagodbu informacija prijavljenih na znaku kada se "
+"koriste naredbe za navigaciju znakovima pokazivača pregleda ili više "
+"pritisaka naredbe znaka pregleda."
+
+#~ msgid ""
+#~ "This add-on allows to present in a message various information about a "
+#~ "character.\n"
+#~ msgstr "Ovaj dodatak omogućuje prikaz raznih podataka o znaku.\n"
