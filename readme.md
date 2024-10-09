@@ -1,6 +1,5 @@
 # Character information
 
-3.0
 * Author: Cyrille Bougot
 * NVDA compatibility: 2022.3.3 and beyond
 * Download [stable version][1]
@@ -52,6 +51,10 @@ When you have reported specific information with the report review character com
 Checking this option will allow you to do it, as long as you navigate with the review cursor by character just after a multiple press of `numpad2`.
 
 ## Change log
+
+### Version 3.2
+
+* Bugfix: characters for which only the speech level has been changed do not prevent anymore the information report to be displayed.
 
 ### Version 3.1
 
