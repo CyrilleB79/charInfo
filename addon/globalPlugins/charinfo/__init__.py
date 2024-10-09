@@ -729,8 +729,11 @@ class Character(object):
 			info = ss.computedSymbols[self.text]
 		except KeyError:
 			return (STR_VALUE_NOT_DEFINED, ) * 3
+		replacement = info.replacement
+		if replacement is None:
+			replacement = STR_VALUE_NOT_DEFINED
 		return (
-			info.replacement,
+			replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 		)
@@ -742,8 +745,11 @@ class Character(object):
 				os.path.join(globalVars.appArgs.configPath, f"symbols-{locale}.dic"),
 				allowComplexSymbols=False,
 			)
+			replacement = info.replacement
+			if replacement is None:
+				replacement = STR_VALUE_NOT_DEFINED
 			return (
-				info.replacement,
+				replacement,
 				SPEECH_SYMBOL_LEVEL_LABELS.get(info.level, STR_VALUE_NOT_DEFINED),
 				SPEECH_SYMBOL_PRESERVE_LABELS.get(info.preserve, STR_VALUE_NOT_DEFINED),
 			)
@@ -765,8 +771,11 @@ class Character(object):
 			symb = data.symbols[self.text]
 		except KeyError:
 			return (STR_VALUE_NOT_DEFINED, ) * 3
+		replacement = symb.replacement
+		if replacement is None:
+			replacement = STR_VALUE_NOT_DEFINED
 		return (
-			symb.replacement,
+			replacement,
 			SPEECH_SYMBOL_LEVEL_LABELS.get(symb.level, STR_VALUE_NOT_DEFINED),
 			SPEECH_SYMBOL_PRESERVE_LABELS.get(symb.preserve, STR_VALUE_NOT_DEFINED),
 		)
@@ -822,7 +831,11 @@ class Characters(object):
 		if not self.isMsFont():
 			validSectionList.remove(Section.MS_FONT)
 		for section in validSectionList:
-			htmlSection = self.createHtmlInfoSection(section)
+			try:
+				htmlSection = self.createHtmlInfoSection(section)
+			except Exception:
+				log.debugWarning(f"Error while creating section {section}")
+				raise
 			content.append(htmlSection)
 		body = mkhi(
 			'body',
@@ -897,11 +910,15 @@ class Characters(object):
 				else:
 					langInfo = ''
 				attr = attr.format(langInfo=langInfo)
-			row = self.createHtmlInfoRow(
-				attr,
-				[getattr(c, getter)() for c in self.charList],
-				section,
-			)
+			try:
+				row = self.createHtmlInfoRow(
+					attr,
+					[getattr(c, getter)() for c in self.charList],
+					section,
+				)
+			except Exception:
+				log.debugWarning(f"Error while creating row for key {key}")
+				raise
 			content.append(row)
 		return mkhi(
 			'table',
@@ -968,10 +985,14 @@ class Characters(object):
 		content.append(htmlAttribute)
 		for value in valueList:
 			if session == Section.NVDA_SYMBOL_DESC:
-				if isinstance(value, tuple):
-					htmlCells = ''.join(mkhiText('td', i) for i in value)
-				else:
-					htmlCells = mkhiText('td', value, attribDic={'colspan': 3})
+				try:
+					if isinstance(value, tuple):
+						htmlCells = ''.join(mkhiText('td', i) for i in value)
+					else:
+						htmlCells = mkhiText('td', value, attribDic={'colspan': 3})
+				except Exception:
+					log.debugWarning(f"Error while creating cells for value {value}"),
+					raise
 			else:
 				htmlCells = mkhiText('td', value)
 			content.append(htmlCells)
