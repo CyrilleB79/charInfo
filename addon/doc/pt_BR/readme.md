@@ -1,7 +1,7 @@
 # Informações de Caractere (Character Information) #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2022.3.3 and beyond
+* Compatibilidade com NVDA: 2022.3.3 e posterior
 * Baixe a [versão estável][1]
 
 Esse complemento permite apresentar em uma mensagem várias informações sobre
@@ -21,16 +21,16 @@ de revisão ou pressionar várias vezes o comando de caractere de revisão.
 
 ## Comandos
 
-* `Numpad2` (all keyboard layouts) or `NVDA+.` (laptop layout): when pressed
-  4 times, displays information about the character of the current navigator
-  object where the review cursor is situated. This command can also be
-  customized in the settings of the add-on.
-* Unassigned: Presents a message with detailed information on the character
-  where the review cursor is situated. If you feel uncomfortable with the
-  four press gesture, you may use this command instead.
-* Unassigned: Presents a message with detailed information on the character
-  at the position of the caret (works only in places where there is a
-  caret).
+* `2 do teclado numérico` (todos os esquemas de teclado) ou NVDA+. (esquema
+  para computador portátil): quando pressionado 4 vezes, exibe informações
+  sobre o caractere do objeto atual de navegação onde o cursor de exploração
+  está situado.
+* Não atribuído: Apresenta uma mensagem com informações detalhadas sobre o
+  caractere em que o cursor de revisão está situado. Se você não se sentir à
+  vontade com o gesto de pressionar quatro vezes, poderá usar esse comando.
+* Não atribuído: Apresenta uma mensagem com informações detalhadas sobre o
+  caractere na posição do sinal de intercalação (funciona somente em locais
+  onde há um sinal de intercalação).
 * Não atribuído: Abre as configurações do complemento Informações sobre
   caracteres.
 
@@ -43,9 +43,9 @@ As informações apresentadas incluem as seguintes seções:
 
 * Unicode: informações da norma Unicode, ou seja, nome, nome CLDR, valor,
   bloco, etc.
-* MS font, only for characters written with proprietary Microsoft fonts
-  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
-  equivalent Unicode character.
+* Fonte MS, somente para caracteres escritos com fontes proprietárias da
+  Microsoft (Symbol, Wingding 1, 2, 3 e Webding): nome e informações sobre o
+  caractere Unicode equivalente.
 * Descrição do símbolo do NVDA: informações que permitem entender como o
   NVDA relata a descrição do símbolo. o NVDA usa as informações das linhas
   superiores que contêm as informações disponíveis para fornecer a descrição
@@ -55,9 +55,9 @@ As informações apresentadas incluem as seguintes seções:
   NVDA usa as informações das linhas superiores que contêm as informações
   disponíveis para fornecer a descrição de um caractere.
 
-The provided information in the Unicode section is in English since it is
-part of Unicode norm. If a local translation exists for this add-on, the
-information is also provided alongside with English.
+As informações fornecidas na seção Unicode estão em inglês, pois fazem parte
+da norma Unicode. Se houver uma tradução local para esse complemento, as
+informações também serão fornecidas juntamente com o inglês.
 
 ## Configurações
 
@@ -87,79 +87,79 @@ pressionar várias vezes o comando `numpad2`.
 
 ## Histórico de mudanças
 
-### Version 3.0
+### Versão 3.0
 
 * Agora é possível configurar a propriedade informada para o caractere sob o
   cursor de revisão ao pressionar várias vezes o `numpad2`. Opcionalmente,
   depois de pressionar várias vezes o `numpad2`, a última propriedade
   informada também pode ser informada, desde que você navegue por caractere
   com o cursor de revisão (`numpad1` e `numpad3`).
-* Prepares compatibility with NVDA 2024.1: speech on-demand support.
+* Prepara a compatibilidade com o NVDA 2024.1: suporte a fala sob demanda.
 * Resolve possíveis problemas de segurança relacionados ao
   [GHSA-xg6w-23rw-39r8][4] ao usar o complemento com versões mais antigas do
   NVDA. No entanto, é recomendável usar o NVDA 2023.3.3 ou superior.
 
-### Version 2.6
+### Versão 2.6
 
-* Update to Unicode 15.1.
+* Atualiza para Unicode 15.0.
 * Adiciona suporte ao Python 3.11 para preparar a compatibilidade com o NVDA
   2024.1.
 * Observação: De agora em diante, as atualizações de tradução não aparecerão
   mais no registro de alterações.
 
-### Version 2.5
+### Versão 2.5
 
 * Corrigido o erro de importação com as últimas versões alfa do NVDA, ciclo
   de desenvolvimento do NVDA 2023.2 (contribuição de Noelia Ruiz Mart nez).
 
-### Version 2.4
+### Versão 2.4
 
 * Localizações atualizadas.
 
-### Version 2.3
+### Versão 2.3
 
 * Localizações atualizadas.
 
-### Version 2.2
+### Versão 2.2
 
 * Removido o canal de desenvolvimento.
 * Localizações atualizadas.
 
-### Version 2.1
+### Versão 2.1
 
 * Correção de alguns erros que impediam a exibição do relatório de
   informações do caracter quando algumas opções eram usadas.
 * Localizações atualizadas.
 
-### Version 2.0
+### Versão 2.0
 
 
 * Aprimorou o relatório de informações de caracteres com informações sobre o
   símbolo NVDA e a descrição do caractere NVDA.
 * Adicionado o suporte a caracteres compostos, por exemplo, letras com
   diacríticos que consistem em dois ou mais caracteres Unicode.
-* Atualiza para Unicode 15.0.
+* Atualiza para Unicode 15.0
 * Atualização dos dados do bloco francês.
 * A visualização de informações de caracteres não é permitida na tela de
   bloqueio e nas telas seguras.
 * Na tela de bloqueio do Windows, o script para revisar o caractere atual
   agora pode funcionar normalmente (pressionamento único, duplo ou triplo).
-* Compatibility with NVDA 2023.1.
+* Compatibilidade com NVDA 2023.1.
 * Deixa de ser compatível com o NVDA abaixo de 2022.3.3. A última versão
   compatível com o NVDA 2019.3 é a [1.8][3].
 * Atualizar localizações.
 
-### Version 1.8
+### Versão 1.8
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
+* Atualiza para Unicode 14.0.
+* Compatibilidade com NVDA 2022.1.
 * Deixa de ser compatível com o NVDA abaixo de 2019.3. A última versão
   compatível com o NVDA 2017.3 é a [1.7][2].
 * O lançamento agora é realizado graças a uma ação do GitHub em vez do
   appVeyor.
 * Atualizar localizações.
 
-### Version 1.7
+### Versão 1.7
 
 * Adicionadas localizações.
 
