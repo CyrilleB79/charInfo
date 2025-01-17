@@ -381,5 +381,37 @@ otherFrenchSourceFiles = (os.path.join(frDataPath, f) for f in [
 for file in otherFrenchSourceFiles:
 	env.Depends(addon, file)
 
+requirementsFile = env.File("requirements.txt")
+print(requirementsFile)
+libsDir = os.path.join(env.Dir("#").abspath, "addon", "globalPlugins", "charInfo", "UnicodeDataPKG")
+expectedLibFiles = []
+pyVersions = ["3.7", "3.11"]
+for pyVersion in pyVersions:
+	pyVersionString = pyVersion.replace('.', '')
+	file = f"unicodedata2.cp{pyVersion.replace('.', '')}-win32.pyd"
+	expectedLibFiles.append(
+		os.path.join(libsDir, f"py{pyVersionString}", file)
+	)
+
+def cleanLibsDirAction(target, source, env):
+	import shutil
+	try:
+		shutil.rmtree(libsDir)
+	except FileNotFoundError:
+		pass
+
+def installLibsAction(target, source, env):
+	for pyVersion in pyVersions:
+		pyVersionString = pyVersion.replace('.', '')
+		pipCmd = f"pip install --upgrade --target {os.path.join(libsDir, f'py{pyVersionString}')} -r {requirementsFile} --platform win32 --python-version {pyVersion} --implementation cp --only-binary=:all:"
+		env.Execute(pipCmd)
+
+libDirsTargets = env.Command(
+	target=expectedLibFiles,
+	source=requirementsFile,
+	action=[cleanLibsDirAction, installLibsAction],
+)
+env.Depends(addon, libDirsTargets)
+
 env.Default(addon)
-env.Clean(addon, ['.sconsign.dblite', 'addon/doc/' + buildVars.baseLanguage + '/'])
+env.Clean(addon, ['.sconsign.dblite', 'addon/doc/' + buildVars.baseLanguage + '/', libsDir])
