@@ -52,6 +52,10 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ## Change log
 
+### Version 3.4
+
+* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+
 ### Version 3.3
 
 * Update to Unicode 16.0.
