@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # NVDA add-on: Character information
-# Copyright (C) 2019-2024 Cyrille Bougot
+# Copyright (C) 2019-2025 Cyrille Bougot
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
@@ -1062,7 +1062,7 @@ originalGetSafeScripts = security.getSafeScripts
 
 def patchedGetSafeScripts():
 	# Current running charInfo global plugin
-	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charinfo')
+	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charInfo')
 	safeScripts = originalGetSafeScripts()
 	safeScripts.update({
 		ci.script_review_currentCharacter,
