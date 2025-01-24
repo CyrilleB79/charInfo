@@ -52,6 +52,10 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ## Change log
 
+### Version 3.3
+
+* Update to Unicode 16.0.
+
 ### Version 3.2
 
 * Bugfix: characters for which only the speech level has been changed do not prevent anymore the information report to be displayed.
