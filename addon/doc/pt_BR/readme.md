@@ -1,93 +1,167 @@
 # Informações de Caractere (Character Information) #
 
 * Autor: Cyrille Bougot
-* NVDA compatibility: 2022.3.3 and beyond
+* Compatibilidade com NVDA: 2022.3.3 e posterior
 * Baixe a [versão estável][1]
 
-This add-on allows to present in a message various information about a
-character.
+Esse complemento permite apresentar em uma mensagem várias informações sobre
+um caractere.  Ele também permite personalizar as informações relatadas
+sobre um caractere ao usar os comandos de navegação de caractere do cursor
+de revisão ou pressionar várias vezes o comando de caractere de revisão.
 
-## Presented information
+### Recursos
 
-The presented information include the following sections:
-
-* Unicode: information from Unicode norm, i.e. name, CLDR name, value,
-  block, etc.
-* MS font, only for characters written with proprietary Microsoft fonts
-  (Symbol, Wingding 1, 2, 3 and Webding): name and information about the
-  equivalent Unicode character.
-* NVDA symbol description: information allowing to understand how NVDA
-  reports the symbol description. NVDA uses the information in the top most
-  rows containing available information to provide the description of a
-  symbol.
-* NVDA character description: information allowing to understand how NVDA
-  reports the character description (e.g. "alpha" for "A"). NVDA uses the
-  information in the top most rows containing available information to
-  provide the description of a character.
-
+* Exibir informações detalhadas sobre um caractere, por exemplo, nome
+  Unicode, número, CLDR, nome do símbolo, etc.
+* Essas informações podem ser exibidas no local do cursor de revisão ou no
+  local do cursor do sistema.
+* Personalize as informações relatadas ao pressionar `numpad2`.
+* Use as mesmas informações personalizadas ao mover o cursor de revisão por
+  caractere.
 
 ## Comandos
 
-* 2 do teclado numérico (todos os esquemas de teclado) ou NVDA+. (esquema
+* `2 do teclado numérico` (todos os esquemas de teclado) ou NVDA+. (esquema
   para computador portátil): quando pressionado 4 vezes, exibe informações
   sobre o caractere do objeto atual de navegação onde o cursor de exploração
   está situado.
-* Unassigned: Presents a message with detailed information on the character
-  where the review cursor is situated. If you feel uncomfortable with the
-  four press gesture, you may assign to it a gesture in NVDA's input gesture
-  dialog ("Text review" category).
-* Unassigned: Presents a message with detailed information on the character
-  at the position of the caret (works only in places where there is a
-  caret). It can be found in the "system caret" category of NVDA input
-  gestures dialog.
+* Não atribuído: Apresenta uma mensagem com informações detalhadas sobre o
+  caractere em que o cursor de revisão está situado. Se você não se sentir à
+  vontade com o gesto de pressionar quatro vezes, poderá usar esse comando.
+* Não atribuído: Apresenta uma mensagem com informações detalhadas sobre o
+  caractere na posição do sinal de intercalação (funciona somente em locais
+  onde há um sinal de intercalação).
+* Não atribuído: Abre as configurações do complemento Informações sobre
+  caracteres.
 
-## Notas
+Os comandos não atribuídos precisam primeiro ser atribuídos na caixa de
+diálogo Gestos de entrada para serem usados.
 
-* Two commands are unassigned by default. They need to be assigned in the
-  Input gestures dialog to be used.
-* The provided information in the Unicode section is in English since it is
-  part of Unicode norm. If a local translation exists for this add-on, the
-  information is also provided alongside with English.
+## Informações detalhadas sobre um caracter
 
+As informações apresentadas incluem as seguintes seções:
+
+* Unicode: informações da norma Unicode, ou seja, nome, nome CLDR, valor,
+  bloco, etc.
+* Fonte MS, somente para caracteres escritos com fontes proprietárias da
+  Microsoft (Symbol, Wingding 1, 2, 3 e Webding): nome e informações sobre o
+  caractere Unicode equivalente.
+* Descrição do símbolo do NVDA: informações que permitem entender como o
+  NVDA relata a descrição do símbolo. o NVDA usa as informações das linhas
+  superiores que contêm as informações disponíveis para fornecer a descrição
+  de um símbolo.
+* Descrição do caractere do NVDA: informações que permitem entender como o
+  NVDA relata a descrição do caractere (por exemplo, “alfa” para “A”). O
+  NVDA usa as informações das linhas superiores que contêm as informações
+  disponíveis para fornecer a descrição de um caractere.
+
+As informações fornecidas na seção Unicode estão em inglês, pois fazem parte
+da norma Unicode. Se houver uma tradução local para esse complemento, as
+informações também serão fornecidas juntamente com o inglês.
+
+## Configurações
+
+Esse complemento tem sua própria categoria na caixa de diálogo de
+configurações do NVDA, onde você pode configurar as seguintes opções.
+
+### Ação para pressionar várias vezes o comando do caractere de revisão do relatório
+
+As três caixas de combinação desse grupo permitem personalizar o que é
+relatado pelo comando reportar caractere de revisão (`numpad2`) ao usar
+dois, três ou quatro toques.  Por padrão, o NVDA informa a descrição do
+caractere no segundo pressionamento e seu valor numérico, decimal e
+hexadecimal, no terceiro pressionamento.  Você pode alterar o que é
+informado sobre o caractere na posição do cursor de revisão ao pressionar
+várias vezes.  Por exemplo, você pode informar o nome CLDR em inglês no
+segundo toque, o nome Unicode no terceiro toque e exibir informações
+detalhadas sobre ele no quarto toque.
+
+### Lembre-se destas ações durante a navegação do caracter
+
+Quando você tiver relatado informações específicas com o comando reportar
+caractere de revisão (`numpad2`) chamado várias vezes, talvez queira
+continuar relatando as mesmas informações enquanto navega com o cursor de
+revisão (`numpad1` e `numpad3`).  Ao marcar essa opção, você poderá fazer
+isso, desde que navegue com o cursor de revisão por caractere logo após
+pressionar várias vezes o comando `numpad2`.
 
 ## Histórico de mudanças
 
-### Version 2.1
+### Versão 3.0
 
-* Fixed some bugs preventing the character information report to be
-  displayed when some options were used.
-* Updated localizations.
+* Agora é possível configurar a propriedade informada para o caractere sob o
+  cursor de revisão ao pressionar várias vezes o `numpad2`. Opcionalmente,
+  depois de pressionar várias vezes o `numpad2`, a última propriedade
+  informada também pode ser informada, desde que você navegue por caractere
+  com o cursor de revisão (`numpad1` e `numpad3`).
+* Prepara a compatibilidade com o NVDA 2024.1: suporte a fala sob demanda.
+* Resolve possíveis problemas de segurança relacionados ao
+  [GHSA-xg6w-23rw-39r8][4] ao usar o complemento com versões mais antigas do
+  NVDA. No entanto, é recomendável usar o NVDA 2023.3.3 ou superior.
 
-### Version 2.0
+### Versão 2.6
 
-* Enhanced the character information report with information on NVDA symbol
-  and NVDA character description.
-* Added the support of compound character, e.g. letters with diacritic
-  consisting in two or more Unicode characters.
-* Update to Unicode 15.0
-* Updated French block data.
-* Viewing character information is not allowed on lock screen and secure
-  screens.
-* On Windows lock screen, the script to review the current character can now
-  operate normally (single, double or triple press).
-* Compatibility with NVDA 2023.1.
-* Drops compatibility with NVDA below 2022.3.3. The last version compatible
-  with NVDA 2019.3 is the [1.8][downloadVersion1.8].
-* Update localizations.
+* Atualiza para Unicode 15.0.
+* Adiciona suporte ao Python 3.11 para preparar a compatibilidade com o NVDA
+  2024.1.
+* Observação: De agora em diante, as atualizações de tradução não aparecerão
+  mais no registro de alterações.
 
-### Version 1.8
+### Versão 2.5
 
-* Update to Unicode 14.0.
-* Compatibility with NVDA 2022.1.
-* Drops compatibility with NVDA below 2019.3. The last version compatible
-  with NVDA 2017.3 is the [1.7][downloadVersion1.7].
-* The release is now performed thanks to a GitHub action instead of
+* Corrigido o erro de importação com as últimas versões alfa do NVDA, ciclo
+  de desenvolvimento do NVDA 2023.2 (contribuição de Noelia Ruiz Mart nez).
+
+### Versão 2.4
+
+* Localizações atualizadas.
+
+### Versão 2.3
+
+* Localizações atualizadas.
+
+### Versão 2.2
+
+* Removido o canal de desenvolvimento.
+* Localizações atualizadas.
+
+### Versão 2.1
+
+* Correção de alguns erros que impediam a exibição do relatório de
+  informações do caracter quando algumas opções eram usadas.
+* Localizações atualizadas.
+
+### Versão 2.0
+
+
+* Aprimorou o relatório de informações de caracteres com informações sobre o
+  símbolo NVDA e a descrição do caractere NVDA.
+* Adicionado o suporte a caracteres compostos, por exemplo, letras com
+  diacríticos que consistem em dois ou mais caracteres Unicode.
+* Atualiza para Unicode 15.0
+* Atualização dos dados do bloco francês.
+* A visualização de informações de caracteres não é permitida na tela de
+  bloqueio e nas telas seguras.
+* Na tela de bloqueio do Windows, o script para revisar o caractere atual
+  agora pode funcionar normalmente (pressionamento único, duplo ou triplo).
+* Compatibilidade com NVDA 2023.1.
+* Deixa de ser compatível com o NVDA abaixo de 2022.3.3. A última versão
+  compatível com o NVDA 2019.3 é a [1.8][3].
+* Atualizar localizações.
+
+### Versão 1.8
+
+* Atualiza para Unicode 14.0.
+* Compatibilidade com NVDA 2022.1.
+* Deixa de ser compatível com o NVDA abaixo de 2019.3. A última versão
+  compatível com o NVDA 2017.3 é a [1.7][2].
+* O lançamento agora é realizado graças a uma ação do GitHub em vez do
   appVeyor.
-* Update localizations.
+* Atualizar localizações.
 
-### Version 1.7
+### Versão 1.7
 
-* Added localizations.
+* Adicionadas localizações.
 
 ### Versão 1.6
 
@@ -130,8 +204,11 @@ The presented information include the following sections:
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
-[downloadVersion1.7]:
+[2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
-[downloadVersion1.8]:
+[3]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
+
+[4]:
+https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
