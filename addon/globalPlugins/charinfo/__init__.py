@@ -817,8 +817,6 @@ class Characters(object):
 		self.charList = [Character(ord(c), c, lang=lang, font=font) for c in text]
 		self.lang = lang
 		self.font = font
-		import globalVars as gv
-		gv.dbg=self
 
 	def createHtmlInfoMessage(self, text):
 		doctype = '<!doctype html>'
@@ -1004,16 +1002,37 @@ class Characters(object):
 		introStr = _("Options used to compute the symbol:")
 		content.append(mkhiText('p', introStr))
 		optionList = []
-		optionList.append(
-			'{txt}: {val}'.format(
-				txt=removeAccelerator(
-					nvdaTranslations(
-						"Include Unicode Consortium data (including emoji) when processing characters and symbols",
+		try:
+			# For NVDA >= 2024.4
+			from characterProcessing import listAvailableSymbolDictionaryDefinitions
+		except ImportError:
+			# For NVDA < 2024.4
+			optionList.append(
+				'{txt}: {val}'.format(
+					txt=removeAccelerator(
+						nvdaTranslations(
+							"Include Unicode Consortium data (including emoji) when processing characters and symbols",
+						),
 					),
-				),
-				val=convertToOnOff(config.conf["speech"]["includeCLDR"]),
+					val=convertToOnOff(config.conf["speech"]["includeCLDR"]),
+				)
 			)
-		)
+		else:
+			# For NVDA >= 2024.4
+			_availableSymbolDictionaries = [
+				d for d in listAvailableSymbolDictionaryDefinitions() if d.userVisible
+			]
+			for dic in _availableSymbolDictionaries:
+				optionList.append(
+					'{txt}: {val}'.format(
+						txt=removeAccelerator(
+							nvdaTranslations(
+								dic.displayName,
+							),
+						),
+						val=convertToOnOff(dic.enabled),
+					),
+				)
 		optionList.append(
 			'{txt}: {val}'.format(
 				txt=removeAccelerator(
@@ -1096,8 +1115,6 @@ def getCurrCharFontName(info):
 	formatConfig = {k: False for k, v in configDocFormatting}
 	formatConfig['reportFontName'] = True
 	info = info.copy()
-	import globalVars as gv
-	gv.dbg = info.getTextWithFields(formatConfig)
 	for field in info.getTextWithFields(formatConfig):
 		if isinstance(field, textInfos.FieldCommand) and isinstance(field.field, textInfos.FormatField):
 			try:
