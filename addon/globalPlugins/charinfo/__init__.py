@@ -877,7 +877,18 @@ class Characters(object):
 				NVDASymbolAttribute.LOCALE_CLDR,
 				NVDACharacterDescriptionAttribute.LOCALE,
 			})
-		if not config.conf["speech"]["includeCLDR"]:
+		try:
+			# For NVDA >= 2024.4
+			from characterProcessing import listAvailableSymbolDictionaryDefinitions  # Just to test
+		except ImportError:
+			# For NVDA < 2024.4
+			includeCLDR = config.conf["speech"]["includeCLDR"]
+		else:
+			# For NVDA >= 2024.4
+			includeCLDR = next(
+				d for d in listAvailableSymbolDictionaryDefinitions() if d.name == "cldr"
+			).enabled
+		if not includeCLDR:
 			toRemove.update({NVDASymbolAttribute.LOCALE_CLDR, NVDASymbolAttribute.ENGLISH_CLDR})
 		for attr in toRemove:
 			try:

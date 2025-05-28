@@ -34,6 +34,9 @@ The presented information include the following sections:
 
 The provided information in the Unicode section is in English since it is part of Unicode norm. If a local translation exists for this add-on, the information is also provided alongside with English.
 
+Regarding NVDA symbol description section: This add-on does not yet support custom symbol dictionaries (introduced in NVDA 2024.4).
+They already appear in the list "Options used to compute the symbol" but not in the table itself.
+
 ## Settings
 
 This add-on has its own category in NVDA's settings dialog where you can configure the following options.
