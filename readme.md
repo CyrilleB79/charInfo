@@ -2,7 +2,6 @@
 
 * Author: Cyrille Bougot
 * NVDA compatibility: 2022.3.3 and beyond
-* Download [stable version][1]
 
 This add-on allows to present in a message various information about a character.
 It also allows to customize the information reported on a character when using review cursor character navigation commands or multiple presses of the review character command.
@@ -54,6 +53,12 @@ When you have reported specific information with the report review character com
 Checking this option will allow you to do it, as long as you navigate with the review cursor by character just after a multiple press of `numpad2`.
 
 ## Change log
+
+### Version 3.5
+
+* Partial implementation of the support for custom dictionaries (introduced in NVDA 2024.4).
+* Fixed Unicode 16.0 support: block names for English and French updated.
+* Compatibility with NVDA 2025.1.
 
 ### Version 3.4
 
@@ -164,8 +169,6 @@ Checking this option will allow you to do it, as long as you navigate with the r
 ### Version 1.0
 
 * Initial release.
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]: https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
 
