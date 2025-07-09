@@ -1091,14 +1091,20 @@ originalGetSafeScripts = security.getSafeScripts
 
 
 def patchedGetSafeScripts():
-	# Current running charInfo global plugin
-	ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charInfo')
-	safeScripts = originalGetSafeScripts()
-	safeScripts.update({
-		ci.script_review_currentCharacter,
-		ci.script_review_nextCharacter,
-		ci.script_review_previousCharacter,
-	})
+	try:
+		# Current running charInfo global plugin
+		ci = next(gp for gp in globalPluginHandler.runningPlugins if gp.__module__ == 'globalPlugins.charInfo')
+		safeScripts = originalGetSafeScripts()
+		safeScripts.update({
+			ci.script_review_currentCharacter,
+			ci.script_review_nextCharacter,
+			ci.script_review_previousCharacter,
+		})
+	except Exception as e:
+		log.exception(
+			f"{e} exception raised in patched security.getSafeScripts; the original version will be used instead.",
+		)
+		return originalGetSafeScripts()
 	return safeScripts
 
 
