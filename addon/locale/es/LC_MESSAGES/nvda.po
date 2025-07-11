@@ -30,6 +30,11 @@ msgstr "[Sin definir]"
 msgid "[No file]"
 msgstr "[Sin archivo]"
 
+#. Translators: When speaking a missing character property
+#, fuzzy
+msgid "No value"
+msgstr "Valor hexadecimal"
+
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
 msgstr "Carácter"

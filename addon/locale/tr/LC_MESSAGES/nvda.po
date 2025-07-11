@@ -31,6 +31,11 @@ msgstr "[Tanımlanmamış]"
 msgid "[No file]"
 msgstr "[Dosya yok]"
 
+#. Translators: When speaking a missing character property
+#, fuzzy
+msgid "No value"
+msgstr "Onaltılık değer"
+
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
 msgstr "Karakter"

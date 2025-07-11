@@ -2,7 +2,6 @@
 
 * Автор: Cyrille Bougot
 * Сумісність з NVDA: 2022.3.3 і вище
-* Завантажити [стабільну версію][1]
 
 This add-on allows to present in a message various information about a
 character.  It also allows to customize the information reported on a
@@ -56,6 +55,11 @@ dialog to be used.
 Unicode. Якщо для цього додатка існує локальний переклад, інформація
 надається також разом з англійською мовою.
 
+Regarding NVDA symbol description section: This add-on does not yet support
+custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
+in the list "Options used to compute the symbol" but not in the table
+itself.
+
 ## Settings
 
 This add-on has its own category in NVDA's settings dialog where you can
@@ -82,6 +86,31 @@ long as you navigate with the review cursor by character just after a
 multiple press of `numpad2`.
 
 ## Журнал змін
+
+### Version 3.5
+
+* Partial implementation of the support for custom dictionaries (introduced
+  in NVDA 2024.4).
+* Fixed Unicode 16.0 support: block names for English and French updated.
+* Compatibility with NVDA 2025.1.
+
+### Version 3.4
+
+* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+
+### Version 3.3
+
+* Update to Unicode 16.0.
+
+### Version 3.2
+
+* Bugfix: characters for which only the speech level has been changed do not
+  prevent anymore the information report to be displayed.
+
+### Version 3.1
+
+* Fixed an error when there was no value to report for a character.
+* Compatibility with NVDA 2024.1.
 
 ### Version 3.0
 
@@ -194,8 +223,6 @@ multiple press of `numpad2`.
 * Перша версія.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

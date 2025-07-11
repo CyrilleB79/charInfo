@@ -30,6 +30,11 @@ msgstr "[Не е указано]"
 msgid "[No file]"
 msgstr "[Няма файл]"
 
+#. Translators: When speaking a missing character property
+#, fuzzy
+msgid "No value"
+msgstr "Шестнадесетична стойност"
+
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
 msgstr "Знак"

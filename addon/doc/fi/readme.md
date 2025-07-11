@@ -2,7 +2,6 @@
 
 * Tekijä: Cyrille Bougot
 * Yhteensopivuus: NVDA 2022.3.3 ja uudemmat
-* Lataa [vakaa versio][1]
 
 Tämä lisäosa näyttää merkin tiedot selaustilassa. Sen avulla on myös
 mahdollista mukauttaa merkistä puhuttavaa tietoa liikuttaessa merkeittäin
@@ -55,6 +54,11 @@ Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
 Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
 kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
 
+Regarding NVDA symbol description section: This add-on does not yet support
+custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
+in the list "Options used to compute the symbol" but not in the table
+itself.
+
 ## Asetukset
 
 Tällä lisäosalla on NVDA:n asetusvalintaikkunassa oma kategoria, jossa voit
@@ -84,6 +88,31 @@ kunhan liikut tarkastelukohdistimella merkeittäin heti usean
 ``Laskinnäppäimistön 2`` -painalluksen jälkeen.
 
 ## Muutosloki
+
+### Version 3.5
+
+* Partial implementation of the support for custom dictionaries (introduced
+  in NVDA 2024.4).
+* Fixed Unicode 16.0 support: block names for English and French updated.
+* Compatibility with NVDA 2025.1.
+
+### Version 3.4
+
+* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+
+### Version 3.3
+
+* Update to Unicode 16.0.
+
+### Version 3.2
+
+* Bugfix: characters for which only the speech level has been changed do not
+  prevent anymore the information report to be displayed.
+
+### Version 3.1
+
+* Fixed an error when there was no value to report for a character.
+* Compatibility with NVDA 2024.1.
 
 ### Versio 3.0
 
@@ -197,8 +226,6 @@ kunhan liikut tarkastelukohdistimella merkeittäin heti usean
 * Ensimmäinen versio.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
