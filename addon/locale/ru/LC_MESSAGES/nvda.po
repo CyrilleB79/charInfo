@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: charInfo 1.6\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2024-05-20 21:04+0300\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2025-07-12 18:37+0300\n"
+"Last-Translator: Ruslan Kolodyazhni <rupelodn@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -31,9 +31,8 @@ msgid "[No file]"
 msgstr "[Нет файла]"
 
 #. Translators: When speaking a missing character property
-#, fuzzy
 msgid "No value"
-msgstr "Шестнадцатиричное значение"
+msgstr "Нет значения"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
@@ -280,11 +279,3 @@ msgstr ""
 "\t\tОно также позволяет настраивать информацию, сообщаемую о символе, при "
 "использовании команд навигации по символам с помощью просмотрового курсора "
 "или многократного нажатия команды просмотра символов."
-
-#, fuzzy
-#~ msgid ""
-#~ "This add-on allows to present in a message various information about a "
-#~ "character.\n"
-#~ msgstr ""
-#~ "Это дополнение позволяет представлять в сообщении и информацию о символе, "
-#~ "такую как имя юникода, число, категория и т.д.\n"

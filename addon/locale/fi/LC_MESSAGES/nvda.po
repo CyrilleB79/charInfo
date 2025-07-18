@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: charInfo\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2024-02-18 14:11+0200\n"
+"PO-Revision-Date: 2025-07-12 14:23+0300\n"
 "Last-Translator: Jani Kinnunen <janikinnunen340@gmail.com>\n"
 "Language-Team: fi_FI <janikinnunen340@gmail.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -32,9 +32,8 @@ msgid "[No file]"
 msgstr "[Ei tiedostoa]"
 
 #. Translators: When speaking a missing character property
-#, fuzzy
 msgid "No value"
-msgstr "Heksa-arvo"
+msgstr "Ei arvoa"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
@@ -167,7 +166,7 @@ msgstr "Attribuutti"
 
 #. Translators: A piece of text in the symbol description section of the character info report.
 msgid "Options used to compute the symbol:"
-msgstr "Symbolin käsittelyyn käytettävät asetukset:"
+msgstr "Symbolinkäsittelyasetukset:"
 
 #. Translators: An option text in the symbol description section of the character info report.
 msgid "Voice language"

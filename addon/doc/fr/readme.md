@@ -61,10 +61,10 @@ Les informations fournies sont en anglais car elles font partie de la norme
 unicode. Si une traduction locale existe pour cette extension les
 informations sont également fournies parallèlement à l'anglais.
 
-Regarding NVDA symbol description section: This add-on does not yet support
-custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
-in the list "Options used to compute the symbol" but not in the table
-itself.
+Concernant la section Description de symbole NVDA: Cette extension ne prend
+pas encore en charge les dictionnaires de symboles personnalisés (introduits
+dans NVDA 2024.4).  Ils apparaissent déjà dans la liste "Options used to
+compute the symbol" mais pas dans le tableau lui-même.
 
 ## Paramètres
 
@@ -97,28 +97,32 @@ multiple sur `pavnum2`.
 
 ### Version 3.5
 
-* Partial implementation of the support for custom dictionaries (introduced
-  in NVDA 2024.4).
-* Fixed Unicode 16.0 support: block names for English and French updated.
-* Compatibility with NVDA 2025.1.
+* Mise en œuvre partielle de la prise en charge des dictionnaires
+  personnalisés (introduit dans NVDA 2024.4).
+* Correction de la prise en charge Unicode 16.0: noms de blocs pour
+  l'anglais et le français mis à jour.
+* Compatibilité avec NVDA 2025.1.
 
 ### Version 3.4
 
-* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+* Correction d'un problème empêchant NVDA d'exécuter des scripts sûrs sur
+  l'écran de verrouillage.
 
 ### Version 3.3
 
-* Update to Unicode 16.0.
+* Mise à jour vers Unicode 16.0.
 
 ### Version 3.2
 
-* Bugfix: characters for which only the speech level has been changed do not
-  prevent anymore the information report to be displayed.
+* Corrections de bugs: les caractères pour lesquels seul le niveau de parole
+  a été modifié n'empêchera plus l'annonce  des informations sur un
+  caractère à afficher.
 
 ### Version 3.1
 
-* Fixed an error when there was no value to report for a character.
-* Compatibility with NVDA 2024.1.
+* Correction d'une erreur lorsqu'il n'y avait aucune valeur à signaler pour
+  un caractère.
+* Compatibilité avec NVDA 2024.1.
 
 ### Version 3.0
 

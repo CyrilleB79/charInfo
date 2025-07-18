@@ -58,10 +58,10 @@ La información proporcionada en la sección Unicode está en inglés, ya que
 forma parte de la norma Unicode. Si existe una traducción local para este
 complemento, se proporciona esa información también aparte de la inglesa.
 
-Regarding NVDA symbol description section: This add-on does not yet support
-custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
-in the list "Options used to compute the symbol" but not in the table
-itself.
+En cuanto a la sección de descripción de símbolos de NVDA: este complemento
+todavía no soporta diccionarios de símbolos personalizados (introducidos en
+NVDA 2024.4). Ya aparecen en la lista "Opciones usadas para procesar el
+símbolo", pero no en la propia tabla.
 
 ## Opciones
 
@@ -92,30 +92,33 @@ teclado numérico`.
 
 ## Registro de cambios
 
-### Version 3.5
+### Versión 3.5
 
-* Partial implementation of the support for custom dictionaries (introduced
-  in NVDA 2024.4).
-* Fixed Unicode 16.0 support: block names for English and French updated.
-* Compatibility with NVDA 2025.1.
+* Implementación parcial del soporte para diccionarios personalizados
+  (introducidos en NVDA 2024.4).
+* Se corrige el soporte para Unicode 16.0: se actualizan los nombres de
+  bloque en inglés y francés.
+* Compatibilidad con NVDA 2025.1.
 
-### Version 3.4
+### Versión 3.4
 
-* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+* Se corrige un problema que impedía que NVDA ejecutase scripts seguros en
+  la pantalla de bloqueo.
 
-### Version 3.3
+### Versión 3.3
 
-* Update to Unicode 16.0.
+* Se actualiza a Unicode 16.0.
 
-### Version 3.2
+### Versión 3.2
 
-* Bugfix: characters for which only the speech level has been changed do not
-  prevent anymore the information report to be displayed.
+* Corrección: los caracteres para los que se ha cambiado sólo el nivel de
+  puntuación ya no impiden que se muestre la información a indicar.
 
-### Version 3.1
+### Versión 3.1
 
-* Fixed an error when there was no value to report for a character.
-* Compatibility with NVDA 2024.1.
+* Se corrige un error cuando no había ningún valor que indicar para un
+  carácter.
+* Compatibilidad con NVDA 2024.1.
 
 ### Versión 3.0
 

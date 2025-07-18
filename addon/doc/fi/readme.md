@@ -54,10 +54,9 @@ Näytettävät tiedot ovat englanninkielisiä, koska ne kuuluvat
 Unicode-standardiin. Mikäli tälle lisäosalle on käännös paikallisella
 kielellä, myös sitä käytetään englannin lisäksi tietojen näyttämiseen.
 
-Regarding NVDA symbol description section: This add-on does not yet support
-custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
-in the list "Options used to compute the symbol" but not in the table
-itself.
+NVDA:n symbolikuvausten osioon liittyen: Tämä lisäosa ei vielä tue
+mukautettuja symbolisanastoja (lisätty NVDA:n 2024.4-versioon). Ne näkyvät
+jo kohdassa ”Symbolinkäsittelyasetukset”, mutta eivät vielä itse taulukossa.
 
 ## Asetukset
 
@@ -89,30 +88,32 @@ kunhan liikut tarkastelukohdistimella merkeittäin heti usean
 
 ## Muutosloki
 
-### Version 3.5
+### Versio 3.5
 
-* Partial implementation of the support for custom dictionaries (introduced
-  in NVDA 2024.4).
-* Fixed Unicode 16.0 support: block names for English and French updated.
-* Compatibility with NVDA 2025.1.
+* Osittainen tuki mukautetuille sanastoille (lisätty NVDA:n
+  2024.4-versioon).
+* Korjattu Unicode 16.0:n tuki: englannin- ja ranskankieliset lohkonimet
+  päivitetty.
+* Yhteensopivuus NVDA 2025.1:n kanssa.
 
-### Version 3.4
+### Versio 3.4
 
-* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+* Korjattu ongelma, joka esti NVDA:ta suorittamasta turvallisia skriptejä
+  lukitusnäytössä.
 
-### Version 3.3
+### Versio 3.3
 
-* Update to Unicode 16.0.
+* Päivitys Unicode 16.0:aan.
 
-### Version 3.2
+### Versio 3.2
 
-* Bugfix: characters for which only the speech level has been changed do not
-  prevent anymore the information report to be displayed.
+* Virheenkorjaus: merkit, joiden osalta vain symbolitasoa on vaihdettu,
+  eivät enää estä tietoraportin näyttämistä.
 
-### Version 3.1
+### Versio 3.1
 
-* Fixed an error when there was no value to report for a character.
-* Compatibility with NVDA 2024.1.
+* Korjattu virhe, joka ilmeni, kun merkille ei ollut ilmoitettavaa arvoa.
+* Yhteensopivuus NVDA 2024.1:n kanssa.
 
 ### Versio 3.0
 

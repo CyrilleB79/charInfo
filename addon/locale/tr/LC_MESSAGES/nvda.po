@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Karakter Bilgisi\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2021-09-03 03:20+0000\n"
-"PO-Revision-Date: 2024-02-16 14:13+0300\n"
+"PO-Revision-Date: 2025-07-11 11:41+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Translators: Title on the char info displayed message
 msgid "Detailed character information"
@@ -32,9 +32,8 @@ msgid "[No file]"
 msgstr "[Dosya yok]"
 
 #. Translators: When speaking a missing character property
-#, fuzzy
 msgid "No value"
-msgstr "Onaltılık değer"
+msgstr "Değer yok"
 
 #. Translators: A character attribute type in the Unicode table of the char info displayed message
 msgid "Character"
