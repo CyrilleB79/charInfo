@@ -2,7 +2,6 @@
 
 * Auteur : Cyrille Bougot
 * Compatibilité NVDA : 2022.3.3 et ultérieure
-* Télécharger [version stable][1]
 
 Cette extension permet d'afficher dans un message diverses informations sur
 un caractère. Elle permet également de personnaliser les informations
@@ -62,6 +61,11 @@ Les informations fournies sont en anglais car elles font partie de la norme
 unicode. Si une traduction locale existe pour cette extension les
 informations sont également fournies parallèlement à l'anglais.
 
+Concernant la section Description de symbole NVDA: Cette extension ne prend
+pas encore en charge les dictionnaires de symboles personnalisés (introduits
+dans NVDA 2024.4).  Ils apparaissent déjà dans la liste "Options used to
+compute the symbol" mais pas dans le tableau lui-même.
+
 ## Paramètres
 
 Cette extension possède sa propre catégorie dans la boîte de dialogue des
@@ -90,6 +94,35 @@ naviguer avec le curseur de revue par caractère juste après un appui
 multiple sur `pavnum2`.
 
 ## Journal des changements
+
+### Version 3.5
+
+* Mise en œuvre partielle de la prise en charge des dictionnaires
+  personnalisés (introduit dans NVDA 2024.4).
+* Correction de la prise en charge Unicode 16.0: noms de blocs pour
+  l'anglais et le français mis à jour.
+* Compatibilité avec NVDA 2025.1.
+
+### Version 3.4
+
+* Correction d'un problème empêchant NVDA d'exécuter des scripts sûrs sur
+  l'écran de verrouillage.
+
+### Version 3.3
+
+* Mise à jour vers Unicode 16.0.
+
+### Version 3.2
+
+* Corrections de bugs: les caractères pour lesquels seul le niveau de parole
+  a été modifié n'empêchera plus l'annonce  des informations sur un
+  caractère à afficher.
+
+### Version 3.1
+
+* Correction d'une erreur lorsqu'il n'y avait aucune valeur à signaler pour
+  un caractère.
+* Compatibilité avec NVDA 2024.1.
 
 ### Version 3.0
 
@@ -210,8 +243,6 @@ multiple sur `pavnum2`.
 * Version initiale.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

@@ -2,7 +2,6 @@
 
 * Yazar: Cyrille Bougot
 * NVDA uyumluluğu: 2022.3.3 ve sonrası
-* [Kararlı sürümü][1] indir
 
 Bu eklenti, bir mesajda bir karakter hakkında çeşitli bilgilerin sunulmasına
 olanak tanır. Ayrıca, gözden geçirme imleci karakter gezinme komutlarını
@@ -57,6 +56,11 @@ Karakter hakkında bilgi, unicode düzeninde olduğu için İngilizce
 verilir. Eklenti başka bir dile çevrildiyse bilgi İngilizceyle birlikte
 verilir.
 
+NVDA sembol açıklaması bölümü ile ilgili olarak: Bu eklenti henüz özel
+sembol sözlüklerini desteklemiyor (NVDA 2024.4'te tanıtıldı).  Bunlar zaten
+“Sembolü hesaplamak için kullanılan seçenekler” listesinde görünüyor ancak
+tablonun kendisinde görünmüyor.
+
 ## Ayarlar
 
 Bu eklentinin NVDA'nın ayarlar iletişim kutusunda aşağıdaki seçenekleri
@@ -83,6 +87,33 @@ basıldıktan hemen sonra inceleme imleciyle karakter karakter gezindiğiniz
 sürece bunu yapmanıza olanak tanır.
 
 ## Değişiklikler
+
+### Sürüm 3.5
+
+* Özel sözlükler için desteğin kısmi uygulaması (NVDA 2024.4'te tanıtıldı).
+* Unicode 16.0 desteği düzeltildi: İngilizce ve Fransızca için blok adları
+  güncellendi.
+* Eklenti NVDA 2025.1 sürümüyle uyumlu hâle getirildi.
+
+### Sürüm 3.4
+
+* NVDA'nın kilit ekranında güvenli komut dosyalarını çalıştırmasını
+  engelleyen bir sorun düzeltildi.
+
+### Sürüm 3.3
+
+* Unicode 16.0'a güncellendi.
+
+### Sürüm 3.2
+
+* Hata düzeltmesi: sadece konuşma seviyesi değiştirilen karakterler artık
+  bilgi raporunun görüntülenmesini engellemiyor.
+
+### Sürüm 3.1
+
+* Bir karakter için bildirilecek değer olmadığında ortaya çıkan hata
+  düzeltildi.
+* Eklenti NVDA 2024.1 sürümüyle uyumlu hâle getirildi.
 
 ### Sürüm 3.0
 
@@ -198,8 +229,6 @@ sürece bunu yapmanıza olanak tanır.
 * İlk sürüm.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon

@@ -2,7 +2,6 @@
 
 * Autor: Cyrille Bougot
 * Compatibilidad con NVDA: de 2022.3.3 en adelante
-* Descargar [versión estable][1]
 
 Este complemento permite presentar en un mensaje información diversa sobre
 un carácter. También permite personalizar la información anunciada de un
@@ -59,6 +58,11 @@ La información proporcionada en la sección Unicode está en inglés, ya que
 forma parte de la norma Unicode. Si existe una traducción local para este
 complemento, se proporciona esa información también aparte de la inglesa.
 
+En cuanto a la sección de descripción de símbolos de NVDA: este complemento
+todavía no soporta diccionarios de símbolos personalizados (introducidos en
+NVDA 2024.4). Ya aparecen en la lista "Opciones usadas para procesar el
+símbolo", pero no en la propia tabla.
+
 ## Opciones
 
 Este complemento dispone de su propia categoría en el diálogo de opciones de
@@ -87,6 +91,34 @@ cursor de revisión por caracteres después de pulsar varias veces el `2 del
 teclado numérico`.
 
 ## Registro de cambios
+
+### Versión 3.5
+
+* Implementación parcial del soporte para diccionarios personalizados
+  (introducidos en NVDA 2024.4).
+* Se corrige el soporte para Unicode 16.0: se actualizan los nombres de
+  bloque en inglés y francés.
+* Compatibilidad con NVDA 2025.1.
+
+### Versión 3.4
+
+* Se corrige un problema que impedía que NVDA ejecutase scripts seguros en
+  la pantalla de bloqueo.
+
+### Versión 3.3
+
+* Se actualiza a Unicode 16.0.
+
+### Versión 3.2
+
+* Corrección: los caracteres para los que se ha cambiado sólo el nivel de
+  puntuación ya no impiden que se muestre la información a indicar.
+
+### Versión 3.1
+
+* Se corrige un error cuando no había ningún valor que indicar para un
+  carácter.
+* Compatibilidad con NVDA 2024.1.
 
 ### Versión 3.0
 
@@ -204,8 +236,6 @@ teclado numérico`.
 * Versión inicial.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=charInfo
 
 [2]:
 https://github.com/CyrilleB79/charInfo/releases/download/V1.7/charInfo-1.7.nvda-addon
