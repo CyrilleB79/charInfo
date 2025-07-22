@@ -19,13 +19,13 @@ def _(arg):
 addon_info = {
 	# add-on Name/identifier, internal for NVDA
 	"addon_name": "charInfo",
-	# Add-on summary, usually the user visible name of the addon.
-	# Translators: Summary for this add-on
-	# to be shown on installation and add-on information found in Add-ons Manager.
+	# Add-on summary/title, usually the user visible name of the add-on
+	# Translators: Summary/title for this add-on
+	# to be shown on installation and add-on information found in add-on store
 	"addon_summary": _("Character information"),
 	# Add-on description
 	"addon_description": _(
-		# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
+		# Translators: Long description to be shown for this add-on on add-on information from add-on store
 		"""This add-on allows to present in a message various information about a character.
 		It also allows to customize the information reported on a character when using review cursor character """
 		"""navigation commands or multiple presses of the review character command."""
@@ -40,9 +40,10 @@ addon_info = {
 	"addon_sourceURL": "https://github.com/CyrilleB79/charInfo",
 	# Documentation file name
 	"addon_docFileName": "readme.html",
-	# Minimum NVDA version supported (e.g. "2018.3.0", minor version is optional)
+<<<<<<< HEAD
+	# Minimum NVDA version supported (e.g. "2019.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": "2022.3.3",
-	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
+	# Last NVDA version supported/tested (e.g. "2024.4.0", ideally more recent than minimum version)
 	"addon_lastTestedNVDAVersion": "2025.1",
 	# Add-on update channel (default is None, denoting stable releases,
 	# and for development releases, use "dev".)
@@ -74,6 +75,7 @@ excludedFiles = []
 # Base language for the NVDA add-on
 # If your add-on is written in a language other than english, modify this variable.
 # For example, set baseLanguage to "es" if your add-on is primarily written in spanish.
+# You must also edit .gitignore file to specify base language files to be ignored.
 baseLanguage = "en"
 
 # Markdown extensions for add-on documentation
@@ -82,3 +84,22 @@ baseLanguage = "en"
 # Extensions string must be of the form "markdown.extensions.extensionName"
 # e.g. "markdown.extensions.tables" to add tables.
 markdownExtensions = []
+
+# Custom braille translation tables
+# If your add-on includes custom braille tables (most will not), fill out this dictionary.
+# Each key is a dictionary named according to braille table file name,
+# with keys inside recording the following attributes:
+# displayName (name of the table shown to users and translatable),
+# contracted (contracted (True) or uncontracted (False) braille code),
+# output (shown in output table list),
+# input (shown in input table list).
+brailleTables = {}
+
+# Custom speech symbol dictionaries
+# Symbol dictionary files reside in the locale folder, e.g. `locale\en`, and are named `symbols-<name>.dic`.
+# If your add-on includes custom speech symbol dictionaries (most will not), fill out this dictionary.
+# Each key is the name of the dictionary,
+# with keys inside recording the following attributes:
+# displayName (name of the speech dictionary shown to users and translatable),
+# mandatory (True when always enabled, False when not.
+symbolDictionaries = {}
