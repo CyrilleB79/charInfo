@@ -21,13 +21,13 @@ To update unicodedata2 from PyPI for any version of Python, included non install
    `pip download --dest . --python-version 3.7 unicodedata2 --only-binary=:all: --platform=win32`
    - `--dest` indicates the destination directory.
    - `--only-binary=:all:` allows to download a binary (.whl), not the source.
-2. Extract the content of the downloaded file as a zip and copy this content at the intended location, i.e. today `charInfo\addon\globalPlugins\charinfo\UnicodeDataPKG\py37`.
+2. Extract the content of the downloaded file as a zip and copy this content at the intended location, i.e. today `charInfo\addon\globalPlugins\charInfo\UnicodeDataPKG\py37`.
 
 #### How to update text files from Unicode website
 
 * Go to https://www.unicode.org/Public/UCD/latest/ucd/
 * Download `Blocks.txt` and `PropertyValueAliases.txt`
-* Paste these files in `charInfo\addon\globalPlugins\charinfo\locale\en`, overriding the older ones
+* Paste these files in `charInfo\addon\globalPlugins\charInfo\locale\en`, overriding the older ones
 
 ### To update French data
 

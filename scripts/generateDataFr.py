@@ -11,7 +11,7 @@ RE_SRC_BLOCK_LINE = re.compile('^[^;]*; *(?P<name>[^;]+?) *; *(?P<locName>[^;]+?
 RE_EN_BLOCK_LINE = re.compile('^(?P<preMatch>[0-9A-F.]+; *)(?P<name>[^;]+?) *$')
 
 addonPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-localeDataPath = os.path.join(addonPath, 'addon', 'globalPlugins', 'charinfo', 'locale')
+localeDataPath = os.path.join(addonPath, 'addon', 'globalPlugins', 'charInfo', 'locale')
 frDataPath = os.path.join(localeDataPath, 'fr')
 enDataPath = os.path.join(localeDataPath, 'en')
 blockFile = os.path.join(frDataPath, 'Blocks.txt')

@@ -313,7 +313,7 @@ env.Depends(manifest, "buildVars.py")
 env.Depends(addon, manifest)
 
 # Paths for locale files
-localeDataPath = os.path.join('addon', 'globalPlugins', 'charinfo', 'locale')
+localeDataPath = os.path.join('addon', 'globalPlugins', 'charInfo', 'locale')
 enDataPath = os.path.join(localeDataPath, 'en')
 frDataPath = os.path.join(localeDataPath, 'fr')
 

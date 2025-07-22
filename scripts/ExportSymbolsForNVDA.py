@@ -13,7 +13,7 @@ This script is just a snippet that you can adapt for your needs (e.g. other lang
 etc.)
 """
 
-from globalPlugins.charinfo import unicodeInfo
+from globalPlugins.charInfo import unicodeInfo
 
 OUTPUT_FILE = r'h:\charlist.txt'
 
