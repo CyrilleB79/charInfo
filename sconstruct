@@ -153,7 +153,6 @@ def frenchBlocksFileGenerator(target, source, env, for_signature):
 	return action
 
 
-<<<<<<< HEAD
 env["BUILDERS"]["NVDAAddon"] = Builder(generator=addonGenerator)
 env["BUILDERS"]["NVDAManifest"] = Builder(generator=manifestGenerator)
 env["BUILDERS"]["NVDATranslatedManifest"] = Builder(generator=translatedManifestGenerator)

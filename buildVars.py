@@ -40,7 +40,6 @@ addon_info = {
 	"addon_sourceURL": "https://github.com/CyrilleB79/charInfo",
 	# Documentation file name
 	"addon_docFileName": "readme.html",
-<<<<<<< HEAD
 	# Minimum NVDA version supported (e.g. "2019.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": "2022.3.3",
 	# Last NVDA version supported/tested (e.g. "2024.4.0", ideally more recent than minimum version)
