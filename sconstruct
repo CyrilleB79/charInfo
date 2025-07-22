@@ -357,7 +357,7 @@ otherFrenchSourceFiles = (os.path.join(frDataPath, f) for f in [
 for file in otherFrenchSourceFiles:
 	env.Depends(addon, file)
 
-requirementsFile = env.File("requirements.txt")
+requirementsFile = env.File("requirementsAddon.txt")
 print(requirementsFile)
 libsDir = os.path.join(env.Dir("#").abspath, "addon", "globalPlugins", "charInfo", "UnicodeDataPKG")
 expectedLibFiles = []
