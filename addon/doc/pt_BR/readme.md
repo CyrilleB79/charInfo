@@ -58,10 +58,10 @@ As informações fornecidas na seção Unicode estão em inglês, pois fazem par
 da norma Unicode. Se houver uma tradução local para esse complemento, as
 informações também serão fornecidas juntamente com o inglês.
 
-Regarding NVDA symbol description section: This add-on does not yet support
-custom symbol dictionaries (introduced in NVDA 2024.4).  They already appear
-in the list "Options used to compute the symbol" but not in the table
-itself.
+Em relação à seção de descrição de símbolos do NVDA: este complemento ainda
+não suporta dicionários de símbolos personalizados (introduzidos no NVDA
+2024.4). Eles já aparecem na lista “Opções usadas para calcular o símbolo”,
+mas não na tabela em si.
 
 ## Configurações
 
@@ -91,30 +91,33 @@ pressionar várias vezes o comando `numpad2`.
 
 ## Histórico de mudanças
 
-### Version 3.5
+### Versão 3.5
 
-* Partial implementation of the support for custom dictionaries (introduced
-  in NVDA 2024.4).
-* Fixed Unicode 16.0 support: block names for English and French updated.
-* Compatibility with NVDA 2025.1.
+* Implementação parcial do suporte para dicionários personalizados
+  (introduzido no NVDA 2024.4).
+* Suporte Unicode 16.0 corrigido: nomes de blocos para inglês e francês
+  atualizados.
+* Compatibilidade com NVDA 2025.1.
 
-### Version 3.4
+### Versão 3.4
 
-* Fixed an issue preventing NVDA to run safe scripts on lock screen.
+* Corrigido um problema que impedia o NVDA de executar scripts seguros na
+  tela de bloqueio.
 
-### Version 3.3
+### Versão 3.3
 
-* Update to Unicode 16.0.
+* Atualização para Unicode 16.0.
 
-### Version 3.2
+### Versão 3.2
 
-* Bugfix: characters for which only the speech level has been changed do not
-  prevent anymore the information report to be displayed.
+* Correção de bug: os caracteres para os quais apenas o nível de fala foi
+  alterado não impedem mais que o relatório de informações seja exibido.
 
-### Version 3.1
+### Versão 3.1
 
-* Fixed an error when there was no value to report for a character.
-* Compatibility with NVDA 2024.1.
+* Corrigido um erro quando não havia nenhum valor a ser relatado para um
+  caractere.
+* Compatibilidade com NVDA 2024.1.
 
 ### Versão 3.0
 
