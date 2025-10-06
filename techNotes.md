@@ -18,10 +18,13 @@ English data is based on 2 sources:
 To update unicodedata2 from PyPI for any version of Python, included non installed versions.
 
 1. Run the following command in an empty directory:
-   `pip download --dest . --python-version 3.7 unicodedata2 --only-binary=:all: --platform=win32`
+   `pip download --dest . --python-version 3.13 --platform win_amd64 --only-binary=:all: unicodedata2`
+   
    - `--dest` indicates the destination directory.
+   - `--python-version` specifies the Python version for which to download the wheel.
    - `--only-binary=:all:` allows to download a binary (.whl), not the source.
-2. Extract the content of the downloaded file as a zip and copy this content at the intended location, i.e. today `charInfo\addon\globalPlugins\charInfo\UnicodeDataPKG\py37`.
+   - `--platform` indicate the platform: `win32`, `win_amd64`.
+2. Extract the content of the downloaded file as a zip and copy this content at the intended location, i.e. today `charInfo\addon\globalPlugins\charInfo\UnicodeDataPKG\py313-win32`.
 
 #### How to update text files from Unicode website
 
