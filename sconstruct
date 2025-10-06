@@ -214,12 +214,12 @@ requirementsFile = env.File("requirementsAddon.txt")
 print(requirementsFile)
 libsDir = os.path.join(env.Dir("#").abspath, "addon", "globalPlugins", "charInfo", "UnicodeDataPKG")
 expectedLibFiles = []
-pyVersions = ["3.7", "3.11"]
-for pyVersion in pyVersions:
-	pyVersionString = pyVersion.replace('.', '')
-	file = f"unicodedata2.cp{pyVersion.replace('.', '')}-win32.pyd"
+pyVersions = [("3.7", "win32"), ("3.11", "win32"), ("3.13", "win_amd64")]
+for (pyVersion, platform) in pyVersions:
+	folderName = f"{pyVersion.replace('.', '')}-{platform}"
+	file = f"unicodedata2.cp{pyVersion.replace('.', '')}-{platform}.pyd"
 	expectedLibFiles.append(
-		os.path.join(libsDir, f"py{pyVersionString}", file)
+		os.path.join(libsDir, folderName, file)
 	)
 
 def cleanLibsDirAction(target, source, env):
@@ -230,9 +230,9 @@ def cleanLibsDirAction(target, source, env):
 		pass
 
 def installLibsAction(target, source, env):
-	for pyVersion in pyVersions:
-		pyVersionString = pyVersion.replace('.', '')
-		pipCmd = f"pip install --upgrade --target {os.path.join(libsDir, f'py{pyVersionString}')} -r {requirementsFile} --platform win32 --python-version {pyVersion} --implementation cp --only-binary=:all:"
+	for (pyVersion, platform) in pyVersions:
+		folderName = f"py{pyVersion.replace('.', '')}-{platform}"
+		pipCmd = f"pip install --upgrade --target {os.path.join(libsDir, folderName)} -r {requirementsFile} --platform {platform} --python-version {pyVersion} --implementation cp --only-binary=:all:"
 		env.Execute(pipCmd)
 
 libDirsTargets = env.Command(

@@ -62,10 +62,16 @@ def getUniDatData():
 	an exception is raised."""
 	MAJORPYTHONVER = sys.version_info.major
 	MINORPYTHONVER = sys.version_info.minor
+	if sys.maxsize + 1 == 2**63:  # 64-bit
+		platform = "win_amd64"
+	elif sys.maxsize + 1 == 2**31:  # 32-bit
+		platform = "win32"
+	else:
+		raise RuntimeError(f"Unable to determine platform (max int size = {sys.maxsize})")
 	uniDataPath = os.path.join(
 		addonPath,
 		"UnicodeDataPKG",
-		"py{0}{1}".format(MAJORPYTHONVER, MINORPYTHONVER)
+		f"py{MAJORPYTHONVER}{MINORPYTHONVER}-{platform}"
 	)
 	if os.path.isdir(uniDataPath):
 		sys.path.append(uniDataPath)
@@ -73,7 +79,7 @@ def getUniDatData():
 		del sys.path[-1]
 		return unicodedata2
 	else:
-		raise RuntimeError("No unicode data for Python version {0}.{1}".format(MAJORPYTHONVER, MINORPYTHONVER))
+		raise RuntimeError(f"No unicode data for Python version {MAJORPYTHONVER}.{MINORPYTHONVER}")
 
 
 unicodedata = getUniDatData()
