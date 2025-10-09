@@ -29,11 +29,10 @@ addon_info = AddonInfo(
 		"""navigation commands or multiple presses of the review character command."""
 	),
 	# version
-	addon_version="3.6",
+	addon_version="3.7",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""Changelog for the add-on version.
-It can span multiple lines."""),
+	addon_changelog=_("""* Add Python 3.13 64-bit support to prepare compatibility with NVDA 2026.1."""),
 	# Author(s)
 	addon_author="Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support

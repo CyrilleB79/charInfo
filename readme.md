@@ -54,6 +54,10 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ## Change log
 
+### Version 3.7
+
+* Add Python 3.13 64-bit support to prepare compatibility with NVDA 2026.1.
+
 ### Version 3.6
 
 * Fixed (again) an issue preventing NVDA to run safe scripts on lock screen.
