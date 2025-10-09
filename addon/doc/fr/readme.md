@@ -61,10 +61,10 @@ Les informations fournies sont en anglais car elles font partie de la norme
 unicode. Si une traduction locale existe pour cette extension les
 informations sont également fournies parallèlement à l'anglais.
 
-Concernant la section Description de symbole NVDA: Cette extension ne prend
-pas encore en charge les dictionnaires de symboles personnalisés (introduits
-dans NVDA 2024.4).  Ils apparaissent déjà dans la liste "Options used to
-compute the symbol" mais pas dans le tableau lui-même.
+En ce qui concerne la section Description de symbole NVDA: Cette extension
+ne prend pas encore en charge les dictionnaires de symboles personnalisés
+(introduits dans NVDA 2024.4).  Ils apparaissent déjà dans la liste "Options
+utilisées pour calculer le symbole" mais pas dans le tableau lui-même.
 
 ## Paramètres
 
@@ -97,8 +97,8 @@ multiple sur `pavnum2`.
 
 ### Version 3.5
 
-* Mise en œuvre partielle de la prise en charge des dictionnaires
-  personnalisés (introduit dans NVDA 2024.4).
+* Implémentation partielle de la prise en charge des dictionnaires
+  personnalisés (introduits dans NVDA 2024.4).
 * Correction de la prise en charge Unicode 16.0: noms de blocs pour
   l'anglais et le français mis à jour.
 * Compatibilité avec NVDA 2025.1.
@@ -115,12 +115,11 @@ multiple sur `pavnum2`.
 ### Version 3.2
 
 * Corrections de bugs: les caractères pour lesquels seul le niveau de parole
-  a été modifié n'empêchera plus l'annonce  des informations sur un
-  caractère à afficher.
+  a été modifié n'empêchera plus l'affichage du rapport d'informations.
 
 ### Version 3.1
 
-* Correction d'une erreur lorsqu'il n'y avait aucune valeur à signaler pour
+* Correction d'une erreur lorsqu'il n'y avait aucune valeur à annoncer pour
   un caractère.
 * Compatibilité avec NVDA 2024.1.
 
@@ -178,7 +177,7 @@ multiple sur `pavnum2`.
   informations sur le symbole NVDA et la description de caractère NVDA.
 * Ajout de la prise en charge des caractères composés, par ex. lettres avec
   diacritique composées de deux caractères Unicode ou plus.
-* Mise à jour vers Unicode 15.0.
+* Mise à jour vers Unicode 15.0
 * Données des blocs en français mises à jour.
 * L'affichage d'informations caractère n'est pas autorisé sur l'écran de
   verrouillage et les écrans sécurisés.
