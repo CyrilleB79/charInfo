@@ -15,10 +15,16 @@ English data is based on 2 sources:
 
 #### How to update unicodedata2 package?
 
-The Python and platform specific versions of the library useful to build the add-on are now downloaded automatically as part of the add-on's build process (run by `scons` command).
-To update unicodedata2 from PyPI for any version of Python, included non installed versions, you need to edit the sconstruct file to add Python / platform versions in the list.
+The different versions of the unicodedata2 library needed to build the add-on are now downloaded automatically as part of the add-on's build process (run by `scons` command).
 
-As a record, the procedure to manually download a specific version of the library is as follows (old method to include new versions of the library in the add-on).
+To update the version of unicodedata2 to a newer version (e.g. 16.0 to 17.0), you just need to update the version in the file requirementsAddon.txt.
+
+To update the Python version and platform of the libraries available in the add-on (e.g. 3.11 / 3.13 and `win32` / `win_amd64`), you need to edit the sconstruct file to add them in the list.
+These versions / platforms should match the ones in the versions of NVDA supported by the add-on.
+You do not need to have all these Python versions installed on your system.
+
+As a record, the procedure to manually download a specific version of the library is as follows.
+This was the old method to include new versions of the library in the add-on.
 
 1. Run the following command in an empty directory:
    `pip download --dest . --python-version 3.13 --platform win_amd64 --only-binary=:all: unicodedata2`
