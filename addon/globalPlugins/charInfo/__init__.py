@@ -1378,7 +1378,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		charInfo.expand(textInfos.UNIT_CHARACTER)
 		charInfo.collapse()
 		res = charInfo.move(textInfos.UNIT_CHARACTER, direction)
-		if res == 0 or charInfo.compareEndPoints(lineInfo, "startToStart") < 0:
+		if direction == 1:
+			atLineEdge = charInfo.compareEndPoints(lineInfo, "endToEnd") >= 0
+		elif direction == -1:
+			atLineEdge = charInfo.compareEndPoints(lineInfo, "startToStart") < 0
+		else:
+			raise RuntimeError(f"Unexpected value: direction={direction}")
+		if res == 0 or atLineEdge:
 			ui.reviewMessage(edgeMsg)
 			reviewInfo = api.getReviewPosition().copy()
 		else:
