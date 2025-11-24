@@ -148,7 +148,6 @@ class NoValueError(InfoNotFoundError):
 	pass
 
 
-STR_NO_CHAR_PLACEHOLDER = '?'
 # Translators: Reported in the tables when no value is defined for a property of a specific character.
 STR_VALUE_NOT_DEFINED = _('[Not defined]')
 # Translators: Reported in the symbol and character description tables when no file corresponding to the row
@@ -573,7 +572,7 @@ class Character(object):
 			try:
 				names.append(self.getNameValue(ln))
 			except NoValueError:
-				names.append(STR_NO_CHAR_PLACEHOLDER)
+				names.append(STR_VALUE_NOT_DEFINED)
 		return ' / '.join(n for n in names if n is not None)
 
 	def getNameValue(self, lang):
@@ -595,7 +594,7 @@ class Character(object):
 			try:
 				names.append(self.getCldrNameValue(ln))
 			except NoValueError:
-				names.append(STR_NO_CHAR_PLACEHOLDER)
+				names.append(STR_VALUE_NOT_DEFINED)
 			except NoFileError:
 				pass  # Do not append anything if there is no file at all.
 		return ' / '.join(n for n in names if n is not None)
@@ -661,7 +660,7 @@ class Character(object):
 
 	def getUCEqNameStr(self):
 		if self.UCEqChar is None:
-			return STR_NO_CHAR_PLACEHOLDER
+			return STR_VALUE_NOT_DEFINED
 		names = []
 		for ln in unicodeInfo.langs:
 			n = self.getUCEqNameValue(ln)
@@ -678,7 +677,7 @@ class Character(object):
 		try:
 			return self.getUCEqHexValValue()
 		except NoValueError:
-			return STR_NO_CHAR_PLACEHOLDER
+			return STR_VALUE_NOT_DEFINED
 
 	def getUCEqDecValValue(self):
 		if self.UCEqChar is None:
@@ -689,7 +688,7 @@ class Character(object):
 		try:
 			return str(self.getUCEqDecValValue())
 		except NoValueError:
-			return STR_NO_CHAR_PLACEHOLDER
+			return STR_VALUE_NOT_DEFINED
 
 	def isMsFont(self):
 		if self.font in lstMsCharsets and (
