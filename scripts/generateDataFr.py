@@ -1,6 +1,6 @@
 # A tool script for NVDA add-on Character information
 # This script is used to generate and format the French (fr) Unicode data.
-# Copyright (C) 2023 Cyrille Bougot
+# Copyright (C) 2023-2025 Cyrille Bougot
 # This file is covered by the GNU General Public License.
 # See the file COPYING.txt for more details.
 
@@ -86,6 +86,12 @@ def generateBlockFile(src, dst, transFile):
 						raise LookupError(f'Match not found in line {no}: {line}')
 					preMatch = m['preMatch']
 					name = m['name']
-					locName = trans[name]
+					try:
+						locName = trans[name]
+					except KeyError:
+						# The translated block name may not be found if the French block translation file has a lower version
+						# than the English block file.
+						print(f"{name}: No translation found; maybe this block is new.")
+						continue
 					line = f'{preMatch}{locName}'
 				fDst.write(line + '\n')
