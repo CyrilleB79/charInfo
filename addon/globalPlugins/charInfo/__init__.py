@@ -40,15 +40,9 @@ import globalVars
 import config
 import gui
 from utils import security
-try:
-	# For NVDA >= 2023.2
-	from winAPI.sessionTracking import isLockScreenModeActive
-except ImportError:
-	# For NVDA < 2023.2
-	from winAPI.sessionTracking import _isLockScreenModeActive as isLockScreenModeActive
+from winAPI.sessionTracking import isLockScreenModeActive
 
 from .ciGui import CharInfoSettingsPanel
-from .securityUtils import secureBrowseableMessage
 
 
 ADDON_SUMMARY = addonHandler.getCodeAddon().manifest["summary"]
@@ -1129,7 +1123,7 @@ def displayCurrentCharInfoMessage(info):
 		lang = speech.getCurrentLanguage()
 	allChars = Characters(info.text, lang=lang, font=font)
 	htmlMessage = allChars.createHtmlInfoMessage(info.text)
-	secureBrowseableMessage(htmlMessage, title=pageTitle, isHtml=True)
+	ui.browseableMessage(htmlMessage, title=pageTitle, isHtml=True)
 
 
 def getCurrCharFontName(info):
@@ -1434,14 +1428,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		category=ADDON_SUMMARY,
 	)
 	def script_openSettings(self, gesture):
-		try:
-			# For NVDA >= 2023.2
-			popupSettingsDialog = gui.mainFrame.popupSettingsDialog
-		except AttributeError:
-			# For NVDA <= 2023.1
-			popupSettingsDialog = gui.mainFrame._popupSettingsDialog
 		wx.CallAfter(
-			popupSettingsDialog,
+			gui.mainFrame.popupSettingsDialog,
 			gui.settingsDialogs.NVDASettingsDialog,
 			CharInfoSettingsPanel,
 		)

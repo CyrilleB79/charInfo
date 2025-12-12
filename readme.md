@@ -1,7 +1,7 @@
 # Character information
 
 * Author: Cyrille Bougot
-* NVDA compatibility: 2022.3.3 and beyond
+* NVDA compatibility: 2024.4 and beyond
 
 This add-on allows to present in a message various information about a character.
 It also allows to customize the information reported on a character when using review cursor character navigation commands or multiple presses of the review character command.

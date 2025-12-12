@@ -6,6 +6,7 @@
 import os
 import os.path
 import sys
+import subprocess
 from pathlib import Path
 from collections.abc import Iterable
 from typing import Final
@@ -211,12 +212,11 @@ for file in otherFrenchSourceFiles:
 	env.Depends(addon, file)
 
 requirementsFile = env.File("requirementsAddon.txt")
-print(requirementsFile)
 libsDir = os.path.join(env.Dir("#").abspath, "addon", "globalPlugins", "charInfo", "UnicodeDataPKG")
 expectedLibFiles = []
-pyVersions = [("3.7", "win32"), ("3.11", "win32"), ("3.13", "win_amd64")]
+pyVersions = [("3.11", "win32"), ("3.13", "win_amd64")]
 for (pyVersion, platform) in pyVersions:
-	folderName = f"{pyVersion.replace('.', '')}-{platform}"
+	folderName = f"py{pyVersion.replace('.', '')}-{platform}"
 	file = f"unicodedata2.cp{pyVersion.replace('.', '')}-{platform}.pyd"
 	expectedLibFiles.append(
 		os.path.join(libsDir, folderName, file)
@@ -232,8 +232,20 @@ def cleanLibsDirAction(target, source, env):
 def installLibsAction(target, source, env):
 	for (pyVersion, platform) in pyVersions:
 		folderName = f"py{pyVersion.replace('.', '')}-{platform}"
-		pipCmd = f"pip install --upgrade --target {os.path.join(libsDir, folderName)} -r {requirementsFile} --platform {platform} --python-version {pyVersion} --implementation cp --only-binary=:all:"
-		env.Execute(pipCmd)
+		pipCmd = [
+			"pip", "install", "--upgrade",
+			"--target", os.path.join(libsDir, folderName),
+			"-r", source[0].abspath,
+			"--platform", platform,
+			"--python-version", pyVersion,
+			"--implementation", "cp",
+			"--only-binary=:all:",
+		]
+		result = subprocess.run(pipCmd)
+		if result.returncode != 0:
+		    print(f"ERROR: pip failed for {pyVersion}/{platform}")
+		    return result.returncode  # Non-zero result
+	return 0
 
 libDirsTargets = env.Command(
 	target=expectedLibFiles,
