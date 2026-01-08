@@ -13,23 +13,24 @@ This script is just a snippet that you can adapt for your needs (e.g. other lang
 etc.)
 """
 
-from globalPlugins.charInfo import unicodeInfo
+from globalPlugins.charInfo import unicodeInfo  # pyright: ignore[reportMissingImports] - globalPlugins populated at runtime
 
-OUTPUT_FILE = r'h:\charlist.txt'
+OUTPUT_FILE = r"h:\charlist.txt"
 
 
 def generateCharList():
 	def getNom(i):
 		try:
-			n = unicodeInfo.unicodeData['fr_FR'][i][0].lower()
-			n = n.replace('lettre majuscule cyrillique', '')
-			n = n.replace('lettre minuscule cyrillique', '')
+			n = unicodeInfo.unicodeData["fr_FR"][i][0].lower()
+			n = n.replace("lettre majuscule cyrillique", "")
+			n = n.replace("lettre minuscule cyrillique", "")
 			return n
 		except KeyError:
-			return 'NotAvailable'
-	g = (chr(i) + '\t' + getNom(i) + '\tnone\tnever' for i in range(1000, 2000))
-	with open(OUTPUT_FILE, 'w', encoding='utf8') as f:
-		f.write('\n'.join(g))
+			return "NotAvailable"
+
+	g = (chr(i) + "\t" + getNom(i) + "\tnone\tnever" for i in range(1000, 2000))
+	with open(OUTPUT_FILE, "w", encoding="utf8") as f:
+		f.write("\n".join(g))
 
 
 generateCharList()

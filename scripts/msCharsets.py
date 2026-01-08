@@ -16,11 +16,11 @@ from lxml import etree
 
 urlBase = "http://www.alanwood.net/demos/"
 charsetList = [
-	'wingdings',
-	'wingdings-2',
-	'wingdings-3',
-	'webdings',
-	'symbol',
+	"wingdings",
+	"wingdings-2",
+	"wingdings-3",
+	"webdings",
+	"symbol",
 ]
 
 
@@ -31,21 +31,22 @@ def getPageTree(url):
 
 
 def getTable(html, nTable):
-	tableNodes = html.xpath('//table')
-	trNodes = tableNodes[nTable].xpath('.//tr')
-	content = [[e.text for e in tr.xpath('*[self::td or self::th]')] for tr in trNodes]
+	tableNodes = html.xpath("//table")
+	trNodes = tableNodes[nTable].xpath(".//tr")
+	content = [[e.text for e in tr.xpath("*[self::td or self::th]")] for tr in trNodes]
 	return content
 
 
 def getTable2(html, nTable):
-	tableNodes = html.xpath('//table')
-	trNodes = tableNodes[nTable].xpath('.//tr')
+	tableNodes = html.xpath("//table")
+	trNodes = tableNodes[nTable].xpath(".//tr")
 
 	def getTdText(td):
-		return td.text if td.text is not None else td.xpath('*/text()')
+		return td.text if td.text is not None else td.xpath("*/text()")
+
 	content = []
 	for tr in trNodes:
-		contentTR = [getTdText(td) for td in tr.xpath('td')]
+		contentTR = [getTdText(td) for td in tr.xpath("td")]
 		content.append(contentTR)
 	return content
 
@@ -80,10 +81,10 @@ def getAllTableSymbol(url):
 def getTableSymbol(url, nTable):
 	html = getPageTree(url)
 	t = getTable2(html, nTable)
-	htmlNumPattern = r'&#(?P<num>\d+);'
+	htmlNumPattern = r"&#(?P<num>\d+);"
 	allCharInfo = []
 	for row in t[2:]:
-		if row[2] == 'space':
+		if row[2] == "space":
 			numMS = 32  # space
 			nameMS = row[2]
 			fieldNumUnicode = row[4]
@@ -92,21 +93,21 @@ def getTableSymbol(url, nTable):
 			nameMS = row[2]
 			fieldNumUnicode = row[4]
 		m = re.match(htmlNumPattern, fieldNumUnicode)
-		numUnicode = int(m.groupdict()['num'])
+		numUnicode = int(m.groupdict()["num"])
 		charInfo = [str(numMS), nameMS, str(numUnicode)]
 		allCharInfo.append(charInfo)
 	return allCharInfo
 
 
 def generateTableChar(charset):
-	url = urlBase + charset + '.html'
-	if charset == 'symbol':
+	url = urlBase + charset + ".html"
+	if charset == "symbol":
 		allCharInfo = getAllTableSymbol(url)
 	else:
 		allCharInfo = getTableDings(url)
-	with open(charset + '.txt', 'wt', encoding='utf-8') as f:
+	with open(charset + ".txt", "wt", encoding="utf-8") as f:
 		for charInfo in allCharInfo:
-			s = '\t'.join(charInfo) + '\n'
+			s = "\t".join(charInfo) + "\n"
 			f.write(s)
 
 
