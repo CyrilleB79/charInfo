@@ -11,6 +11,8 @@ from pathlib import Path
 from collections.abc import Iterable
 from typing import Final
 
+from SCons.Errors import BuildError
+
 # While names imported below are available by default in every SConscript
 # Linters aren't aware about them.
 # To avoid PyRight `reportUndefinedVariable` errors about them they are imported explicitly.
@@ -232,20 +234,21 @@ def cleanLibsDirAction(target, source, env):
 def installLibsAction(target, source, env):
 	for (pyVersion, platform) in pyVersions:
 		folderName = f"py{pyVersion.replace('.', '')}-{platform}"
-		pipCmd = [
-			"pip", "install", "--upgrade",
-			"--target", os.path.join(libsDir, folderName),
-			"-r", source[0].abspath,
-			"--platform", platform,
-			"--python-version", pyVersion,
-			"--implementation", "cp",
-			"--only-binary=:all:",
-		]
-		result = subprocess.run(pipCmd)
-		if result.returncode != 0:
-		    print(f"ERROR: pip failed for {pyVersion}/{platform}")
-		    return result.returncode  # Non-zero result
-	return 0
+		pipCmd = (
+			"pip install --upgrade "
+			f"--target {os.path.join(libsDir, folderName)} "
+			f"-r {source[0].abspath} "
+			f"--platform {platform} "
+			f"--python-version {pyVersion} "
+			"--implementation cp "
+			"--only-binary=:all:"
+		)
+		ret = env.Execute(pipCmd)
+		if ret != 0:
+			raise BuildError(
+				errstr=f"pip failed for {pyVersion} {platform}",
+				node=target,
+			)
 
 libDirsTargets = env.Command(
 	target=expectedLibFiles,
