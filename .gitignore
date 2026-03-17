@@ -9,5 +9,6 @@ manifest.ini
 *.nvda-addon
 .sconsign.dblite
 /[0-9]*.[0-9]*.[0-9]*.json
+*.egg-info
 addon/globalPlugins/charInfo/UnicodeDataPKG/
 addon/globalPlugins/charInfo/locale/fr/Blocks.txt
