@@ -21,30 +21,33 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 
 	actionNPressesLabels = (
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCharacter', _('Report the character')),
+		("speakCharacter", _("Report the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCharacterDescription', _('Report the character description')),
+		("speakCharacterDescription", _("Report the character description")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCharacterNum', _('Report the character number')),
+		("speakCharacterNum", _("Report the character number")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('displayCurrentCharInfoMessage', _('Display information on the character')),
+		("displayCurrentCharInfoMessage", _("Display information on the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCLDRLocaleName', _('Report the CLDR locale name of the character')),
+		("speakCLDRLocaleName", _("Report the CLDR locale name of the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCLDREnglishName', _('Report the CLDR English name of the character')),
+		("speakCLDREnglishName", _("Report the CLDR English name of the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCharacterLocaleName', _('Report the locale name of the character')),
+		("speakCharacterLocaleName", _("Report the locale name of the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakCharacterEnglishName', _('Report the English name of the character')),
+		("speakCharacterEnglishName", _("Report the English name of the character")),
 		# Translators: An option in an action definition combobox Character Information setting panel.
-		('speakMSChar', _('Report Microsoft font proprietary character (name, font and equivalent Unicode name)')),
+		(
+			"speakMSChar",
+			_("Report Microsoft font proprietary character (name, font and equivalent Unicode name)"),
+		),
 	)
 
 	def makeSettings(self, settingsSizer):
 		# Check that options in the GUI are the same as the ones in the config
-		configChoices = config.conf.getConfigValidation(('charInfo', 'action2Presses')).args
+		configChoices = config.conf.getConfigValidation(("charInfo", "action2Presses")).args
 		if not set(configChoices) == set(o for (o, s) in self.actionNPressesLabels):
-			log.error('Options mismatch in charInfo settings panel')
+			log.error("Options mismatch in charInfo settings panel")
 
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
 
@@ -60,9 +63,9 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 
 		self.lockActionDuringCharNavCheckBox = sHelper.addItem(
 			# Translators: This is the label for a checkbox in the Character Information settings panel.
-			wx.CheckBox(self, label=_("Remember these action during character navigation"))
+			wx.CheckBox(self, label=_("Remember these action during character navigation")),
 		)
-		self.lockActionDuringCharNavCheckBox.SetValue(config.conf['charInfo']['lockActionDuringCharNav'])
+		self.lockActionDuringCharNavCheckBox.SetValue(config.conf["charInfo"]["lockActionDuringCharNav"])
 
 	def makeActionNPressCombobox(self, nPresses):
 		# Translators: This is the label for the action definition comboboxes in the Character Information settings
@@ -75,7 +78,7 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 			choices=actionNPressesChoices,
 		)
 		for index, (setting, name) in enumerate(self.actionNPressesLabels):
-			if setting == config.conf['charInfo'][f'action{nPresses}Presses']:
+			if setting == config.conf["charInfo"][f"action{nPresses}Presses"]:
 				actionNPressesCombobox.SetSelection(index)
 				break
 		else:
@@ -87,15 +90,16 @@ class CharInfoSettingsPanel(settingsDialogs.SettingsPanel):
 		enable = True
 		for nPresses in (2, 3, 4):
 			self.actionNPressesComboboxes[nPresses - 2].Enable(enable)
-			if self.actionNPressesLabels[
-				self.actionNPressesComboboxes[nPresses - 2].GetSelection()
-			][0] == 'displayCurrentCharInfoMessage':
+			if (
+				self.actionNPressesLabels[self.actionNPressesComboboxes[nPresses - 2].GetSelection()][0]
+				== "displayCurrentCharInfoMessage"
+			):
 				# Disable subsequent comboboxes
 				enable = False
 
 	def onSave(self):
 		for nPresses in (2, 3, 4):
-			config.conf['charInfo'][f'action{nPresses}Presses'] = self.actionNPressesLabels[
+			config.conf["charInfo"][f"action{nPresses}Presses"] = self.actionNPressesLabels[
 				self.actionNPressesComboboxes[nPresses - 2].GetSelection()
 			][0]
-		config.conf['charInfo']['lockActionDuringCharNav'] = self.lockActionDuringCharNavCheckBox.IsChecked()
+		config.conf["charInfo"]["lockActionDuringCharNav"] = self.lockActionDuringCharNavCheckBox.IsChecked()
