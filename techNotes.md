@@ -28,7 +28,7 @@ This was the old method to include new versions of the library in the add-on.
 
 1. Run the following command in an empty directory:
    `pip download --dest . --python-version 3.13 --platform win_amd64 --only-binary=:all: unicodedata2`
-   
+
    - `--dest` indicates the destination directory.
    - `--python-version` specifies the Python version for which to download the wheel.
    - `--only-binary=:all:` allows to download a binary (.whl), not the source.
