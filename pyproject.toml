@@ -144,7 +144,6 @@ reportInvalidTypeArguments = true
 reportInvalidTypeForm = true
 reportInvalidTypeVarUse = true
 reportMatchNotExhaustive = true
-reportMissingImports = true
 reportMissingModuleSource = true
 reportMissingSuperCall = true
 reportNoOverloadImplementation = true
@@ -215,6 +214,9 @@ reportAttributeAccessIssue = false
 
 # @override not present in Python 3.7-3.11's typing, nor in typing_extensions included in NVDA 2022.3.3
 reportImplicitOverride = false
+
+# Works locally but not in CI since NVDA side repo is not present.
+reportMissingImports = false
 
 # Issue with config.conf which can be None
 reportOptionalMemberAccess = false
