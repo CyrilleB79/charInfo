@@ -13,7 +13,9 @@ This script is just a snippet that you can adapt for your needs (e.g. other lang
 etc.)
 """
 
-from globalPlugins.charInfo import unicodeInfo  # pyright: ignore[reportMissingImports] - globalPlugins populated at runtime
+from globalPlugins.charInfo import (
+	unicodeInfo,
+)  # ignore[reportMissingImports] - globalPlugins populated at runtime
 
 OUTPUT_FILE = r"h:\charlist.txt"
 

@@ -38,7 +38,7 @@ from characterProcessing import (
 	SPEECH_SYMBOL_LEVEL_LABELS,
 	SPEECH_SYMBOL_PRESERVE_LABELS,
 )
-from characterProcessing import _localeSpeechSymbolProcessors  # pyright: ignore[reportPrivateUsage] - #29
+from characterProcessing import _localeSpeechSymbolProcessors  # ignore[reportPrivateUsage] - #29
 import globalVars
 import config
 import gui
@@ -74,7 +74,7 @@ def getUniDatData():
 	)
 	if os.path.isdir(uniDataPath):
 		sys.path.append(uniDataPath)
-		import unicodedata2  # pyright: ignore[reportMissingImports] - Not in versioned code; downloaded during build.
+		import unicodedata2  # ignore[reportMissingImports] - Not in versioned code; downloaded during build.
 
 		del sys.path[-1]
 		return unicodedata2
