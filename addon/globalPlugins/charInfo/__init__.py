@@ -74,7 +74,7 @@ def getUniDatData():
 	)
 	if os.path.isdir(uniDataPath):
 		sys.path.append(uniDataPath)
-		import unicodedata2  # pyright: ignore[reportMissingImports] - Not in versioned code; downloaded during build.
+		import unicodedata2  # ignore[reportMissingImports] - Not in versioned code; downloaded during build.
 
 		del sys.path[-1]
 		return unicodedata2
