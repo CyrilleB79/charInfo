@@ -41,6 +41,10 @@ dependencies = [
 [project.urls]
 Repository = "https://github.com/nvaccess/addonTemplate"
 
+#[tool.setuptools.packages.find]
+#include = ["addon*"]
+#exclude = ["typings*"]
+
 [tool.ruff]
 line-length = 110
 
@@ -87,6 +91,7 @@ logger-objects = ["logHandler.log"]
 "sconstruct" = ["F821"]
 
 [tool.pyright]
+stubPath = "./.typings"
 venvPath = ".venv"
 venv = "."
 pythonPlatform = "Windows"
@@ -172,9 +177,7 @@ reportUnnecessaryContains = true
 reportUnnecessaryIsInstance = true
 reportUnnecessaryTypeIgnoreComment = true
 reportUnsupportedDunderAll = true
-reportUntypedBaseClass = true
 reportUntypedClassDecorator = true
-reportUntypedFunctionDecorator = true
 reportUntypedNamedTuple = true
 reportUnusedClass = true
 reportUnusedCoroutine = true
@@ -217,6 +220,8 @@ reportImplicitOverride = false
 
 # Works locally but not in CI since NVDA side repo is not present.
 reportMissingImports = false
+reportUntypedBaseClass = false
+reportUntypedFunctionDecorator = false
 
 # Issue with config.conf which can be None
 reportOptionalMemberAccess = false
