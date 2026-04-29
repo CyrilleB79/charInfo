@@ -29,10 +29,16 @@ addon_info = AddonInfo(
 		"""navigation commands or multiple presses of the review character command.""",
 	),
 	# version
-	addon_version="3.7",
+	addon_version="3.8",
 	# Brief changelog for this version
 	# Translators: what's new content for the add-on version to be shown in the add-on store
-	addon_changelog=_("""* Add Python 3.13 64-bit support to prepare compatibility with NVDA 2026.1."""),
+	addon_changelog=_("""* Update to Unicode 17.0.
+* Fixed a bug causing the review cursor at the end of a line to jump to next line when moved right, instead of reporting the end of the line.
+* Compatibility with NVDA 2026.1.
+* Drops compatibility with NVDA below 2024.1. The last version compatible with NVDA 2022.3.3 is the [3.7][5].
+
+[5]: https://github.com/CyrilleB79/charInfo/releases/download/V3.7/charInfo-3.7.nvda-addon
+"""),
 	# Author(s)
 	addon_author="Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support
@@ -44,7 +50,7 @@ addon_info = AddonInfo(
 	# Minimum NVDA version supported (e.g. "2019.3.0", minor version is optional)
 	addon_minimumNVDAVersion="2024.1",
 	# Last NVDA version supported/tested (e.g. "2024.4.0", ideally more recent than minimum version)
-	addon_lastTestedNVDAVersion="2025.1",
+	addon_lastTestedNVDAVersion="2026.1",
 	# Add-on update channel (default is None, denoting stable releases,
 	# and for development releases, use "dev".)
 	# Do not change unless you know what you are doing!

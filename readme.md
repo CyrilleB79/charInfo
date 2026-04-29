@@ -54,6 +54,13 @@ Checking this option will allow you to do it, as long as you navigate with the r
 
 ## Change log
 
+### Version 3.8
+
+* Update to Unicode 17.0.
+* Fixed a bug causing the review cursor at the end of a line to jump to next line when moved right, instead of reporting the end of the line.
+* Compatibility with NVDA 2026.1.
+* Drops compatibility with NVDA below 2024.1. The last version compatible with NVDA 2022.3.3 is the [3.7][5].
+
 ### Version 3.7
 
 * Add Python 3.13 64-bit support to prepare compatibility with NVDA 2026.1.
@@ -183,3 +190,5 @@ Checking this option will allow you to do it, as long as you navigate with the r
 [3]: https://github.com/CyrilleB79/charInfo/releases/download/V1.8/charInfo-1.8.nvda-addon
 
 [4]: https://github.com/nvaccess/nvda/security/advisories/GHSA-xg6w-23rw-39r8#event-132994
+
+[5]: https://github.com/CyrilleB79/charInfo/releases/download/V3.7/charInfo-3.7.nvda-addon
