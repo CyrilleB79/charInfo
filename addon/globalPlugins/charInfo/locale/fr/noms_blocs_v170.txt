@@ -1,4 +1,4 @@
-﻿0000-007F     ; C0 Controls and Basic Latin (Basic Latin)               ; Commandes C0 et latin de base (Latin de base)
+0000-007F     ; C0 Controls and Basic Latin (Basic Latin)               ; Commandes C0 et latin de base (Latin de base)
 0080-00FF     ; C1 Controls and Latin-1 Supplement (Latin-1 Supplement) ; Commandes C1 et supplément Latin-1 (Supplément Latin-1)
 0100-017F     ; Latin Extended-A                                        ; Latin étendu A
 0180-024F     ; Latin Extended-B                                        ; Latin étendu B
@@ -193,6 +193,7 @@ FFF0-FFFF     ; Specials                                                ; Caract
 108E0-108FF   ; Hatran                                                  ; Hatréen
 10900-1091F   ; Phoenician                                              ; Phénicien
 10920-1093F   ; Lydian                                                  ; Lydien
+10940-1095F   ; Sidetic                                                 ; Sidétique
 10980-1099F   ; Meroitic Hieroglyphs                                    ; Hiéroglyphes méroïtiques
 109A0-109FF   ; Meroitic Cursive                                        ; Cursif méroïtique
 10A00-10A5F   ; Kharoshthi                                              ; Kharochthî
@@ -244,11 +245,13 @@ FFF0-FFFF     ; Specials                                                ; Caract
 11AB0-11ABF   ; Unified Canadian Aboriginal Syllabics Extended-A        ; Syllabaires autochtones canadiens étendus A
 11AC0-11AFF   ; Pau Cin Hau                                             ; Pau cin hau
 11B00-11B5F   ; Devanagari Extended-A                                   ; Dévanâgarî étendue A
+11B60-11B7F   ; Sharada Supplement                                      ; Supplément charada
 11BC0-11BFF   ; Sunuwar                                                 ; Sounwar
 11C00-11C6F   ; Bhaiksuki                                               ; Bhaiksuki
 11C70-11CBF   ; Marchen                                                 ; Marchen
 11D00-11D5F   ; Masaram Gondi                                           ; Gondi de Masaram
 11D60-11DAF   ; Gunjala Gondi                                           ; Gondi de Gunjala
+11DB0-11DEF   ; Tolong Siki                                             ; Tolong siki
 11EE0-11EFF   ; Makasar                                                 ; Macassar
 11F00-11F5F   ; Kawi                                                    ; Kawi
 11FB0-11FBF   ; Lisu Supplement                                         ; Supplément lissou
@@ -269,12 +272,14 @@ FFF0-FFFF     ; Specials                                                ; Caract
 16B00-16B8F   ; Pahawh Hmong                                            ; Pahawh hmong
 16D40-16D7F   ; Kirat Rai                                               ; Kirat rai
 16E40-16E9F   ; Medefaidrin                                             ; Médéfaïdrine
+16EA0-16EDF   ; Beria Erfe                                              ; Béria erfé
 16F00-16F9F   ; Miao                                                    ; Miao
 16FE0-16FFF   ; Ideographic Symbols and Punctuation                     ; Symboles et ponctuation idéographiques
-17000-187F7   ; Tangut                                                  ; Tangoute
+17000-187FF   ; Tangut                                                  ; Tangoute
 18800-18AFF   ; Tangut Components                                       ; Composants tangoutes
 18B00-18CFF   ; Khitan Small Script                                     ; Petite écriture khitane
-18D00-18D08   ; Tangut Supplement                                       ; Supplément tangoute
+18D00-18D1E   ; Tangut Supplement                                       ; Supplément tangoute
+18D80-18DFF   ; Tangut Components Supplement                            ; Supplément de composants tangoutes
 1AFF0-1AFFF   ; Kana Extended-B                                         ; Kana complémentaires B
 1B000-1B0FF   ; Kana Supplement                                         ; Supplément de kana
 1B100-1B12F   ; Kana Extended-A                                         ; Kana complémentaires A
@@ -283,6 +288,7 @@ FFF0-FFFF     ; Specials                                                ; Caract
 1BC00-1BC9F   ; Duployan                                                ; Sténographie Duployé
 1BCA0-1BCAF   ; Shorthand Format Controls                               ; Formatage de sténographie
 1CC00-1CEBF   ; Symbols for Legacy Computing Supplement                 ; Supplément de symboles informatiques patrimoniaux
+1CEC0-1CEFF   ; Miscellaneous Symbols Supplement                        ; Supplément de symboles divers
 1CF00-1CFCF   ; Znamenny Musical Notation                               ; Notation musicale znamenny
 1D000-1D0FF   ; Byzantine Musical Symbols                               ; Symboles musicaux byzantins
 1D100-1D1FF   ; Musical Symbols                                         ; Symboles musicaux
@@ -301,6 +307,7 @@ FFF0-FFFF     ; Specials                                                ; Caract
 1E2C0-1E2FF   ; Wancho                                                  ; Wantcho
 1E4D0-1E4FF   ; Nag Mundari                                             ; Nag mundari
 1E5D0-1E5FF   ; Ol Onal                                                 ; Ol onal
+1E6C0-1E6FF   ; Tai Yo                                                  ; Taï-yo
 1E7E0-1E7FF   ; Ethiopic Extended-B                                     ; Éthiopien étendu B
 1E800-1E8DF   ; Mende Kikakui                                           ; Mendé kikakui
 1E900-1E95F   ; Adlam                                                   ; Adlam
@@ -325,15 +332,16 @@ FFF0-FFFF     ; Specials                                                ; Caract
 1FB00-1FBFF   ; Symbols for Legacy Computing                            ; Symboles informatiques patrimoniaux
 1FF80-1FFFF   ; Unassigned                                              ; Points de code non attribués
 20000-2A6DF   ; CJK Unified Ideographs Extension B                      ; Supplément B aux idéogrammes unifiés CJC
-2A700-2B739   ; CJK Unified Ideographs Extension C                      ; Supplément C aux idéogrammes unifiés CJC
+2A700-2B73F   ; CJK Unified Ideographs Extension C                      ; Supplément C aux idéogrammes unifiés CJC
 2B740-2B81D   ; CJK Unified Ideographs Extension D                      ; Supplément D aux idéogrammes unifiés CJC
-2B820-2CEA1   ; CJK Unified Ideographs Extension E                      ; Supplément E aux idéogrammes unifiés CJC
+2B820-2CEAD   ; CJK Unified Ideographs Extension E                      ; Supplément E aux idéogrammes unifiés CJC
 2CEB0-2EBE0   ; CJK Unified Ideographs Extension F                      ; Supplément F aux idéogrammes unifiés CJC
 2EBF0-2EE5D   ; CJK Unified Ideographs Extension I                      ; Supplément I aux idéogrammes unifiés CJC
 2F800-2FA1F   ; CJK Compatibility Ideographs Supplement                 ; Supplément aux idéogrammes de compatibilité CJC
 2FF80-2FFFF   ; Unassigned                                              ; Points de code non attribués
 30000-3134A   ; CJK Unified Ideographs Extension G                      ; Supplément G aux idéogrammes unifiés CJC
 31350-323AF   ; CJK Unified Ideographs Extension H                      ; Supplément H aux idéogrammes unifiés CJC
+323B0-33479   ; CJK Unified Ideographs Extension J                      ; Supplément J aux idéogrammes unifiés CJC
 3FF80-3FFFF   ; Unassigned                                              ; Points de code non attribués
 4FF80-4FFFF   ; Unassigned                                              ; Points de code non attribués
 5FF80-5FFFF   ; Unassigned                                              ; Points de code non attribués
