@@ -42,7 +42,7 @@ addon_info = AddonInfo(
 	# Author(s)
 	addon_author="Cyrille Bougot <cyrille.bougot2@laposte.net>",
 	# URL for the add-on documentation support
-	addon_url="https://addons.nvda-project.org/addons/charInfo.en.html",
+	addon_url="https://github.com/CyrilleB79/charInfo",
 	# URL for the add-on repository where the source code can be found
 	addon_sourceURL= "https://github.com/CyrilleB79/charInfo",
 	# Documentation file name
