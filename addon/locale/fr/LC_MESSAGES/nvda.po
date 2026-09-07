@@ -1,291 +1,326 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the charInfo package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: charInfo 1.6\n"
-"Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
-"POT-Creation-Date: 2021-07-21 10:22+0000\n"
-"PO-Revision-Date: 2025-07-15 16:44+0200\n"
-"Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
-"Language-Team: \n"
-"Language: fr\n"
+"Project-Id-Version: nvdaaddons\n"
+"Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
+"POT-Creation-Date: 2026-08-31 04:54+0000\n"
+"PO-Revision-Date: 2026-09-04 06:54\n"
+"Last-Translator: \n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
-
-#. Translators: Title on the char info displayed message
-msgid "Detailed character information"
-msgstr "Information détaillée sur un caractère"
-
-#. Translators: Reported in the tables when no value is defined for a property of a specific character.
-msgid "[Not defined]"
-msgstr "[Non défini]"
-
-#. Translators: Reported in the symbol and character description tables when no file corresponding to the row
-#. exists.
-msgid "[No file]"
-msgstr "[Aucun fichier]"
-
-#. Translators: When speaking a missing character property
-msgid "No value"
-msgstr "Aucune valeur"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Character"
-msgstr "Caractère"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Name"
-msgstr "Nom"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "CLDR name"
-msgstr "Nom CLDR"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Decimal value"
-msgstr "Valeur décimale"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Hex value"
-msgstr "Valeur hexa"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Category"
-msgstr "Catégorie"
-
-#. Translators: A character attribute type in the Unicode table of the char info displayed message
-msgid "Block"
-msgstr "Bloc"
-
-#. Translators: A character attribute type in the MS font table of the char info displayed message
-msgid "MS name"
-msgstr "Nom MS"
-
-#. Translators: A character attribute type in the MS font table of the char info displayed message
-msgid "MS Font"
-msgstr "Police MS"
-
-#. Translators: A character attribute type in the MS font table of the char info displayed message
-msgid "Equivalent Unicode character name"
-msgstr "Nom du caractère Unicode équivalent"
-
-#. Translators: A character attribute type in the MS font table of the char info displayed message
-msgid "Equivalent Unicode character hex value"
-msgstr "Valeur hexa du caractère Unicode équivalent"
-
-#. Translators: A character attribute type in the MS font table of the char info displayed message
-msgid "Equivalent Unicode character decimal value"
-msgstr "Valeur décimale du caractère Unicode équivalent"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-msgid "Symbol description"
-msgstr "Description du symbole"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-#, python-brace-format
-msgid "Symbol description in user file ({lang})"
-msgstr "Description du symbole dans le fichier utilisateur ({lang})"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-#, python-brace-format
-msgid "Symbol description in locale file{langInfo}"
-msgstr "Description du symbole dans le fichier local{langInfo}"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-#, python-brace-format
-msgid "Symbol description in locale CLDR file{langInfo}"
-msgstr "Description du symbole dans le fichier CLDR local{langInfo}"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-msgid "Symbol description in English file"
-msgstr "Description du symbole dans le fichier anglais"
-
-#. Translators: A symbol attribute type in the table on the char info displayed message
-msgid "Symbol description in English CLDR file"
-msgstr "Description du symbole dans le fichier CLDR anglais"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Character description"
-msgstr "Description du caractère"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-#, python-brace-format
-msgid "Character description{langInfo}"
-msgstr "Description du caractère{langInfo}"
-
-#. Translators: A character attribute type in the table on the char info displayed message
-msgid "Character description (English file)"
-msgstr "Description du caractère (fichier anglais)"
-
-#. Translators: A section name in the char info displayed message
-msgid "Unicode"
-msgstr "Unicode"
-
-#. Translators: A section name in the char info displayed message
-msgid "Microsoft font"
-msgstr "Police Microsoft"
-
-#. Translators: A section name in the char info displayed message
-msgid "Symbol description in NVDA"
-msgstr "Description des symboles dans NVDA"
-
-#. Translators: A section name in the char info displayed message
-msgid "Character description in NVDA"
-msgstr "Description du caractère dans NVDA"
-
-#. Translators: Reported in the Unicode information table when the character does not belong to any block.
-msgid "No Block"
-msgstr "Aucun bloc"
-
-#. Translators: The value of an option reported in symbol description section of the character info report.
-msgid "On"
-msgstr "Activée"
-
-#. Translators: The value of an option reported in symbol description section of the character info report.
-msgid "Off"
-msgstr "Désactivée"
-
-#. Translators: A column header on the char info displayed message
-msgid "Value"
-msgstr "Valeur"
-
-#. Translators: A column title on the char info displayed message
-#, python-brace-format
-msgid "Character {numChar}"
-msgstr "Caractère {numChar}"
-
-#. Translators: A column title on the char info displayed message
-msgid "Attribute"
-msgstr "Attribut"
-
-#. Translators: A piece of text in the symbol description section of the character info report.
-msgid "Options used to compute the symbol:"
-msgstr "Options utilisées pour calculer le symbole :"
-
-#. Translators: An option text in the symbol description section of the character info report.
-msgid "Voice language"
-msgstr "Langue de la voix"
-
-#. Translators: An option text in the symbol description section of the character info report.
-msgid "NVDA interface language"
-msgstr "Langue de l'interface de NVDA"
-
-#. Translators: A part of the message presented in input help mode.
-msgid ""
-". Pressing four times presents a message with detailed information on this "
-"character."
-msgstr ""
-". Quatre appuis: affiche un message avec des informations détaillées sur ce "
-"caractère."
-
-#. Translators: The message presented in input help mode.
-msgid ""
-"Presents a message with detailed information on the character of the current "
-"navigator object where the review cursor is situated."
-msgstr ""
-"Affiche des informations sur le caractère de l'objet navigateur courant à la "
-"position du curseur de revue."
-
-#. Translators: The message presented in input help mode.
-msgid ""
-"Presents a message with detailed information on the character at the "
-"position of the caret."
-msgstr ""
-"Affiche des informations détaillées sur le caractère à la position du "
-"curseur système."
-
-#. Translators: Reported when there is no caret
-msgid "No caret"
-msgstr "Pas de curseur"
-
-#. Translators: The description of a command of this add-on.
-msgid "Opens Character Information add-on settings"
-msgstr "Ouvre les paramètres de l'extension Information caractère"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: nvdaaddons\n"
+"X-Crowdin-Project-ID: 780748\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: charInfo.pot\n"
+"X-Crowdin-File-ID: 296\n"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:24
 msgid "Report the character"
 msgstr "Annoncer le caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:26
 msgid "Report the character description"
 msgstr "Annoncer la description du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:28
 msgid "Report the character number"
 msgstr "Annoncer le numéro du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:30
 msgid "Display information on the character"
 msgstr "Afficher des informations sur le caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:32
 msgid "Report the CLDR locale name of the character"
 msgstr "Annoncer le nom CLDR local du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:34
 msgid "Report the CLDR English name of the character"
 msgstr "Annoncer le nom CLDR anglais du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:36
 msgid "Report the locale name of the character"
 msgstr "Annoncer le nom local du caractère"
 
 #. Translators: An option in an action definition combobox Character Information setting panel.
+#: addon\globalPlugins\charInfo\ciGui.py:38
 msgid "Report the English name of the character"
 msgstr "Annoncer le nom anglais du caractère"
 
-#. Translators: An option in an action definition combobox Character Information setting panel.
-msgid ""
-"Report Microsoft font proprietary character (name, font and equivalent "
-"Unicode name)"
-msgstr ""
-"Annoncer le caractère propriétaire de la police Microsoft (nom, police et "
-"nom Unicode équivalent)"
+#: addon\globalPlugins\charInfo\ciGui.py:42
+msgid "Report Microsoft font proprietary character (name, font and equivalent Unicode name)"
+msgstr "Annoncer le caractère propriétaire de la police Microsoft (nom, police et nom Unicode équivalent)"
 
 #. Translators: This is the label for a group of action choices in the add-on's settings panel
+#: addon\globalPlugins\charInfo\ciGui.py:55
 msgid "Action for multiple presses of the report review character command"
-msgstr ""
-"Action pour les appuis multiples sur la commande d'annonce du caractère sous "
-"le curseur de revue"
+msgstr "Action pour les appuis multiples sur la commande d'annonce du caractère sous le curseur de revue"
 
 #. Translators: This is the label for a checkbox in the Character Information settings panel.
+#: addon\globalPlugins\charInfo\ciGui.py:66
 msgid "Remember these action during character navigation"
 msgstr "Se souvenir de ces actions lors de la navigation par caractère"
 
 #. Translators: This is the label for the action definition comboboxes in the Character Information settings
 #. panel.
+#: addon\globalPlugins\charInfo\ciGui.py:73
 #, python-brace-format
 msgid "{n} presses:"
 msgstr "{n} appuis:"
 
-#. Add-on summary, usually the user visible name of the addon.
-#. Translators: Summary for this add-on
-#. to be shown on installation and add-on information found in Add-ons Manager.
+#. Translators: Title on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:125
+msgid "Detailed character information"
+msgstr "Information détaillée sur un caractère"
+
+#. Translators: Reported in the tables when no value is defined for a property of a specific character.
+#: addon\globalPlugins\charInfo\__init__.py:146
+msgid "[Not defined]"
+msgstr "[Non défini]"
+
+#. Translators: Reported in the symbol and character description tables when no file corresponding to the row
+#. exists.
+#: addon\globalPlugins\charInfo\__init__.py:149
+msgid "[No file]"
+msgstr "[Aucun fichier]"
+
+#. Translators: When speaking a missing character property
+#: addon\globalPlugins\charInfo\__init__.py:151
+msgid "No value"
+msgstr "Aucune valeur"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:215
+msgid "Character"
+msgstr "Caractère"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:217
+msgid "Name"
+msgstr "Nom"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:219
+msgid "CLDR name"
+msgstr "Nom CLDR"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:221
+msgid "Decimal value"
+msgstr "Valeur décimale"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:223
+msgid "Hex value"
+msgstr "Valeur hexa"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:225
+msgid "Category"
+msgstr "Catégorie"
+
+#. Translators: A character attribute type in the Unicode table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:227
+msgid "Block"
+msgstr "Bloc"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:241
+msgid "MS name"
+msgstr "Nom MS"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:243
+msgid "MS Font"
+msgstr "Police MS"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:245
+msgid "Equivalent Unicode character name"
+msgstr "Nom du caractère Unicode équivalent"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:247
+msgid "Equivalent Unicode character hex value"
+msgstr "Valeur hexa du caractère Unicode équivalent"
+
+#. Translators: A character attribute type in the MS font table of the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:250
+msgid "Equivalent Unicode character decimal value"
+msgstr "Valeur décimale du caractère Unicode équivalent"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:268
+msgid "Symbol description"
+msgstr "Description du symbole"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:273
+#, python-brace-format
+msgid "Symbol description in user file ({lang})"
+msgstr "Description du symbole dans le fichier utilisateur ({lang})"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:278
+#, python-brace-format
+msgid "Symbol description in locale file{langInfo}"
+msgstr "Description du symbole dans le fichier local{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:283
+#, python-brace-format
+msgid "Symbol description in locale CLDR file{langInfo}"
+msgstr "Description du symbole dans le fichier CLDR local{langInfo}"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:288
+msgid "Symbol description in English file"
+msgstr "Description du symbole dans le fichier anglais"
+
+#. Translators: A symbol attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:293
+msgid "Symbol description in English CLDR file"
+msgstr "Description du symbole dans le fichier CLDR anglais"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:307
+msgid "Character description"
+msgstr "Description du caractère"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:310
+#, python-brace-format
+msgid "Character description{langInfo}"
+msgstr "Description du caractère{langInfo}"
+
+#. Translators: A character attribute type in the table on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:315
+msgid "Character description (English file)"
+msgstr "Description du caractère (fichier anglais)"
+
+#. Translators: A section name in the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:331
+msgid "Unicode"
+msgstr "Unicode"
+
+#. Translators: A section name in the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:333
+msgid "Microsoft font"
+msgstr "Police Microsoft"
+
+#. Translators: A section name in the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:335
+msgid "Symbol description in NVDA"
+msgstr "Description des symboles dans NVDA"
+
+#. Translators: A section name in the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:337
+msgid "Character description in NVDA"
+msgstr "Description du caractère dans NVDA"
+
+#. Translators: Reported in the Unicode information table when the character does not belong to any block.
+#: addon\globalPlugins\charInfo\__init__.py:642
+msgid "No Block"
+msgstr "Aucun bloc"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+#: addon\globalPlugins\charInfo\__init__.py:808
+msgid "On"
+msgstr "Activée"
+
+#. Translators: The value of an option reported in symbol description section of the character info report.
+#: addon\globalPlugins\charInfo\__init__.py:811
+msgid "Off"
+msgstr "Désactivée"
+
+#. Translators: A column header on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:945
+msgid "Value"
+msgstr "Valeur"
+
+#. Translators: A column title on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:948
+#, python-brace-format
+msgid "Character {numChar}"
+msgstr "Caractère {numChar}"
+
+#. Translators: A column title on the char info displayed message
+#: addon\globalPlugins\charInfo\__init__.py:953
+#: addon\globalPlugins\charInfo\__init__.py:974
+msgid "Attribute"
+msgstr "Attribut"
+
+#. Translators: A piece of text in the symbol description section of the character info report.
+#: addon\globalPlugins\charInfo\__init__.py:1017
+msgid "Options used to compute the symbol:"
+msgstr "Options utilisées pour calculer le symbole :"
+
+#. Translators: An option text in the symbol description section of the character info report.
+#: addon\globalPlugins\charInfo\__init__.py:1073
+msgid "Voice language"
+msgstr "Langue de la voix"
+
+#. Translators: An option text in the symbol description section of the character info report.
+#: addon\globalPlugins\charInfo\__init__.py:1081
+msgid "NVDA interface language"
+msgstr "Langue de l'interface de NVDA"
+
+#. Translators: A part of the message presented in input help mode.
+#: addon\globalPlugins\charInfo\__init__.py:1318
+msgid ". Pressing four times presents a message with detailed information on this character."
+msgstr ". Quatre appuis: affiche un message avec des informations détaillées sur ce caractère."
+
+#. Translators: The message presented in input help mode.
+#: addon\globalPlugins\charInfo\__init__.py:1409
+msgid "Presents a message with detailed information on the character of the current navigator object where the review cursor is situated."
+msgstr "Affiche des informations sur le caractère de l'objet navigateur courant à la position du curseur de revue."
+
+#. Translators: The message presented in input help mode.
+#: addon\globalPlugins\charInfo\__init__.py:1420
+msgid "Presents a message with detailed information on the character at the position of the caret."
+msgstr "Affiche des informations détaillées sur le caractère à la position du curseur système."
+
+#. Translators: Reported when there is no caret
+#: addon\globalPlugins\charInfo\__init__.py:1436
+msgid "No caret"
+msgstr "Pas de curseur"
+
+#. Translators: The description of a command of this add-on.
+#: addon\globalPlugins\charInfo\__init__.py:1442
+msgid "Opens Character Information add-on settings"
+msgstr "Ouvre les paramètres de l'extension Information caractère"
+
+#. Add-on summary/title, usually the user visible name of the add-on
+#. Translators: Summary/title for this add-on
+#. to be shown on installation and add-on information found in add-on store
+#: buildVars.py:22
 msgid "Character information"
 msgstr "Information caractère"
 
-#. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
-msgid ""
-"This add-on allows to present in a message various information about a "
-"character.\n"
-"\t\tIt also allows to customize the information reported on a character when "
-"using review cursor character navigation commands or multiple presses of the "
-"review character command."
-msgstr ""
-"Cette extension permet de présenter dans un message diverses informations "
-"sur un caractère.\n"
-"\t\tIl permet également de personnaliser les informations annoncées sur un "
-"caractère lors de l'utilisation des commandes de navigation par caractère du "
-"curseur de revue ou d'appuis multiples sur la commande de caractère de revue."
+#. Translators: Long description to be shown for this add-on on add-on information from add-on store
+#: buildVars.py:26
+msgid "This add-on allows to present in a message various information about a character.\n"
+"\t\tIt also allows to customize the information reported on a character when using review cursor character navigation commands or multiple presses of the review character command."
+msgstr "Cette extension permet de présenter dans un message diverses informations sur un caractère.\n"
+"\t\tIl permet également de personnaliser les informations annoncées sur un caractère lors de l'utilisation des commandes de navigation par caractère du curseur de revue ou d'appuis multiples sur la commande de caractère de revue."
 
-#~ msgid ""
-#~ "This add-on allows to present in a message various information about a "
-#~ "character.\n"
-#~ msgstr ""
-#~ "Cette extension permet d'afficher dans un message des informations sur un "
-#~ "caractère.\n"
+#. Brief changelog for this version
+#. Translators: what's new content for the add-on version to be shown in the add-on store
+#: buildVars.py:34
+msgid "* Update to Unicode 17.0.\n"
+"* Fixed a bug causing the review cursor at the end of a line to jump to next line when moved right, instead of reporting the end of the line.\n"
+"* Compatibility with NVDA 2026.1.\n"
+"* Drops compatibility with NVDA below 2024.1. The last version compatible with NVDA 2022.3.3 is the [3.7][5].\n\n"
+"[5]: https://github.com/CyrilleB79/charInfo/releases/download/V3.7/charInfo-3.7.nvda-addon\n"
+msgstr ""
+
